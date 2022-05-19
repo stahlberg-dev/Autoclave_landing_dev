@@ -1,0 +1,1300 @@
+.page {
+
+    &__title-screen {
+        margin-bottom: 125px;
+
+        @media (min-width: $smallMobile) {
+            @include adaptiveValue("margin-bottom", 35px, 170px);
+        }
+    }
+
+    &__advantages {
+        @include adaptiveValue("margin-bottom", 35px, 170px);
+    }
+
+    &__main-slider {
+    }
+
+    &__products {
+    }
+
+    &__rooms {
+    }
+
+    &__tips {
+    }
+
+    &__furniture {
+    }
+}
+
+//----- Title screen -------------------------------------------------------------------------
+
+.title-screen {
+    position: relative;
+    min-width: $minWidth;
+    @include adaptiveValue("padding-top", 75px, 90px, $minWidth, $mobile);
+    @include adaptiveValue("height", 455px, 427px, $minWidth, $mobile);
+    @include adaptiveValue("background-size", 424px, 768px, $minWidth, $mobile);
+    background-repeat: no-repeat;
+    background-position: bottom right;
+    background-image: url("../img/title-screen/title-screen-bg.png");
+
+    @media (min-width: $mobile) {
+        min-height: $minWidth * 0.556;
+        height: 100vw * 0.556;
+        @include adaptiveValue("padding-top", 90px, 165px, $mobile, $pc);
+        background-size: cover;
+    }
+
+    @media (min-width: $pc) {
+        height: 800px;
+        background-size: contain;
+    }
+
+    &::before {
+        $firstGradPoint: calc(100% - 1440px);
+        $secondGradPoint: calc(100% - 1440px + 1440px * 0.45);
+        $thirdGradPoint: calc(100% - 1440px + 1440px * 0.8);
+
+        content: '';
+        display: block;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(90deg, rgba(5, 6, 0, 0.7) 0%, rgba(5, 6, 0, 0.05) 80%),
+                    linear-gradient(180deg, rgba(5, 6, 0, 1) 0%, rgba(5, 6, 0, 0.9) calc(100% - 65vw), rgba(5, 6, 0, 0.05) calc(100% - 53vw));
+        z-index: 0;
+
+        @media (min-width: $smallMobile) {
+            background: linear-gradient(90deg, #050600 0%, rgba(5, 6, 0, 0.8) 30%, rgba(5, 6, 0, 0.05) 80%),
+                    linear-gradient(180deg, rgba(5, 6, 0, 1) 0%, rgba(5, 6, 0, 0.9) calc(100% - 55vw), rgba(5, 6, 0, 0.05) calc(100% - 50vw));
+        }
+
+        @media (min-width: $mobile) {
+            background: linear-gradient(90deg, #050600 0%, rgba(5, 6, 0, 0.8) 45%, rgba(5, 6, 0, 0.05) 80%);
+        }
+
+        @media (min-width: $pc) {
+            background: linear-gradient(90deg, #050600 0%, rgba(5, 6, 0, 1) $firstGradPoint, rgba(5, 6, 0, 0.8) $secondGradPoint, rgba(5, 6, 0, 0.05) $thirdGradPoint);
+        }
+    }
+   
+    &::after {
+        content: '';
+        display: block;
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 51%;
+        max-width: 740px;
+        height: 100%;
+        background: linear-gradient(135deg, rgba(234, 135, 19, 0) 70%, rgba(255, 138, 0, 0.17) 93%);
+        z-index: 0;
+
+        @media (min-width: $mobile) {
+            background: linear-gradient(112.46deg, rgba(234, 135, 19, 0) 58.93%, rgba(255, 138, 0, 0.22) 83.65%);
+        }
+    }
+
+    &__title {   
+        @include adaptiveValue("margin-bottom", 30px, 95px, $smallMobile, $pc);   
+        z-index: 1;
+    }
+
+    &__button-container {
+        position: absolute;
+        top: calc(100% + 30px);
+        width: 100%;
+        /* padding-left: calc((100% - 280px) / 2); */
+        z-index: 1;
+
+        @media (min-width: $smallMobile) {
+            position: relative;
+            top: auto;
+            padding-left: 20px;
+        }
+
+        @media (min-width: $mobile) {
+            @include adaptiveValue("padding-left", 20px, 106px, $mobile, $tablet);
+        }
+
+        @media (min-width: $tablet) {
+            padding-left: calc(9% - (50% - $maxContentWidth / 2));
+        }
+
+        @media (min-width: $pc) {
+            padding-left: $containerPadding;
+        }
+    }
+
+    &__button {
+        width: 100%;
+        height: 60px;
+        gap: 10px;
+        line-height: 22px;
+        font-size: 18px;
+        font-weight: 200;
+
+        @media (min-width: $smallMobile) {
+            @include adaptiveValue("width", 185px, 345px, $mobile, $pc);
+            @include adaptiveValue("height", 40px, 76px, $mobile, $pc);
+            @include adaptiveValue("gap", 20px, 40px, $mobile, $pc);
+            @include adaptiveValue("line-height", 18px, 30px, $mobile, $pc);
+            @include adaptiveValue("font-size", 14px, 24px, $mobile, $pc);
+        }
+    }
+
+    &__button-text {
+    }
+
+    &__button-icon {
+        flex-basis: 25px;
+
+        @media (min-width: $smallMobile) {
+            @include adaptiveValue("flex-basis", 18px, 25px, $mobile, $pc);
+        }
+    }
+}
+.title {
+    position: relative;
+    text-transform: uppercase;
+    
+
+    &::before {
+        content: '';
+        display: none;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 15px;
+        height: 100%;
+        @extend %orange-bar;
+        
+        @media (min-width: $pc) {
+            display: block;
+        }
+    }
+
+    &__container {
+        padding-left: 20px;
+
+        @media (min-width: $mobile) {
+            @include adaptiveValue("padding-left", 20px, 106px, $mobile, $tablet);
+        }
+
+        @media (min-width: $tablet) {
+            padding-left: calc(9% - (50% - $maxContentWidth / 2));
+        }
+
+        @media (min-width: $pc) {
+            padding-left: $containerPadding;
+        }
+    }
+
+    &__pre-title {
+        @include adaptiveValue("max-width", 320px, 570px, $minWidth, $pc);
+        @include adaptiveValue("line-height", 20px, 38px, $minWidth, $pc);
+        @include adaptiveValue("font-size", 16px, 32px, $minWidth, $pc);
+        font-weight: 100;
+        color: $primaryColor;
+    }
+
+    &__main-title {
+        @include adaptiveValue("max-width", 320px, 570px, $minWidth, $pc);
+        @include adaptiveValue("margin-bottom", 15px, 65px, $minWidth, $pc);
+        @include adaptiveValue("line-height", 40px, 90px, $minWidth, $pc);
+        @include adaptiveValue("font-size", 34px, 74px, $minWidth, $pc);
+        font-weight: 800;
+        color: $primaryColor;
+    }
+
+    &__after-title {
+        @include adaptiveValue("max-width", 320px, 570px, $minWidth, $pc);
+        @include adaptiveValue("line-height", 20px, 38px, $minWidth, $pc);
+        @include adaptiveValue("font-size", 16px, 32px, $minWidth, $pc);
+        font-weight: 200;
+        color: $secondaryColor;
+    }
+}
+
+//--------------------------------------------------------------------------------------------
+
+//----- Advantages ---------------------------------------------------------------------------
+
+.advantages {
+
+    &__container {
+        display: flex;
+        flex-flow: column nowrap;
+        align-items: center;
+        gap: 20px;
+
+        @media (min-width: $smallMobile) {
+            flex-flow: row nowrap;
+            justify-content: space-between;
+            align-items: center;
+            gap: 0;
+        }
+    }
+
+    &__advantage {
+        position: relative;
+    }
+}
+
+.advantage {
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: space-between;
+    align-items: center;
+    flex: 0 0 285px;
+    width: 280px;
+    padding: 40px 30px;
+    background-color: $thirdColor;
+
+    @media (min-width: $smallMobile) {
+        width: auto;
+        flex: 0 1 32.2%;
+        @include adaptiveValue("height", 180px, 380px, $smallMobile, $maxContainerWidth);
+        @include adaptiveValue("padding-top", 22px, 55px, $smallMobile, $maxContainerWidth);
+        @include adaptiveValue("padding-bottom", 24px, 60px, $smallMobile, $maxContainerWidth);
+        @include adaptiveValue("padding-left", 13px, 30px, $smallMobile, $maxContainerWidth);
+        @include adaptiveValue("padding-right", 13px, 30px, $smallMobile, $maxContainerWidth);
+    }
+
+    &::before,
+    &::after {
+        content: '';
+        display: block;
+        position: absolute;
+        top: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 220px;
+        height: 10px;
+        @extend %orange-bar;
+
+        @media (min-width: $smallMobile) {
+            width: 68.4%;
+            @include adaptiveValue("height", 4px, 10px, $smallMobile, $maxContainerWidth);
+        }
+    }
+
+    &::after {
+        display: none;
+        top: auto;
+        bottom: 0;
+
+        @media (min-width: $smallMobile) {
+            display: block;
+        }
+    }
+
+    &__icon {
+        width: 100px;
+        height: 100px;
+
+        @media (min-width: $smallMobile) {
+            @include adaptiveValue("width", 40px, 100px, $smallMobile, $maxContainerWidth);
+            @include adaptiveValue("height", 40px, 100px, $smallMobile, $maxContainerWidth);
+        }
+    }
+
+    &__text {
+        text-align: center;
+        line-height: 20px;
+        font-size: 16px;
+        font-weight: 200;
+        color: $secondaryColor;
+
+        @media (min-width: $smallMobile) {
+            @include adaptiveValue("line-height", 16px, 30px, $smallMobile, $maxContainerWidth);
+            @include adaptiveValue("font-size", 14px, 24px, $mobile, $maxContainerWidth);
+        }
+
+        .advantage:nth-child(1) & span:last-child {
+            display: block;
+
+            @media (min-width: $smallMobile) and (max-width: $mobile) {
+                display: inline;
+            }
+        }
+        .advantage:nth-child(2) & span:first-child {
+            display: block;
+
+            @media (min-width: $smallMobile) and (max-width: $mobile) {
+                display: inline;
+            }
+        }
+        .advantage:nth-child(3) & span:last-child {
+            display: block;
+
+            @media (min-width: $smallMobile) and (max-width: 580px) {
+                display: inline;
+            }
+        }
+    }
+}
+
+//--------------------------------------------------------------------------------------------
+
+//----- Main slider --------------------------------------------------------------------------
+
+.main-slider {
+    background-color: #FCF8F3;
+
+    &__container {
+        position: relative;
+
+        @media (min-width: $tablet) {
+            &::before {
+                content: "";
+                background-color: #F9F1E7;
+                position: absolute;
+                top: 0;
+                right: 375px;
+                width: 100vw;
+                height: 100%;
+            }
+        }
+    }
+
+    &__body {
+        padding: 50px 0 0 0;
+
+        @media (min-width: $mobile) {
+            padding: 80px 0 0 0;
+        }
+
+        @media (min-width: $tablet) {
+            display: flex;
+            padding: 140px 0 0 0;
+        }
+
+        position: relative;
+        z-index: 2;
+    }
+
+    &__content {
+        flex: 0 0 math.div(495px, $maxContentWidth) * 100%;
+        align-self: flex-start;
+        position: relative;
+        margin: 0 -15px;
+
+        @media (min-width: $tablet) {
+            margin: 0;
+            @include adaptiveValue("margin-bottom", 15px, 80px);
+        }
+    }
+
+    &__slider {
+        flex: 1 1 auto;
+        min-width: 0;
+        align-self: flex-end;
+
+        @media (min-width: $tablet) {
+            padding-left: 32px;
+        }
+    }
+
+    &__button {
+        display: inline-flex;
+        width: 100%;
+        @include adaptiveValue("height", 45px, 78px);
+        @include adaptiveValue("font-size", 16px, 20px);
+
+        @media (min-width: $tablet) {
+            display: none;
+        }
+    }
+}
+
+.content-main {
+    z-index: 5;
+    padding-left: 15px;
+    padding-right: 15px;
+    @include adaptiveValue("padding-top", 15px, 60px);
+    @include adaptiveValue("padding-bottom", 15px, 60px);
+    background-color: rgba(255, 255, 255, 0.9);
+
+    @media (min-width: $tablet) {
+        @include adaptiveValue("padding", 1px, 60px);
+    }
+
+    &__title {
+
+        &:not(:last-child) {
+            @include adaptiveValue("margin-bottom", 8px, 16px);
+        }
+
+        line-height: 1.2;
+        @include adaptiveValue("font-size", 24px, 56px);
+        font-weight: 700;
+    }
+
+    &__text {
+
+        @media (min-width: $tablet) {
+
+            &:not(:last-child) {
+                @include adaptiveValue("margin-bottom", 38px, 48px);
+            }
+        }
+
+        @include adaptiveValue("font-size", 16px, 20px);
+        color: $textLightColor;
+    }
+
+    &__button {
+        display: none;
+        width: 100%;
+        @include adaptiveValue("height", 45px, 78px);
+        @include adaptiveValue("font-size", 16px, 20px);
+
+        @media (min-width: $tablet) {
+            display: inline-flex;
+        }
+    }
+}
+
+.slider-main {
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: stretch;
+
+    @media (min-width: $tablet) {
+        flex-direction: column;
+        align-items: flex-end;
+    }
+
+    &__controls {
+        margin: 10px 0 20px;
+
+        @media (min-width: $tablet) {
+            margin: 0 0 20px;
+        }
+    }
+
+    &__body {
+        overflow: visible;
+        margin: 0 -15px;
+
+        @media (min-width: $tablet) {
+            @include adaptiveValue("width", 290px, 935px);
+            margin: 0;
+        }
+    }
+
+    &__slider-wrapper {
+    }
+
+    &__slide {
+        position: relative;
+    }
+
+    &__image {
+        position: relative;
+        padding-bottom: 60%;
+    }
+
+    &__image-photo {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    &__content {
+        display: flex;
+        flex-direction: column;
+        min-width: 295px;
+        max-height: 300px;
+        overflow: auto;
+        @include adaptiveValue("padding", 15px, 24px);
+        background-color: rgba(255, 255, 255, 0.9);
+
+        @media (min-width: $mobile) {
+            position: absolute;
+            @include adaptiveValue("bottom", 0px, 40px);
+            @include adaptiveValue("right", 0px, 40px);
+            max-width: 295px;
+        }
+    }
+
+    &__title {
+
+        &:not(:last-child){
+            @include adaptiveValue("margin-bottom", 1px, 4px);
+        }
+        line-height: 1.2;
+        @include adaptiveValue("font-size", 22px, 28px);
+        font-weight: 600;
+    }
+
+    &__text {
+
+        &:not(:last-child) {
+            @include adaptiveValue("margin-bottom", 4px, 8px);
+        }
+        color: $textDarkColor;
+    }
+
+    &__bottom-line {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    &__price {
+        margin-right: 10px;
+        @include adaptiveValue("font-size", 16px, 20px);
+        font-weight: 600;
+    }
+
+    &__arrow {
+        display: block;
+        flex: 0 0 24px;
+        height: 24px;
+        fill: #000;
+    }
+}
+
+.controls-m-s {
+    align-self: stretch;
+    display: flex;
+    align-items: center;
+
+    &__dots {
+        flex: 1 1 auto;
+        justify-content: center;
+
+        @media (min-width: $tablet) {
+            justify-content: flex-start;
+            padding-right: 20px;
+        }
+    }
+
+    &__arrows {
+        display: none;
+
+        @media (min-width: $tablet) {
+            display: grid;
+            grid-template-columns: repeat(2, 48px);
+            column-gap: 8px;
+        }
+    }
+
+    &__arrow-button {
+        height: 48px;
+
+        @media (min-width: $tablet) {
+            background-color: rgba(232, 159, 113, 0.4);
+            stroke: $primaryColor;
+
+            @media (any-hover: hover) {
+                &:hover {
+                    background-color: $primaryColor;
+                    stroke: #FFF;
+                }
+            }
+        }
+    }
+}
+
+//-------------------------------------------------------------------------------------------
+
+//----- Products ----------------------------------------------------------------------------
+
+.products {
+    @include adaptiveValue("padding-bottom", 30px, 44px);
+
+    &__container {
+    }
+
+    &__title {
+        @include adaptiveValue("margin-bottom", 22px, 32px);
+    }
+
+    &__items {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(285px, 1fr));
+        gap: 32px;
+    }
+
+    &__item {
+        position: relative;
+    }
+
+    &__footer {
+        padding-top: 32px;
+        text-align: center;
+    }
+
+    &__more {
+        display: inline-flex;
+        border: 1px solid $primaryColor;
+        min-width: 245px;
+
+        &_hold {
+            opacity: 0.5;
+            cursor: default;
+        }
+    }
+}
+
+.item-product {
+    display: flex;
+    flex-direction: column;
+    background-color: #F4F5F7;
+
+    &__labels {
+        position: absolute;
+        display: flex;
+        flex-direction: column;
+        @include adaptiveValue("top", 10px, 24px);
+        @include adaptiveValue("right", 10px, 24px);
+    }
+
+    &__label {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 48px;
+        flex: 0 0 48px;
+        border-radius: 50%;
+        font-weight: 600;
+        color: #FFF;
+
+        &:not(:last-child) {
+            margin-bottom: 10px;
+        }
+
+        &_type_sale {
+            background-color: $discountColor;
+        }
+
+        &_type_new {
+            background-color: $newColor;
+        }
+    }
+
+    &__image {
+        position: relative;
+        padding-bottom: calc(300px / 285px * 100%);
+    }
+
+    &__photo {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    &__body {
+        display: flex;
+        flex-direction: column;
+        flex: 1 1 auto;
+        padding: 16px 16px 30px;
+    }
+
+    &__content {
+        flex: 1 1 auto;
+    }
+
+    &__title {
+        @include adaptiveValue("margin-bottom", 6px, 8px);
+        line-height: 1.2;
+        @include adaptiveValue("font-size", 20px, 24px);
+        font-weight: 600;
+    }
+
+    &__text {
+        @include adaptiveValue("margin-bottom", 6px, 8px);
+        color: $textLightColor;
+    }
+
+    &__prices {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+    }
+
+    &__price {
+        @include adaptiveValue("font-size", 16px, 20px);
+        font-weight: 600;
+
+        &_old {
+            margin-left: 16px;
+            @include adaptiveValue("font-size", 14px, 16px);
+            font-weight: 400;
+            color: $textLightColor;
+            text-decoration: line-through;
+        }
+    }
+
+    &__actions {
+
+        @media (any-hover: hover) {
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+    }
+}
+.actions-product {
+
+    @media (any-hover: none) {
+        padding-top: 15px;
+    }
+
+    @media (any-hover: hover) {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: -1;
+        width: 100%;
+        height: 100%;
+        opacity: 0;
+        background-color: rgba(58, 58, 58, 0.7);
+        transition: opacity 0.3s ease 0s,
+                    z-index 0.3s ease 0s;
+
+        .item-product:hover & {
+            opacity: 1;
+            z-index: 3;
+        }
+    }
+
+    &__body {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+    }
+
+    &__button {
+        flex: 1 1 100%;
+
+        &:not(:last-child) {
+            margin-bottom: 24px;
+        }
+
+        &_hold {
+            opacity: 0.5;
+            cursor: default;
+        }
+    }
+
+    &__link {
+        display: flex;
+        align-items: center;
+        font-weight: 600;
+        color: $mainColor;
+        stroke: $mainColor;
+        transition: stroke 0.3s ease 0s,
+                    color 0.3s ease 0s;
+
+        @media (any-hover: hover) {
+            color: #FFF;
+            stroke: #FFF;
+
+            &:hover {
+                color: $primaryColor;
+                stroke: $primaryColor;
+            }
+        }
+    }
+
+    &__icon {
+        margin-right: 10px;
+        width: 24px;
+        height: 24px;
+        fill: transparent;
+    }
+}
+
+//-------------------------------------------------------------------------------------------
+
+//----- Rooms -------------------------------------------------------------------------------
+
+.rooms {
+    background-color: #FCF8F3;
+    @include adaptiveValue("padding-top", 30px, 44px);
+    @include adaptiveValue("padding-bottom", 30px, 44px);
+
+    &__container {
+        @media (min-width: $tablet) {
+            display: flex;
+        }
+    }
+
+    &__body {
+        flex: 0 0 math.div(465px, $maxContentWidth) * 100%;
+        align-self: center;
+        position: relative;
+        z-index: 5;
+        margin-bottom: 30px;
+
+        @media (min-width: $tablet) {
+            @include adaptiveValue("padding-right", 30px, 80px);
+            margin-bottom: 0;
+        }
+    }
+
+    &__title {
+
+        &:not(:last-child) {
+            @include adaptiveValue("margin-bottom", 5px, 8px);
+        }
+        text-align: left;
+    }
+
+    &__text {
+
+        &:not(:last-child) {
+            margin-bottom: 24px;
+        }
+    }
+
+    &__button {
+        display: inline-flex;
+        min-width: 180px;
+        height: 48px;
+    }
+
+    &__slider {
+        flex: 1 1 auto;
+        min-width: $minWidth;
+        align-self: flex-start;
+        margin: 0 -15px;
+
+        @media (min-width: $smallMobile) {
+            margin: 0;
+        }
+    }
+}
+
+.slider-rooms {
+    position: relative;
+
+    &__body {
+        position: relative;
+        overflow: visible;
+
+        &::before {
+            content: "";
+            display: block;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100%;
+            z-index: 2;
+            background-color: #FCF8F3;
+            transform: translate(-100%, 0px);
+        }
+    }
+
+    &__slider-wrapper {
+    }
+
+    &__slide {
+        position: relative;
+        width: 100%;
+
+        @media (min-width: $smallMobile) {
+            width: 372px;
+        }
+        @include adaptiveValue("height", 400px, 585px);
+        overflow: hidden;
+    }
+
+    &__image {
+        position: relative;
+        height: 100%;
+
+        @media (min-width: $mobile) {
+            height: 83%;
+
+            .swiper-slide-active & {
+                height: 100%;
+            }
+        }
+        transition: height 0.8s ease 0s;
+    }
+
+    &__photo {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    &__content {
+        position: absolute;
+        @include adaptiveValue("left", 15px, 24px);
+        @include adaptiveValue("bottom", 15px, 24px);
+        max-width: 240px;
+        @include adaptiveValue("padding", 15px, 32px);
+        background-color: rgba(255, 255, 255, 0.8);
+    }
+
+    &__label-arrow {
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        width: 48px;
+        height: 48px;
+        transform: translate(100%, 0px);
+        background-color: $primaryColor;
+        fill: #FFF;
+    }
+
+    &__label {
+    }
+
+    &__title {
+        @include adaptiveValue("font-size", 24px, 28px);
+        font-weight: 600;
+    }
+
+    &__arrows {
+        display: none;
+
+        @media (min-width: $smallMobile) {
+            display: flex;
+            justify-content: space-between;
+            position: absolute;
+            top: 50%;
+            transform: translate(0px, -50%);
+            left: 24px;
+            width: calc(100% - 48px);
+            z-index: 5;
+        }
+
+        @media (min-width: calc($pc + 48px)) {
+            left: -24px;
+            width: calc(100% + 48px);
+        }
+    }
+
+    &__arrow-button {
+        
+        @media (min-width: $smallMobile) {
+            flex: 0 0 48px;
+            height: 48px;
+            background-color: #FFF;
+            box-shadow: 0px 4px 14px 1px rgba(0, 0, 0, 0.16);
+            stroke: $primaryColor;
+
+            @media (any-hover: hover) {
+                &:hover {
+                    background-color: $primaryColor;
+                    stroke: #FFF;
+                }
+            }
+        }
+    }
+
+    &__dots {
+        justify-content: center;
+        z-index: 10;
+        padding-top: 15px;
+
+        @media (min-width: $mobile) {
+            position: absolute;
+            bottom: 30px;
+            left: 396px;
+            width: 100%;
+            justify-content: normal;
+            padding-top: 0;
+        }
+    }
+}
+
+.label-slider {
+    display: grid;
+    grid-template-columns: auto 27px auto;
+    gap: 8px;
+    justify-content: start;
+    align-items: center;
+
+    &:not(:last-child) {
+        @include adaptiveValue("margin-bottom", 5px, 8px);
+    }
+    color: $textDarkColor;
+
+    &__number {
+    }
+
+    &__line {
+        height: 1px;
+        background-color: $textDarkColor;
+    }
+
+    &__text {
+    }
+}
+
+//-------------------------------------------------------------------------------------------
+
+//----- Tips --------------------------------------------------------------------------------
+
+.tips {
+    @include adaptiveValue("padding-top", 30px, 44px);
+    @include adaptiveValue("padding-bottom", 30px, 44px);
+
+    &__container {
+    }
+
+    &__title {
+    }
+
+    &__slider {
+        position: relative;
+    }
+}
+
+.slider-tips {
+
+    &__body {
+        overflow: hidden;
+        @include adaptiveValue("margin-left", -15px, -32px);
+        @include adaptiveValue("margin-right", -15px, -32px);
+        @include adaptiveValue("padding", 15px, 32px);
+    }
+
+    &__slider-wrapper {
+        align-items: stretch;
+    }
+
+    &__slide {
+        display: flex;
+        flex-direction: column;
+        height: auto;
+        transition: box-shadow 0.3s ease 0s;
+
+        @media (any-hover: hover) {
+
+            &:hover {
+                box-shadow: 0 0 32px rgba(97, 97, 97, 0.2);
+            }
+        }
+    }
+
+    &__image {
+        position: relative;
+        padding-bottom: calc(251px / 391px * 100%);
+    }
+
+    &__photo {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    &__content {
+        flex: 1 1 auto;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 15px;
+    }
+
+    &__title {
+        flex: 1 1 auto;
+
+        &:not(:last-child) {
+            @include adaptiveValue("margin-bottom", 6px, 8px);
+        }
+        line-height: 1.2;
+        @include adaptiveValue("font-size", 18px, 24px);
+        font-weight: 600;
+        transition: color 0.3s ease 0s;
+
+        @media (any-hover: hover) {
+
+            &:hover {
+                color: $primaryColor;
+            }
+        }
+    }
+
+    &__text {
+        font-size: 14px;
+        color: $textLightColor;
+    }
+
+    &__arrows {
+        display: none;
+
+        @media (min-width: $smallMobile) {
+            display: flex;
+            justify-content: space-between;
+            position: absolute;
+            top: 50%;
+            transform: translate(0px, -50%);
+            left: 24px;
+            width: calc(100% - 48px);
+            z-index: 5;
+        }
+
+        @media (min-width: calc($pc + 48px)) {
+            left: -24px;
+            width: calc(100% + 48px);
+        }
+    }
+
+    &__arrow-button {
+        @media (min-width: $smallMobile) {
+            flex: 0 0 48px;
+            height: 48px;
+            background-color: #FFF;
+            box-shadow: 0px 4px 14px 1px rgba(0, 0, 0, 0.16);
+            stroke: $primaryColor;
+
+            @media (any-hover: hover) {
+                &:hover {
+                    background-color: $primaryColor;
+                    stroke: #FFF;
+                }
+            }
+        }
+    }
+
+    &__dots {
+        @include adaptiveValue("padding-top", 2px, 8px);
+        justify-content: center;
+    }
+}
+
+//-------------------------------------------------------------------------------------------
+
+//----- Furniture ---------------------------------------------------------------------------
+
+.furniture {
+    @include adaptiveValue("padding-bottom", 40px, 85px);
+
+    &__container {
+    }
+
+    &__label {
+        @include adaptiveValue("margin-bottom", 6px, 8px);
+        text-align: center;
+        @include adaptiveValue("font-size", 16px, 20px);
+        color: $textDarkColor;
+    }
+
+    &__title {
+        @include adaptiveValue("margin-bottom", 18px, 32px);
+    }
+
+    &__body {
+        position: relative;
+        padding-bottom: 7px;
+
+        @media (any-hover: none) {
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+
+            &::-webkit-scrollbar {
+                height: 3px;
+                background-color: #F4F5F7
+            }
+
+            &::-webkit-scrollbar-thumb {
+                background-color: $primaryColor;
+            }
+        }
+    }
+
+    &__items {
+        display: grid;
+        grid-template-columns: auto;
+        grid-auto-flow: column;
+        align-items: center;
+        gap: 16px;
+
+        @media (any-hover: hover) {
+            justify-content: center;
+        }
+    }
+
+    &__column {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        margin: 0 -8px;
+
+        &:first-child {
+            justify-content: flex-end;
+        }
+    }
+
+    &__row {
+        display: inline-grid;
+        grid-template-columns: auto;
+        grid-auto-flow: column;
+        gap: 16px;
+        padding: 0 8px;
+        &:not(:last-child) {
+            margin-bottom: 16px;
+        }
+    }
+}
+
+.row-furniture {
+
+    &_pos_left-top {
+        justify-content: end;
+        align-items: end;
+    }
+
+    &_pos_left-bottom {
+        justify-content: end;
+        align-items: start;
+    }
+
+    &_pos_center {
+        display: block;
+    }
+
+    &_pos_right-top {
+        justify-content: start;
+        align-items: end;
+    }
+
+    &_pos_right-bottom {
+        justify-content: start;
+        align-items: start;
+    }
+
+    &__item {
+    }
+
+    &__photo {
+        display: block;
+
+        @media (any-hover: hover) {
+            filter: grayscale(1);
+            transition: all 0.5s ease 0s;
+
+            &:hover {
+                filter: grayscale(0);
+            }
+        }
+    }
+}
+
+//-------------------------------------------------------------------------------------------

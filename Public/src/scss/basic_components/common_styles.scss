@@ -1,0 +1,381 @@
+%orange-bar {
+    background-color: $primaryColor;
+    box-shadow: 0px 0px 6px rgba(255, 187, 107, 0.5);
+}
+
+body {
+    background-color: $backgroundColor;
+    font-family: $fontFamily;
+    font-size: $fontSize;
+    font-weight: 500;
+    line-height: 1.5;
+    color: $secondaryColor;
+    
+    &.locked {
+        overflow: hidden;
+    }
+}
+
+.wrapper {
+    min-height: 100%;
+    display: flex;
+    flex-flow: column nowrap;
+    overflow: hidden;
+    
+    & main {
+        flex: 1 1 auto;
+    }
+}
+
+.container {
+    max-width: $maxContainerWidth;
+    min-width: $minWidth;
+    margin: 0 auto;
+    padding: 0 $containerPadding;
+}
+
+.phone {
+
+    &__link {
+        display: block;
+        margin-bottom: 5px;
+        line-height: 22px;
+        font-size: 18px;
+        font-weight: 400;
+        color: rgba(186, 100, 0, 0.8);
+        transition: color 0.3s ease,
+                    text-shadow 0.3s ease;
+
+        @media (any-hover: hover) {
+            &:hover {
+                color: $primaryColor;
+                text-shadow: 0px 0px 15px rgba(255, 187, 107, 0.5);
+            }
+        }
+
+        &:active {
+            color: #d6780d;
+            text-shadow: 0px 0px 15px rgba(255, 187, 107, 0.9);
+        }
+    }
+
+    &__text {
+        line-height: 17px;
+        font-size: 14px;
+        font-weight: 300;
+        color: $primaryColor;
+    }
+}
+
+.socials {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    align-items: center;
+    @include adaptiveValue("gap", 20px, 30px, $minWidth, $mobile);
+
+    &::before {
+        content: '';
+        flex: 1 1 auto;
+        height: 10px;
+        @extend %orange-bar;
+        transform: translateX(-$containerPadding);
+    }
+
+    &__container {
+        flex: 0 0 auto;
+        display: flex;
+        flex-wrap: nowrap;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        @include adaptiveValue("gap", 20px, 30px, $minWidth, $mobile);
+    }
+
+    &__link {
+        @include adaptiveValue("width", 24px, 30px, $minWidth, $mobile);
+        @include adaptiveValue("height", 24px, 30px, $minWidth, $mobile);
+    }
+
+    &__icon {
+        @include adaptiveValue("width", 24px, 30px, $minWidth, $mobile);
+        @include adaptiveValue("height", 24px, 30px, $minWidth, $mobile);
+    }
+}
+
+.icon-link-button {
+    display: block;
+
+    svg {
+        display: block;
+        fill: $primaryColor;
+        transition: fill 0.3s ease,
+                    filter 0.3s ease;
+
+        @media (any-hover: hover) {
+            &:hover {
+                color: $primaryColor;
+                filter: drop-shadow(0px 0px 10px rgba(255, 187, 107, 0.5));
+            }
+        }
+
+        &:active {
+            fill: #d6780d;
+            filter: drop-shadow(0px 0px 10px rgba(255, 187, 107, 0.9));
+        }
+    }
+}
+
+.button {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+    align-items: center;
+    padding: 5px;
+    border: 3px solid $primaryColor;
+    background-color: transparent;
+    transition: background-color 0.3s ease,
+                box-shadow 0.3s ease,
+                color 0.3s ease,
+                border-color 0.3s ease;
+
+    @media (any-hover: hover) {
+        &:hover {
+            background-color: $primaryColor;
+            box-shadow: 0px 0px 6px rgba(255, 187, 107, 0.5);
+        }
+    }
+
+    &:active {
+        background-color: #d6780d;
+        border-color: #d6780d;
+        box-shadow: 0px 0px 15px rgba(255, 187, 107, 0.8);
+    }
+
+    &_text_white {
+        font-weight: 300;
+        color: $secondaryColor;
+        box-shadow: 0px 0px 6px rgba(255, 187, 107, 0.5),
+                    inset 0px 0px 6px rgba(255, 187, 107, 0.5);
+    }
+
+    &_text_orange {
+        font-weight: 400;
+        color: $primaryColor;
+
+        @media (any-hover: hover) {
+            &:hover {
+                color: $thirdColor;
+            }
+        }
+
+        &:active {
+            color: $thirdColor;
+        }
+    }
+}
+
+.arrow-button {
+    width: 250px;
+    height: 60px;
+    gap: 40px;
+    line-height: 30px;
+    font-size: 24px;
+
+    &__text {
+        flex: 0 0 auto;
+        pointer-events: none;
+    }
+
+    &__arrow-icon {
+        position: relative;
+        flex: 0 0 25px;
+        height: 2px;
+        background-color: $secondaryColor;
+        pointer-events: none;
+    }
+}
+
+.right-arrow {
+    &::before,
+    &::after {
+        content: '';
+        display: block;
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 8px;
+        height: 2px;
+        border-radius: 1px;
+        background-color: inherit;
+        transform-origin: right bottom;
+        transform: rotate(45deg);
+    }
+
+    &::after {
+        transform-origin: right top;
+        transform: rotate(-45deg);
+    }
+}
+
+.left-arrow {
+    &::before,
+    &::after {
+        content: '';
+        display: block;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 8px;
+        height: 2px;
+        border-radius: 1px;
+        background-color: inherit;
+        transform-origin: left top;
+        transform: rotate(45deg);
+    }
+
+    &::after {
+        transform-origin: left bottom;
+        transform: rotate(-45deg);
+    }
+}
+
+.primary-highlightning-max {
+    font-weight: 700;
+    color: $primaryColor;
+}
+
+.shop-button {
+    justify-content: center;
+    align-items: center;
+    background-color: $primaryColor;
+    font-weight: 600;
+    color: #FFF;
+    transition: background-color 0.3s ease 0s;
+
+    @media (any-hover: hover) {
+        &:hover {
+            background-color: #E78142;
+        }
+    }
+}
+
+.products-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    @include adaptiveValue("height", 30px, 48px);
+    
+    &:not(:last-child) {
+        margin-bottom: 24px;
+    }
+    background-color: #FFF;
+    font-size: 16px;
+    font-weight: 600;
+    color: $primaryColor;
+    transition: background-color 0.3s ease 0s,
+                color 0.3s ease 0s;
+
+    @media (any-hover: hover) {
+        &:hover {
+            color: #FFF;
+            background-color: $primaryColor;
+        }
+    }
+
+    span {
+        pointer-events: none;
+    }
+}
+
+.slider-arrows {
+    pointer-events: none;
+
+    &__btn {
+        pointer-events: auto;
+
+        @media (min-width: $smallMobile) {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 50%;
+            transition: background-color 0.3s ease 0s,
+                        stroke 0.3s ease 0s;
+        }
+    }
+
+    &__icon {
+        display: block;
+        width: 24px;
+        height: 24px;
+        fill: transparent;
+        pointer-events: none;
+
+        .slider-arrows__btn_next & {
+            transform: rotate(180deg);
+        }
+    }
+}
+
+.swiper-pagination-bullets {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.swiper-pagination-bullet {
+    position: relative;
+    flex: 0 0 27px;
+    height: 27px;
+    margin: 2px 0;
+    &:not(:last-child) {
+        margin-right: 12px;
+    }
+    border-radius: 50%;
+    border: 1px solid transparent;
+    background-color: transparent;
+    cursor: pointer;
+    transition: border-color 0.3s ease 0s;
+
+    &::after {
+        content: "";
+        position: absolute;
+        top: calc(50% - 5.5px);
+        left: calc(50% - 5.5px);
+        width: 11px;
+        height: 11px;
+        border-radius: 50%;
+        background-color: #D8D8D8;
+        transition: background-color 0.3s ease 0s;
+    }
+}
+
+.swiper-pagination-bullet-active {
+    border: 1px solid $primaryColor;
+
+    &::after {
+        background-color: $primaryColor;
+    }
+}
+
+/* .title {
+    text-align: center;
+    line-height: 1.2;
+    @include adaptiveValue("font-size", 24px, 40px);
+    font-weight: 700;
+} */
+
+.flying-image {
+    position: fixed;
+    z-index: 100;
+    opacity: 1;
+    transition: all 0.7s ease 0s;
+
+    &__photo {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+}

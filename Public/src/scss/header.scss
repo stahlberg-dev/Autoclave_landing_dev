@@ -1,0 +1,365 @@
+.header {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    min-height: 60px;
+
+    @media (min-width: $mobile) {
+        min-height: 65px;
+    }
+
+    &__wrapper {
+        position: fixed;
+        width: 100%;
+        top: 0;
+        left: 0;
+        background-color: transparent;
+        z-index: 100;
+        transition: background-color 0.3s ease 0s;
+
+        .header_scroll & {
+            background-color: rgba(30, 30, 30, 0.95);
+        }
+    }
+
+    &__container {
+    }
+
+    &__body {
+        position: relative;
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        min-height: 60px;
+
+        @media (min-width: $mobile) {
+            min-height: 65px;
+        }
+
+    }
+
+    &__burger {
+        position: relative;
+        @include adaptiveValue("margin-right", 16px, 32px, $smallMobile, $tablet);
+    }
+
+    &__logo {
+        position: relative;
+        flex-grow: 0;
+        flex-shrink: 0;
+        @include adaptiveValue("flex-basis", 104px, 130px, $mobile, $tablet);
+        @include adaptiveValue("height", 40px, 50px, $mobile, $tablet);
+        margin-right: auto;
+        z-index: 5;
+
+        @media (min-width: $tablet) {
+            margin-right: 180px;
+        }
+    }
+
+    &__logo-icon {
+        display: block;
+        width: 100%;
+        height: 100%;
+    }
+
+    &__menu {
+        flex: 1 1 auto;
+        margin-right: 25px;
+    }
+
+    &__phone {
+        flex: 0 0 auto;
+    }
+
+    &__phone-text {
+        display: none;
+
+        @media (min-width: $smallMobile) {
+            display: block;
+            position: relative;
+            z-index: 5;
+        }
+    }
+
+    &__phone-link-button {
+        width: 24px;
+        height: 24px;
+
+        @media (min-width: $smallMobile) {
+            display: none;
+        }
+    }
+
+    &__phone-link-icon {
+        width: 24px;
+        height: 24px;
+    }
+
+    &__socials {
+        display: none;
+
+        @media (min-width: $mobile) {
+            display: block;
+            position: relative;
+            flex: 0 0 15px;
+            min-height: inherit;
+            margin-left: 20px;
+        }
+
+        &::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 2.5px;
+            width: 10px;
+            height: 100%;
+            @extend %orange-bar;
+            transition: height 0.3s ease,
+                        box-shadow 0.3s ease;
+            .header_scroll & {
+                height: 0;
+                box-shadow: 0px 0px 6px rgba(255, 187, 107, 0);
+            }
+        }        
+    }
+
+    &__socials-container {
+        position: absolute;
+        top: calc(100% + 15px);
+        left: 0;
+        display: flex;
+        flex-flow: column nowrap;
+        justify-content: space-between;
+        gap: 10px;
+        transition: top 0.3s ease,
+                    gap 0.3s ease;
+
+        .header_scroll & {
+            top: 3px;
+            gap: 7px;
+        }
+    }
+
+    &__socials-link {
+        width: 15px;
+        height: 15px;
+    }
+
+    &__socials-icon {
+        width: 15px;
+        height: 15px;
+    }
+}
+
+.burger {
+    display: block;
+    flex-grow: 0;
+    flex-shrink: 0;
+    @include adaptiveValue("flex-basis", 24px, 30px, $smallMobile, $tablet);
+    @include adaptiveValue("height", 24px, 30px, $smallMobile, $tablet);
+	z-index: 5;
+    background-color: transparent;
+	cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+
+    @media (min-width: $tablet) {
+        display: none;
+    }
+
+    &__stripe {
+        position: absolute;
+        top: calc(50% - 4.167%);
+        left: 8.333%;
+        width: 83.333%;
+        height: 2px;
+        border-radius: 1px;
+        background-color: $secondaryColor;
+        pointer-events: none;
+        transition: all 0.3s ease;
+
+        @media (any-hover: hover) {
+            .burger:hover & {
+                background-color: $primaryColor;
+            }
+        }
+
+        .burger:active & {
+            background-color: #d6780d;
+            box-shadow: 0px 0px 15px rgba(255, 187, 107, 0.9);
+        }
+
+        &:first-child {
+            top: 16.667%;
+        }
+
+        &:last-child {
+            top: auto;
+            bottom: 16.667%;
+        }
+    }
+
+    &_active {
+
+        .burger__stripe {
+            transform: scale(0);
+
+            &:first-child {
+                transform: rotate(-45deg);
+                top: calc(50% - 1px);
+            }
+
+            &:last-child {
+                transform: rotate(45deg);
+                bottom: calc(50% - 1px);
+            }
+        }
+    }
+}
+
+.menu {
+
+    &__body {
+        position: fixed;
+        top: 0;
+        left: calc(-100% - $minWidth);
+        right: calc(100% + $minWidth);
+        min-width: $minWidth;
+        width: 100%;
+        height: 100%;
+        padding: 75px $containerPadding 30px;
+        @include adaptiveValue("padding-top", 75px, 120px, $minWidth, $tablet);
+        overflow: auto;
+        background-color: rgba(5, 6, 0, 0.85);
+        transition: right 0.3s ease,
+                    left 0.3s ease;
+
+        /* &::before {
+            content:"";
+            position: fixed;
+            width: 100%;
+            height: 50px;
+            top: 0;
+            right: 100%;
+            background-color: #FCF8F3;
+            transition: right 0.3s ease 0s;
+            z-index: 2;
+        } */
+
+        &_active {
+            left: 0;
+            right: 0;
+            /* &::before {
+                right: 0;
+            } */
+        }
+
+        @media (min-width: $tablet) {
+            position: static;
+            padding: 0;
+            overflow: visible;
+            background-color: transparent;
+
+            /* &:before {
+                display: none;
+            } */
+        }
+    }
+
+    &__list {
+        @media (min-width: $tablet) {
+            display: flex; 
+            flex-flow: row nowrap;
+            justify-content: space-between;
+            align-items: flex-end;
+            padding-top: 15px;
+        }
+    }
+
+    &__item {
+        position: relative;
+        @include adaptiveValue("margin-bottom", 20px, 40px, $minWidth, $tablet);
+
+        @media (min-width: $tablet) {
+            margin: 0;
+            padding-bottom: 7px;
+        }
+    }
+
+    &__link {
+        display: block;
+        position: relative;
+        white-space: nowrap;
+        @include adaptiveValue("line-height", 17px, 30px, $minWidth, $tablet);
+        @include adaptiveValue("font-size", 14px, 24px, $minWidth, $tablet);
+        font-weight: 300;
+        transition: color 0.3s ease,
+                    text-shadow 0.3s ease;
+
+        @media (min-width: $tablet) {
+            line-height: 17px;
+            font-size: 14px;
+
+            &::after {
+                content: '';
+                display: block;
+                position: absolute;
+                bottom: -7px;
+                left: 0;
+                width: 100%;
+                height: 1px;
+                border-radius: 0.5px;
+                background-color: transparent;
+                transition: background-color 0.3s ease,
+                            box-shadow 0.3s ease;
+            }
+        }
+
+        @media (any-hover: hover) {
+
+            .menu__item:hover & {
+                color: $primaryColor;
+
+                &::after {
+                    background-color: $primaryColor;
+                    box-shadow: 0px 0px 4px rgba(255, 187, 107, 0.5);
+                }
+            }
+        } 
+
+        .menu__item:active & {
+            color: #d6780d;
+            text-shadow: 0px 0px 15px rgba(255, 187, 107, 0.9);
+            
+            @media (any-hover: hover) {
+                &::after {
+                    background-color: #d6780d;
+                    text-shadow: 0px 0px 15px rgba(255, 187, 107, 0.9);
+                }
+            }
+        }
+    }
+
+    &__socials {
+        flex-direction: row;
+        @include adaptiveValue("max-width", 220px, 250px, $minWidth, $mobile);
+        @include adaptiveValue("padding-top", 20px, 30px, $minWidth, $mobile);
+
+        @media (min-width: $mobile) {
+            display: none;
+        } 
+    }
+
+    &__phone {
+        @include adaptiveValue("margin-bottom", 20px, 40px, $minWidth, $tablet);
+
+        @media (min-width: $smallMobile) {
+            display: none;
+        } 
+    }
+
+    &__phone-text {
+    }
+}
+

@@ -1,0 +1,13 @@
+@mixin adaptiveValue($property, $minValue, $maxValue, $minSize: $minWidth, $maxSize: $maxContainerWidth) {
+    
+    #{$property}: $minValue;
+    
+    @media (min-width: $minSize) {
+        #{$property}: calc($minValue + ($maxValue - $minValue) / 
+                      ($maxSize - $minSize) * (100vw - $minSize));
+    }
+
+    @media (min-width: $maxSize) {
+        #{$property}: $maxValue;
+    }
+}
