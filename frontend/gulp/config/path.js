@@ -1,7 +1,7 @@
 import * as nodePath from 'path';
 const rootFolder = nodePath.basename(nodePath.resolve());
 
-const buildFolder = `./dist`;
+const buildFolder = `../public`;
 const srcFolder = `./src`;
 
 export const path = {
@@ -13,7 +13,7 @@ export const path = {
         fonts: `${buildFolder}/fonts/`,
         favicon: `${buildFolder}/favicon/`,
         ico: `${buildFolder}/`,
-        json: `${buildFolder}/json/`,
+        api: `${buildFolder}/api/`,
     },
     src: {
         js: `${srcFolder}/js/app.js`,
@@ -24,7 +24,7 @@ export const path = {
         favicon: `${srcFolder}/favicon/**/*.*`,
         ico: `${srcFolder}/*.ico`,
         svgicons: `${srcFolder}/svgicons/*.svg`,
-        json: `${srcFolder}/json/**/*.*`,
+        api: `${srcFolder}/api/**/*.*`,
     },
     watch: {
         js: `${srcFolder}/js/**/*.js`,
@@ -33,7 +33,7 @@ export const path = {
         images: `${srcFolder}/img/**/*.+(png|jpg|jpeg|svg|ico|gif|webp)`,
         favicon: `${srcFolder}/favicon/**/*.*`,
         ico: `${srcFolder}/*.ico`,
-        json: `${srcFolder}/json/**/*.*`,
+        api: `${srcFolder}/api/**/*.*`,
     },
     clean: buildFolder,
     buildFolder: buildFolder,

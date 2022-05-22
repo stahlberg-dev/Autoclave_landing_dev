@@ -8,25 +8,11 @@ import * as sliders from "./modules/sliders.js";
 flsFunctions.isWebp();
 //-------------------------------------------------------------------------------------------
 
-// ----- Main slider ------------------------------------------------------------------------
+// ----- About slider -----------------------------------------------------------------------
 
-sliders.swiperMainSlider();
+sliders.swiperAboutSlider();
 //------------------------------------------------------------------------------------------- 
 
-// ----- Rooms slider -----------------------------------------------------------------------
-
-sliders.swiperRoomsSlider();
-//-------------------------------------------------------------------------------------------
-
-// ----- Tips slider ------------------------------------------------------------------------
-
-sliders.swiperTipsSlider();
-//-------------------------------------------------------------------------------------------
-
-// ----- baguetteBox gallery ----------------------------------------------------------------
-
-sliders.baguetteBoxGallery();
-//-------------------------------------------------------------------------------------------  
 
 
 
@@ -35,6 +21,8 @@ window.onload = function() {
 
     function docActions(e) {
         const targetElement = e.target;
+        const lockPaddingValue = window.innerWidth - document.querySelector('.wrapper').offsetWidth + 'px';  
+        const lockPadding = document.querySelectorAll('.lock-padding');
 
 // ----- Burger -----------------------------------------------------------------------------
 
@@ -44,6 +32,9 @@ window.onload = function() {
             burgerButton.classList.toggle('burger_active');
             document.querySelector('.menu__body').classList.toggle('menu__body_active');
             document.body.classList.toggle('locked');
+
+            flsFunctions.LockUnlockPadding (lockPaddingValue, lockPadding);
+
         }
 //-------------------------------------------------------------------------------------------
 
@@ -62,6 +53,8 @@ window.onload = function() {
                     burgerButton.classList.toggle('burger_active');
                     document.querySelector('.menu__body').classList.toggle('menu__body_active');
                     document.body.classList.toggle('locked');
+
+                    flsFunctions.LockUnlockPadding (lockPaddingValue, lockPadding);
                 }
     
                 window.scrollTo({

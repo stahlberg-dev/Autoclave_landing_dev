@@ -7,12 +7,6 @@ $secondaryColor: #FFF;
 $thirdColor: #1F1E1D;
 $backgroundColor: #050600;
 
-$mainColor: #3A3A3A;
-$textLightColor: #898989;
-$textDarkColor: #616161;
-$newColor: #2EC1AC;
-$discountColor: #E97171;
-
 $minWidth: 320px;
 $maxContentWidth: 1180px;
 $containerPadding: 20px;
@@ -30,7 +24,6 @@ $smallMobile: 480.02px;
 @import "basic_components/mixins.scss";
 @import "basic_components/common_styles.scss";
 @import "../../node_modules/swiper/swiper.scss";
-@import '../../node_modules/baguettebox.js/src/baguetteBox.scss';
 @import "header.scss";
 @import "footer.scss";
 @import "main_page.scss";

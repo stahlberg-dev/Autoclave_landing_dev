@@ -10,6 +10,7 @@ global.app = {
     plugins: plugins,
 };
 
+import { api } from "./gulp/tasks/api.js";
 import { favicon } from "./gulp/tasks/favicon.js";
 import { ico } from "./gulp/tasks/ico.js";
 import { reset } from "./gulp/tasks/reset.js";
@@ -21,23 +22,22 @@ import { images } from "./gulp/tasks/images.js";
 import { otfToTtf, ttfToWoff, fontsStyle } from "./gulp/tasks/fonts.js";
 import { makeSvgSprite } from "./gulp/tasks/svgSprite.js";
 import { zip } from "./gulp/tasks/zip.js";
-import { json } from "./gulp/tasks/json.js";
 
 function watcher() {
+    gulp.watch(path.watch.api, api);
     gulp.watch(path.watch.favicon, favicon);
     gulp.watch(path.watch.ico, ico);
     gulp.watch(path.watch.html, html);
     gulp.watch(path.watch.scss, scss);
     gulp.watch(path.watch.js, js);
     gulp.watch(path.watch.images, images);
-    gulp.watch(path.watch.json, json);
 }
 
 export { makeSvgSprite };
 
 const fonts = gulp.series(otfToTtf, ttfToWoff, fontsStyle);
 
-const mainTasks = gulp.series(fonts, gulp.parallel(favicon, ico, html, scss, js, images, json));
+const mainTasks = gulp.series(fonts, gulp.parallel(api, favicon, ico, html, scss, js, images));
 
 const dev = gulp.series(reset, mainTasks, gulp.parallel(watcher, server));
 const build = gulp.series(reset, mainTasks);

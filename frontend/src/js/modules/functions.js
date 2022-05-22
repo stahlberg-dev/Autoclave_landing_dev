@@ -12,3 +12,29 @@ export function isWebp() {
         document.documentElement.classList.add(className);
     });
 }
+
+export function LockUnlockPadding (lockPaddingValue, lockPadding) {
+    if (document.body.classList.contains('locked')) {
+
+        //document.body.style.paddingRight = lockPaddingValue;
+
+        if(lockPadding.length > 0) {
+            for (let i = 0; i < lockPadding.length; i++) {
+                const el = lockPadding[i];
+                el.style.paddingRight = lockPaddingValue;
+            }
+        }
+
+    } else {
+
+        //document.body.style.paddingRight = '0px';
+
+        if(lockPadding.length > 0) {
+            for (let i = 0; i < lockPadding.length; i++) {
+                const el = lockPadding[i];
+                el.style.paddingRight = '0px';
+            }
+        }
+
+    }
+}
