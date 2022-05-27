@@ -13,7 +13,15 @@
     }
 
     &__about {
+        @include adaptiveValue("margin-bottom", 70px, 170px);
+    }
+
+    &__perfection {
         @include adaptiveValue("margin-bottom", 35px, 170px);
+    }
+
+    &__autoclave {
+        @include adaptiveValue("margin-bottom", 40px, 170px);
     }
 }
 
@@ -204,7 +212,7 @@
         @include adaptiveValue("max-width", 320px, 570px, $minWidth, $pc);
         @include adaptiveValue("line-height", 20px, 38px, $minWidth, $pc);
         @include adaptiveValue("font-size", 16px, 32px, $minWidth, $pc);
-        font-weight: 200;
+        font-weight: 100;
         color: $secondaryColor;
     }
 }
@@ -268,7 +276,7 @@
 
         @media (min-width: $smallMobile) {
             width: 68.4%;
-            @include adaptiveValue("height", 4px, 10px, $smallMobile, $maxContainerWidth);
+            @include adaptiveValue("height", 5px, 10px, $smallMobile, $maxContainerWidth);
         }
     }
 
@@ -346,27 +354,18 @@
     }
 
     &__slide {
+        position: relative;
         width: 100%;
+        @include adaptiveValue("height", 540px, 850px, $mobile, $pc);
+        background-repeat: no-repeat;
+        background-size: contain;
+        background-position: bottom right;
+        overflow: hidden;
+
         @media (min-width: $mobile) {
             @include adaptiveValue("height", 453px, 850px, $mobile, $pc);
-            background-repeat: no-repeat;
-            background-size: contain;
-            
-            &_number_1 {
-                background-image: url("../img/about_slider/slide-1.png");
-            }
-
-            &_number_2 {
-                background-image: url("../img/about_slider/slide-2.png");
-            }
-
-            &_number_3 {
-                background-image: url("../img/about_slider/slide-3.png");
-            }
-
-            &_number_4 {
-                
-            }
+            background-size: cover;
+            background-position: top center;
         }
     }
 
@@ -375,9 +374,873 @@
 
     &__slider-navigation {
         position: absolute;
-        bottom: -10px;
+        bottom: -30px;
         left: 50%;
         transform: translateX(-50%);
+    }
+}
+
+.first-slide {    
+    background-image: url("../img/about_slider/slide_1/slide-1-mobile.png");
+
+    @media (min-width: $mobile) {
+        background-image: url("../img/about_slider/slide_1/slide-1.png");
+    }
+
+    &__list {
+        position: absolute;
+        top: 0;
+        left: 0;
+        display: flex;
+        flex-flow: column nowrap;
+        width: 100%;
+        height: 100%;
+        @include adaptiveValue("padding-top", 120px, 80px, $minWidth, $mobile);
+        @include adaptiveValue("padding-left", 20px, 80px, $minWidth, $mobile);
+
+        @media (min-width: $mobile) {
+            display: block;
+            padding: 0;
+        }
+    }
+
+    &__item {
+        display: flex;
+        flex-flow: row nowrap;
+        justify-content: start;
+        align-items: center;
+        @include adaptiveValue("gap", 15px, 30px, $minWidth, $mobile);
+        margin-bottom: 15px;
+
+        @media (min-width: $mobile) {
+            display: block;
+            margin: 0;
+
+            &:nth-child(1) {
+                .first-slide__icon {
+                    top: 28.5%;
+                    left: 45.4%;
+                    /* @include adaptiveValue("top", 126px, 243px, $mobile, calc($pc + $containerPadding));
+                    @include adaptiveValue("left", 340px, 653px, $mobile, calc($pc + $containerPadding)); */
+                }
+
+                .first-slide__text {
+                    @include adaptiveValue("top", 105px, 210px, $mobile, calc($pc + $containerPadding));
+                    @include adaptiveValue("left", 70px, 210px, $mobile, calc($pc + $containerPadding));
+                }
+
+                .first-slide__arrow {
+                    @include adaptiveValue("width", 180px, 275px, $mobile, calc($pc + $containerPadding));
+                }
+            }
+
+            &:nth-child(2) {
+                .first-slide__icon {
+                    top: 43.2%;
+                    left: 35.4%;
+                    /* @include adaptiveValue("top", 190px, 366px, $mobile, calc($pc + $containerPadding));
+                    @include adaptiveValue("left", 266px, 511px, $mobile, calc($pc + $containerPadding)); */
+                }
+
+                .first-slide__text {
+                    @include adaptiveValue("top", 215px, 410px, $mobile, calc($pc + $containerPadding));
+                    @include adaptiveValue("left", 70px, 210px, $mobile, calc($pc + $containerPadding));
+                }
+
+                .first-slide__arrow {
+                    @include adaptiveValue("width", 153px, 220px, $mobile, calc($pc + $containerPadding));
+                }
+            }
+
+            &:nth-child(3) {
+                .first-slide__icon {
+                    top: 63.4%;
+                    left: 39.7%;
+                    /* @include adaptiveValue("top", 281px, 539px, $mobile, calc($pc + $containerPadding));
+                    @include adaptiveValue("left", 298px, 572px, $mobile, calc($pc + $containerPadding)); */
+                }
+
+                .first-slide__text {
+                    @include adaptiveValue("top", 310px, 600px, $mobile, calc($pc + $containerPadding));
+                    @include adaptiveValue("left", 70px, 210px, $mobile, calc($pc + $containerPadding));
+                }
+
+                .first-slide__arrow {
+                    @include adaptiveValue("width", 180px, 275px, $mobile, calc($pc + $containerPadding));
+                }
+            }
+
+            &:nth-child(4) {
+                .first-slide__icon {
+                    top: 47.7%;
+                    left: 47.8%;
+                    /* @include adaptiveValue("top", 209px, 405px, $mobile, calc($pc + $containerPadding));
+                    @include adaptiveValue("left", 358px, 688px, $mobile, calc($pc + $containerPadding)); */
+                }
+
+                .first-slide__text {
+                    @include adaptiveValue("top", 123px, 239px, $mobile, calc($pc + $containerPadding));
+                    @include adaptiveValue("right", 70px, 210px, $mobile, calc($pc + $containerPadding));
+                }
+
+                .first-slide__arrow {
+                    left: auto;
+                    right: 0;
+                    @include adaptiveValue("width", 180px, 275px, $mobile, calc($pc + $containerPadding));
+                }
+            }
+
+            &:nth-child(5) {
+                .first-slide__icon {
+                    top: 44.1%;
+                    right: 33.5%;
+                    /* @include adaptiveValue("top", 195px, 376px, $mobile, calc($pc + $containerPadding));
+                    @include adaptiveValue("left", 446px, 854px, $mobile, calc($pc + $containerPadding)); */
+                }
+
+                .first-slide__text {
+                    @include adaptiveValue("top", 215px, 410px, $mobile, calc($pc + $containerPadding));
+                    @include adaptiveValue("right", 70px, 210px, $mobile, calc($pc + $containerPadding));
+                }
+
+                .first-slide__arrow {
+                    left: auto;
+                    right: 0;
+                    @include adaptiveValue("width", 153px, 220px, $mobile, calc($pc + $containerPadding));
+                }
+            }
+
+            &:nth-child(6) {
+                .first-slide__icon {
+                    top: 66.9%;
+                    right: 41%;
+                    /* @include adaptiveValue("top", 296px, 569px, $mobile, calc($pc + $containerPadding));
+                    @include adaptiveValue("left", 388px, 746px, $mobile, calc($pc + $containerPadding)); */
+                }
+
+                .first-slide__text {
+                    @include adaptiveValue("top", 310px, 600px, $mobile, calc($pc + $containerPadding));
+                    @include adaptiveValue("right", 70px, 210px, $mobile, calc($pc + $containerPadding));
+                }
+
+                .first-slide__arrow {
+                    left: auto;
+                    right: 0;
+                    @include adaptiveValue("width", 180px, 275px, $mobile, calc($pc + $containerPadding));
+                }
+            }
+        }
+    }
+
+    &__icon {
+        position: relative;
+        flex-grow: 0;
+        flex-shrink: 0;
+        @include adaptiveValue("flex-basis", 50px, 60px, $minWidth, $mobile);
+        @include adaptiveValue("height", 50px, 60px, $minWidth, $mobile);
+
+        @media (min-width: $mobile) {
+            position: absolute;
+            @include adaptiveValue("width", 55px, 103px, $mobile, $pc);
+            @include adaptiveValue("height", 55px, 103px, $mobile, $pc);
+        }
+
+        &::after {
+            content: '';
+            display: block;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            border: 3px solid $primaryColor;
+            box-shadow: 0px 0px 6px rgba(255, 187, 107, 0.5),
+                    inset 0px 0px 6px rgba(255, 187, 107, 0.5);
+                background-color: transparent;
+        }
+    }
+
+    &__icon-image {
+        display: block;
+        width: 100%;
+        height: 100%;
+    }
+
+    &__text {
+        @include adaptiveValue("line-height", 19px, 26px, $minWidth, $mobile);
+        @include adaptiveValue("font-size", 16px, 22px, $minWidth, $mobile);
+        /* opacity: 0;
+        transition: opacity 0.4s ease 2s;
+
+        .swiper-slide-active & {
+            opacity: 1;
+        } */
+        
+        & span {
+            display: block;
+        }
+        
+        @media (min-width: 690px) {
+            & span {
+                display: inline;
+            }
+        }
+        
+        @media (min-width: $mobile) { 
+            position: absolute;
+            @include adaptiveValue("padding-bottom", 10px, 20px, $mobile, calc($pc + $containerPadding));
+            @include adaptiveValue("line-height", 19px, 29px, $mobile, $pc);
+            @include adaptiveValue("font-size", 16px, 24px, $mobile, $pc);
+
+            & span {
+                display: block;
+            }
+        }
+    }
+
+    &__arrow  {
+    }
+}
+
+.second-slide {
+
+    @media (min-width: $mobile) {
+        background-size: cover;
+        background-position: top center;
+        background-image: url("../img/about_slider/slide_2/slide-2.png");
+    }
+
+    &::after {
+        content: '';
+        display: block;
+        position: absolute;
+        @include adaptiveValue("top", 150px, 90px, $minWidth, $mobile);
+        @include adaptiveValue("left", 140px, 420px, $minWidth, $mobile);
+        @include adaptiveValue("width", 270px, 350px, $minWidth, $mobile);
+        @include adaptiveValue("height", 320px, 416px, $minWidth, $mobile);
+        background-repeat: no-repeat;
+        background-size: contain;
+        background-position: center center;
+        background-image: url("../img/about_slider/slide_2/slide-2-mobile.png");
+
+        @media (min-width: $mobile) {
+            display: none;
+        }
+    }
+
+    &__list {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        @include adaptiveValue("padding-top", 120px, 110px, $minWidth, $mobile);
+        @include adaptiveValue("padding-left", 20px, 80px, $minWidth, $mobile);
+        z-index: 1;
+
+        @media (min-width: $mobile) {
+            @include adaptiveValue("padding-top", 110px, 220px, $mobile, $pc);
+            @include adaptiveValue("padding-left", 230px, 635px, $mobile, $pc);
+            @include adaptiveValue("padding-right", 90px, 210px, $mobile, $pc);
+        }
+    }
+
+    &__item {
+        position: relative;
+        @include adaptiveValue("margin-bottom", 40px, 60px, $minWidth, $mobile);
+
+        @media (min-width: $mobile) {
+            @include adaptiveValue("margin-bottom", 40px, 80px, $mobile, $pc);
+        }
+    }
+
+    &__text {
+        @include adaptiveValue("line-height", 19px, 26px, $minWidth, $mobile);
+        @include adaptiveValue("font-size", 16px, 22px, $minWidth, $mobile);
+        
+        @media (min-width: $mobile) { 
+            text-align: end;
+            @include adaptiveValue("padding-bottom", 10px, 20px, $mobile, $pc);
+            @include adaptiveValue("line-height", 19px, 29px, $mobile, $pc);
+            @include adaptiveValue("font-size", 16px, 24px, $mobile, $pc);
+        }
+    }
+
+    &__arrow {
+        left: auto;
+        right: 0;
+        @include adaptiveValue("width", 330px, 595px, $mobile, $pc);
+    }
+}
+
+.third-slide {
+
+    &::after {
+        content: '';
+        display: block;
+        position: absolute;
+        @include adaptiveValue("top", 190px, 0px, $minWidth, $mobile);
+        @include adaptiveValue("left", 110px, 370px, $minWidth, $mobile);
+        @include adaptiveValue("width", 320px, 480px, $minWidth, $mobile);
+        @include adaptiveValue("height", 355px, 530px, $minWidth, $mobile);
+        background-repeat: no-repeat;
+        background-size: contain;
+        background-position: center center;
+        background-image: url("../img/about_slider/slide_3/slide-3-mobile.png");
+
+        @media (min-width: $mobile) {
+            width: 100%;
+            height: 100%;
+            top: 0;
+            @include adaptiveValue("left", 70px, 0px, $mobile, $pc);
+            background-image: url("../img/about_slider/slide_3/slide-3.png");
+        }
+    }
+
+    &__brake {
+
+        @media (min-width: $smallMobile) {
+            display: none;
+        }
+    }
+
+    &__main-text {
+        display: none;
+
+        @media (min-width: $mobile) {
+            display: block;
+            position: relative;
+            @include adaptiveValue("max-width", 700px, 996px, $mobile, $pc);
+            margin: 0 auto;
+            @include adaptiveValue("margin-top", 5px, 20px, $mobile, $pc);
+            text-align: center;
+            @include adaptiveValue("line-height", 19px, 29px, $mobile, $pc);
+            @include adaptiveValue("font-size", 16px, 24px, $mobile, $pc);
+            font-weight: 100;
+            color: $secondaryColor;
+            z-index: 1;
+        }
+    }
+
+    &__main-text-mobile {
+        position: relative;
+        @include adaptiveValue("padding-top", 15px, 35px, $minWidth, $mobile);
+        @include adaptiveValue("padding-left", 20px, 40px, $minWidth, $mobile);
+        @include adaptiveValue("padding-right", 20px, 220px, $minWidth, $mobile);
+        @include adaptiveValue("line-height", 19px, 24px, $minWidth, $mobile);
+        @include adaptiveValue("font-size", 16px, 18px, $minWidth, $mobile);
+        z-index: 1;
+
+        @media (min-width: $mobile) {
+            display: none;
+        }
+    }
+
+    &__list {
+        display: none;
+        
+        @media (min-width: $mobile) {
+            display: block;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            @include adaptiveValue("padding-top", 160px, 300px, $mobile, $pc);
+            @include adaptiveValue("padding-left", 30px, 100px, $mobile, $pc);
+            @include adaptiveValue("padding-right", 220px, 60px, $mobile, $pc);
+            z-index: 1;
+        }
+    }
+
+    &__item {
+
+        @media (min-width: $mobile) {
+            @include adaptiveValue("margin-bottom", 30px, 70px, $mobile, $pc);
+        }
+    }
+
+    &__text {
+
+        @media (min-width: $mobile) { 
+            position: relative;
+            @include adaptiveValue("padding-bottom", 10px, 20px, $mobile, $pc);
+            @include adaptiveValue("line-height", 19px, 29px, $mobile, $pc);
+            @include adaptiveValue("font-size", 16px, 24px, $mobile, $pc);
+        }
+    }
+
+    &__arrow {
+        @include adaptiveValue("width", 520px, 810px, $mobile, $pc);
+    }
+
+    &__list-mobile {
+        position: relative;
+        @include adaptiveValue("padding-top", 15px, 35px, $minWidth, $mobile);
+        @include adaptiveValue("padding-left", 20px, 40px, $minWidth, $mobile);
+        z-index: 1;
+
+        @media (min-width: $mobile) {
+            display: none;
+        }
+    }
+
+    &__item-mobile {
+        position: relative;
+        @include adaptiveValue("margin-bottom", 15px, 20px, $minWidth, $mobile);
+        @include adaptiveValue("padding-right", 100px, 270px, $minWidth, $mobile);
+        padding-left: 15px;
+
+        &::before {
+            content: '';
+            display: block;
+            position: absolute;
+            top: 10px;
+            left: 0;
+            width: 4px;
+            height: 4px;
+            border-radius: 50%;
+            background-color: $primaryColor;
+        }
+
+        &:first-child {
+            @include adaptiveValue("padding-right", 70px, 270px, $minWidth, $mobile);
+        }
+    }
+
+    &__text-mobile {
+        @include adaptiveValue("line-height", 19px, 24px, $minWidth, $mobile);
+        @include adaptiveValue("font-size", 16px, 18px, $minWidth, $mobile);
+    }
+}
+
+.fourth-slide {
+
+    &__quality {
+        margin: 0 auto;
+        @include adaptiveValue("margin-top", 60px, 30px, $minWidth, $smallMobile);
+
+        @media (min-width: $mobile) {
+            margin-top: 40px;
+        }
+    }
+}
+
+.quality {
+    display: grid;
+    padding: 0 20px;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    max-width: 450px;
+    
+    @media (min-width: $mobile) {
+        grid-template-columns: repeat(3, 1fr);
+        grid-auto-rows: 1fr;
+        @include adaptiveValue("column-gap", 10px, 20px, $mobile, $pc); 
+        @include adaptiveValue("row-gap", 20px, 30px, $mobile, $pc); 
+        max-width: none;
+        padding: 0 9%;
+    }
+
+    &__item {
+        display: flex;
+        flex-flow: column nowrap;
+        justify-content: start;
+        align-items: center;
+
+        @media (min-width: $mobile) {
+            @include adaptiveValue("gap", 5px, 16px, $mobile, $pc);
+        }
+    }
+
+    &__image {
+        display: block;
+        position: relative;
+        width: 100%;
+        border: 1px solid $primaryColor;
+        cursor: pointer;
+        -webkit-tap-highlight-color: transparent;
+
+        &::after {
+            content: '';
+            display: none;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(5, 6, 0, 0.6);
+            pointer-events: none;
+            transition: background-color 0.3s ease;
+
+            @media (any-hover: hover) {
+                display: block;
+            }
+        }
+
+        @media (any-hover: hover) {
+            &:hover::after {
+                background-color: rgba(5, 6, 0, 0);
+            }
+        }
+    }
+
+    &__photo {
+        display: block;
+        width: 100%;
+    }
+
+    &__text {
+        font-size: 12px;
+        line-height: 14px;
+
+        span:first-child {
+            display: none;
+        }
+
+        @media (min-width: $mobile) {
+            position: relative;
+            @include adaptiveValue("padding-left", 10px, 20px, $mobile, $pc);
+            @include adaptiveValue("line-height", 16px, 29px, $mobile, $pc);
+            @include adaptiveValue("font-size", 14px, 24px, $mobile, $pc);
+
+            span:first-child {
+                display: inline;
+            }
+
+            span:last-child {
+                display: none;
+            }
+        }
+
+        &::before {
+            content: '';
+            display: none;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            @extend %orange-bar;
+
+            @media (min-width: $mobile) {
+                display: block;
+            }
+        }
+    }
+}
+
+//--------------------------------------------------------------------------------------------
+
+//----- Perfection ---------------------------------------------------------------------------
+
+.perfection {
+
+    @media (min-width: $smallMobile) {
+        position: relative;
+        @include adaptiveValue("height", 370px, 850px, $smallMobile, $maxContainerWidth);
+        background-repeat: no-repeat;
+        background-size: contain;
+        background-position: left bottom;
+        background-image: url("../img/perfection/perfection-bg.png");
+        
+        &::after {
+            content: '';
+            display: block;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(270deg, rgba(5, 6, 0, 1) 28%, 
+                                      rgba(5, 6, 0, 0.9) 36%, 
+                                      rgba(5, 6, 0, 0.2) 40%,
+                                      rgba(5, 6, 0, 0.05) 50%);
+        }
+    }
+
+    &__container {
+    }
+
+    &__title {
+        margin-bottom: 25px;
+        
+        @media (min-width: $smallMobile) {
+            position: relative;
+            @include adaptiveValue("margin-bottom", 15px, 90px, $smallMobile, $maxContainerWidth);
+            text-align: start;  
+            transform: translateY(-20%);         
+            z-index: 1;
+        }
+
+        @media (min-width: $mobile) {
+            transform: none;
+        }
+    }
+
+    &__blocks {
+        display: grid;
+        grid-template-columns: 280px;
+        justify-content: center;
+        gap: 20px;
+        
+        @media (min-width: $smallMobile) {
+            position: relative;
+            grid-template-columns: 1fr 1fr;
+            grid-template-rows: 1fr 1fr;
+            @include adaptiveValue("column-gap", 10px, 20px, $smallMobile, $maxContainerWidth);
+            @include adaptiveValue("row-gap", 5px, 10px, $smallMobile, $maxContainerWidth);
+            @include adaptiveValue("row-gap", 5px, 10px, $smallMobile, $maxContainerWidth);
+            @include adaptiveValue("padding-left", 30px, 247px, $smallMobile, $mobile);
+            z-index: 1;           
+        }
+
+        @media (min-width: $mobile) {
+            padding-left: 34%;
+        }
+    }
+
+    &__block {
+        position: relative;
+    }
+
+    &__visible-block {
+        position: relative;
+    }
+
+    &__hidden-description {
+    }
+}
+
+.visible-block {
+    position: relative;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: start;
+    align-items: center;
+    height: 285px;
+    padding: 35px 35px 30px;
+    background-color: $thirdColor;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+
+    @media (min-width: $smallMobile) {
+        @include adaptiveValue("gap", 7px, 12px, $smallMobile, $maxContainerWidth);
+        @include adaptiveValue("height", 140px, 280px, $smallMobile, $maxContainerWidth);
+        @include adaptiveValue("padding-top", 15px, 50px, $smallMobile, $maxContainerWidth);
+        @include adaptiveValue("padding-bottom", 10px, 20px, $smallMobile, $maxContainerWidth);
+        @include adaptiveValue("padding-left", 10px, 40px, $smallMobile, $maxContainerWidth);
+        @include adaptiveValue("padding-right", 10px, 40px, $smallMobile, $maxContainerWidth);
+    }
+
+    &::before,
+    &::after {
+        content: '';
+        display: block;
+        position: absolute;
+        top: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 220px;
+        height: 10px;
+        @extend %orange-bar;
+
+        @media (min-width: $smallMobile) {
+            width: 68.4%;
+            @include adaptiveValue("height", 5px, 10px, $smallMobile, $maxContainerWidth);
+        }
+    }
+
+    &::after {
+        display: none;
+    }
+
+    @media (min-width: $smallMobile) {
+
+        .perfection__block:nth-child(1) &::after,
+        .perfection__block:nth-child(2) &::after {
+            display: block;
+            top: 100%;      
+        }
+
+        .perfection__block:nth-child(3) &::before,
+        .perfection__block:nth-child(4) &::before {
+            top: auto;
+            bottom: 0;
+        }
+    }
+
+    &__icon {
+        width: 90px;
+        height: 90px;
+        margin-bottom: 25px;
+        
+        @media (min-width: $smallMobile) {
+            @include adaptiveValue("width", 35px, 90px, $smallMobile, $maxContainerWidth);
+            @include adaptiveValue("height", 33px, 90px, $smallMobile, $maxContainerWidth);
+            margin: 0;
+        }
+
+        .perfection__block:last-child & {
+            margin-bottom: 50px;
+
+            @media (min-width: $smallMobile) {
+                margin: 0;
+            }
+        }
+    }
+
+    &__text {
+        text-align: center;
+        line-height: 20px;
+        font-size: 16px;
+
+        @media (min-width: $smallMobile) {
+            @include adaptiveValue("line-height", 16px, 30px, $smallMobile, $maxContainerWidth);
+            @include adaptiveValue("font-size", 14px, 24px, $mobile, $maxContainerWidth);
+        }
+    }
+
+    &__more {
+        display: flex;
+        flex-flow: row nowrap;
+        justify-content: center;
+        align-items: center;
+        gap: 10px;
+        margin-top: 30px;
+
+        @media (min-width: $smallMobile) {
+            margin: 0;
+        }
+
+        @media (any-hover: hover) {
+            display: none;
+        }
+    }
+
+    &__more-text {
+        flex: 1 1 auto;
+        line-height: 20px;
+        font-size: 16px;
+        font-weight: 500;
+
+        @media (min-width: $smallMobile) {
+            @include adaptiveValue("line-height", 20px, 24px, $smallMobile, $maxContainerWidth);
+            @include adaptiveValue("font-size", 16px, 20px, $mobile, $maxContainerWidth);
+        }
+    }
+
+    &__more-arrow {
+        position: relative;
+        flex: 0 0 25px;
+        height: 2px;
+        background-color: $secondaryColor;
+    }
+}
+
+.hidden-description {
+    max-height: 0;
+    transform-origin: center top;
+    transform: scaleY(0);
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.3s ease,
+                transform 0.3s ease,
+                max-height 0.3s ease;
+    
+    @media (min-width: $smallMobile) {
+        position: absolute;
+        right: 15.8%;
+        @include adaptiveValue("bottom", 8px, 15px, $smallMobile, $maxContainerWidth);
+        width: 105%;
+        height: auto;
+        max-height: none;
+        transform-origin: center center;
+        transform: scale(0.3, 0.3);
+
+        .perfection__block:nth-child(1) &,
+        .perfection__block:nth-child(2) & {
+            @include adaptiveValue("bottom", 3px, 5px, $smallMobile, $maxContainerWidth);
+        }
+    }
+
+    @media (min-width: $mobile) {
+        width: 120%;
+    }
+
+    @media (any-hover: hover) {
+
+        @media (min-width: $smallMobile) {
+            .perfection__block:hover>& {
+                opacity: 1;
+                transform: scale(1, 1);
+                pointer-events: auto;
+            }
+        }
+    }
+
+    @media (any-hover: none) {
+        visibility: hidden;
+
+        .perfection__block_active & {
+            max-height: 320px;
+            transform: scaleY(1);
+            opacity: 1;
+            pointer-events: auto;
+            
+            @media (min-width: $smallMobile) {
+                max-height: none;
+                transform: scale(1, 1);                
+            }
+        }
+    }
+
+    &::before {
+        content: '';
+        display: block;
+        height: 20px;
+
+        @media (min-width: $smallMobile) {
+            display: none;               
+        }
+    }
+
+    &__inner {
+        padding: 20px 15px 25px;
+        background-color: $primaryColor;
+
+        @media (min-width: $smallMobile) { 
+            @include adaptiveValue("padding", 12px, 50px, $smallMobile, $maxContainerWidth);
+        }
+    }
+
+    &__title {
+        margin-bottom: 20px;
+        text-align: center;
+        line-height: 19px;
+        font-size: 16px;
+        font-weight: 700;
+        color: $backgroundColor;
+        
+        @media (min-width: $smallMobile) {
+            @include adaptiveValue("margin-bottom", 5px, 30px, $smallMobile, $maxContainerWidth);
+            @include adaptiveValue("line-height", 16px, 30px, $smallMobile, $maxContainerWidth);
+            @include adaptiveValue("font-size", 14px, 24px, $mobile, $maxContainerWidth);         
+        }
+    }
+
+    &__text {
+        text-align: center;
+        line-height: 18px;
+        font-size: 15px;
+        font-weight: 300;
+        color: $backgroundColor;
+        
+        @media (min-width: $smallMobile) {
+            @include adaptiveValue("line-height", 14px, 22px, $smallMobile, $maxContainerWidth);
+            @include adaptiveValue("font-size", 12px, 18px, $mobile, $maxContainerWidth);
+        }
     }
 }
 

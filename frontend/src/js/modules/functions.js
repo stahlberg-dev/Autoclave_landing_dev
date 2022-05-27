@@ -13,27 +13,29 @@ export function isWebp() {
     });
 }
 
-export function LockUnlockPadding (lockPaddingValue, lockPadding) {
+export function LockUnlockPadding (lockPaddingValue, lockPaddingElements) {
     if (document.body.classList.contains('locked')) {
 
-        //document.body.style.paddingRight = lockPaddingValue;
+        document.body.style.paddingRight = lockPaddingValue;
 
-        if(lockPadding.length > 0) {
-            for (let i = 0; i < lockPadding.length; i++) {
-                const el = lockPadding[i];
-                el.style.paddingRight = lockPaddingValue;
+        if(lockPaddingElements.length > 0) {
+
+            for (let lockPaddingElement of lockPaddingElements) {
+                lockPaddingElement.style.paddingRight = lockPaddingValue;
             }
+
         }
 
     } else {
 
-        //document.body.style.paddingRight = '0px';
+        document.body.style.paddingRight = '0px';
 
-        if(lockPadding.length > 0) {
-            for (let i = 0; i < lockPadding.length; i++) {
-                const el = lockPadding[i];
-                el.style.paddingRight = '0px';
+        if(lockPaddingElements.length > 0) {
+
+            for (let lockPaddingElement of lockPaddingElements) {
+                lockPaddingElement.style.paddingRight = '0px';
             }
+
         }
 
     }

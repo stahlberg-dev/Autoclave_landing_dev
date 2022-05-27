@@ -16,15 +16,22 @@ body {
     }
 }
 
+.scroller {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: transparent;
+    overflow-y: scroll;
+    z-index: 199;
+}
+
 .wrapper {
     min-height: 100%;
     display: flex;
     flex-flow: column nowrap;
     overflow: hidden;
-    
-    body.locked & {
-        overflow-y: scroll;
-    }
     
     & main {
         flex: 1 1 auto;
@@ -291,17 +298,33 @@ body {
     }
 }
 
+.slide-arrow  {
+    display: none;
+
+    @media (min-width: $mobile) {
+        display: block;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        height: 2px;
+        background-color: $primaryColor;
+        filter: drop-shadow(0px 0px 4px rgba(255, 187, 107, 0.5));
+    }
+}
+
 .primary-highlightning-max {
     font-weight: 700;
     color: $primaryColor;
 }
 
 .subtitle {
+    position: relative;
     text-align: center;
     @include adaptiveValue("line-height", 19px, 43px, $mobile, $pc);
     @include adaptiveValue("font-size", 16px, 36px, $mobile, $pc);
     font-weight: 100;
     color: $secondaryColor;
+    z-index: 1;
 
     &__highlightning {
         display: block;
@@ -373,7 +396,33 @@ body {
         width: 29px;
         line-height: 24px;
         font-size: 24px;
-        font-weight: 500;
+        font-weight: 300;
         color: $secondaryColor;
+    }
+}
+
+.interactive-block {
+    position: relative;
+    background-color: $thirdColor;
+
+    &::before, 
+    &::after {
+        content: '';
+        display: none;
+        position: absolute;
+        top: 10%;
+        left: 0;
+        width: 10px;
+        height: 80%;
+        @extend %orange-bar;
+
+        @media (min-width: $smallMobile) {
+            display: block;
+        }
+    }
+
+    &::after {
+        left: auto;
+        right: 0;
     }
 }

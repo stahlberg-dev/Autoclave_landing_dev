@@ -26,9 +26,9 @@
         }
 
         @media (min-width: 992.02px) {
-            grid-template-columns: 4fr 4fr 3fr auto 15px;
+            grid-template-columns: 5fr 5fr 4fr auto 15px;
             @include adaptiveValue("column-gap", 15px, 30px, 992px, $tablet);
-            padding: 30px 0 75px;
+            padding: 30px 0 60px;
         }
     }
 
@@ -138,7 +138,7 @@
     &__company-details {
         max-width: 350px;
         text-align: center;
-        font-weight: 200;
+        font-weight: 500;
         color: #5F5F5F;
 
         @media (min-width: $smallMobile) {
@@ -153,6 +153,7 @@
             grid-row: 1;
             max-width: 210px;
             margin-left: 10px;
+            font-weight: 200;
             color: $secondaryColor;
         }
 
@@ -177,11 +178,6 @@
     &__company-details-body {
         line-height: 17px;
         font-size: 14px;
-
-        @media (min-width: $mobile) {
-            line-height: 14px;
-            font-size: 12px;
-        }
     }
 
     &__phone {

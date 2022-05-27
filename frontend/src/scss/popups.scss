@@ -1,0 +1,128 @@
+.popup {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background-color:rgba(5, 6, 0, 0.75);
+    top: 0;
+    left: 0;
+    opacity: 0;
+    visibility: hidden;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    z-index: 200;
+    transition: all 0.3s ease;
+
+    &_opened {
+        opacity: 1;
+        visibility: visible;
+    }
+
+    &__wrapper {
+        min-height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 10px;
+    }
+ 
+    &__content {
+        position: relative;
+        width: 100%;
+        @include adaptiveValue("padding-top", 30px, 50px);
+        @include adaptiveValue("padding-bottom", 30px, 50px);
+        @include adaptiveValue("padding-left", 15px, 70px);
+        @include adaptiveValue("padding-right", 15px, 70px);
+        transform: scale(0.3, 0.3);
+        transition: transform 0.3s ease;
+
+        @media (min-width: $smallMobile) {
+            @include adaptiveValue("width", 460px, 680px, $smallMobile, $maxContainerWidth);
+        }
+
+        @media (min-width: $tablet) {
+            width: 680px;
+        }
+
+        .popup_opened & {
+            transform: scale(1, 1);
+        }
+    }
+    
+    &__close {
+        position: absolute;
+        top: -40px;
+        right: -2px;
+        width: 24px;
+        height: 24px;
+        cursor: pointer;
+        -webkit-tap-highlight-color: transparent;
+
+        &::before, &::after {
+            content: "";
+            display: block;
+            position: absolute;
+            top: calc(50% - 4%);
+            left: 0;
+            width: 100%;
+            height: 8%;
+            background-color: $secondaryColor;
+            transform: rotate(45deg);
+            transition: all 0.3s ease;
+        }
+
+        &::after {
+            transform: rotate(-45deg);
+        }
+        
+        @media (any-hover: hover) {
+            
+            &:hover {               
+                &::before, &::after {
+                    background-color: $primaryColor;
+                }
+            }
+        }
+        
+        &:active {
+            
+            &::before, &::after {
+                background-color: #f38b15;
+                box-shadow: 0px 0px 30px rgba(248, 172, 84, 0.9);
+            }
+        }
+
+        @media (min-width: $mobile) {
+            top: -4px;
+            right: -56px;
+            width: 32px;
+            height: 32px;
+        }
+    }
+}
+
+.perfection-popup {
+
+    &__wrapper {
+    }
+
+    &__content {
+    }
+
+    &__close {
+    }
+
+    &__ytplayer-video {
+        display: block;
+        width: 100%;
+        height: 63vw;
+
+        @media (min-width: $smallMobile) {
+            @include adaptiveValue("height", 300px, 400px, $smallMobile, $maxContainerWidth);
+        }
+
+        @media (min-width: $tablet) {
+            height: 400px;
+        }
+    }
+}
+
