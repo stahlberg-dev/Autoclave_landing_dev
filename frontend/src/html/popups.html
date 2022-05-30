@@ -5,3 +5,38 @@
         </div>
     </div>
 </div>
+
+<div data-popup-name="consultation" class="consultation-popup popup">
+    <div class="consultation-popup__wrapper popup__wrapper">
+        <div class="consultation-popup__content popup__content interactive-block">
+            <div class="consultation-popup__close popup__close close-popup"></div>
+            <h3 class="consultation-popup__header">Получить консультацию</h3>
+            <div class="consultation-popup__text">Оставьте ваш номер телефона и&nbsp;мы вам перезвоним</div>
+            <form class="consultation-popup__form jsOrderForm">
+                <input type="text" class="consultation-popup_input jsName" name="name" placeholder="Имя" required>
+                <input type="text" class="consultation-popup_input jsPhone" name="phone" placeholder="Телефон" required>
+                <button data-popup="thanks" 
+                        class="consultation-popup__btn button button_text_white popup-link jsOrderFormSubmit">
+                    <span>Жду звонка</span>
+                </button>
+            </form>
+            <div class="consultation-popup__privacy-policy">
+                Нажтмая кнопку «Жду&nbsp;звонка», вы даете согласие
+                на&nbsp;обработку персональных данных в&nbsp;соответствии 
+                с&nbsp;указанными здесь условиями 
+            </div>
+        </div>
+    </div>
+</div>
+
+<div data-popup-name="thanks" class="thanks-popup popup">
+    <div class="thanks-popup__wrapper popup__wrapper">
+        <div class="thanks-popup__content popup__content interactive-block">
+            <div class="thanks-popup__close popup__close close-popup"></div>
+            <h3 class="thanks-popup__header">Спасибо!</h3>
+            <div class="thanks-popup__text">
+                Ваша заявка отправлена, в&nbsp;ближайшее время с&nbsp;вами свяжется менеджер.
+            </div>
+        </div>
+    </div>
+</div>

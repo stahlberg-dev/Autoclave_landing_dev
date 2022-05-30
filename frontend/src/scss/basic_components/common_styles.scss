@@ -426,3 +426,180 @@ body {
         right: 0;
     }
 }
+
+.prices {
+    display: flex;
+    flex-flow: column-reverse nowrap;
+    justify-content: start;
+    align-items: center;
+
+        @media (min-width: $smallMobile) {
+            flex-flow: row nowrap;
+            align-items: start;
+            gap: 20px;
+        }
+
+    &__price {
+        font-weight: 800;
+        color: $secondaryColor;
+        line-height: 38px;
+        font-size: 32px;
+
+        @media (min-width: $smallMobile) {
+            @include adaptiveValue("line-height", 38px, 58px, $smallMobile, $mobile);
+            @include adaptiveValue("font-size", 32px, 48px, $smallMobile, $mobile);
+        }
+
+        @media (min-width: $mobile) {
+            @include adaptiveValue("line-height", 36px, 58px, $mobile, $maxContainerWidth);
+            @include adaptiveValue("font-size", 30px, 48px, $mobile, $maxContainerWidth);
+        }
+    }
+
+    &__value {
+    }
+
+    &__currency {
+    }
+
+    &__old-price {
+        text-decoration: line-through;
+        font-weight: 200;
+        line-height: 22px;
+        font-size: 18px;
+
+        @media (min-width: $smallMobile) {
+            @include adaptiveValue("line-height", 22px, 30px, $smallMobile, $mobile);
+            @include adaptiveValue("font-size", 18px, 24px, $smallMobile, $mobile);
+        }
+
+        @media (min-width: $mobile) {
+            @include adaptiveValue("line-height", 26px, 30px, $mobile, $maxContainerWidth);
+            @include adaptiveValue("font-size", 22px, 24px, $mobile, $maxContainerWidth);
+        }
+
+        &_color_dark {
+            color: $thirdColor;
+        }
+
+        &_color_orange {
+            color: $primaryColor;
+        }
+    }
+
+    &__old-value {
+    }
+}
+
+.liter-buttons {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+
+    @media (min-width: $mobile) {
+        @include adaptiveValue("gap", 10px, 20px, $mobile, $maxContainerWidth);
+    }
+
+    &__button {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex: 1 1 33.33%;
+        height: 40px;
+        background-color: transparent;
+        cursor: pointer;
+        transition: background-color 0.3s ease,
+                    color 0.3s ease,
+                    box-shadow 0.3s ease;
+        -webkit-tap-highlight-color: transparent;
+
+        @media (min-width: $mobile) {
+            @include adaptiveValue("height", 30px, 40px, $mobile, $maxContainerWidth);
+        }
+
+        .liter-buttons_color_orange & {
+            border: 2px solid $thirdColor;
+            color: $thirdColor;
+        }
+
+        .liter-buttons_color_dark & {
+            border: 2px solid $primaryColor;
+            color: $primaryColor;
+        }
+
+        @media (any-hover: hover) {
+
+            &:hover {
+
+                .liter-buttons_color_orange & {
+                    background-color: $thirdColor;
+                    color: $primaryColor;
+                }
+
+                .liter-buttons_color_dark & {
+                    background-color: $primaryColor;
+                    color: $thirdColor;
+                }
+            }
+        }
+
+        &:active {
+
+            .liter-buttons_color_orange & {
+                background-color: #141414;
+                border-color: #141414;
+                color: $primaryColor;
+                box-shadow: 0px 0px 15px rgba(14, 14, 14, 0.8);
+            }
+
+            .liter-buttons_color_dark & {
+                background-color: #d6780d;
+                border-color: #d6780d;
+                color: $thirdColor;
+                box-shadow: 0px 0px 15px rgba(255, 187, 107, 0.8);
+            }
+        }
+
+        &.slider-tab-button_active {
+
+            .liter-buttons_color_orange & {
+                background-color: $thirdColor;
+                color: $primaryColor;
+            }
+
+            .liter-buttons_color_dark & {
+                background-color: $primaryColor;
+                color: $thirdColor;
+            }
+        }
+    }
+
+    &__button-text {
+        font-weight: 400;
+        line-height: 19px;
+        font-size: 16px;
+
+        @media (min-width: $smallMobile) {
+            @include adaptiveValue("line-height", 19px, 22px, $smallMobile, $mobile);
+            @include adaptiveValue("font-size", 16px, 18px, $smallMobile, $mobile);
+        } 
+
+        @media (min-width: $mobile) {
+            @include adaptiveValue("line-height", 18px, 22px, $mobile, $maxContainerWidth);
+            @include adaptiveValue("font-size", 14px, 18px, $mobile, $maxContainerWidth);
+        }
+
+        & span {
+            display: none;
+
+            @media (min-width: 360px) {
+                display: inline;
+            }
+        }
+    }
+}
+
+
+

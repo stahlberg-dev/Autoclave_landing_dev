@@ -28,6 +28,7 @@
     &__content {
         position: relative;
         width: 100%;
+        min-width: 300px;
         @include adaptiveValue("padding-top", 30px, 50px);
         @include adaptiveValue("padding-bottom", 30px, 50px);
         @include adaptiveValue("padding-left", 15px, 70px);
@@ -106,6 +107,16 @@
     }
 
     &__content {
+        height: 70vw;
+        min-height: 225px;
+
+        @media (min-width: $smallMobile) {
+            @include adaptiveValue("height", 330px, 500px, $smallMobile, $maxContainerWidth);
+        }
+
+        @media (min-width: $tablet) {
+            height: 500px;
+        }
     }
 
     &__close {
@@ -114,15 +125,145 @@
     &__ytplayer-video {
         display: block;
         width: 100%;
-        height: 63vw;
-
-        @media (min-width: $smallMobile) {
-            @include adaptiveValue("height", 300px, 400px, $smallMobile, $maxContainerWidth);
-        }
-
-        @media (min-width: $tablet) {
-            height: 400px;
-        }
+        height: 100%;
     }
 }
 
+.consultation-popup {
+    
+    &__wrapper {
+    }
+    
+    &__content {
+        @include adaptiveValue("padding-top", 30px, 30px, $smallMobile, $maxContainerWidth);
+        @include adaptiveValue("padding-bottom", 35px, 50px, $smallMobile, $maxContainerWidth);
+        @include adaptiveValue("padding-left", 15px, 70px, $smallMobile, $maxContainerWidth);
+        @include adaptiveValue("padding-right", 15px, 70px, $smallMobile, $maxContainerWidth);
+        color: $secondaryColor;
+    }
+    
+    &__close {
+    }
+    
+    &__header {
+        text-align: center;
+        margin-bottom: 15px;
+        @include adaptiveValue("line-height", 24px, 48px, $smallMobile, $maxContainerWidth);
+        @include adaptiveValue("font-size", 20px, 40px, $smallMobile, $maxContainerWidth);
+        font-weight: 800;
+        }
+    
+    &__text {
+        max-width: 340px;
+        margin: 0 auto;
+        @include adaptiveValue("margin-bottom", 15px, 45px, $smallMobile, $maxContainerWidth);
+        @include adaptiveValue("line-height", 17px, 22px, $smallMobile, $maxContainerWidth);
+        @include adaptiveValue("font-size", 14px, 18px, $smallMobile, $maxContainerWidth);
+        font-weight: 200;
+
+        @media (min-width: $smallMobile) {
+            max-width: none;
+            margin-left: 0;
+            margin-right: 0;
+            text-align: center;
+        }
+    }
+    
+    &__form {
+        display: flex;
+        flex-flow: column nowrap;
+        justify-content: start;
+        align-items: center;
+        max-width: 340px;
+        margin: 0 auto 10px;
+    }
+
+    &_input {
+        width: 100%;
+        flex-grow: 0;
+        flex-shrink: 0;
+        @include adaptiveValue("flex-basis", 40px, 50px, $smallMobile, $maxContainerWidth);
+        @include adaptiveValue("padding-top", 10px, 15px, $smallMobile, $maxContainerWidth);
+        @include adaptiveValue("padding-bottom", 10px, 15px, $smallMobile, $maxContainerWidth);
+        @include adaptiveValue("padding-left", 15px, 30px, $smallMobile, $maxContainerWidth);
+        @include adaptiveValue("padding-right", 15px, 30px, $smallMobile, $maxContainerWidth);
+        background-color: $backgroundColor;
+        @include adaptiveValue("line-height", 19px, 22px, $smallMobile, $maxContainerWidth);
+        @include adaptiveValue("font-size", 16px, 19px, $smallMobile, $maxContainerWidth);
+        font-weight: 200;
+        color: $primaryColor;
+
+        &:nth-child(1) {
+            margin-bottom: 10px;
+        }
+
+        &:nth-child(2) {
+            margin-bottom: 10px;
+            @include adaptiveValue("margin-bottom", 20px, 30px, $smallMobile, $maxContainerWidth);
+        }
+
+        &::placeholder {
+            color: $primaryColor;
+        }
+    }
+
+    &__btn {
+        width: 100%;
+        flex: 0 0 60px;
+        @include adaptiveValue("line-height", 22px, 30px, $smallMobile, $maxContainerWidth);
+        @include adaptiveValue("font-size", 18px, 24px, $smallMobile, $maxContainerWidth);
+        font-weight: 300;
+    }
+
+    &__privacy-policy {
+        max-width: 340px;
+        margin: 0 auto;
+        @include adaptiveValue("line-height", 14px, 17px, $smallMobile, $maxContainerWidth);
+        @include adaptiveValue("font-size", 12px, 14px, $smallMobile, $maxContainerWidth);
+        font-weight: 200;
+    }
+}
+
+.thanks-popup {
+
+    &__wrapper {
+    }
+
+    &__content {
+        max-width: 350px;
+        @include adaptiveValue("padding-top", 30px, 30px, $smallMobile, $maxContainerWidth);
+        @include adaptiveValue("padding-bottom", 35px, 50px, $smallMobile, $maxContainerWidth);
+        @include adaptiveValue("padding-left", 15px, 70px, $smallMobile, $maxContainerWidth);
+        @include adaptiveValue("padding-right", 15px, 70px, $smallMobile, $maxContainerWidth);
+
+        @media (min-width: $smallMobile) {
+            max-width: none;
+            @include adaptiveValue("width", 350px, 450px, $smallMobile, $maxContainerWidth);
+        }
+
+        @media (min-width: $tablet) {
+            width: 450px;
+        }
+    }
+
+    &__close {
+    }
+
+    &__header {
+        text-align: center;
+        margin-bottom: 20px;
+        @include adaptiveValue("line-height", 24px, 48px, $smallMobile, $maxContainerWidth);
+        @include adaptiveValue("font-size", 20px, 40px, $smallMobile, $maxContainerWidth);
+        font-weight: 800;
+    }
+
+    &__text {
+        @include adaptiveValue("line-height", 17px, 26px, $smallMobile, $maxContainerWidth);
+        @include adaptiveValue("font-size", 14px, 22px, $smallMobile, $maxContainerWidth);
+        font-weight: 200;
+
+        @media (min-width: $smallMobile) {
+            text-align: center;
+        }
+    }
+}

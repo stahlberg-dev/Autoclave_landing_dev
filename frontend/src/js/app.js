@@ -13,6 +13,21 @@ flsFunctions.isWebp();
 sliders.swiperAboutSlider();
 //------------------------------------------------------------------------------------------- 
 
+// ----- Autoclave-18 sliders ---------------------------------------------------------------
+
+sliders.autoclaveSliders_18();
+//-------------------------------------------------------------------------------------------
+
+// ----- Autoclave-26 sliders ---------------------------------------------------------------
+
+sliders.autoclaveSliders_26();
+//------------------------------------------------------------------------------------------- 
+
+// ----- Autoclave-35 sliders ---------------------------------------------------------------
+
+sliders.autoclaveSliders_35();
+//------------------------------------------------------------------------------------------- 
+
 // ----- API --------------------------------------------------------------------------------
 
 
@@ -134,6 +149,13 @@ document.addEventListener('keydown', function(e) {
 
 window.onload = function() {
 
+// ----- Make active slider visible ---------------------------------------------------------
+
+    if (document.querySelector('.slider-gallery_active')) {
+        document.querySelector('.slider-gallery_active').style.visibility = 'visible';
+    }
+//-------------------------------------------------------------------------------------------    
+
     document.addEventListener("click", docActions);
 
     function docActions(e) {
@@ -225,6 +247,54 @@ window.onload = function() {
         }
 //-------------------------------------------------------------------------------------------
 
+//----- Slider tabs -------------------------------------------------------------------------
+
+        const changeSliderTime = 300;
+        const clickedTabButton = targetElement.closest('.slider-tab-button');
+        const activeTabButtons = document.querySelectorAll('.slider-tab-button_active');
+        
+        if (clickedTabButton) {
+
+            if (!clickedTabButton.classList.contains('slider-tab-button_active')) {
+
+                if (activeTabButtons.length > 0) {
+
+                    for (let activeTabButton of activeTabButtons) {
+
+                        const activeTabButtonName = activeTabButton.dataset.code;
+                        const activeSlider = document.querySelector(`[data-tab="${activeTabButtonName}"]`);
+
+                        if (activeSlider) {
+
+                            activeSlider.classList.remove('slider-gallery_active');
+
+                            setTimeout(() => {
+                                activeSlider.style.visibility = '';
+                            }, changeSliderTime);
+
+                        }
+
+                        activeTabButton.classList.remove('slider-tab-button_active');
+                        
+                    }
+
+                }
+
+                const clickedTabButtonName = clickedTabButton.dataset.code;
+                const newActiveSlider = document.querySelector(`[data-tab="${clickedTabButtonName}"]`);
+
+                if (newActiveSlider) {
+                    newActiveSlider.classList.add('slider-gallery_active');
+                    newActiveSlider.style.visibility = 'visible';
+                }
+
+                clickedTabButton.classList.add('slider-tab-button_active');
+
+            }
+
+        }
+//-------------------------------------------------------------------------------------------
+
 // ----- Popups -----------------------------------------------------------------------------
 
         const popupLink = targetElement.closest('.popup-link');
@@ -272,7 +342,9 @@ window.onload = function() {
                     ytFrame.setAttribute('src', "https://www.youtube.com/embed/AWuzMG4atiw");
                     ytFrame.setAttribute('allow', 'fullscreen');
                     ytFrame.setAttribute('frameborder', '0');
-                    currentPopup.querySelector('.popup__content').append(ytFrame); 
+                    setTimeout(() => {
+                        currentPopup.querySelector('.popup__content').append(ytFrame); 
+                    }, 150);
 
                 }
 
@@ -286,7 +358,9 @@ window.onload = function() {
 
                 if (youtFrame) {
                     /* youtFrame.contentWindow.postMessage('{"event":"command","func":"stopVideo","args":""}', '*'); */
-                    youtFrame.remove();
+                    setTimeout(() => {
+                        youtFrame.remove();
+                    }, 300);
                 }
 
                 popupActive.classList.remove('popup_opened');
