@@ -10,6 +10,7 @@ export const path = {
         css: `${buildFolder}/css/`,
         html: `${buildFolder}/`,
         images: `${buildFolder}/img/`,
+        video: `${buildFolder}/video`,
         fonts: `${buildFolder}/fonts/`,
         favicon: `${buildFolder}/favicon/`,
         ico: `${buildFolder}/`,
@@ -18,6 +19,7 @@ export const path = {
     src: {
         js: `${srcFolder}/js/app.js`,
         images: `${srcFolder}/img/**/*.+(png|jpg|jpeg|gif|webp)`,
+        video: `${srcFolder}/video/**/*.+(mp4|webm|ogv|swf)`,
         scss: `${srcFolder}/scss/style.scss`,
         html: `${srcFolder}/*.html`,
         svg: `${srcFolder}/img/**/*.svg`,
@@ -31,6 +33,7 @@ export const path = {
         scss: `${srcFolder}/scss/**/*.scss`,
         html: `${srcFolder}/**/*.html`,
         images: `${srcFolder}/img/**/*.+(png|jpg|jpeg|svg|ico|gif|webp)`,
+        video: `${srcFolder}/video/**/*.+(mp4|webm|ogv|swf)`,
         favicon: `${srcFolder}/favicon/**/*.*`,
         ico: `${srcFolder}/*.ico`,
         api: `${srcFolder}/api/**/*.*`,

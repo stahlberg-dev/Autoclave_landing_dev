@@ -1,7 +1,15 @@
 <div data-popup-name="perfectionVideo" class="perfection-popup popup">
     <div class="perfection-popup__wrapper popup__wrapper">
-        <div class="perfection-popup__content popup__content interactive-block">
+        <div class="perfection-popup__content popup__content">
             <div class="perfection-popup__close popup__close close-popup"></div>       
+        </div>
+    </div>
+</div>
+
+<div data-popup-name="workVideo" class="work-popup popup">
+    <div class="work-popup__wrapper popup__wrapper">
+        <div class="work-popup__content popup__content">
+            <div class="work-popup__close popup__close close-popup"></div>       
         </div>
     </div>
 </div>
@@ -13,17 +21,17 @@
             <h3 class="consultation-popup__header">Получить консультацию</h3>
             <div class="consultation-popup__text">Оставьте ваш номер телефона и&nbsp;мы вам перезвоним</div>
             <form class="consultation-popup__form jsOrderForm">
-                <input type="text" class="consultation-popup_input jsName" name="name" placeholder="Имя" required>
-                <input type="text" class="consultation-popup_input jsPhone" name="phone" placeholder="Телефон" required>
-                <button data-popup="thanks" 
+                <input type="text" class="consultation-popup__input jsName" name="name" placeholder="Имя" required>
+                <input type="text" class="consultation-popup__input jsPhone" name="phone" placeholder="Телефон" required>
+                <button type="button" data-popup="thanks" 
                         class="consultation-popup__btn button button_text_white popup-link jsOrderFormSubmit">
                     <span>Жду звонка</span>
                 </button>
             </form>
             <div class="consultation-popup__privacy-policy">
-                Нажтмая кнопку «Жду&nbsp;звонка», вы даете согласие
+                Нажимая кнопку «Жду&nbsp;звонка», вы даете согласие
                 на&nbsp;обработку персональных данных в&nbsp;соответствии 
-                с&nbsp;указанными здесь условиями 
+                с&nbsp;указанными здесь условиями. 
             </div>
         </div>
     </div>
@@ -36,6 +44,18 @@
             <h3 class="thanks-popup__header">Спасибо!</h3>
             <div class="thanks-popup__text">
                 Ваша заявка отправлена, в&nbsp;ближайшее время с&nbsp;вами свяжется менеджер.
+            </div>
+        </div>
+    </div>
+</div>
+
+<div data-popup-name="checkout" class="checkout-popup popup">
+    <div class="checkout-popup__wrapper popup__wrapper">
+        <div class="checkout-popup__content popup__content interactive-block">
+            <div class="checkout-popup__close popup__close close-popup"></div>
+            <h3 class="checkout-popup__header">Заказ оформлен!</h3>
+            <div class="checkout-popup__text">               
+                Ожидайте звонка менеджера
             </div>
         </div>
     </div>

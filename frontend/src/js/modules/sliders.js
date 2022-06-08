@@ -1,9 +1,9 @@
-import Swiper, { Autoplay, EffectFade, Navigation, Pagination, Thumbs, Mousewheel} from 'swiper';
-//import baguetteBox from 'baguettebox.js';
+import Swiper, { Autoplay, Navigation, Pagination, Thumbs, Mousewheel, Scrollbar} from 'swiper';
 
 // ----- About slider ------------------------------------------------------------------------
 
 export function swiperAboutSlider() {
+    
     if (document.querySelector('.about__slider')) {
         const aboutSlider = new Swiper('.about__slider', {
             modules: [Navigation, Pagination],
@@ -20,10 +20,9 @@ export function swiperAboutSlider() {
                 el: '.about__slider-pagination',
                 type: 'fraction',
                 renderFraction: function(currentClass, totalClass) {
-                    return '<span class="slider-nav__pagination-current">0<span class="' + 
-                           currentClass +
-                           '"></span></span>' + `/` +
-                           `0<span class="` + totalClass + '"></span>';
+                    return '<span class="' + currentClass + '"></span>' + 
+                           '<span>/</span>' +
+                           '<span class="' + totalClass + '"></span>';
                 },
             },
             navigation: {
@@ -90,10 +89,9 @@ export function autoclaveSliders_18() {
                 el: paginationContainer,
                 type: 'fraction',
                 renderFraction: function(currentClass, totalClass) {
-                    return '<span class="slider-nav__pagination-current"><span class="' + 
-                           currentClass +
-                           '"></span></span>' + `/ ` +
-                           `<span class="` + totalClass + '"></span>';
+                    return '<span class="' + currentClass + '"></span>' + 
+                           '<span>/</span>' +
+                           '<span class="' + totalClass + '"></span>';
                 },
             },
             navigation: {
@@ -172,10 +170,9 @@ export function autoclaveSliders_26() {
                 el: paginationContainer,
                 type: 'fraction',
                 renderFraction: function(currentClass, totalClass) {
-                    return '<span class="slider-nav__pagination-current"><span class="' + 
-                           currentClass +
-                           '"></span></span>' + `/ ` +
-                           `<span class="` + totalClass + '"></span>';
+                    return '<span class="' + currentClass + '"></span>' + 
+                           '<span>/</span>' +
+                           '<span class="' + totalClass + '"></span>';
                 },
             },
             navigation: {
@@ -254,10 +251,9 @@ export function autoclaveSliders_35() {
                 el: paginationContainer,
                 type: 'fraction',
                 renderFraction: function(currentClass, totalClass) {
-                    return '<span class="slider-nav__pagination-current"><span class="' + 
-                           currentClass +
-                           '"></span></span>' + `/ ` +
-                           `<span class="` + totalClass + '"></span>';
+                    return '<span class="' + currentClass + '"></span>' + 
+                           '<span>/</span>' +
+                           '<span class="' + totalClass + '"></span>';
                 },
             },
             navigation: {
@@ -280,6 +276,65 @@ export function autoclaveSliders_35() {
             }));
 
         }
+    }
+}
+//------------------------------------------------------------------------------------------- 
+
+// ----- Work slider ------------------------------------------------------------------------
+
+export function workSlider() {
+    if (document.querySelector('.work__slider')) {
+        const workSlider = new Swiper('.work__slider', {
+            modules: [Navigation, Pagination, Scrollbar],
+            observer: true,
+            observeParents: true,
+            slidesPerView: 1.2,
+            spaceBetween: 10,
+            watchOverflow: true,
+            speed: 800,
+            loop: true,
+            preloadImages: false,
+            grabCursor: true,
+            scrollbar: {
+                el: '.work__slider-scrollbar',
+                draggable: true,
+            },
+            breakpoints: {
+                481: { 
+                    slidesPerView: 2.2,
+                },
+            }
+        });
+    }
+}
+//-------------------------------------------------------------------------------------------
+
+// ----- Comparison slider ------------------------------------------------------------------------
+
+export function comparisonSlider() {
+    if (document.querySelector('.comparison__slider')) {
+        const comparisonSlider = new Swiper('.comparison__slider', {
+            modules: [Navigation, Pagination, Scrollbar],
+            observer: true,
+            observeParents: true,
+            slidesPerView: 1.3,
+            spaceBetween: 10,
+            watchOverflow: true,
+            speed: 800,
+            loop: true,
+            preloadImages: false,
+            grabCursor: true,
+            scrollbar: {
+                el: '.comparison__slider-scrollbar',
+                draggable: true,
+            },
+            breakpoints: {
+                481: { 
+                    slidesPerView: 2.2,
+                    spaceBetween: 15,
+                },
+            }
+        });
     }
 }
 //------------------------------------------------------------------------------------------- 

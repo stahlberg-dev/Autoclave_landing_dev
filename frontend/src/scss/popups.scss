@@ -29,10 +29,10 @@
         position: relative;
         width: 100%;
         min-width: 300px;
-        @include adaptiveValue("padding-top", 30px, 50px);
-        @include adaptiveValue("padding-bottom", 30px, 50px);
-        @include adaptiveValue("padding-left", 15px, 70px);
-        @include adaptiveValue("padding-right", 15px, 70px);
+        @include adaptiveValue("padding-top", 30px, 60px, $smallMobile, $maxContainerWidth);
+        @include adaptiveValue("padding-bottom", 35px, 60px, $smallMobile, $maxContainerWidth);
+        @include adaptiveValue("padding-left", 15px, 70px, $smallMobile, $maxContainerWidth);
+        @include adaptiveValue("padding-right", 15px, 70px, $smallMobile, $maxContainerWidth);
         transform: scale(0.3, 0.3);
         transition: transform 0.3s ease;
 
@@ -107,22 +107,60 @@
     }
 
     &__content {
-        height: 70vw;
-        min-height: 225px;
+        position: relative;
+        height: calc(0.5625 * (100vw - 20px));
+        min-height: 168.75px;
+        padding: 0;
+        background-color: transparent;
 
         @media (min-width: $smallMobile) {
-            @include adaptiveValue("height", 330px, 500px, $smallMobile, $maxContainerWidth);
+            @include adaptiveValue("width", 460px, 900px, $smallMobile, $maxContainerWidth);
+            @include adaptiveValue("height", 258.75px, 506.25px, $smallMobile, $maxContainerWidth);
         }
 
         @media (min-width: $tablet) {
-            height: 500px;
+            width: 1000px;
+            height: 562.5px;
         }
     }
 
     &__close {
     }
 
-    &__ytplayer-video {
+    &__video {
+        display: block;
+        width: 100%;
+        height: 100%;
+    }
+}
+
+.work-popup {
+
+    &__wrapper {
+    }
+
+    &__content {
+        position: relative;
+        height: calc(0.5625 * (100vw - 20px));
+        min-height: 168.75px;
+        padding: 0;
+        background-color: transparent;
+
+        @media (min-width: $smallMobile) {
+            @include adaptiveValue("width", 460px, 900px, $smallMobile, $maxContainerWidth);
+            @include adaptiveValue("height", 258.75px, 506.25px, $smallMobile, $maxContainerWidth);
+        }
+
+        @media (min-width: $tablet) {
+            width: 1000px;
+            height: 562.5px;
+        }
+    }
+
+    &__close {
+    }
+
+    &__video {
         display: block;
         width: 100%;
         height: 100%;
@@ -135,10 +173,6 @@
     }
     
     &__content {
-        @include adaptiveValue("padding-top", 30px, 30px, $smallMobile, $maxContainerWidth);
-        @include adaptiveValue("padding-bottom", 35px, 50px, $smallMobile, $maxContainerWidth);
-        @include adaptiveValue("padding-left", 15px, 70px, $smallMobile, $maxContainerWidth);
-        @include adaptiveValue("padding-right", 15px, 70px, $smallMobile, $maxContainerWidth);
         color: $secondaryColor;
     }
     
@@ -178,7 +212,7 @@
         margin: 0 auto 10px;
     }
 
-    &_input {
+    &__input {
         width: 100%;
         flex-grow: 0;
         flex-shrink: 0;
@@ -189,7 +223,7 @@
         @include adaptiveValue("padding-right", 15px, 30px, $smallMobile, $maxContainerWidth);
         background-color: $backgroundColor;
         @include adaptiveValue("line-height", 19px, 22px, $smallMobile, $maxContainerWidth);
-        @include adaptiveValue("font-size", 16px, 19px, $smallMobile, $maxContainerWidth);
+        @include adaptiveValue("font-size", 16px, 18px, $smallMobile, $maxContainerWidth);
         font-weight: 200;
         color: $primaryColor;
 
@@ -198,12 +232,16 @@
         }
 
         &:nth-child(2) {
-            margin-bottom: 10px;
             @include adaptiveValue("margin-bottom", 20px, 30px, $smallMobile, $maxContainerWidth);
         }
 
         &::placeholder {
             color: $primaryColor;
+            transition: color 0.3s ease;
+        }
+
+        &:focus::placeholder {
+            color: transparent;
         }
     }
 
@@ -212,7 +250,7 @@
         flex: 0 0 60px;
         @include adaptiveValue("line-height", 22px, 30px, $smallMobile, $maxContainerWidth);
         @include adaptiveValue("font-size", 18px, 24px, $smallMobile, $maxContainerWidth);
-        font-weight: 300;
+        font-weight: 200;
     }
 
     &__privacy-policy {
@@ -231,10 +269,6 @@
 
     &__content {
         max-width: 350px;
-        @include adaptiveValue("padding-top", 30px, 30px, $smallMobile, $maxContainerWidth);
-        @include adaptiveValue("padding-bottom", 35px, 50px, $smallMobile, $maxContainerWidth);
-        @include adaptiveValue("padding-left", 15px, 70px, $smallMobile, $maxContainerWidth);
-        @include adaptiveValue("padding-right", 15px, 70px, $smallMobile, $maxContainerWidth);
 
         @media (min-width: $smallMobile) {
             max-width: none;
@@ -265,5 +299,42 @@
         @media (min-width: $smallMobile) {
             text-align: center;
         }
+    }
+}
+
+.checkout-popup {
+
+    &__wrapper {
+    }
+
+    &__content {
+        max-width: 350px;
+
+        @media (min-width: $smallMobile) {
+            max-width: none;
+            @include adaptiveValue("width", 350px, 500px, $smallMobile, $maxContainerWidth);
+        }
+
+        @media (min-width: $tablet) {
+            width: 500px;
+        }
+    }
+
+    &__close {
+    }
+
+    &__header {
+        text-align: center;
+        margin-bottom: 20px;
+        @include adaptiveValue("line-height", 24px, 48px, $smallMobile, $maxContainerWidth);
+        @include adaptiveValue("font-size", 20px, 40px, $smallMobile, $maxContainerWidth);
+        font-weight: 800;
+    }
+
+    &__text {
+        text-align: center;
+        @include adaptiveValue("line-height", 17px, 26px, $smallMobile, $maxContainerWidth);
+        @include adaptiveValue("font-size", 14px, 22px, $smallMobile, $maxContainerWidth);
+        font-weight: 200;
     }
 }
