@@ -5,6 +5,7 @@ import Swiper, { Autoplay, Navigation, Pagination, Thumbs, Mousewheel, Scrollbar
 export function swiperAboutSlider() {
     
     if (document.querySelector('.about__slider')) {
+
         const aboutSlider = new Swiper('.about__slider', {
             modules: [Navigation, Pagination],
             observer: true,
@@ -33,6 +34,15 @@ export function swiperAboutSlider() {
             
             }
         });
+
+        aboutSlider.on('slideChange', function () {
+            
+            let activeAboutSlide = document.querySelector('.about__slider .swiper-slide-active');
+
+            activeAboutSlide.classList.add('no-animation');
+
+        });
+
     }
 }
 //------------------------------------------------------------------------------------------- 
@@ -292,7 +302,7 @@ export function workSlider() {
             spaceBetween: 10,
             watchOverflow: true,
             speed: 800,
-            loop: true,
+            //loop: true,
             preloadImages: false,
             grabCursor: true,
             scrollbar: {
@@ -321,7 +331,7 @@ export function comparisonSlider() {
             spaceBetween: 10,
             watchOverflow: true,
             speed: 800,
-            loop: true,
+            //loop: true,
             preloadImages: false,
             grabCursor: true,
             scrollbar: {
