@@ -1,5 +1,7 @@
 <?php
 
+header('Access-Control-Allow-Origin: *');
+
 /** @var \App\SiteApi $siteApi */
 /** @var \App\Products $products */
 
@@ -16,19 +18,37 @@ function jsonResponse($data) {
     header('Content-Type: application/json');
 
     echo json_encode($data, JSON_UNESCAPED_UNICODE);
+
+    die();
 }
 
+function sendLead (array $data) {
+    global $config, $siteApi;
+
+    $data['title'] = implode(' ', [
+        $config['leadName'] ?? '',
+        $data['form'] ?? '',
+        $data['name'] ?? '',
+    ]);
+
+    unset($data['action'], $data['form']);
+
+    return $siteApi->lead($data);
+}
 
 try {
     require_once __DIR__ . '/init.php';
 
-    $data = json_decode(file_get_contents('php://input'), true);
+    $data = $_POST;
+    if (empty($data)) {
+        $data = json_decode(file_get_contents('php://input'), true);
+    }
 
     if (empty($data['action'])) {
         jsonError("no action");
     }
 
-    switch ($data['action']) {
+    switch ($data['action'] ?? null) {
         case 'prices':
             jsonResponse([
                 'prices' => $products->getPrices(),
@@ -54,11 +74,15 @@ try {
             jsonResponse($siteApi->makeCreditRequest($data));
             break;
 
+        case 'lead':
+            jsonResponse(sendLead($data));
+            break;
+
         default:
             jsonError("unknown action");
             break;
     }
 
 } catch (\Throwable $e) {
-    jsonError($e->getMessage());
+    jsonError(['err' => $e->getMessage()]);
 }
