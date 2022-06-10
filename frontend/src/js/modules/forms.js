@@ -101,6 +101,10 @@ function initCheckPromoCode() {
             e.preventDefault();
             const code = $input.val();
             $info.text('');
+            if (code) {
+                $checkButton.hide();
+                $deleteButton.show();
+            }
 
             shop.checkPromoCode(code, (response) => {
                 if (response.active) {
@@ -119,6 +123,8 @@ function initCheckPromoCode() {
             $info.text('');
             shop.cart.promoCode = '';
             updateViewPrices();
+            $checkButton.show();
+            $deleteButton.hide();
         });
     });
 }
