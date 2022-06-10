@@ -2021,20 +2021,20 @@
         padding: 10px;
         background-color: $thirdColor;
         text-align: center;
-        line-height: 19px;
-        font-size: 16px;
+        line-height: 20px;
+        font-size: 18px;
         font-weight: 300;
         color: $primaryColor;
 
         @media (min-width: $smallMobile) {
             @include adaptiveValue("height", 130px, 150px, $smallMobile, $mobile);
-            @include adaptiveValue("line-height", 19px, 26px, $smallMobile, $mobile);
+            @include adaptiveValue("line-height", 20px, 26px, $smallMobile, $mobile);
             @include adaptiveValue("font-size", 16px, 20px, $smallMobile, $mobile);
         }
 
         @media (min-width: $mobile) {
             @include adaptiveValue("height", 130px, 170px, $mobile, $maxContainerWidth);
-            @include adaptiveValue("line-height", 19px, 30px, $mobile, $maxContainerWidth);
+            @include adaptiveValue("line-height", 20px, 30px, $mobile, $maxContainerWidth);
             @include adaptiveValue("font-size", 16px, 24px, $mobile, $maxContainerWidth);
         }
 
@@ -2212,7 +2212,7 @@
         font-weight: 300;
 
         @media (min-width: $smallMobile) {
-            @include adaptiveValue("left", 5px, 15px, $smallMobile, $mobile);
+            @include adaptiveValue("left", 5px, 10px, $smallMobile, $mobile);
             @include adaptiveValue("line-height", 16px, 20px, $smallMobile, $mobile);
             @include adaptiveValue("font-size", 12px, 14px, $smallMobile, $mobile);
         }
@@ -2795,7 +2795,7 @@
                 }
 
                 .complectation__caption-text {
-                    margin-right: 85px;
+                    margin-right: 100px;
                 }
             }
 
@@ -2807,7 +2807,7 @@
                 }
 
                 .complectation__caption-text {
-                    margin-right: 175px;
+                    margin-right: 220px;
                 }
             }
     
@@ -2819,7 +2819,7 @@
                 }
 
                 .complectation__caption-text {
-                    margin-right: 245px;
+                    @include adaptiveValue("margin-right", 220px, 290px, $maxContainerWidth, $pc);
                 }
             }
     
@@ -2876,14 +2876,14 @@
             }
     
             &:nth-of-type(9) {
-                top: 24%;
+                top: 22%;
                 right: 23%;
 
                 .complectation__caption-text-wrapper {
                 }
 
                 .complectation__caption-text {
-                    margin-left: 115px;
+                    @include adaptiveValue("margin-left", 65px, 130px, $maxContainerWidth, 1920px);
                 }
             }
     
@@ -3014,7 +3014,7 @@
         @media (min-width: $mobile) {
             padding: 5px 15px;
             @include adaptiveValue("line-height", 20px, 24px, $mobile, $pc);
-            @include adaptiveValue("font-size", 16px, 24px, $mobile, $pc);
+            @include adaptiveValue("font-size", 16px, 20px, $mobile, $pc);
 
             .complectation__caption_side_left & {
                 margin-right: 25px;
