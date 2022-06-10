@@ -1,7 +1,8 @@
 import $ from "jquery";
 import shop from "./shop-api.js";
 
-console.log(shop.cart.productCode);
+window.$ = $;
+// console.log(shop.cart.productCode);
 
 function formatPrice(val, delim) {
     val = '' + val;
@@ -49,6 +50,12 @@ function initPrices() {
             shop.cart.productCode = code;
             updateViewPrices();
         }
+
+        // TEMP: temporary sync variant select
+        $('.order-tab-button_active').removeClass('order-tab-button_active');
+        $('.slider-tab-button_active').removeClass('slider-tab-button_active');
+        $(`.order-tab-button[data-code="${code}"]`).addClass('order-tab-button_active');
+        $('.slider-tab-button[data-code="${code}"]').addClass('slider-tab-button_active');
     });
 
     updateViewPrices();
