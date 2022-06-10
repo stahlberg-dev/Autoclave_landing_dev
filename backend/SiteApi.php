@@ -99,4 +99,15 @@ class SiteApi
         return $this->exec('make-order', $data);
     }
 
+    /**
+     * Создать лид в CRM
+     * @param array $data [name,phone,email,title,trace,comment]
+     * @return mixed
+     * @throws \Exception
+     */
+    public function lead($data)
+    {
+        return $this->exec('lead', $data);
+    }
+
 }

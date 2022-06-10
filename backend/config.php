@@ -1,6 +1,7 @@
 <?php
 
 return [
+    'leadName' => 'Лэндинг автоклав',
     'shopHost' => 'https://zagotovshik.ru',
     'project' => 'autoclave',
     'token' => 'QwnazusitpX1pG9z4qyyrTZ2SGaDoy',
