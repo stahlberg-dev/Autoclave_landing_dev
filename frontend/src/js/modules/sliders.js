@@ -39,7 +39,41 @@ export function swiperAboutSlider() {
             
             let activeAboutSlide = document.querySelector('.about__slider .swiper-slide-active');
 
-            activeAboutSlide.classList.add('no-animation');
+            if (activeAboutSlide.classList.contains('first-slide')) {
+                let selectedSlides = document.querySelectorAll('.first-slide');
+
+                if (selectedSlides.length > 0) {
+                    for (let selectedSlide of selectedSlides) {
+                        selectedSlide.classList.add('no-animation');
+                    }
+                }
+            } else if (activeAboutSlide.classList.contains('second-slide')) {
+                let selectedSlides = document.querySelectorAll('.second-slide');
+
+                if (selectedSlides.length > 0) {
+                    for (let selectedSlide of selectedSlides) {
+                        selectedSlide.classList.add('no-animation');
+                    }
+                }
+            } else if (activeAboutSlide.classList.contains('third-slide')) {
+                let selectedSlides = document.querySelectorAll('.third-slide');
+
+                if (selectedSlides.length > 0) {
+                    for (let selectedSlide of selectedSlides) {
+                        selectedSlide.classList.add('no-animation');
+                    }
+                }
+            } else if (activeAboutSlide.classList.contains('fourth-slide')) {
+                let selectedSlides = document.querySelectorAll('.fourth-slide');
+
+                if (selectedSlides.length > 0) {
+                    for (let selectedSlide of selectedSlides) {
+                        selectedSlide.classList.add('no-animation');
+                    }
+                }               
+            } else {
+                activeAboutSlide.classList.add('no-animation');
+            }
 
         });
 
