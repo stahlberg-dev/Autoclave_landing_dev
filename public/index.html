@@ -9,7 +9,7 @@
     <meta name="robots" content="index, follow">
     <meta name="keywords" content="Домашний Заготовщик, Автоклав, домашние консервы">
     <title>Автоклавы «Домашний Заготовщик»</title>
-    <link rel="stylesheet" href="css/style.min.css?_v=20220614095741">
+    <link rel="stylesheet" href="css/style.min.css?_v=20220614223721">
 
     <link rel="apple-touch-icon" sizes="57x57" href="favicon/apple-icon-57x57.png">
     <link rel="apple-touch-icon" sizes="60x60" href="favicon/apple-icon-60x60.png">
@@ -766,7 +766,7 @@
                                 </div>
                                 <div class="choice__top-buttons liter-buttons liter-buttons_color_orange">
                                     <div data-code="av18" 
-                                         class="liter-buttons__button slider-tab-button jsSelectProduct slider-tab-button_active">
+                                         class="liter-buttons__button slider-tab-button jsSelectProduct liter-buttons__button_active">
                                         <div class="liter-buttons__button-text">18&nbsp;л<span>итров</span></div>
                                     </div>
                                     <div data-code="av26" 
@@ -882,9 +882,10 @@
                                     <div class="model__text-parameter-value">7&nbsp;шт.</div>
                                 </div>
                             </div>
-                            <a data-goto=".order" 
+                            <a data-goto=".order"
+                                data-code="av18"
                                 href="#!" 
-                                class="model__button button button_text_white arrow-button">
+                                class="model__button button button_text_white arrow-button jsSelectProduct">
                                 <div class="model__button-text arrow-button__text">Заказать</div>
                                 <div class="model__button-icon arrow-button__arrow-icon right-arrow"></div>
                             </a>
@@ -921,9 +922,10 @@
                                     <div class="model__text-parameter-value">14&nbsp;шт.</div>
                                 </div>
                             </div>
-                            <a data-goto=".order" 
-                                href="#!" 
-                                class="model__button button button_text_white arrow-button">
+                            <a data-goto=".order"
+                                data-code="av26"
+                                href="#!"
+                                class="model__button button button_text_white arrow-button jsSelectProduct">
                                 <div class="model__button-text arrow-button__text">Заказать</div>
                                 <div class="model__button-icon arrow-button__arrow-icon right-arrow"></div>
                             </a>
@@ -960,9 +962,10 @@
                                     <div class="model__text-parameter-value">21&nbsp;шт.</div>
                                 </div>
                             </div>
-                            <a data-goto=".order" 
-                                href="#!" 
-                                class="model__button button button_text_white arrow-button">
+                            <a data-goto=".order"
+                                data-code="av35"
+                                href="#!"
+                                class="model__button button button_text_white arrow-button jsSelectProduct">
                                 <div class="model__button-text arrow-button__text">Заказать</div>
                                 <div class="model__button-icon arrow-button__arrow-icon right-arrow"></div>
                             </a>
@@ -1112,7 +1115,7 @@
                     <div class="equipment__body">
                         <div class="complectation equipment__body-content equipment__body-content_active">
                             <div class="complectation__video-container">
-                                <video class="complectation__video" muted>
+                                <video class="complectation__video" preload="auto" muted>
                                     <source src="video/complectation.mp4" type="video/mp4">
                                     <source src="video/complectation.ogv" type="video/ogg">
                                 </video>
@@ -1613,7 +1616,7 @@
                         </div>
                         <div class="order__buttons liter-buttons liter-buttons_color_dark">
                             <div data-code="av18" 
-                                 class="liter-buttons__button order-tab-button jsSelectProduct order-tab-button_active">
+                                 class="liter-buttons__button order-tab-button jsSelectProduct liter-buttons__button_active">
                                 <div class="liter-buttons__button-text">18&nbsp;л<span>итров</span></div>
                             </div>
                             <div data-code="av26" 
@@ -1625,7 +1628,7 @@
                                 <div class="liter-buttons__button-text">35&nbsp;л<span>итров</span></div>
                             </div>
                         </div>
-                        <form class="order__form jsOrderForm">
+                        <form class="order__form jsOrderForm jsPromoCode">
                             <input type="text" 
                                    class="order__input-name jsName" 
                                    name="name" 
@@ -1638,7 +1641,7 @@
                                    name="phone" 
                                    placeholder="Телефон" 
                                    required>
-                            <div class="order__promo jsPromoCode">
+                            <div class="order__promo">
                                 <input type="text" 
                                        class="order__input-promo jsPromoCodeInput" 
                                        name="promo" 
@@ -1650,8 +1653,9 @@
                                     <span>Отменить</span>
                                 </button>
                             </div>
-                            <button type="button" data-popup="checkout"
-                                    class="order__button button button_text_white popup-link jsOrderFormSubmit">
+                            <div class="jsPromoCodeInfo"></div>
+                            <button type="submit"
+                                    class="order__button button button_text_white jsOrderFormSubmit">
                                 <span>Заказать</span>
                             </button>
                         </form>
@@ -1806,7 +1810,7 @@
             <div class="consultation-popup__close popup__close close-popup"></div>
             <h3 class="consultation-popup__header">Получить консультацию</h3>
             <div class="consultation-popup__text">Оставьте ваш номер телефона и&nbsp;мы вам перезвоним</div>
-            <form class="consultation-popup__form jsOrderForm">
+            <form class="consultation-popup__form jsLeadForm">
                 <input type="text" 
                        class="consultation-popup__input jsName" 
                        name="name" 
@@ -1819,8 +1823,8 @@
                        name="phone" 
                        placeholder="Телефон" 
                        required>
-                <button type="button" data-popup="thanks" 
-                        class="consultation-popup__btn button button_text_white popup-link jsOrderFormSubmit">
+                <button type="submit"
+                        class="consultation-popup__btn button button_text_white jsOrderFormSubmit">
                     <span>Жду звонка</span>
                 </button>
             </form>
@@ -1856,6 +1860,6 @@
         </div>
     </div>
 </div>
-    <script src="js/app.min.js?_v=20220614095741"></script>
+    <script src="js/app.min.js?_v=20220614223721"></script>
 </body>
 </html>
