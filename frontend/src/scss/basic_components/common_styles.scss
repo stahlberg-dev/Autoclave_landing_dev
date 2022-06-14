@@ -575,20 +575,7 @@ body {
             }
         }
 
-        &.slider-tab-button_active {
-
-            .liter-buttons_color_orange & {
-                background-color: $thirdColor;
-                color: $primaryColor;
-            }
-
-            .liter-buttons_color_dark & {
-                background-color: $primaryColor;
-                color: $thirdColor;
-            }
-        }
-
-        &.order-tab-button_active {
+        &_active {
 
             .liter-buttons_color_orange & {
                 background-color: $thirdColor;

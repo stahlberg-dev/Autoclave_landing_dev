@@ -1,7 +1,7 @@
 import * as flsFunctions from "./functions.js";
 
 let unlock = true;
-let lockPaddingElements
+let lockPaddingElements;
 let timeout;
 
 export function start(popupLinks, popupCloseButtons, _lockPaddingElements, _timeout) {

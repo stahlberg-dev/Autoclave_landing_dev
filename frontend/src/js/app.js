@@ -156,27 +156,26 @@ if (scrollLinks.length > 0) {
 } */
 //-------------------------------------------------------------------------------------------
 
-//----- Slider tabs -------------------------------------------------------------------------
+//----- Liter tabs -------------------------------------------------------------------------
 
 const changeSliderTime = 300;
-const sliderTabButtons = document.querySelectorAll('.slider-tab-button');
+const literTabButtons = document.querySelectorAll('[data-code]');
+let unlockTab = true;
 
 if (document.querySelector('.slider-gallery_active')) {
     document.querySelector('.slider-gallery_active').style.visibility = 'visible';
 }
 
-if (sliderTabButtons.length > 0) {
-    for (let sliderTabButton of sliderTabButtons) {
+if (literTabButtons.length > 0) {
+    for (let literTabButton of literTabButtons) {
 
-        let unlock = true;
 
-        sliderTabButton.addEventListener("click", function(e) {
+        literTabButton.addEventListener("click", function(e) {
             
-            const activeTabButtons = document.querySelectorAll('.slider-tab-button_active');
-
-            if (!sliderTabButton.classList.contains('slider-tab-button_active') && unlock) {
-
-                unlock = false;
+            if (!literTabButton.classList.contains('liter-buttons__button_active') && unlockTab) {
+                
+                const activeTabButtons = document.querySelectorAll('.liter-buttons__button_active');
+                unlockTab = false;
 
                 if (activeTabButtons.length > 0) {
 
@@ -185,7 +184,7 @@ if (sliderTabButtons.length > 0) {
                         const activeTabButtonName = activeTabButton.dataset.code;
                         const activeSlider = document.querySelector(`[data-tab="${activeTabButtonName}"]`);
         
-                        activeTabButton.classList.remove('slider-tab-button_active');
+                        activeTabButton.classList.remove('liter-buttons__button_active');
                         
                         if (activeSlider) {
                             
@@ -203,18 +202,28 @@ if (sliderTabButtons.length > 0) {
         
                 }
         
-                const sliderTabButtonName = sliderTabButton.dataset.code;
-                const newActiveSlider = document.querySelector(`[data-tab="${sliderTabButtonName}"]`);
+                const literTabButtonName = literTabButton.dataset.code;
+                const newActiveSlider = document.querySelector(`[data-tab="${literTabButtonName}"]`);
         
                 if (newActiveSlider) {
                     newActiveSlider.classList.add('slider-gallery_active');
                     newActiveSlider.style.visibility = 'visible';
                 }
         
-                sliderTabButton.classList.add('slider-tab-button_active');
+                const newActiveTabButtons = document.querySelectorAll(`[data-code="${literTabButtonName}"]:not([data-goto])`);
+
+                if (newActiveTabButtons.length > 0) {
+
+                    for (let newActiveTabButton of newActiveTabButtons) {
+
+                        newActiveTabButton.classList.add('liter-buttons__button_active');
+
+                    }
+
+                }
 
                 setTimeout(() => {
-                    unlock = true;
+                    unlockTab = true;
                 }, changeSliderTime);
         
             }
@@ -222,41 +231,6 @@ if (sliderTabButtons.length > 0) {
         });
 
     }
-}
-//-------------------------------------------------------------------------------------------
-
-//----- Order tabs --------------------------------------------------------------------------
-
-const OrderTabButtons = document.querySelectorAll('.order-tab-button');
-
-if (OrderTabButtons.length > 0) {
-
-    for (let OrderTabButton of OrderTabButtons) {
-        
-        OrderTabButton.addEventListener("click", function(e) {
-            
-            if (!OrderTabButton.classList.contains('order-tab-button_active')) {
-
-                const activeOrderTabButtons = document.querySelectorAll('.order-tab-button_active');
-
-                if (activeOrderTabButtons.length > 0) {
-        
-                    for (let activeOrderTabButton of activeOrderTabButtons) {
-        
-                        activeOrderTabButton.classList.remove('order-tab-button_active');
-                        
-                    }
-        
-                }
-        
-                OrderTabButton.classList.add('order-tab-button_active');
-        
-            }
-
-        });
-
-    }
-
 }
 //-------------------------------------------------------------------------------------------
 
