@@ -37,13 +37,12 @@
     "gulp-webp-html-nosvg": "^1.0.2",
     "gulp-webpcss": "^1.1.1",
     "gulp-zip": "^5.1.0",
+    "imask": "^6.4.2",
+    "jquery": "^3.6.0",
     "sass": "^1.48.0",
     "swiper": "^8.1.5",
     "webp-converter": "2.2.3",
     "webpack": "^5.66.0",
     "webpack-stream": "^7.0.0"
-  },
-  "dependencies": {
-    "jquery": "^3.6.0"
   }
 }

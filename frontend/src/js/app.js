@@ -1,7 +1,10 @@
 import * as flsFunctions from "./modules/functions.js";
 import * as sliders from "./modules/sliders.js";
 import * as forms from "./modules/forms.js";
-
+import * as burgerModule from "./modules/burger.js";
+import * as popupModule from "./modules/popups.js";
+import * as spoilersModule from "./modules/spoilers.js";
+import * as masks from "./modules/masks.js";
 
 
 //----- Webp --------------------------------------------------------------------------------
@@ -39,187 +42,303 @@ sliders.workSlider();
 sliders.comparisonSlider();
 //------------------------------------------------------------------------------------------- 
 
-// ----- FORMS --------------------------------------------------------------------------------
-forms.startForms();
+// ----- FORMS ------------------------------------------------------------------------------
 
+forms.startForms();
+//-------------------------------------------------------------------------------------------
+
+// ----- Burger -----------------------------------------------------------------------------
+  
+const lockPaddingElements = document.querySelectorAll('.lock-padding');
+const burgerButton = document.querySelector('.burger');
+const burgerMenu = document.querySelector('.menu__body');
+
+burgerModule.burger(burgerButton, burgerMenu, lockPaddingElements);
 //-------------------------------------------------------------------------------------------
 
 // ----- Popups -----------------------------------------------------------------------------
 
-/* const popupLinks = document.querySelectorAll('.popup-link');
-const lockPaddingElements = document.querySelectorAll('.lock-padding');
-
-let unlock = true;
-
+const popupLinks = document.querySelectorAll('.popup-link');
+const popupCloseButtons = document.querySelectorAll('.close-popup');
 const timeout = 300;
 
-if (popupLinks.length > 0) {
-    for (let popupLink of popupLinks) {
-
-        popupLink.addEventListener("click", function(e) {
-            const popupName = popupLink.dataset.popup;
-            const currentPopup = document.querySelector(`[data-popup-name="${popupName}"]`);
-            popupOpen(currentPopup);
-        });
-
-    }
-}
-
-const popupCloseButtons = document.querySelectorAll('.close-popup');
-
-if (popupCloseButtons.length > 0) {
-    for (let popupCloseButton of popupCloseButtons) {
-
-        popupCloseButton.addEventListener('click', function(e) {
-            popupClose(popupCloseButton.closest('.popup'));
-        });
-
-    }
-}
-
-function popupOpen (currentPopup) {
-    if (currentPopup && unlock) {
-
-        const popupActive = document.querySelector('.popup.popup_opened');
-
-        if (popupActive) {
-            popupClose(popupActive, false);
-        } else {
-            bodyLock();
-        }
-
-        currentPopup.classList.add('popup_opened');
-
-        currentPopup.addEventListener("click", function(e) {
-            if (!e.target.closest('.popup__content')) {
-                popupClose(e.target.closest('.popup'));
-            }
-        });
-
-    }
-}
-
-function popupClose(popupActive, doUnlock = true) {
-    if (unlock) {
-
-        popupActive.classList.remove('popup_opened');
-
-        if (doUnlock) {
-            bodyUnLock();
-        }
-
-    }
-}
-
-function bodyLock() {
-    const lockPaddingValue = window.innerWidth - document.querySelector('.wrapper').offsetWidth + 'px';
-
-    document.body.classList.add('locked');
-    flsFunctions.LockUnlockPadding (lockPaddingValue, lockPaddingElements);
-
-    let scroller = document.createElement('div');
-    scroller.className = "scroller";
-    document.body.append(scroller);
-
-    unlock = false;
-
-    setTimeout(function() {
-        unlock = true;
-    }, timeout);
-}
-
-function bodyUnLock() {
-
-    setTimeout(function() {
-        
-        document.body.classList.remove('locked');
-        flsFunctions.LockUnlockPadding ('0px', lockPaddingElements);
-        if (document.querySelector('.scroller')) {
-            document.querySelector('.scroller').remove();
-        }
-
-    }, timeout);
-
-    unlock = false;
-    
-    setTimeout(function() {
-        unlock = true;
-    }, timeout);
-
-}
-
-document.addEventListener('keydown', function(e) {
-    if (e.which === 27) {
-        const popupActive = document.querySelector('.popup.popup_opened');
-        popupClose(popupActive);
-    }
-}); */
+popupModule.popups(popupLinks, popupCloseButtons, lockPaddingElements, timeout);
 //-------------------------------------------------------------------------------------------
 
+//----- Click scroll ------------------------------------------------------------------------
+/* 
+const scrollLinks = document.querySelectorAll('[data-goto]');
+const lockPaddingValue = window.innerWidth - document.querySelector('.wrapper').offsetWidth + 'px'; 
+let clickedPageButton;
 
+if (scrollLinks.length > 0) {
+    for (let scrollLink of scrollLinks) {
 
-window.onload = function() {
+        scrollLink.addEventListener("click", function(e) {
+            
+            const gotoBlock = document.querySelector(scrollLink.dataset.goto);
 
-// ----- Make active slider visible ---------------------------------------------------------
+            if (gotoBlock) {
 
-    if (document.querySelector('.slider-gallery_active')) {
-        document.querySelector('.slider-gallery_active').style.visibility = 'visible';
+                let gotoBlockValue;
+        
+                if (gotoBlock.classList.contains('characteristics-header') || 
+                    gotoBlock.classList.contains('complectation-header')) {
+        
+                    gotoBlockValue = document.querySelector('.equipment').getBoundingClientRect().top + 
+                                     pageYOffset - document.querySelector('.header__wrapper').offsetHeight - 20;
+        
+                } else {
+        
+                    gotoBlockValue = gotoBlock.getBoundingClientRect().top + 
+                                     pageYOffset - document.querySelector('.header__wrapper').offsetHeight - 20;
+        
+                }
+        
+        
+                if (burgerButton.classList.contains('burger_active')) {
+                    burgerButton.classList.toggle('burger_active');
+                    document.querySelector('.menu__body').classList.toggle('menu__body_active');
+                    document.body.classList.toggle('locked');
+        
+                    flsFunctions.LockUnlockPadding (lockPaddingValue, lockPaddingElements);
+                }
+        
+                if (gotoBlock.classList.contains('characteristics-header') && 
+                    !gotoBlock.classList.contains('equipment__header-content_active')) {
+        
+                    clickedPageButton = document.querySelector('.equipment-header__button[data-button=".characteristics"]');
+        
+                }
+        
+                if (gotoBlock.classList.contains('complectation-header') && 
+                    !gotoBlock.classList.contains('equipment__header-content_active')) {
+        
+                    clickedPageButton = document.querySelector('.equipment-header__button[data-button=".complectation"]');
+        
+                }
+        
+                const equipmentVideo = document.querySelector('.complectation');
+        
+                if (equipmentVideo && !gotoBlock.classList.contains('complectation-header')) {
+                    equipmentVideo.classList.add('equipment__body-content_locked');
+                }
+        
+                const aboutSection = document.querySelector('.about');
+        
+                if (!gotoBlock.classList.contains('about') && aboutSection) {
+                    aboutSection.classList.add('about_locked');
+                }
+        
+                window.scrollTo({
+                    top: gotoBlockValue,
+                    behavior: "smooth"
+                });
+        
+                if (equipmentVideo) {
+                    setTimeout(() => {
+                        equipmentVideo.classList.remove('equipment__body-content_locked');
+                    }, 1000);
+                }
+        
+                if (aboutSection) {
+                    setTimeout(() => {
+                        aboutSection.classList.remove('about_locked');
+                    }, 1000);
+                }
+        
+                e.preventDefault();
+            }
+
+        });
+
     }
+} */
+//-------------------------------------------------------------------------------------------
+
+//----- Slider tabs -------------------------------------------------------------------------
+
+const changeSliderTime = 300;
+const sliderTabButtons = document.querySelectorAll('.slider-tab-button');
+
+if (document.querySelector('.slider-gallery_active')) {
+    document.querySelector('.slider-gallery_active').style.visibility = 'visible';
+}
+
+if (sliderTabButtons.length > 0) {
+    for (let sliderTabButton of sliderTabButtons) {
+
+        let unlock = true;
+
+        sliderTabButton.addEventListener("click", function(e) {
+            
+            const activeTabButtons = document.querySelectorAll('.slider-tab-button_active');
+
+            if (!sliderTabButton.classList.contains('slider-tab-button_active') && unlock) {
+
+                unlock = false;
+
+                if (activeTabButtons.length > 0) {
+
+                    for (let activeTabButton of activeTabButtons) {
+        
+                        const activeTabButtonName = activeTabButton.dataset.code;
+                        const activeSlider = document.querySelector(`[data-tab="${activeTabButtonName}"]`);
+        
+                        activeTabButton.classList.remove('slider-tab-button_active');
+                        
+                        if (activeSlider) {
+                            
+                            activeSlider.classList.remove('slider-gallery_active');
+        
+                            setTimeout(() => {
+
+                                activeSlider.style.visibility = '';
+
+                            }, changeSliderTime);
+        
+                        }
+        
+                    }
+        
+                }
+        
+                const sliderTabButtonName = sliderTabButton.dataset.code;
+                const newActiveSlider = document.querySelector(`[data-tab="${sliderTabButtonName}"]`);
+        
+                if (newActiveSlider) {
+                    newActiveSlider.classList.add('slider-gallery_active');
+                    newActiveSlider.style.visibility = 'visible';
+                }
+        
+                sliderTabButton.classList.add('slider-tab-button_active');
+
+                setTimeout(() => {
+                    unlock = true;
+                }, changeSliderTime);
+        
+            }
+
+        });
+
+    }
+}
+//-------------------------------------------------------------------------------------------
+
+//----- Order tabs --------------------------------------------------------------------------
+
+const OrderTabButtons = document.querySelectorAll('.order-tab-button');
+
+if (OrderTabButtons.length > 0) {
+
+    for (let OrderTabButton of OrderTabButtons) {
+        
+        OrderTabButton.addEventListener("click", function(e) {
+            
+            if (!OrderTabButton.classList.contains('order-tab-button_active')) {
+
+                const activeOrderTabButtons = document.querySelectorAll('.order-tab-button_active');
+
+                if (activeOrderTabButtons.length > 0) {
+        
+                    for (let activeOrderTabButton of activeOrderTabButtons) {
+        
+                        activeOrderTabButton.classList.remove('order-tab-button_active');
+                        
+                    }
+        
+                }
+        
+                OrderTabButton.classList.add('order-tab-button_active');
+        
+            }
+
+        });
+
+    }
+
+}
+//-------------------------------------------------------------------------------------------
+
+//----- Spoilers ----------------------------------------------------------------------------
+
+const spoilerClassName = 'spoiler';
+const spoilerBlockClassName = 'spoiler-block';
+const hideTime = 300;
+
+spoilersModule.spoilers(spoilerClassName, spoilerBlockClassName, hideTime);
+//-------------------------------------------------------------------------------------------
+
+// ----- Phone mask -------------------------------------------------------------------------
+
+const phoneInputs = document.querySelectorAll('.jsPhone');
+
+masks.phoneMask(phoneInputs);
 //------------------------------------------------------------------------------------------- 
+
+// ----- Promo mask -------------------------------------------------------------------------
+
+//const promoInputs = document.querySelectorAll('.jsPromoCodeInput');
+
+//masks.promoMask(promoInputs);
+//------------------------------------------------------------------------------------------- 
+
+
+
 
 // ----- Make active equipment page visible -------------------------------------------------
 
-    const startEquipmentTitle = document.querySelector('.equipment__header-content_active');
-    const startEquipmentBodyContent = document.querySelector('.equipment__body-content_active');
+const startEquipmentTitle = document.querySelector('.equipment__header-content_active');
+const startEquipmentBodyContent = document.querySelector('.equipment__body-content_active');
 
-    if (startEquipmentTitle) {
+if (startEquipmentTitle) {
 
-        const startTitleHeight = startEquipmentTitle.offsetHeight + 'px';
-                
+    const startTitleHeight = startEquipmentTitle.offsetHeight + 'px';
+            
+    if (document.querySelector('.equipment__header')) {
+        document.querySelector('.equipment__header').style.height = startTitleHeight;
+    }
+
+    startEquipmentTitle.style.visibility = 'visible';
+}
+
+if ( startEquipmentBodyContent) {
+
+    const startEquipmentBodyHeight = startEquipmentBodyContent.offsetHeight + 'px';
+            
+    if (document.querySelector('.equipment__body')) {
+        document.querySelector('.equipment__body').style.height = startEquipmentBodyHeight;
+    }
+
+    startEquipmentBodyContent.style.visibility = 'visible';
+}
+
+window.addEventListener('resize', function() {
+
+    const activeEquipmentTitle = document.querySelector('.equipment__header-content_active');
+    const activeEquipmentBodyContent = document.querySelector('.equipment__body-content_active');
+    
+    if (activeEquipmentTitle) {
+
+        const activeEquipmentTitleHeight = activeEquipmentTitle.offsetHeight + 'px';
+
         if (document.querySelector('.equipment__header')) {
-            document.querySelector('.equipment__header').style.height = startTitleHeight;
+            document.querySelector('.equipment__header').style.height = activeEquipmentTitleHeight;
         }
 
-        startEquipmentTitle.style.visibility = 'visible';
     }
 
-    if ( startEquipmentBodyContent) {
+    if (activeEquipmentBodyContent) {
 
-        const startEquipmentBodyHeight = startEquipmentBodyContent.offsetHeight + 'px';
-                
+        const activeEquipmentBodyHeight = activeEquipmentBodyContent.offsetHeight + 'px';
+
         if (document.querySelector('.equipment__body')) {
-            document.querySelector('.equipment__body').style.height = startEquipmentBodyHeight;
+            document.querySelector('.equipment__body').style.height = activeEquipmentBodyHeight;
         }
 
-        startEquipmentBodyContent.style.visibility = 'visible';
     }
 
-    window.addEventListener('resize', function() {
-
-        const activeEquipmentTitle = document.querySelector('.equipment__header-content_active');
-        const activeEquipmentBodyContent = document.querySelector('.equipment__body-content_active');
-        
-        if (activeEquipmentTitle) {
-
-            const activeEquipmentTitleHeight = activeEquipmentTitle.offsetHeight + 'px';
-
-            if (document.querySelector('.equipment__header')) {
-                document.querySelector('.equipment__header').style.height = activeEquipmentTitleHeight;
-            }
-
-        }
-
-        if (activeEquipmentBodyContent) {
-
-            const activeEquipmentBodyHeight = activeEquipmentBodyContent.offsetHeight + 'px';
-
-            if (document.querySelector('.equipment__body')) {
-                document.querySelector('.equipment__body').style.height = activeEquipmentBodyHeight;
-            }
-
-        }
-
-    });
+});
 //-------------------------------------------------------------------------------------------    
 
     document.addEventListener("click", docActions);
@@ -231,7 +350,7 @@ window.onload = function() {
 
 // ----- Burger -----------------------------------------------------------------------------
 
-        const burgerButton = document.querySelector('.burger');
+        /* const burgerButton = document.querySelector('.burger');
 
         if (targetElement.classList.contains('burger')) {
             burgerButton.classList.toggle('burger_active');
@@ -240,7 +359,7 @@ window.onload = function() {
 
             flsFunctions.LockUnlockPadding (lockPaddingValue, lockPaddingElements);
 
-        }
+        } */
 //-------------------------------------------------------------------------------------------
 
 //----- Click scroll ------------------------------------------------------------------------
@@ -323,12 +442,11 @@ window.onload = function() {
                 e.preventDefault();
             }
         }
-
 //-------------------------------------------------------------------------------------------
 
 //----- Spoilers ----------------------------------------------------------------------------
         
-        const mediaQueryHover = window.matchMedia('(any-hover: none)');
+        /* const mediaQueryHover = window.matchMedia('(any-hover: none)');
         const hideTime = 300;
 
         if (mediaQueryHover.matches) {
@@ -363,11 +481,11 @@ window.onload = function() {
 
                 }
             }
-        }
+        } */
 //-------------------------------------------------------------------------------------------
 
 //----- Slider tabs -------------------------------------------------------------------------
-
+/* 
         const changeSliderTime = 300;
         const clickedTabButton = targetElement.closest('.slider-tab-button');
         const activeTabButtons = document.querySelectorAll('.slider-tab-button_active');
@@ -411,7 +529,7 @@ window.onload = function() {
 
             }
 
-        }
+        } */
 //-------------------------------------------------------------------------------------------
 
 //----- Equipment pages ---------------------------------------------------------------------
@@ -481,7 +599,7 @@ window.onload = function() {
 //-------------------------------------------------------------------------------------------
 
 //----- Order tabs --------------------------------------------------------------------------
-
+/* 
         const clickedOrderTabButton = targetElement.closest('.order-tab-button');
         const activeOrderTabButtons = document.querySelectorAll('.order-tab-button_active');
 
@@ -503,11 +621,11 @@ window.onload = function() {
 
             }
 
-        }
+        } */
 //-------------------------------------------------------------------------------------------
 
 // ----- Popups -----------------------------------------------------------------------------
-
+/* 
         const popupLink = targetElement.closest('.popup-link');
         const popupCloseButton = targetElement.closest('.close-popup');
         const timeout = 300;
@@ -655,116 +773,114 @@ window.onload = function() {
             }, timeout);
 
         }
-
+ */
 //-------------------------------------------------------------------------------------------
 
     }
 
 //----- Header scroll -----------------------------------------------------------------------
         
-    const headerElement = document.querySelector('.header');
+const headerElement = document.querySelector('.header');
 
-    const callback = function(entries, observer) {
-        if (entries[0].isIntersecting) {
-            headerElement.classList.remove('header_scroll');
-        } else {
-            headerElement.classList.add('header_scroll');
-        }
-    };
+const callback = function(entries, observer) {
+    if (entries[0].isIntersecting) {
+        headerElement.classList.remove('header_scroll');
+    } else {
+        headerElement.classList.add('header_scroll');
+    }
+};
 
-    const headerObserver = new IntersectionObserver(callback);
-    headerObserver.observe(headerElement);
+const headerObserver = new IntersectionObserver(callback);
+headerObserver.observe(headerElement);
 //-------------------------------------------------------------------------------------------
 
 //----- Auto scroll -------------------------------------------------------------------------
 
-    document.addEventListener("scroll", function(e) {
-        
-        const equipmentSection = document.querySelector('.equipment');
+document.addEventListener("scroll", function(e) {
+    
+    const equipmentSection = document.querySelector('.equipment');
 
-        if (equipmentSection) {
+    if (equipmentSection) {
 
-            const equipmentScrollSpace = document.documentElement.clientHeight - 
-                                         equipmentSection.getBoundingClientRect().top;
+        const equipmentScrollSpace = document.documentElement.clientHeight - 
+                                        equipmentSection.getBoundingClientRect().top;
 
-            if ((equipmentScrollSpace > 0) && 
-                (equipmentScrollSpace < equipmentSection.offsetHeight + 
-                document.documentElement.clientHeight) ) {
+        if ((equipmentScrollSpace > 0) && 
+            (equipmentScrollSpace < equipmentSection.offsetHeight + 
+            document.documentElement.clientHeight) ) {
 
-                const equipmentVideo = document.querySelector('.complectation');
+            const equipmentVideo = document.querySelector('.complectation');
 
-                if (equipmentVideo) {
+            if (equipmentVideo) {
 
-                    if (equipmentVideo.classList.contains('equipment__body-content_active') && 
-                        !equipmentVideo.classList.contains('equipment__body-content_no-play') &&
-                        !equipmentVideo.classList.contains('equipment__body-content_locked')) {
-                        
-                        const gotoVideoValue = equipmentSection.getBoundingClientRect().top + 
-                                               pageYOffset - document.querySelector('.header__wrapper').offsetHeight - 20;
-
-                        window.scrollTo({
-                            top: gotoVideoValue,
-                            behavior: "smooth"
-                        });
-
-                        document.querySelector('.complectation__video').play();
-                        equipmentVideo.classList.add('equipment__body-content_no-play');
-
-                    }
-
-                }
-                
-            }
-
-        }
-
-        const aboutSection = document.querySelector('.about');
-
-        if (aboutSection) {
-
-            const aboutScrollSpace = document.documentElement.clientHeight - 
-                                     aboutSection.getBoundingClientRect().top;
-
-            if ((aboutScrollSpace > 0) && 
-                (aboutScrollSpace < aboutSection.offsetHeight + 
-                document.documentElement.clientHeight) ) {
-
-                if (!aboutSection.classList.contains('about_shown') &&
-                    !aboutSection.classList.contains('about_locked')) {
-
-                    const gotoAboutSectionValue = aboutSection.getBoundingClientRect().top + 
-                                                  pageYOffset - document.querySelector('.header__wrapper').offsetHeight - 20;
+                if (equipmentVideo.classList.contains('equipment__body-content_active') && 
+                    !equipmentVideo.classList.contains('equipment__body-content_no-play') &&
+                    !equipmentVideo.classList.contains('equipment__body-content_locked')) {
+                    
+                    const gotoVideoValue = equipmentVideo.getBoundingClientRect().top + 
+                                            pageYOffset - document.querySelector('.header__wrapper').offsetHeight;
 
                     window.scrollTo({
-                        top: gotoAboutSectionValue,
+                        top: gotoVideoValue,
                         behavior: "smooth"
                     });
 
-                    aboutSection.classList.add('about_shown');
+                    document.querySelector('.complectation__video').play();
+                    equipmentVideo.classList.add('equipment__body-content_no-play');
 
                 }
-                
-            }
 
+            }
+            
         }
 
-    });
+    }
+
+    const aboutSection = document.querySelector('.about');
+
+    if (aboutSection) {
+
+        const aboutScrollSpace = document.documentElement.clientHeight - 
+                                    aboutSection.getBoundingClientRect().top;
+
+        if ((aboutScrollSpace > 0) && 
+            (aboutScrollSpace < aboutSection.offsetHeight + 
+            document.documentElement.clientHeight) ) {
+
+            if (!aboutSection.classList.contains('about_shown') &&
+                !aboutSection.classList.contains('about_locked')) {
+
+                const gotoAboutSectionValue = aboutSection.getBoundingClientRect().top + 
+                                                pageYOffset - document.querySelector('.header__wrapper').offsetHeight - 20;
+
+                window.scrollTo({
+                    top: gotoAboutSectionValue,
+                    behavior: "smooth"
+                });
+
+                aboutSection.classList.add('about_shown');
+
+            }
+            
+        }
+
+    }
+
+});
 //-------------------------------------------------------------------------------------------
 
 //----- Start animation ------------------------------------------------------------
 
-    const complectationBody = document.querySelector('.complectation');
-    const complectationVideo = document.querySelector('.complectation__video');
+const complectationBody = document.querySelector('.complectation');
+const complectationVideo = document.querySelector('.complectation__video');
 
-    if (complectationBody && complectationVideo) {
+if (complectationBody && complectationVideo) {
 
-        complectationVideo.addEventListener("ended", function() {
-            
-            complectationBody.classList.add('complectation_start-animation');
+    complectationVideo.addEventListener("ended", function() {
+        
+        complectationBody.classList.add('complectation_start-animation');
 
-        }, false);
+    }, false);
 
-    }
+}
 //-------------------------------------------------------------------------------------------
-
-};

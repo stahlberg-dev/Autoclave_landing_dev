@@ -3,7 +3,7 @@ import { getPath } from "./gulp/config/path.js";
 import { plugins } from "./gulp/config/plugins.js";
 
 let isDev = !process.argv.includes('--build');
-const path = getPath(isDev)
+const path = getPath(isDev);
 
 global.app = {
     isBuild: ! isDev,

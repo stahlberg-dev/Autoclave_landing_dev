@@ -572,38 +572,61 @@
             height: 100%;
             border-radius: 50%;
             border: 3px solid $primaryColor;
-            box-shadow: 0px 0px 6px rgba(255, 187, 107, 0.5),
-                    inset 0px 0px 6px rgba(255, 187, 107, 0.5);
             background-color: transparent;
             opacity: 0; 
+            transform: scale(0.1, 0.1);
 
             .first-slide__item:nth-child(1) & {
-                transition: opacity 0.3s ease 1s;
+                animation-delay: 1s;
             }
 
             .first-slide__item:nth-child(2) & {
-                transition: opacity 0.3s ease 1.2s;
+                animation-delay: 1.2s;
             }
 
             .first-slide__item:nth-child(3) & {
-                transition: opacity 0.3s ease 1.4s;
+                animation-delay: 1.4s;
             }
 
             .first-slide__item:nth-child(4) & {
-                transition: opacity 0.3s ease 1.6s;
+                animation-delay: 1.6s;
             }
 
             .first-slide__item:nth-child(5) & {
-                transition: opacity 0.3s ease 1.8s;
+                animation-delay: 1.8s;
             }
 
             .first-slide__item:nth-child(6) & {
-                transition: opacity 0.3s ease 2s;
+                animation-delay: 2s;
             }
 
             .about_shown .swiper-slide-active &,
             .no-animation & {
-                opacity: 1;
+                animation-name: circles;
+                animation-duration: 1s;
+                animation-timing-function: ease-in-out;
+                animation-iteration-count: 1;
+                animation-fill-mode: forwards;
+            }
+
+            @keyframes circles {
+                from {
+                    transform: scale(0.1, 0.1);
+                    opacity: 0;
+                    background: radial-gradient(transparent, $primaryColor, transparent);
+                }
+                75% {
+                    transform: scale(1.2, 1.2);
+                    opacity: 1;
+                    background: radial-gradient(transparent, transparent, $primaryColor);
+                }
+                to {
+                    transform: scale(1, 1);
+                    opacity: 1;
+                    box-shadow: 0px 0px 6px rgba(255, 187, 107, 0.5),
+                                inset 0px 0px 6px rgba(255, 187, 107, 0.5);
+                    background: transparent;
+                }
             }
         }
     }
@@ -619,7 +642,7 @@
         .no-animation & {
             animation-name: icons;
             animation-duration: 0.7s;
-            animation-delay: 2.3s;
+            animation-delay: 2.7s;
             animation-timing-function: ease-in-out;
             animation-iteration-count: 1;
             animation-fill-mode: forwards;
@@ -639,7 +662,7 @@
                 transform: scale(1, 1);
                 opacity: 1;
             }
-          }
+        }
     }
 
     &__text {
@@ -653,33 +676,33 @@
         }
 
         .first-slide__item:nth-child(1) & {
-            transition: opacity 0.3s ease 1s,
-                        transform 0.3s ease 1s;
+            transition: opacity 0.3s ease 1.3s,
+                        transform 0.3s ease 1.3s;
         }
 
         .first-slide__item:nth-child(2) & {
-            transition: opacity 0.3s ease 1.2s, 
-                        transform 0.3s ease 1.2s;
+            transition: opacity 0.3s ease 1.5s, 
+                        transform 0.3s ease 1.5s;
         }
 
         .first-slide__item:nth-child(3) & {
-            transition: opacity 0.3s ease 1.4s, 
-                        transform 0.3s ease 1.4s;
+            transition: opacity 0.3s ease 1.7s, 
+                        transform 0.3s ease 1.7s;
         }
 
         .first-slide__item:nth-child(4) & {
-            transition: opacity 0.3s ease 1.6s, 
-                        transform 0.3s ease 1.6s;
+            transition: opacity 0.3s ease 1.9s, 
+                        transform 0.3s ease 1.9s;
         }
 
         .first-slide__item:nth-child(5) & {
-            transition: opacity 0.3s ease 1.8s, 
-                        transform 0.3s ease 1.8s;
+            transition: opacity 0.3s ease 2.1s, 
+                        transform 0.3s ease 2.1s;
         }
 
         .first-slide__item:nth-child(6) & {
-            transition: opacity 0.3s ease 2s, 
-                        transform 0.3s ease 2s;
+            transition: opacity 0.3s ease 2.3s, 
+                        transform 0.3s ease 2.3s;
         }
 
         .about_shown .swiper-slide-active &,
@@ -711,7 +734,7 @@
             .first-slide__item:nth-child(4) &,
             .first-slide__item:nth-child(5) &,
             .first-slide__item:nth-child(6) & {
-                transition: opacity 0.5s ease 2.8s;
+                transition: opacity 0.5s ease 3.3s;
             }
 
             .about_shown .swiper-slide-active &,

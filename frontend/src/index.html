@@ -1493,10 +1493,23 @@
                             </div>
                         </div>
                         <form class="order__form jsOrderForm">
-                            <input type="text" class="order__input-name jsName" name="name" placeholder="Имя" required>
-                            <input type="text" class="order__input-phone jsPhone" name="phone" placeholder="Телефон" required>
+                            <input type="text" 
+                                   class="order__input-name jsName" 
+                                   name="name" 
+                                   placeholder="Имя" 
+                                   minlength="1"
+                                   maxlength="50"
+                                   required>
+                            <input type="text" 
+                                   class="order__input-phone jsPhone" 
+                                   name="phone" 
+                                   placeholder="Телефон" 
+                                   required>
                             <div class="order__promo jsPromoCode">
-                                <input type="text" class="order__input-promo jsPromoCodeInput" name="promo" placeholder="Промокод">
+                                <input type="text" 
+                                       class="order__input-promo jsPromoCodeInput" 
+                                       name="promo" 
+                                       placeholder="Промокод">
                                 <button type="button" class="order__promo-button button button_text_orange jsPromoCodeCheckButton">
                                     <span>Применить</span>
                                 </button>
