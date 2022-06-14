@@ -1,5 +1,6 @@
 import $ from "jquery";
 import shop from "./shop-api.js";
+import * as popups from "./popups.js";
 
 window.$ = $;
 // console.log(shop.cart.productCode);
@@ -146,7 +147,8 @@ function initMakeOrder() {
                 if (response.error) {
                     alert(response.error);
                 } else {
-                    alert(`Ваш заказ принят. Номер заказа ${response.orderNumber}`);
+                    //alert(`Ваш заказ принят. Номер заказа ${response.orderNumber}`);
+                    popups.popupOpen('checkout');
                 }
             });
         });
@@ -164,7 +166,7 @@ function initLeadForm() {
             const data = new FormData(form);
 
             shop.lead(data, (response) => {
-                alert('Заявка отправлена');
+                popups.popupOpen('thanks');
             });
         });
     });

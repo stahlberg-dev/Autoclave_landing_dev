@@ -1,9 +1,13 @@
 import * as flsFunctions from "./functions.js";
 
+let unlock = true;
+let lockPaddingElements
+let timeout;
 
-export function popups(popupLinks, popupCloseButtons, lockPaddingElements, timeout) {
+export function start(popupLinks, popupCloseButtons, _lockPaddingElements, _timeout) {
 
-    let unlock = true;
+    lockPaddingElements = _lockPaddingElements;
+    timeout = _timeout;
 
     if (popupLinks.length > 0) {
         for (let popupLink of popupLinks) {
@@ -26,140 +30,148 @@ export function popups(popupLinks, popupCloseButtons, lockPaddingElements, timeo
 
         }
     }
+}
 
-    function popupOpen (currentPopup) {
-        if (currentPopup && unlock) {
+export function getPopup (name) {
+    return document.querySelector(`[data-popup-name="${name}"]`);
+}
 
-            const popupActive = document.querySelector('.popup_opened');
+export function popupOpen (currentPopup) {
 
-            if (popupActive) {
-                popupClose(popupActive, false);
-            } else {
-                bodyLock();
-            }
+    if (typeof currentPopup === 'string') {
+        currentPopup = getPopup(currentPopup);
+    }
 
-            currentPopup.classList.add('popup_opened');
+    if (currentPopup && unlock) {
 
-            currentPopup.addEventListener("click", pastClickHandler);
+        const popupActive = document.querySelector('.popup_opened');
 
-            if (currentPopup.dataset.popupName == 'perfectionVideo' && 
-                !currentPopup.querySelector('video')) {
+        if (popupActive) {
+            popupClose(popupActive, false);
+        } else {
+            bodyLock();
+        }
 
-                    const mp4Source = document.createElement('source');
-                    mp4Source.setAttribute('src', "video/work.mp4");
-                    mp4Source.setAttribute('type', "video/mp4");
+        currentPopup.classList.add('popup_opened');
 
-                    const ogvSource = document.createElement('source');
-                    ogvSource.setAttribute('src', "video/work.ogv");
-                    ogvSource.setAttribute('type', "video/ogg");
+        currentPopup.addEventListener("click", pastClickHandler);
 
-                    const videoFrame = document.createElement('video');
-                    videoFrame.className = "perfection-popup__video";
-                    videoFrame.setAttribute('autoplay', 'autoplay');
-                    videoFrame.setAttribute('controls', 'controls');
+        if (currentPopup.dataset.popupName == 'perfectionVideo' &&
+            !currentPopup.querySelector('video')) {
 
-                    videoFrame.append(mp4Source);
-                    videoFrame.append(ogvSource);
-                    currentPopup.querySelector('.popup__content').append(videoFrame);
+            const mp4Source = document.createElement('source');
+            mp4Source.setAttribute('src', "video/work.mp4");
+            mp4Source.setAttribute('type', "video/mp4");
 
-            }
+            const ogvSource = document.createElement('source');
+            ogvSource.setAttribute('src', "video/work.ogv");
+            ogvSource.setAttribute('type', "video/ogg");
 
-            if (currentPopup.dataset.popupName == 'workVideo' && 
-                !currentPopup.querySelector('video')) {
+            const videoFrame = document.createElement('video');
+            videoFrame.className = "perfection-popup__video";
+            videoFrame.setAttribute('autoplay', 'autoplay');
+            videoFrame.setAttribute('controls', 'controls');
 
-                const mp4Source = document.createElement('source');
-                mp4Source.setAttribute('src', "video/work.mp4");
-                mp4Source.setAttribute('type', "video/mp4");
-
-                const ogvSource = document.createElement('source');
-                ogvSource.setAttribute('src', "video/work.ogv");
-                ogvSource.setAttribute('type', "video/ogg");
-
-                const videoFrame = document.createElement('video');
-                videoFrame.className = "work-popup__video";
-                videoFrame.setAttribute('autoplay', 'autoplay');
-                videoFrame.setAttribute('controls', 'controls');
-
-                videoFrame.append(mp4Source);
-                videoFrame.append(ogvSource);
-                currentPopup.querySelector('.popup__content').append(videoFrame); 
-
-            }
+            videoFrame.append(mp4Source);
+            videoFrame.append(ogvSource);
+            currentPopup.querySelector('.popup__content').append(videoFrame);
 
         }
-    }
 
-    function popupClose(popupActive, doUnlock = true) {
-        if (unlock) {
+        if (currentPopup.dataset.popupName == 'workVideo' &&
+            !currentPopup.querySelector('video')) {
 
-            const videoFrame = popupActive.querySelector('video');
+            const mp4Source = document.createElement('source');
+            mp4Source.setAttribute('src', "video/work.mp4");
+            mp4Source.setAttribute('type', "video/mp4");
 
-            if (videoFrame) {
-                setTimeout(() => {
-                    videoFrame.pause();
-                }, timeout);
-            }
+            const ogvSource = document.createElement('source');
+            ogvSource.setAttribute('src', "video/work.ogv");
+            ogvSource.setAttribute('type', "video/ogg");
 
-            if (popupActive.dataset.popupName == 'consultation') {
+            const videoFrame = document.createElement('video');
+            videoFrame.className = "work-popup__video";
+            videoFrame.setAttribute('autoplay', 'autoplay');
+            videoFrame.setAttribute('controls', 'controls');
 
-                setTimeout(() => {
-                    popupActive.querySelectorAll('input[type=text]').forEach(element => element.value = '');
-                }, timeout);
-
-            }
-
-            popupActive.removeEventListener("click", pastClickHandler);
-            popupActive.classList.remove('popup_opened');
-
-            if (doUnlock) {
-                bodyUnLock();
-            }
+            videoFrame.append(mp4Source);
+            videoFrame.append(ogvSource);
+            currentPopup.querySelector('.popup__content').append(videoFrame);
 
         }
-    }
 
-    function pastClickHandler(e) {
-        if (!e.target.closest('.popup__content')) {
-            popupClose(e.target.closest('.popup'));
+    }
+}
+
+export function popupClose(popupActive, doUnlock = true) {
+    if (unlock) {
+
+        const videoFrame = popupActive.querySelector('video');
+
+        if (videoFrame) {
+            setTimeout(() => {
+                videoFrame.pause();
+            }, timeout);
         }
-    }
 
-    function bodyLock() {
-        const lockPaddingValue = window.innerWidth - document.querySelector('.wrapper').offsetWidth + 'px';
+        if (popupActive.dataset.popupName == 'consultation') {
 
-        document.body.classList.add('locked');
-        flsFunctions.LockUnlockPadding (lockPaddingValue, lockPaddingElements);
+            setTimeout(() => {
+                popupActive.querySelectorAll('input[type=text]').forEach(element => element.value = '');
+            }, timeout);
 
-        let scroller = document.createElement('div');
-        scroller.className = "scroller";
-        document.body.append(scroller);
+        }
 
-        unlock = false;
+        popupActive.removeEventListener("click", pastClickHandler);
+        popupActive.classList.remove('popup_opened');
 
-        setTimeout(function() {
-            unlock = true;
-        }, timeout);
-    }
-
-    function bodyUnLock() {
-
-        setTimeout(function() {
-            
-            document.body.classList.remove('locked');
-            flsFunctions.LockUnlockPadding ('0px', lockPaddingElements);
-
-            if (document.querySelector('.scroller')) {
-                document.querySelector('.scroller').remove();
-            }
-
-        }, timeout);
-
-        unlock = false;
-        
-        setTimeout(function() {
-            unlock = true;
-        }, timeout);
+        if (doUnlock) {
+            bodyUnLock();
+        }
 
     }
+}
+
+function pastClickHandler(e) {
+    if (!e.target.closest('.popup__content')) {
+        popupClose(e.target.closest('.popup'));
+    }
+}
+
+function bodyLock() {
+    const lockPaddingValue = window.innerWidth - document.querySelector('.wrapper').offsetWidth + 'px';
+
+    document.body.classList.add('locked');
+    flsFunctions.LockUnlockPadding (lockPaddingValue, lockPaddingElements);
+
+    let scroller = document.createElement('div');
+    scroller.className = "scroller";
+    document.body.append(scroller);
+
+    unlock = false;
+
+    setTimeout(function() {
+        unlock = true;
+    }, timeout);
+}
+
+function bodyUnLock() {
+
+    setTimeout(function() {
+
+        document.body.classList.remove('locked');
+        flsFunctions.LockUnlockPadding ('0px', lockPaddingElements);
+
+        if (document.querySelector('.scroller')) {
+            document.querySelector('.scroller').remove();
+        }
+
+    }, timeout);
+
+    unlock = false;
+
+    setTimeout(function() {
+        unlock = true;
+    }, timeout);
 
 }

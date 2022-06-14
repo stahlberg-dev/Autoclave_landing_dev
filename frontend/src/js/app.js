@@ -2,7 +2,7 @@ import * as flsFunctions from "./modules/functions.js";
 import * as sliders from "./modules/sliders.js";
 import * as forms from "./modules/forms.js";
 import * as burgerModule from "./modules/burger.js";
-import * as popupModule from "./modules/popups.js";
+import * as popups from "./modules/popups.js";
 import * as spoilersModule from "./modules/spoilers.js";
 import * as masks from "./modules/masks.js";
 
@@ -62,7 +62,7 @@ const popupLinks = document.querySelectorAll('.popup-link');
 const popupCloseButtons = document.querySelectorAll('.close-popup');
 const timeout = 300;
 
-popupModule.popups(popupLinks, popupCloseButtons, lockPaddingElements, timeout);
+popups.start(popupLinks, popupCloseButtons, lockPaddingElements, timeout);
 //-------------------------------------------------------------------------------------------
 
 //----- Click scroll ------------------------------------------------------------------------
