@@ -749,9 +749,10 @@
                                     <div class="model__text-parameter-value">7&nbsp;шт.</div>
                                 </div>
                             </div>
-                            <a data-goto=".order" 
+                            <a data-goto=".order"
+                                data-code="av18"
                                 href="#!" 
-                                class="model__button button button_text_white arrow-button">
+                                class="model__button button button_text_white arrow-button jsSelectProduct">
                                 <div class="model__button-text arrow-button__text">Заказать</div>
                                 <div class="model__button-icon arrow-button__arrow-icon right-arrow"></div>
                             </a>
@@ -788,9 +789,10 @@
                                     <div class="model__text-parameter-value">14&nbsp;шт.</div>
                                 </div>
                             </div>
-                            <a data-goto=".order" 
-                                href="#!" 
-                                class="model__button button button_text_white arrow-button">
+                            <a data-goto=".order"
+                                data-code="av26"
+                                href="#!"
+                                class="model__button button button_text_white arrow-button jsSelectProduct">
                                 <div class="model__button-text arrow-button__text">Заказать</div>
                                 <div class="model__button-icon arrow-button__arrow-icon right-arrow"></div>
                             </a>
@@ -827,9 +829,10 @@
                                     <div class="model__text-parameter-value">21&nbsp;шт.</div>
                                 </div>
                             </div>
-                            <a data-goto=".order" 
-                                href="#!" 
-                                class="model__button button button_text_white arrow-button">
+                            <a data-goto=".order"
+                                data-code="av35"
+                                href="#!"
+                                class="model__button button button_text_white arrow-button jsSelectProduct">
                                 <div class="model__button-text arrow-button__text">Заказать</div>
                                 <div class="model__button-icon arrow-button__arrow-icon right-arrow"></div>
                             </a>
@@ -1492,7 +1495,7 @@
                                 <div class="liter-buttons__button-text">35&nbsp;л<span>итров</span></div>
                             </div>
                         </div>
-                        <form class="order__form jsOrderForm">
+                        <form class="order__form jsOrderForm jsPromoCode">
                             <input type="text" 
                                    class="order__input-name jsName" 
                                    name="name" 
@@ -1505,7 +1508,7 @@
                                    name="phone" 
                                    placeholder="Телефон" 
                                    required>
-                            <div class="order__promo jsPromoCode">
+                            <div class="order__promo">
                                 <input type="text" 
                                        class="order__input-promo jsPromoCodeInput" 
                                        name="promo" 
@@ -1517,6 +1520,7 @@
                                     <span>Отменить</span>
                                 </button>
                             </div>
+                            <div class="jsPromoCodeInfo"></div>
                             <button type="button" data-popup="checkout"
                                     class="order__button button button_text_white popup-link jsOrderFormSubmit">
                                 <span>Заказать</span>

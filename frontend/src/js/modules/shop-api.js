@@ -68,33 +68,26 @@ const shop = {
     async ajaxCall(url, data) {
         let options = {
             method: 'POST', // *GET, POST, PUT, DELETE, etc.
-            mode: 'no-cors', // no-cors, *cors, same-origin
+            mode: 'cors', // no-cors, *cors, same-origin
             cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
-            credentials: 'omit', // include, *same-origin, omit
-            headers: {
-                'Content-Type': 'application/json'
-                // 'Content-Type': 'application/x-www-form-urlencoded',
-            },
-            // redirect: 'follow', // manual, *follow, error
-            // referrerPolicy: 'no-referrer', // no-referrer, *client
-            //body: JSON.stringify(data) // body data type must match "Content-Type" header
+            credentials: 'same-origin', // include, *same-origin, omit
+            redirect: 'follow', // manual, *follow, error
+            referrerPolicy: 'no-referrer', // no-referrer, *client
+            headers: {},
         };
 
         if (typeof (data) === 'object') {
             if (data instanceof FormData) {
                 // FormData
                 options.body = data;
-                options.headers['Content-Type'] = 'application/x-www-form-urlencoded';
+                //options.headers['Content-Type'] = 'application/x-www-form-urlencoded';
             } else {
-                options.data = JSON.stringify(data);
+                options.body = JSON.stringify(data);
                 options.headers['Content-Type'] = 'application/json';
             }
         }
-        console.log(options);
 
         const response = await fetch(url, options);
-
-        //console.log('text', await response.text());
 
         return await response.json();
     },
@@ -105,12 +98,8 @@ const shop = {
         } else {
             data.action = action;
         }
-        let url = '/api/';
-        if ((/localhost/).test(location.host)) {
-            url = 'http://autoclave.local' + url;
-        }
 
-        return this.ajaxCall(url, data)
+        return this.ajaxCall('/api/', data)
     },
 
     checkPromoCode(code, cb) {
