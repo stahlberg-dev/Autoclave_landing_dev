@@ -4089,21 +4089,18 @@
         align-items: center;
         gap: 10px;
         width: 100%;
-        margin-bottom: 25px;
 
         @media (min-width: $smallMobile) {
             @include adaptiveValue("gap", 10px, 20px, $smallMobile, $mobile);
-            @include adaptiveValue("margin-bottom", 20px, 40px, $smallMobile, $mobile);
         }
 
         @media (min-width: $mobile) {
             @include adaptiveValue("gap", 10px, 20px, $mobile, $maxContainerWidth);
-            @include adaptiveValue("margin-bottom", 20px, 40px, $mobile, $maxContainerWidth);
         }
     }
 
     &__input-promo {
-        flex: 1 1 auto;
+        flex: 0 0 auto;
         width: 50%;
         @include adaptiveValue("height", 40px, 50px, $smallMobile, $maxContainerWidth);
         @include adaptiveValue("padding-top", 10px, 15px, $smallMobile, $maxContainerWidth);
@@ -4116,9 +4113,9 @@
         font-weight: 200;
         color: $primaryColor;
 
-        @media (min-width: $smallMobile) {
+        /* @media (min-width: $smallMobile) {
             width: 60%;
-        }
+        } */
 
         &::placeholder {
             color: $primaryColor;
@@ -4131,7 +4128,7 @@
     }
 
     &__promo-button {
-        flex: 0 0 auto;
+        flex: 0 1 auto;
         width: 50%;
         @include adaptiveValue("height", 40px, 50px, $smallMobile, $maxContainerWidth);
         line-height: 22px;
@@ -4145,6 +4142,33 @@
 
     &__promo-del-button {
         display: none;
+        flex: 0 1 auto;
+        width: 50%;
+        @include adaptiveValue("height", 40px, 50px, $smallMobile, $maxContainerWidth);
+        line-height: 22px;
+        font-size: 18px;
+        font-weight: 400;
+
+        @media (min-width: $smallMobile) {
+            width: 50%;
+        }
+    }
+
+    &__promo-info {
+        display: flex;
+        justify-content: flex-start;
+        align-items: flex-start;
+        width: 100%;
+        flex-grow: 0;
+        flex-shrink: 0;
+        @include adaptiveValue("flex-basis", 40px, 50px, $smallMobile, $maxContainerWidth);
+    }
+
+    &__promo-info {
+        @include adaptiveValue("line-height", 18px, 20px, $smallMobile, $maxContainerWidth);
+        @include adaptiveValue("font-size", 14px, 16px, $smallMobile, $maxContainerWidth);
+        font-weight: 200;
+        color: $secondaryColor;
     }
 
     &__button {

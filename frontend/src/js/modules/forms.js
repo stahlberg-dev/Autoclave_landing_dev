@@ -97,8 +97,8 @@ function initCheckPromoCode() {
             const code = $input.val();
             $info.text('');
             if (code) {
-                $checkButton.hide();
-                $deleteButton.show();
+                $checkButton.hide(200);
+                $deleteButton.show(200);
             }
 
             shop.checkPromoCode(code, (response) => {
@@ -118,8 +118,8 @@ function initCheckPromoCode() {
             $info.text('');
             shop.cart.promoCode = '';
             updateViewPrices();
-            $checkButton.show();
-            $deleteButton.hide();
+            $checkButton.show(200);
+            $deleteButton.hide(200);
         });
     });
 }
