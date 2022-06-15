@@ -128,9 +128,8 @@ function initCheckPromoCode() {
 function initMakeOrder() {
     $('.jsOrderForm').each(function (i, form) {
         const $form = $(form);
-        const $submit = $form.find('.jsOrderFormSubmit');
 
-        $submit.on('click', (e) => {
+        $form.on('submit', (e) => {
             e.preventDefault();
             let user = {
                 name: $form.find('.jsName').val(),
@@ -141,8 +140,9 @@ function initMakeOrder() {
                 if (response.error) {
                     alert(response.error);
                 } else {
-                    //alert(`Ваш заказ принят. Номер заказа ${response.orderNumber}`);
+                    form.reset();
                     popups.popupOpen('checkout');
+                    //alert(`Ваш заказ принят. Номер заказа ${response.orderNumber}`);
                 }
             });
         });
