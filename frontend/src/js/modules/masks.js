@@ -8,7 +8,7 @@ export function phoneMask(phoneInputs) {
             mask: [
                 {mask: '+0 (000) 000-00-00', startsWith: '7'},
                 {mask: '0 (000) 000-00-00', startsWith: '8'},
-                {mask: /\d{1,}/, startsWith: null},
+                {mask: /^\d+$/, startsWith: null},
             ],
             dispatch: function (appended, dynamicMasked) {
                 var number = (dynamicMasked.value + appended).replace(/\D/g,'');

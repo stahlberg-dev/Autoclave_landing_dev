@@ -58,7 +58,7 @@
     @include adaptiveValue("background-size", 424px, 768px, $minWidth, $mobile);
     background-repeat: no-repeat;
     background-position: bottom right;
-    background-image: url("../img/title-screen/title-screen-bg.png");
+    background-image: url("../img/title-screen/title-screen-bg.jpg");
 
     @media (min-width: $mobile) {
         min-height: $minWidth * 0.556;
@@ -1243,7 +1243,7 @@
         background-repeat: no-repeat;
         background-size: contain;
         background-position: left bottom;
-        background-image: url("../img/perfection/perfection-bg.png");
+        background-image: url("../img/perfection/perfection-bg.jpg");
         
         &::after {
             content: '';
@@ -1708,16 +1708,27 @@
         cursor: pointer;
         -webkit-tap-highlight-color: transparent;
 
-        &::before {
-            content: '';
-            display: block;
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color:rgba(5, 6, 0, 0.5);
-            z-index: 0;
+        @media (any-hover: hover) {
+
+            &::before {
+                content: '';
+                display: block;
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background-color:rgba(5, 6, 0, 0.5);
+                z-index: 0;
+                transition: background-color 0.3s ease;
+            }
+
+            &:hover {
+                
+                &::before {
+                    background-color:rgba(5, 6, 0, 0);
+                }
+            }
         }
 
         &.swiper-slide-thumb-active {
@@ -1753,15 +1764,26 @@
     &__slide {
         position: relative;
 
-        &::after {
-            content: '';
-            display: block;
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color:rgba(5, 6, 0, 0.5);
+        @media (any-hover: hover) { 
+
+            &::after {
+                content: '';
+                display: block;
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background-color:rgba(5, 6, 0, 0.5);
+                transition: background-color 0.3s ease;
+            }
+
+            &:hover {
+                
+                &::after {
+                    background-color:rgba(5, 6, 0, 0);
+                }
+            }
         }
     }
 
@@ -2183,16 +2205,27 @@
         margin-right: 70px;
         margin-bottom: 10px;
 
-        &::after {
-            content: '';
-            display: block;
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: $backgroundColor;
-            opacity: 0.5;
+        @media (any-hover: hover) {
+
+            &::after {
+                content: '';
+                display: block;
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background-color: $backgroundColor;
+                opacity: 0.5;
+                transition: opacity 0.3s ease;
+            }
+
+            &:hover {
+
+                &::after {
+                    opacity: 0;
+                }
+            }
         }
 
         @media (min-width: $smallMobile) {
@@ -3777,16 +3810,12 @@
         background-repeat: no-repeat;
         background-size: auto 100%;
         background-position: left top;
-        background-image: url("../img/about_us/about-us-bg.png");
+        background-image: url("../img/about_us/about-us-bg.jpg");
     }
 
     @media (min-width: $mobile) {
         @include adaptiveValue("height", 565px, 900px, $mobile, $maxContainerWidth);
         @include adaptiveValue("padding-top", 45px, 75px, $mobile, $maxContainerWidth);
-        background-repeat: no-repeat;
-        background-size: auto 100%;
-        background-position: left top;
-        background-image: url("../img/about_us/about-us-bg.png");
     }
 
     &::after {
@@ -3961,7 +3990,7 @@
         background-repeat: no-repeat;
         background-size: contain;
         background-position: left bottom;
-        background-image: url("../img/order/order-bg.png");
+        background-image: url("../img/order/order-bg.jpg");
 
         &::after {
             content: '';
@@ -3991,7 +4020,7 @@
             background-repeat: no-repeat;
             background-size: 100% 100%;
             background-position: center bottom;
-            background-image: url("../img/order/order-bg.png");
+            background-image: url("../img/order/order-bg.jpg");
 
             @media (min-width: $mobile) {
                 display: none;
