@@ -338,3 +338,15 @@
         font-weight: 200;
     }
 }
+
+.dolyame-popup {
+    &__content {
+        background: white;
+        padding: 0;
+
+        &::before,
+        &::after{
+            content: none;
+        }
+    }
+}

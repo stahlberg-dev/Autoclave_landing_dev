@@ -99,6 +99,11 @@ class SiteApi
         return $this->exec('make-order', $data);
     }
 
+    public function makeDolyamePayment($data)
+    {
+        return $this->exec('make-dolyame-payment', $data);
+    }
+
     /**
      * Создать лид в CRM
      * @param array $data [name,phone,email,title,trace,comment]

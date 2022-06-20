@@ -74,6 +74,11 @@ try {
             jsonResponse($siteApi->makeCreditRequest($data));
             break;
 
+        case 'make-dolyame-payment':
+            $data['cart'] = $products->getSiteCart($data['cart']);
+            jsonResponse($siteApi->makeDolyamePayment($data));
+            break;
+
         case 'lead':
             jsonResponse(sendLead($data));
             break;
