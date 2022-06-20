@@ -22,6 +22,7 @@ const initModulesMain = [
     initCheckPromoCode,
     initMakeOrder,
     initCreditRequest,
+    initDolyamePayment,
     initLeadForm,
 ];
 
@@ -174,6 +175,18 @@ function initCreditRequest() {
     });
 }
 
+function initDolyamePayment() {
+    $('.jsDolyamePaymentBtn').on('click', (e) => {
+        e.preventDefault();
+        // $('.jsDolyameIFrame').attr('src', '');
+
+        shop.makeDolyamePayment((response) => {
+            // $('.jsDolyameIFrame').attr('src', response.link);
+            //popups.popupOpen('dolyame');
+            window.open(response.link, '_blank');
+        });
+    });
+}
 
 export {
     startForms,

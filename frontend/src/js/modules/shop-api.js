@@ -285,6 +285,18 @@ const shop = {
         });
     },
 
+    makeDolyamePayment(cbSuccess, cbFail) {
+        this.siteApi('make-dolyame-payment', {
+            cart: this.getCartItems(),
+        }).then((response) => {
+            if (response.status && response.link) {
+                if (cbSuccess) cbSuccess(response);
+            } else {
+                if (cbFail) cbFail(response);
+            }
+        });
+    },
+
     // data {name,phone,email,trace,comment}
     lead(data, cbSuccess, cbFail) {
         this.siteApi('lead', data).then((response) => {
