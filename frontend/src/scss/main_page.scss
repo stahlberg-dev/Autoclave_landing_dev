@@ -2204,6 +2204,7 @@
         @include adaptiveValue("width", 150px, 250px, $minWidth, $smallMobile);
         margin-right: 70px;
         margin-bottom: 10px;
+        cursor: pointer;
 
         @media (any-hover: hover) {
 
