@@ -6,6 +6,7 @@ import * as burgerModule from "./modules/burger.js";
 import * as popups from "./modules/popups.js";
 import * as spoilersModule from "./modules/spoilers.js";
 import * as masks from "./modules/masks.js";
+import * as clickScrollModule from "./modules/click_scroll.js";
 
 
 //----- Webp --------------------------------------------------------------------------------
@@ -221,20 +222,21 @@ if (pageButtons.length > 0) {
 
 //----- Click scroll ------------------------------------------------------------------------
 
-const scrollLinks = document.querySelectorAll('[data-goto]');
+const linkAttributename = 'data-goto';
+
+clickScrollModule.clickScroll(linkAttributename);
+
+const scrollLinks = document.querySelectorAll(`[${linkAttributename}]`);
 
 if (scrollLinks.length > 0) {
     for (let scrollLink of scrollLinks) {
 
         scrollLink.addEventListener("click", function(e) {
             
-            const gotoBlock = document.querySelector(scrollLink.dataset.goto);
+            const gotoBlockName = scrollLink.getAttribute(linkAttributename);
+            const gotoBlock = document.querySelector(gotoBlockName);
 
             if (gotoBlock) {
-
-                let gotoBlockValue;
-                gotoBlockValue = gotoBlock.getBoundingClientRect().top + 
-                                     pageYOffset - document.querySelector('.header__wrapper').offsetHeight - 20;
 
                 const equipmentVideo = document.querySelector('.complectation');
         
@@ -254,41 +256,36 @@ if (scrollLinks.length > 0) {
 
                     }
 
+                    setTimeout(() => {
+                        equipmentVideo.classList.remove('equipment__body-content_locked');
+                    }, 1000);
+
                 }
         
                 const aboutSection = document.querySelector('.about');
         
                 if (!gotoBlock.classList.contains('about') && aboutSection) {
+
                     aboutSection.classList.add('about_locked');
-                }
-        
-                window.scrollTo({
-                    top: gotoBlockValue,
-                    behavior: "smooth"
-                });
-        
-                if (equipmentVideo) {
-                    setTimeout(() => {
-                        equipmentVideo.classList.remove('equipment__body-content_locked');
-                    }, 1000);
-                }
-        
-                if (aboutSection) {
+
                     setTimeout(() => {
                         aboutSection.classList.remove('about_locked');
                     }, 1000);
+
                 }
         
-                e.preventDefault();
             }
+            
+            e.preventDefault();
 
         });
 
     }
 }
+
 //-------------------------------------------------------------------------------------------
 
-//----- Liter tabs -------------------------------------------------------------------------
+//----- Liter tabs --------------------------------------------------------------------------
 
 const changeSliderTime = 300;
 const literTabButtons = document.querySelectorAll('[data-code]');
