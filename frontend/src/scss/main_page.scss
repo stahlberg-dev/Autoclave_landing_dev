@@ -4143,10 +4143,6 @@
         font-weight: 200;
         color: $primaryColor;
 
-        /* @media (min-width: $smallMobile) {
-            width: 60%;
-        } */
-
         &::placeholder {
             color: $primaryColor;
             transition: color 0.3s ease;
