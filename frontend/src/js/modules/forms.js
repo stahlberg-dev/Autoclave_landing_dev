@@ -98,6 +98,13 @@ function updateViewPricesApply(show) {
     $price.toggle(!! priceEnd).find('.value').text(formatPrice(priceEnd));
     $priceOld.toggle(!! priceOld).find('.value').text(formatPrice(priceOld));
     $discount.toggle(!! discount).find('.value').text(formatPrice(discount));
+
+    $('.jsPricePart').each((i, price) => {
+        let $price = $(price);
+        let kf = + $price.data('price-part');
+        let pricePart = Math.round(priceEnd * kf);
+        $price.toggle(!! pricePart).find('.value').text(formatPrice(pricePart));
+    });
 }
 
 
