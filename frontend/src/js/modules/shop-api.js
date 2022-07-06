@@ -271,13 +271,23 @@ const shop = {
         }
     },
 
-    makeCreditTinkoff() {
+    makeCreditTinkoff(onMessage) {
         this.siteApi('make-credit-request', {
             cart: this.getCartItems(),
         }).then((response) => {
             this.tinkoffScriptRun(() => {
                 if (response.status && response.fields) {
-                    window.tinkoff.create(response.fields, {view: 'modal'});
+                    // tinkoff.createDemo(response.fields, {
+                    tinkoff.create(response.fields, {
+                        view: 'modal',
+                    });
+                    if (onMessage) {
+                        tinkoff.methods.on(tinkoff.constants.SUCCESS, onMessage);
+                        tinkoff.methods.on(tinkoff.constants.APPROVED, onMessage);
+                        tinkoff.methods.on(tinkoff.constants.APPOINTED, onMessage);
+                        tinkoff.methods.on(tinkoff.constants.REJECT, onMessage);
+                        tinkoff.methods.on(tinkoff.constants.CANCEL, onMessage);
+                    }
                 } else {
                     console.error("make credit request fail");
                 }

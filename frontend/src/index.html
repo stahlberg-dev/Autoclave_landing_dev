@@ -1545,8 +1545,8 @@
                                 <div class="payment__text">
                                     Рассрочка<br>от&nbsp;Тинькофф
                                 </div>
-                                <div class="payment__plan">
-                                    на&nbsp;6&nbsp;месяцев за&nbsp;<span class="jsInstallmentValue">2 961</span>&nbsp;₽
+                                <div class="payment__plan jsPricePart" data-price-part="0.16667">
+                                    на&nbsp;6&nbsp;месяцев за&nbsp;<span class="value">2 961</span>&nbsp;₽
                                 </div>
                                 <button class="payment__button button button_text_orange jsCreditRequestBtn">
                                     <span>Оформить</span>
@@ -1559,8 +1559,8 @@
                                 <div class="payment__text">
                                     Долями&nbsp;&#8209;&nbsp;покупайте&nbsp;сразу<br>за&nbsp;25% от&nbsp;стоимости
                                 </div>
-                                <div class="payment__plan">
-                                    4&nbsp;платежа по&nbsp;<span class="jsStakesValue">4 398</span>&nbsp;₽
+                                <div class="payment__plan jsPricePart" data-price-part="0.25">
+                                    4&nbsp;платежа по&nbsp;<span class="value">4 398</span>&nbsp;₽
                                 </div>
                                 <button class="payment__button button button_text_orange jsDolyamePaymentBtn">
                                     <span>Оформить</span>
@@ -1590,6 +1590,7 @@
         </main>
         @@include('html/footer.html',{})
     </div>
+    @@include('html/pixels.html',{})
     @@include('html/popups.html',{})
     @@include('html/js.html',{})
 </body>

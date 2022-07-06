@@ -2,8 +2,25 @@ import $ from "jquery";
 import shop from "./shop-api.js";
 import * as popups from "./popups.js";
 
+//var PROD = !location.host.match(/\.local/);
+
 window.$ = $;
 // console.log(shop.cart.productCode);
+
+const METRIKA_ID = 89325723;
+
+function ymGoal(name, params, callback) {
+    if (!name) return;
+    console.log('reachGoal', name, params)
+    if (!('ym' in window)) {
+        if (callback) callback();
+        return console.warn('metrika not found');
+    }
+    if (! METRIKA_ID) {
+        return console.warn('METRIKA_ID not found');
+    }
+    ym(METRIKA_ID, 'reachGoal', name, params, callback);
+}
 
 function formatPrice(val, delim) {
     val = '' + val;
@@ -81,6 +98,13 @@ function updateViewPricesApply(show) {
     $price.toggle(!! priceEnd).find('.value').text(formatPrice(priceEnd));
     $priceOld.toggle(!! priceOld).find('.value').text(formatPrice(priceOld));
     $discount.toggle(!! discount).find('.value').text(formatPrice(discount));
+
+    $('.jsPricePart').each((i, price) => {
+        let $price = $(price);
+        let kf = + $price.data('price-part');
+        let pricePart = Math.round(priceEnd * kf);
+        $price.toggle(!! pricePart).find('.value').text(formatPrice(pricePart));
+    });
 }
 
 
@@ -141,6 +165,7 @@ function initMakeOrder() {
                 if (response.error) {
                     alert(response.error);
                 } else {
+                    ymGoal('zakaz');
                     form.reset();
                     popups.popupOpen('checkout', 'lock-padding', 300);
                     //alert(`Ваш заказ принят. Номер заказа ${response.orderNumber}`);
@@ -161,6 +186,7 @@ function initLeadForm() {
             const data = new FormData(form);
 
             shop.lead(data, (response) => {
+                ymGoal('getconsult');
                 popups.popupOpen('thanks', 'lock-padding', 300);
             });
         });
@@ -171,7 +197,11 @@ function initLeadForm() {
 function initCreditRequest() {
     $('.jsCreditRequestBtn').on('click', (e) => {
         e.preventDefault();
-        shop.makeCreditTinkoff();
+        shop.makeCreditTinkoff((data) => {
+            // data.type - статус например tinkoff.constants.SUCCESS
+            console.log('TNK EVENT', data);
+            ymGoal('rassrochka');
+        });
     });
 }
 
