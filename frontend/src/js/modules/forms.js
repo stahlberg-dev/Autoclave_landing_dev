@@ -142,7 +142,7 @@ function initMakeOrder() {
                     alert(response.error);
                 } else {
                     form.reset();
-                    popups.popupOpen('checkout');
+                    popups.popupOpen('checkout', 'lock-padding', 300);
                     //alert(`Ваш заказ принят. Номер заказа ${response.orderNumber}`);
                 }
             });
@@ -161,7 +161,7 @@ function initLeadForm() {
             const data = new FormData(form);
 
             shop.lead(data, (response) => {
-                popups.popupOpen('thanks');
+                popups.popupOpen('thanks', 'lock-padding', 300);
             });
         });
     });
@@ -182,7 +182,7 @@ function initDolyamePayment() {
 
         shop.makeDolyamePayment((response) => {
             // $('.jsDolyameIFrame').attr('src', response.link);
-            //popups.popupOpen('dolyame');
+            //popups.popupOpen('dolyame', 'lock-padding', 300);
             window.open(response.link, '_blank');
         });
     });

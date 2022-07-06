@@ -13,9 +13,15 @@ export function isWebp() {
     });
 }
 
-export function LockUnlockPadding (lockPaddingValue, lockPaddingElements) {
-    if (document.body.classList.contains('locked')) {
+export function lockBody (lockPaddingElements, disablePointer = 0) {
 
+    if (!document.body.classList.contains('locked')) {
+
+        document.body.classList.add('disable-pointer');
+
+        const lockPaddingValue = window.innerWidth - document.querySelector('.wrapper').offsetWidth + 'px';
+
+        document.body.classList.add('locked');
         document.body.style.paddingRight = lockPaddingValue;
 
         if(lockPaddingElements.length > 0) {
@@ -26,17 +32,47 @@ export function LockUnlockPadding (lockPaddingValue, lockPaddingElements) {
 
         }
 
-    } else {
+        let scroller = document.createElement('div');
+        scroller.className = "scroller";
+        document.body.append(scroller);
 
-        document.body.style.paddingRight = '0px';
+        setTimeout(function() {
 
-        if(lockPaddingElements.length > 0) {
+            document.body.classList.remove('disable-pointer');
 
-            for (let lockPaddingElement of lockPaddingElements) {
-                lockPaddingElement.style.paddingRight = '0px';
-            }
-
-        }
+        }, disablePointer);
 
     }
+
+}
+
+export function unlockBody (lockPaddingElements, unlockDelay = 0) {
+
+    if (document.body.classList.contains('locked')) {
+
+        document.body.classList.add('disable-pointer');
+
+        setTimeout(function() {
+            
+            document.body.classList.remove('locked');
+            document.body.style.paddingRight = '0px';
+            
+            if(lockPaddingElements.length > 0) {
+                
+                for (let lockPaddingElement of lockPaddingElements) {
+                    lockPaddingElement.style.paddingRight = '0px';
+                }
+                
+            }
+            
+            if (document.querySelector('.scroller')) {
+                document.querySelector('.scroller').remove();
+            }
+
+            document.body.classList.remove('disable-pointer');
+    
+        }, unlockDelay);
+
+    } 
+
 }

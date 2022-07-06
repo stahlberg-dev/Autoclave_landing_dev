@@ -59,21 +59,29 @@ headerScrollModule.headerScroll(headerClassName, scrolledHeaderClassName);
 
 // ----- Burger -----------------------------------------------------------------------------
   
-const lockPaddingElements = document.querySelectorAll('.lock-padding');
-const burgerButton = document.querySelector('.burger');
-const burgerMenu = document.querySelector('.menu__body');
-const burgerMenuLinks = document.querySelectorAll('.menu__link');
+const burgerButtonClassName = 'burger';
+const burgerMenuClassName = 'menu__body';
+const burgerMenuLinksClassName = 'menu__link';
+const lockPaddingElementsClassName = 'lock-padding';
 
-burgerModule.burger(burgerButton, burgerMenu, burgerMenuLinks, lockPaddingElements);
+burgerModule.burger(burgerButtonClassName, 
+                    burgerMenuClassName, 
+                    burgerMenuLinksClassName, 
+                    lockPaddingElementsClassName);
 //-------------------------------------------------------------------------------------------
 
 // ----- Popups -----------------------------------------------------------------------------
 
-const popupLinks = document.querySelectorAll('.popup-link');
-const popupCloseButtons = document.querySelectorAll('.close-popup');
+const popupLinksClassName = 'popup-link';
+const popupsClassName = 'popup';
+const popupCloseButtonsClassName = 'close-popup';
 const timeout = 300;
 
-popups.start(popupLinks, popupCloseButtons, lockPaddingElements, timeout);
+popups.popupsLauncher(popupLinksClassName, 
+                      popupsClassName, 
+                      popupCloseButtonsClassName, 
+                      lockPaddingElementsClassName, 
+                      timeout);
 //-------------------------------------------------------------------------------------------
 
 // ----- Phone mask -------------------------------------------------------------------------
@@ -224,64 +232,7 @@ if (pageButtons.length > 0) {
 
 const linkAttributename = 'data-goto';
 
-clickScrollModule.clickScroll(linkAttributename);
-
-const scrollLinks = document.querySelectorAll(`[${linkAttributename}]`);
-
-if (scrollLinks.length > 0) {
-    for (let scrollLink of scrollLinks) {
-
-        scrollLink.addEventListener("click", function(e) {
-            
-            const gotoBlockName = scrollLink.getAttribute(linkAttributename);
-            const gotoBlock = document.querySelector(gotoBlockName);
-
-            if (gotoBlock) {
-
-                const equipmentVideo = document.querySelector('.complectation');
-        
-                if (equipmentVideo) {
-
-                    if (!gotoBlock.classList.contains('equipment')) {
-
-                        equipmentVideo.classList.add('equipment__body-content_locked');
-
-                    } else {
-
-                        if (!equipmentVideo.classList.contains('equipment__body-content_active')) {
-
-                            equipmentVideo.classList.add('equipment__body-content_locked');
-
-                        }
-
-                    }
-
-                    setTimeout(() => {
-                        equipmentVideo.classList.remove('equipment__body-content_locked');
-                    }, 1000);
-
-                }
-        
-                const aboutSection = document.querySelector('.about');
-        
-                if (!gotoBlock.classList.contains('about') && aboutSection) {
-
-                    aboutSection.classList.add('about_locked');
-
-                    setTimeout(() => {
-                        aboutSection.classList.remove('about_locked');
-                    }, 1000);
-
-                }
-        
-            }
-            
-            e.preventDefault();
-
-        });
-
-    }
-}
+clickScrollModule.clickScroll(linkAttributename, clickScrollModule.sectionLock('about'), clickScrollModule.equipmentVideoLock);
 
 //-------------------------------------------------------------------------------------------
 
