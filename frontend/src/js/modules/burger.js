@@ -4,7 +4,8 @@ import * as flsFunctions from "./functions.js";
 export function burger(burgerButtonClassName, 
                        burgerMenuClassName, 
                        burgerMenuLinksClassName, 
-                       lockPaddingElementsClassName) {
+                       lockPaddingElementsClassName,
+                       showHideTime) {
 
     const burgerButton = document.querySelector(`.${burgerButtonClassName}`);
     const burgerMenu = document.querySelector(`.${burgerMenuClassName}`);
@@ -17,11 +18,11 @@ export function burger(burgerButtonClassName,
                 
             if (burgerButton.classList.contains('burger_active')) {
                 
-                flsFunctions.unlockBody(lockPaddingElements, 300);
+                flsFunctions.unlockBody(lockPaddingElements, showHideTime);
                 
             } else {
                 
-                flsFunctions.lockBody(lockPaddingElements, 300);
+                flsFunctions.lockBody(lockPaddingElements, showHideTime);
                 
             }
 
@@ -40,7 +41,7 @@ export function burger(burgerButtonClassName,
 
                         burgerButton.classList.remove('burger_active');
                         burgerMenu.classList.remove('menu__body_active');
-                        flsFunctions.unlockBody(lockPaddingElements, 300);
+                        flsFunctions.unlockBody(lockPaddingElements, showHideTime);
 
                     }
             
