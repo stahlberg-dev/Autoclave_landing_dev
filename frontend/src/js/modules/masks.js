@@ -1,6 +1,8 @@
 import IMask from 'imask';
 
-export function phoneMask(phoneInputs) {
+export function phoneMask(phoneInputsClassName) {
+
+    const phoneInputs = document.querySelectorAll(`.${phoneInputsClassName}`);
 
     for (let phoneInput of phoneInputs) {
 

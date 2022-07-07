@@ -17,8 +17,6 @@ export function lockBody (lockPaddingElements, disablePointer = 0) {
 
     if (!document.body.classList.contains('locked')) {
 
-        document.body.classList.add('disable-pointer');
-
         const lockPaddingValue = window.innerWidth - document.querySelector('.wrapper').offsetWidth + 'px';
 
         document.body.classList.add('locked');
@@ -34,11 +32,12 @@ export function lockBody (lockPaddingElements, disablePointer = 0) {
 
         let scroller = document.createElement('div');
         scroller.className = "scroller";
+        scroller.classList.add('disable-pointer');
         document.body.append(scroller);
 
         setTimeout(function() {
 
-            document.body.classList.remove('disable-pointer');
+            scroller.classList.remove('disable-pointer');
 
         }, disablePointer);
 
@@ -50,7 +49,13 @@ export function unlockBody (lockPaddingElements, unlockDelay = 0) {
 
     if (document.body.classList.contains('locked')) {
 
-        document.body.classList.add('disable-pointer');
+        const scroller = document.querySelector('.scroller');
+
+        if (scroller) {
+
+            scroller.classList.add('disable-pointer');
+
+        }
 
         setTimeout(function() {
             
@@ -65,11 +70,9 @@ export function unlockBody (lockPaddingElements, unlockDelay = 0) {
                 
             }
             
-            if (document.querySelector('.scroller')) {
-                document.querySelector('.scroller').remove();
+            if (scroller) {
+                scroller.remove();
             }
-
-            document.body.classList.remove('disable-pointer');
     
         }, unlockDelay);
 

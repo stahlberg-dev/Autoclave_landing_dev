@@ -72,9 +72,13 @@ export function popupOpen (currentPopup, lockPaddingElementsClassName, timeout) 
         const popupActive = document.querySelector('.popup_opened');
 
         if (popupActive) {
+
             popupClose(popupActive, lockPaddingElementsClassName, timeout, false);
+
         } else {
+
             flsFunctions.lockBody(lockPaddingElements, timeout);
+            
         }
 
         currentPopup.classList.add('popup_opened');

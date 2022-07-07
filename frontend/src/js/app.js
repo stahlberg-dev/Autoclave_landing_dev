@@ -63,11 +63,13 @@ const burgerButtonClassName = 'burger';
 const burgerMenuClassName = 'menu__body';
 const burgerMenuLinksClassName = 'menu__link';
 const lockPaddingElementsClassName = 'lock-padding';
+const showHideTime = 300;
 
 burgerModule.burger(burgerButtonClassName, 
                     burgerMenuClassName, 
                     burgerMenuLinksClassName, 
-                    lockPaddingElementsClassName);
+                    lockPaddingElementsClassName,
+                    showHideTime);
 //-------------------------------------------------------------------------------------------
 
 // ----- Popups -----------------------------------------------------------------------------
@@ -86,9 +88,9 @@ popups.popupsLauncher(popupLinksClassName,
 
 // ----- Phone mask -------------------------------------------------------------------------
 
-const phoneInputs = document.querySelectorAll('.jsPhone');
+const phoneInputsClassName = 'jsPhone';
 
-masks.phoneMask(phoneInputs);
+masks.phoneMask(phoneInputsClassName);
 //------------------------------------------------------------------------------------------- 
 
 // ----- Promo mask -------------------------------------------------------------------------
@@ -100,28 +102,22 @@ masks.phoneMask(phoneInputs);
 
 //----- Equipment pages ---------------------------------------------------------------------
 
+const equipmentHeader = document.querySelector('.equipment__header');
+const equipmentBody = document.querySelector('.equipment__body');
 const startEquipmentTitle = document.querySelector('.equipment__header-content_active');
 const startEquipmentBodyContent = document.querySelector('.equipment__body-content_active');
 
-if (startEquipmentTitle) {
+if (equipmentHeader && startEquipmentTitle) {
 
     const startTitleHeight = startEquipmentTitle.offsetHeight + 'px';
-            
-    if (document.querySelector('.equipment__header')) {
-        document.querySelector('.equipment__header').style.height = startTitleHeight;
-    }
-
+    equipmentHeader.style.height = startTitleHeight;
     startEquipmentTitle.style.visibility = 'visible';
 }
 
-if ( startEquipmentBodyContent) {
+if ( equipmentBody && startEquipmentBodyContent) {
 
     const startEquipmentBodyHeight = startEquipmentBodyContent.offsetHeight + 'px';
-            
-    if (document.querySelector('.equipment__body')) {
-        document.querySelector('.equipment__body').style.height = startEquipmentBodyHeight;
-    }
-
+    equipmentBody.style.height = startEquipmentBodyHeight;
     startEquipmentBodyContent.style.visibility = 'visible';
 }
 
@@ -130,23 +126,17 @@ window.addEventListener('resize', function() {
     const activeEquipmentTitle = document.querySelector('.equipment__header-content_active');
     const activeEquipmentBodyContent = document.querySelector('.equipment__body-content_active');
     
-    if (activeEquipmentTitle) {
+    if (equipmentHeader && activeEquipmentTitle) {
 
         const activeEquipmentTitleHeight = activeEquipmentTitle.offsetHeight + 'px';
-
-        if (document.querySelector('.equipment__header')) {
-            document.querySelector('.equipment__header').style.height = activeEquipmentTitleHeight;
-        }
+        equipmentHeader.style.height = activeEquipmentTitleHeight;
 
     }
 
-    if (activeEquipmentBodyContent) {
+    if (equipmentBody && activeEquipmentBodyContent) {
 
         const activeEquipmentBodyHeight = activeEquipmentBodyContent.offsetHeight + 'px';
-
-        if (document.querySelector('.equipment__body')) {
-            document.querySelector('.equipment__body').style.height = activeEquipmentBodyHeight;
-        }
+        equipmentBody.style.height = activeEquipmentBodyHeight;
 
     }
 
@@ -194,8 +184,8 @@ if (pageButtons.length > 0) {
                     const titleHeight = visiblePageHeader.offsetHeight + 'px';
                     const pageContentHeight = visiblePage.offsetHeight + 'px';
 
-                    document.querySelector('.equipment__header').style.height = titleHeight;
-                    document.querySelector('.equipment__body').style.height = pageContentHeight;
+                    equipmentHeader.style.height = titleHeight;
+                    equipmentBody.style.height = pageContentHeight;
 
                     setTimeout(() => {
 
@@ -232,7 +222,9 @@ if (pageButtons.length > 0) {
 
 const linkAttributename = 'data-goto';
 
-clickScrollModule.clickScroll(linkAttributename, clickScrollModule.sectionLock('about'), clickScrollModule.equipmentVideoLock);
+clickScrollModule.clickScroll(linkAttributename, 
+                              clickScrollModule.sectionLock('about'), 
+                              clickScrollModule.equipmentVideoLock);
 
 //-------------------------------------------------------------------------------------------
 
@@ -325,20 +317,21 @@ spoilersModule.spoilers(spoilerClassName, spoilerBlockClassName, hideTime);
 
 //----- Auto scroll -------------------------------------------------------------------------
 
-document.addEventListener("scroll", function(e) {
-    
-    const equipmentSection = document.querySelector('.equipment');
+const equipmentSection = document.querySelector('.equipment');
+const aboutSection = document.querySelector('.about');
+const equipmentVideo = document.querySelector('.complectation');
+const headerWrapper = document.querySelector('.header__wrapper');
 
+document.addEventListener("scroll", function(e) {
+
+    const windowHeight = document.documentElement.clientHeight;
+    
     if (equipmentSection) {
 
-        const equipmentScrollSpace = document.documentElement.clientHeight - 
-                                        equipmentSection.getBoundingClientRect().top;
+        const equipmentScrollSpace =  windowHeight - equipmentSection.getBoundingClientRect().top;
 
         if ((equipmentScrollSpace > 0) && 
-            (equipmentScrollSpace < equipmentSection.offsetHeight + 
-            document.documentElement.clientHeight) ) {
-
-            const equipmentVideo = document.querySelector('.complectation');
+            (equipmentScrollSpace < equipmentSection.offsetHeight + windowHeight) ) {
 
             if (equipmentVideo) {
 
@@ -347,7 +340,7 @@ document.addEventListener("scroll", function(e) {
                     !equipmentVideo.classList.contains('equipment__body-content_locked')) {
                     
                     const gotoVideoValue = equipmentVideo.getBoundingClientRect().top + 
-                                            pageYOffset - document.querySelector('.header__wrapper').offsetHeight;
+                                            pageYOffset - headerWrapper.offsetHeight;
 
                     window.scrollTo({
                         top: gotoVideoValue,
@@ -365,22 +358,18 @@ document.addEventListener("scroll", function(e) {
 
     }
 
-    const aboutSection = document.querySelector('.about');
-
     if (aboutSection) {
 
-        const aboutScrollSpace = document.documentElement.clientHeight - 
-                                    aboutSection.getBoundingClientRect().top;
+        const aboutScrollSpace =  windowHeight - aboutSection.getBoundingClientRect().top;
 
         if ((aboutScrollSpace > 0) && 
-            (aboutScrollSpace < aboutSection.offsetHeight + 
-            document.documentElement.clientHeight) ) {
+            (aboutScrollSpace < aboutSection.offsetHeight + windowHeight) ) {
 
             if (!aboutSection.classList.contains('about_shown') &&
                 !aboutSection.classList.contains('about_locked')) {
 
                 const gotoAboutSectionValue = aboutSection.getBoundingClientRect().top + 
-                                                pageYOffset - document.querySelector('.header__wrapper').offsetHeight - 20;
+                                                pageYOffset - headerWrapper.offsetHeight - 20;
 
                 window.scrollTo({
                     top: gotoAboutSectionValue,
