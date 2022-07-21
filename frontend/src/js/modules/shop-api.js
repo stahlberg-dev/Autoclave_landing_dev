@@ -110,7 +110,7 @@ const shop = {
 
     getTrackingData() {
         return {
-            b24trace: this.getBX24Trace(),
+            b24_trace: this.getBX24Trace(),
         };
     },
 
