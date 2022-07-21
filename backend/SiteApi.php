@@ -13,6 +13,8 @@ class SiteApi
 
     private $token;
 
+    private $tracking = [];
+
     /**
      * SiteApi constructor.
      * @param $project
@@ -28,6 +30,7 @@ class SiteApi
     public function exec($method, $data = [])
     {
         $data['project'] = $this->project;
+        $data['tracking'] = $this->tracking;
 
         $dataString = json_encode($data, JSON_UNESCAPED_UNICODE);
 
@@ -65,6 +68,11 @@ class SiteApi
         }
 
         return $response;
+    }
+
+    public function setTracking($tracking)
+    {
+        $this->tracking = $tracking;
     }
 
     public function getPrices($slugs)

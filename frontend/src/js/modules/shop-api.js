@@ -95,11 +95,23 @@ const shop = {
     siteApi(action, data) {
         if (data instanceof FormData) {
             data.append('action', action);
+            data.append('tracking', );
         } else {
             data.action = action;
+            data.tracking = this.getTrackingData();
         }
 
         return this.ajaxCall('/api/', data)
+    },
+
+    getTrackingData() {
+        return {
+            b24trace: this.getBX24Trace(),
+        };
+    },
+
+    getBX24Trace() {
+        return ('b24Tracker' in window) ? b24Tracker.guest.getTrace() : null;
     },
 
     checkPromoCode(code, cb) {

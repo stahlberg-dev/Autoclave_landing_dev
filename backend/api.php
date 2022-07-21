@@ -43,6 +43,9 @@ try {
     if (empty($data)) {
         $data = json_decode(file_get_contents('php://input'), true);
     }
+    $tracking = $data['tracking'] ?? [];
+    $tracking['_ym_uid'] = $_COOKIE['_ym_uid'] ?? null;
+    $siteApi->setTracking($tracking);
 
     if (empty($data['action'])) {
         jsonError("no action");
