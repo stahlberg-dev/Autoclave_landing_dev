@@ -95,7 +95,7 @@ const shop = {
     siteApi(action, data) {
         if (data instanceof FormData) {
             data.append('action', action);
-            data.append('tracking', );
+            //data.append('tracking', this.getTrackingData());
         } else {
             data.action = action;
             data.tracking = this.getTrackingData();
