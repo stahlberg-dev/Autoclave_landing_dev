@@ -41,6 +41,7 @@ const initModulesMain = [
     initCreditRequest,
     initDolyamePayment,
     initLeadForm,
+    dataLayerProductView,
 ];
 
 //region run modules
@@ -59,6 +60,40 @@ function runModules(modules, name) {
     }
 }
 //endregion run modules
+
+//region dataLayer
+function pushDataLayer(data) {
+    if (window.dataLayer) {
+        window.dataLayer.push(data);
+    } else {
+        console.warn('no dataLayer', data);
+    }
+}
+
+function dataLayerProductView() {
+    setTimeout(function () {
+        pushDataLayer({
+            ecommerce: null,
+        });
+        pushDataLayer({
+            ecommerce: {
+                currencyCode: 'RUB',
+                detail: {
+                    actionField: {list: 'all'},
+                    products: [
+                        {
+                            id: shop.cart.productCode,
+                            name: shop.cart.productCode,
+                            price: shop.prices.priceEnd,
+                            category: 'main',
+                        },
+                    ],
+                },
+            },
+        });
+    }, 15000);
+}
+//endregion dataLayer
 
 // load server prices
 function initPrices() {
