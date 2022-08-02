@@ -245,11 +245,7 @@ function initCreditRequest() {
 function initDolyamePayment() {
     $('.jsDolyamePaymentBtn').on('click', (e) => {
         e.preventDefault();
-        // $('.jsDolyameIFrame').attr('src', '');
-
         shop.makeDolyamePayment((response) => {
-            // $('.jsDolyameIFrame').attr('src', response.link);
-            //popups.popupOpen('dolyame', 'lock-padding', 300);
             window.open(response.link, '_blank');
         }, (response) => {
             if (response.error) alert(response.error);
