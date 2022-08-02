@@ -287,7 +287,7 @@ const shop = {
         }
     },
 
-    makeCreditTinkoff(onMessage) {
+    makeCreditTinkoff(onMessage, cbFail) {
         this.siteApi('make-credit-request', {
             cart: this.getCartItems(),
         }).then((response) => {
@@ -306,6 +306,7 @@ const shop = {
                     }
                 } else {
                     console.error("make credit request fail");
+                    if (cbFail) cbFail(response);
                 }
             });
         });

@@ -236,6 +236,8 @@ function initCreditRequest() {
             // data.type - статус например tinkoff.constants.SUCCESS
             console.log('TNK EVENT', data);
             ymGoal('rassrochka');
+        }, (response) => {
+            if (response.error) alert(response.error);
         });
     });
 }
@@ -249,6 +251,8 @@ function initDolyamePayment() {
             // $('.jsDolyameIFrame').attr('src', response.link);
             //popups.popupOpen('dolyame', 'lock-padding', 300);
             window.open(response.link, '_blank');
+        }, (response) => {
+            if (response.error) alert(response.error);
         });
     });
 }
