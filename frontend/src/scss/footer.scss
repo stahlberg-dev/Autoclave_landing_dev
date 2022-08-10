@@ -20,7 +20,7 @@
         }
 
         @media (min-width: $mobile) {
-            grid-template-columns: 1fr 0.7fr 1fr auto 15px;
+            grid-template-columns: 0.7fr 0.7fr 1fr auto 15px;
             align-items: start;
             @include adaptiveValue("column-gap", 10px, 30px, $mobile, $tablet);
         }
@@ -56,6 +56,10 @@
         }
 
         @media (min-width: $mobile) {
+            margin-left: 0;
+        }
+
+        @media (min-width: 992.02px) {
             margin-left: 15px;
         }
     }
