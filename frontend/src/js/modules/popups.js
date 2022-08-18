@@ -87,11 +87,11 @@ export function popupOpen (currentPopup, lockPaddingElementsClassName, timeout) 
             !currentPopup.querySelector('video')) {
 
             const mp4Source = document.createElement('source');
-            mp4Source.setAttribute('src', "video/perfection.mp4");
+            mp4Source.setAttribute('src', "https://zagt.ru/video/hyggelig/perfection.mp4");
             mp4Source.setAttribute('type', "video/mp4");
 
             const ogvSource = document.createElement('source');
-            ogvSource.setAttribute('src', "video/perfection.ogv");
+            ogvSource.setAttribute('src', "https://zagt.ru/video/hyggelig/perfection.ogv");
             ogvSource.setAttribute('type', "video/ogg");
 
             const videoFrame = document.createElement('video');
