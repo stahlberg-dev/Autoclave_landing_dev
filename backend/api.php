@@ -54,10 +54,9 @@ try {
     if (empty($data)) {
         $data = json_decode(file_get_contents('php://input'), true);
     }
-    $sid = getUserSid();
     $tracking = $data['tracking'] ?? [];
     $tracking['ym_id'] = $_COOKIE['_ym_uid'] ?? null;
-    $tracking['sid'] = $sid;
+    $tracking['sid'] = getUserSid();
     $siteApi->setTracking($tracking);
 
     if (empty($data['action'])) {
