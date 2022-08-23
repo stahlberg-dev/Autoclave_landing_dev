@@ -36,6 +36,17 @@ function sendLead (array $data) {
     return $siteApi->lead($data);
 }
 
+function getUserSid() {
+    if (isset($_COOKIE['sid'])) {
+        $sid = $_COOKIE['sid'];
+    } else {
+        $sid = createSid();
+        setcookie('sid', $sid, time() + 365 * 86400, '/');
+    }
+
+    return $sid;
+}
+
 try {
     require_once __DIR__ . '/init.php';
 
@@ -43,8 +54,10 @@ try {
     if (empty($data)) {
         $data = json_decode(file_get_contents('php://input'), true);
     }
+    $sid = getUserSid();
     $tracking = $data['tracking'] ?? [];
     $tracking['ym_id'] = $_COOKIE['_ym_uid'] ?? null;
+    $tracking['sid'] = $sid;
     $siteApi->setTracking($tracking);
 
     if (empty($data['action'])) {
