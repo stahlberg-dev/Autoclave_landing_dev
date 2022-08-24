@@ -24,7 +24,7 @@ $products = new \App\Products($config['items'], $siteApi);
 function createSid() {
     global $config;
 
-    $sid = substr(md5(rand() . microtime() . rand()), 0, 8);
+    $sid = substr(md5(rand() . microtime() . rand()), 0, 16);
     $sid = $config['project'] . ':' . $sid;
 
     return $sid;
