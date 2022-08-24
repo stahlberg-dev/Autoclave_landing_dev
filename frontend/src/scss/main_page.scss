@@ -1569,7 +1569,7 @@
         flex-flow: column nowrap;
         justify-content: flex-start;
         align-items: stretch;
-        @include adaptiveValue("margin-bottom", 40px, 170px, $smallMobile, $maxContainerWidth);
+        @include adaptiveValue("margin-bottom", 30px, 60px, $smallMobile, $maxContainerWidth);
         
         @media (min-width: $mobile) {
             flex-flow: row nowrap;
@@ -1619,6 +1619,10 @@
     }
 
     &__choice {
+    }
+
+    &__payment {
+        @include adaptiveValue("margin-bottom", 30px, 60px, $smallMobile, $maxContainerWidth);
     }
 
     &__benefits {
