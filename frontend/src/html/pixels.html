@@ -22,3 +22,26 @@
         var h=d.getElementsByTagName('script')[0];h.parentNode.insertBefore(s,h);
     })(window,document,'https://cdn-ru.bitrix24.ru/b12719724/crm/site_button/loader_2_jnuvhj.js');
 </script>
+
+
+<script src='https://pwrlkyotm.com/pixels/match.js'></script>
+<script>
+    (function () {
+        let taskMatch = setInterval(function () {
+            if (typeof window.dmpProfitclicks === "undefined") {
+                return;
+            }
+            clearInterval(taskMatch);
+            window.dmpProfitclicks.match("view", 1206);
+
+            let btn = document.querySelector('.jsOrderFormSubmit');
+            if (btn) {
+                btn.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    window.dmpProfitclicks.match("click",  1207);
+                });
+            }
+        }, 150);
+    })();
+</script>
+
