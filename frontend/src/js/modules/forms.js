@@ -36,6 +36,7 @@ function formatPrice(val, delim) {
 
 const initModulesMain = [
     initPrices,
+    initStarterPromoCode,
     initCheckPromoCode,
     initMakeOrder,
     initCreditRequest,
@@ -142,7 +143,25 @@ function updateViewPricesApply(show) {
     });
 }
 
+function initStarterPromoCode() {
+    const $root = $('.jsPromoCode');
+    const $input = $root.find('.jsPromoCodeInput');
+    const $info = $root.find('.jsPromoCodeInfo');
+    let code = 'ДОБРО';
 
+    shop.checkPromoCode(code, (response) => {
+        if (response.active) {
+            shop.cart.promoCode = code;
+            $input.val(code);
+            let info = response.info;
+            info = info.replace('Акция на автоклавы! Действует', 'Внимание! Промокод действует');
+            $info.text(info);
+            $info.toggleClass('active', response.active);
+
+            updateViewPrices();
+        }
+    });
+}
 
 function initCheckPromoCode() {
     $('.jsPromoCode').each(function (i, root) {
