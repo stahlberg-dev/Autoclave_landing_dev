@@ -138,7 +138,7 @@ function updateViewPricesApply(show) {
     $('.jsPricePart').each((i, price) => {
         let $price = $(price);
         let kf = + $price.data('price-part');
-        let pricePart = Math.round(priceEnd * kf);
+        let pricePart = Math.round(priceBase * kf);
         $price.toggle(!! pricePart).find('.value').text(formatPrice(pricePart));
     });
 }
