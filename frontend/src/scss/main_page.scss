@@ -20,6 +20,10 @@
         @include adaptiveValue("margin-bottom", 35px, 170px);
     }
 
+    &__promo-discount {
+        @include adaptiveValue("margin-bottom", 35px, 170px);
+    }
+
     &__autoclave {
         @include adaptiveValue("margin-bottom", 40px, 170px);
     }
@@ -1539,6 +1543,174 @@
             @include adaptiveValue("line-height", 14px, 22px, $smallMobile, $maxContainerWidth);
             @include adaptiveValue("font-size", 12px, 18px, $mobile, $maxContainerWidth);
         }
+    }
+}
+
+//--------------------------------------------------------------------------------------------
+
+//----- Promo discount -----------------------------------------------------------------------
+
+.promo-discount {
+
+    &__container {
+    }
+
+    &__content {
+        position: relative;
+        width: 100%;
+        @include adaptiveValue("height", 330px, 500px, $minWidth, $mobile);
+        background-size: 150% auto;
+        background-repeat: no-repeat;
+        background-position: bottom right;
+        background-image: url("../img/promo-discount/promo-discount-bg.jpg");
+        border: 3px solid $primaryColor;
+        box-shadow: 0px 0px 6px rgba(255, 187, 107, 0.5),
+                    inset 0px 0px 6px rgba(255, 187, 107, 0.5); 
+
+
+        @media (min-width: $mobile) {
+            @include adaptiveValue("height", 350px, 500px, $mobile, $tablet);
+            background-size: contain;
+        }
+    }
+
+    &__text {
+        position: absolute;
+        top: 30px;
+        left: 5%;
+        width: 100%;
+        text-align: center;
+        max-width: 90%;
+
+        @media (min-width: $smallMobile) {
+            @include adaptiveValue("top", 30px, 60px, $smallMobile, $mobile);
+            @include adaptiveValue("left", 30px, 60px, $smallMobile, $mobile);
+            text-align: left;
+        }
+
+        @media (min-width: $mobile) {
+            @include adaptiveValue("top", 60px, 80px, $mobile, $tablet);
+            @include adaptiveValue("left", 30px, 50px, $mobile, $tablet);
+        }
+
+        @media (min-width: $tablet) {
+            max-width: 420px;
+        }
+    }
+
+    &__pre-title {
+        @include adaptiveValue("margin-bottom", 5px, 10px, $minWidth, $tablet);
+        @include adaptiveValue("line-height", 19px, 37px, $mobile, $tablet);
+        @include adaptiveValue("font-size", 16px, 31px, $mobile, $tablet);
+        font-weight: 300;
+        color: $primaryColor;
+    }
+
+    &__title {
+        @include adaptiveValue("margin-bottom", 15px, 30px, $mobile, $tablet);
+        text-transform: uppercase;
+        @include adaptiveValue("line-height", 32px, 62px, $mobile, $tablet);
+        @include adaptiveValue("font-size", 28px, 52px, $mobile, $tablet);
+        font-weight: 800;
+        color: $secondaryColor;
+    }
+
+    &__link {
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        @include adaptiveValue("width", 200px, 280px, $mobile, $tablet);
+        @include adaptiveValue("height", 28px, 52px, $mobile, $tablet);
+        margin: 0 auto 25px;
+
+        @media (min-width: $smallMobile) {
+            margin: 0;
+            @include adaptiveValue("margin-bottom", 25px, 60px, $smallMobile, $tablet);
+        }
+    }
+
+    &__link-top {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        clip-path: polygon(0 0, 25% 5%, 75% 5%, 100% 0, 0 100%);
+        background-color: $primaryColor;
+        clip-path: polygon(30% 5%, 70% 5%, 100% 0, 100% 100%, 70% 95%, 30% 95%, 0 100%, 0 0);
+        transition: background-color 0.3s ease;
+
+        @media (any-hover: hover) {
+            .promo-discount__link:hover & {
+                background-color: #d6780d;
+            }
+    
+            .promo-discount__link:active & {
+                background-color: #d6780d;
+            }
+        }
+    
+        @media (any-hover: none) {
+            .promo-discount__link:active & {
+                background-color: #d6780d;
+            }
+        }
+    }
+
+    &__link-bottom {
+        position: absolute;
+        top: 1.5%;
+        left: 0;
+        width: 100%;
+        height: 97%;
+        z-index: 0;
+        background-color: transparent;
+        box-shadow: 0px 0px 10px rgba(255, 187, 107, 0.8),
+                    inset 0px 0px 20px rgba(255, 187, 107, 0.8);
+        transition: box-shadow 0.3s ease;
+
+        @media (any-hover: hover) {
+            .promo-discount__link:hover & {
+                box-shadow: 0px 0px 10px rgba(255, 187, 107, 1),
+                            inset 0px 0px 20px rgba(255, 187, 107, 1);
+            }
+    
+            .promo-discount__link:active & {
+                box-shadow: 0px 0px 10px rgba(255, 187, 107, 1),
+                            inset 0px 0px 20px rgba(255, 187, 107, 1);
+            }
+        }
+    
+        @media (any-hover: none) {
+            .promo-discount__link:active & {
+                box-shadow: 0px 0px 10px rgba(255, 187, 107, 1),
+                            inset 0px 0px 20px rgba(255, 187, 107, 1);
+            }
+        }
+    }
+
+    &__link-text {
+        text-transform: uppercase;
+        line-height: 1;
+        @include adaptiveValue("font-size", 18px, 46px, $mobile, $tablet);
+        font-weight: 800;
+        color: $thirdColor;
+        z-index: 1;
+        transform: translateY(-7%);
+    }
+
+    &__amount {
+        text-transform: uppercase;
+        @include adaptiveValue("line-height", 19px, 29px, $mobile, $tablet);
+        @include adaptiveValue("font-size", 16px, 24px, $mobile, $tablet);
+        font-weight: 300;
+    }
+
+    &__amount-num {
+        @include adaptiveValue("line-height", 29px, 58px, $mobile, $tablet);
+        @include adaptiveValue("font-size", 24px, 48px, $mobile, $tablet);
+        font-weight: 800;
     }
 }
 
@@ -3926,7 +4098,10 @@
         }
 
         @media (min-width: $mobile) {
-            @include adaptiveValue("padding", 20px, 30px, $mobile, $maxContainerWidth);
+            @include adaptiveValue("padding-top", 20px, 30px, $mobile, $maxContainerWidth);
+            @include adaptiveValue("padding-bottom", 20px, 30px, $mobile, $maxContainerWidth);
+            @include adaptiveValue("padding-right", 10px, 15px, $mobile, $maxContainerWidth);
+            @include adaptiveValue("padding-left", 10px, 15px, $mobile, $maxContainerWidth);
             
             &:nth-child(1) {
                 grid-column: 1/3; 
