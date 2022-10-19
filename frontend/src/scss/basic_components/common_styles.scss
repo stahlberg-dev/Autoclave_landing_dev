@@ -514,7 +514,11 @@ body {
     flex-flow: row nowrap;
     justify-content: center;
     align-items: center;
-    gap: 20px;
+    gap: 10px;
+
+    @media (min-width: $smallMobile) {
+        @include adaptiveValue("gap", 10px, 20px, $smallMobile, $mobile);
+    }
 
     @media (min-width: $mobile) {
         @include adaptiveValue("gap", 10px, 20px, $mobile, $maxContainerWidth);
@@ -524,7 +528,7 @@ body {
         display: flex;
         align-items: center;
         justify-content: center;
-        flex: 1 1 33.33%;
+        flex: 1 1 25%;
         height: 40px;
         background-color: transparent;
         cursor: pointer;
@@ -613,7 +617,15 @@ body {
         & span {
             display: none;
 
-            @media (min-width: 360px) {
+            @media (min-width: $smallMobile) {
+                display: inline;
+            }
+
+            @media (min-width: $mobile) {
+                display: none;
+            }
+
+            @media (min-width: 992.02px) {
                 display: inline;
             }
         }

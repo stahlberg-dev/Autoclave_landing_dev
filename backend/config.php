@@ -9,6 +9,9 @@ return [
     // комплекты (для каждого кода можно указать несколько позиций в заказе)
     // формат: [landingCode => [shopSlug => quantity]]
     'items' => [
+        'av14' => [
+            'mini-avtoklav-zagotovshhik' => 1
+        ],
         'av18' => [
             'avtoklav-18' => 1
         ],

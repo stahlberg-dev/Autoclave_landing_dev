@@ -4,7 +4,7 @@
 const shop = {
     cart: {
         // выбранный основной товар
-        productCode: 'av18',
+        productCode: 'av14',
 
         // кол-во основного товара
         productQuantity: 1,
