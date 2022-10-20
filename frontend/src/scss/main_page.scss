@@ -2007,15 +2007,15 @@
 
         @media (min-width: $smallMobile) {
             margin: 0;
-            @include adaptiveValue("padding-top", 20px, 40px, $smallMobile, $mobile);
-            @include adaptiveValue("padding-bottom", 20px, 40px, $smallMobile, $mobile);
+            @include adaptiveValue("padding-top", 20px, 30px, $smallMobile, $mobile);
+            @include adaptiveValue("padding-bottom", 20px, 30px, $smallMobile, $mobile);
             @include adaptiveValue("padding-left", 20px, 30px, $smallMobile, $mobile);
             @include adaptiveValue("padding-right", 20px, 30px, $smallMobile, $mobile);
         }
 
         @media (min-width: $mobile) {
-            @include adaptiveValue("padding-top", 20px, 40px, $mobile, $maxContainerWidth);
-            @include adaptiveValue("padding-bottom", 20px, 40px, $mobile, $maxContainerWidth);
+            @include adaptiveValue("padding-top", 20px, 25px, $mobile, $maxContainerWidth);
+            @include adaptiveValue("padding-bottom", 20px, 25px, $mobile, $maxContainerWidth);
             @include adaptiveValue("padding-left", 10px, 30px, $mobile, $maxContainerWidth);
             @include adaptiveValue("padding-right", 10px, 30px, $mobile, $maxContainerWidth);
         }
@@ -2029,8 +2029,38 @@
         }
 
         @media (min-width: $mobile) {
-            @include adaptiveValue("margin-bottom", 10px, 30px, $mobile, $maxContainerWidth);
+            @include adaptiveValue("margin-bottom", 15px, 15px, $mobile, $maxContainerWidth);
         }
+    }
+
+    &__top-info {
+        margin-bottom: 25px;
+        margin-left: -$containerPadding;
+        margin-right: -$containerPadding;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        padding-left: $containerPadding;
+        padding-right: $containerPadding;
+
+        @media (min-width: $smallMobile) {
+            @include adaptiveValue("margin-bottom", 15px, 30px, $smallMobile, $mobile);
+            @include adaptiveValue("margin-left", -20px, -30px, $smallMobile, $mobile);
+            @include adaptiveValue("margin-right", -20px, -30px, $smallMobile, $mobile);
+            @include adaptiveValue("padding-top", 10px, 15px, $smallMobile, $mobile);
+            @include adaptiveValue("padding-bottom", 10px, 15px, $smallMobile, $mobile);
+            @include adaptiveValue("padding-left", 10px, 30px, $smallMobile, $mobile);
+            @include adaptiveValue("padding-right", 10px, 30px, $smallMobile, $mobile);
+        }
+
+        @media (min-width: $mobile) {
+            @include adaptiveValue("margin-bottom", 20px, 25px, $mobile, $maxContainerWidth);
+            @include adaptiveValue("margin-left", -10px, -30px, $mobile, $maxContainerWidth);
+            @include adaptiveValue("margin-right", -10px, -30px, $mobile, $maxContainerWidth);
+            @include adaptiveValue("padding-top", 10px, 15px, $mobile, $maxContainerWidth);
+            @include adaptiveValue("padding-bottom", 10px, 15px, $mobile, $maxContainerWidth);
+            @include adaptiveValue("padding-left", 10px, 30px, $mobile, $maxContainerWidth);
+            @include adaptiveValue("padding-right", 10px, 30px, $mobile, $maxContainerWidth);
+        } 
     }
 
     &__top-buttons {
@@ -2217,6 +2247,72 @@
         @media (min-width: $mobile) {
             @include adaptiveValue("flex-basis", 20px, 25px, $mobile, $maxContainerWidth);
         }
+    }
+}
+
+.good {
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    @include adaptiveValue("gap", 10px, 30px, $minWidth, $mobile);
+    background-color: $thirdColor;
+
+    @media (min-width: $mobile) {
+        @include adaptiveValue("gap", 10px, 30px, $mobile, $tablet);
+    }
+    
+    &__icon-wrapper {
+        flex-grow: 0;
+        flex-shrink: 0;
+        @include adaptiveValue("flex-basis", 22px, 44px, $minWidth, $mobile);
+        @include adaptiveValue("height", 18px, 36px, $minWidth, $mobile);
+
+        @media (min-width: $mobile) {
+            @include adaptiveValue("flex-basis", 22px, 44px, $mobile, $tablet);
+            @include adaptiveValue("height", 18px, 36px, $mobile, $tablet);
+        }
+    }
+
+    &__icon {
+        display: block;
+        width: 100%;
+        height: 100%;
+        fill: $primaryColor;
+        stroke: $primaryColor;
+    }
+
+    &__text {
+        flex: 0 1 auto;
+    }
+
+    &__text-string {
+        white-space: nowrap;
+        @include adaptiveValue("line-height", 20px, 26px, $minWidth, $mobile);
+        @include adaptiveValue("font-size", 16px, 20px, $minWidth, $mobile);
+        font-weight: 400;
+        color: $primaryColor;
+
+        @media (min-width: $mobile) {
+            @include adaptiveValue("line-height", 20px, 24px, $mobile, $tablet);
+            @include adaptiveValue("font-size", 16px, 18px, $mobile, $tablet);
+        }
+    }
+
+    &__price {
+        font-weight: 500;
+        color: $secondaryColor;
+    }
+
+    &__price-value {
+
+    }
+
+    &__price-currency {
+
+    }
+
+    &__highlightning {
+        color: $secondaryColor;
     }
 }
 
