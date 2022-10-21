@@ -37,6 +37,7 @@ function formatPrice(val, delim) {
 const initModulesMain = [
     initPrices,
     //initStarterPromoCode,
+    initComparisonPrices,
     initDiscountLink,
     initCheckPromoCode,
     initMakeOrder,
@@ -131,10 +132,12 @@ function updateViewPricesApply(show) {
     }
 
     let $price = $('.jsPrice');
+    let $priceBase = $('.jsPriceBase');
     let $priceOld = $('.jsPriceOld');
     let $discount = $('.jsPriceDiscount');
 
     $price.toggle(!! priceEnd).find('.value').text(formatPrice(priceEnd));
+    $priceBase.toggle(!! priceBase).find('.value').text(formatPrice(priceBase));
     $priceOld.toggle(!! priceOld).find('.value').text(formatPrice(priceOld));
     $discount.toggle(!! discount).find('.value').text(formatPrice(discount));
 
@@ -170,6 +173,53 @@ function setPromoDiscountPrice(promoPriceClass, code) {
                 return;
         }
         $pricePlace.toggle(!! promoPrice).find('.value').text(formatPrice(promoPrice));
+    });
+
+}
+
+function initComparisonPrices() {
+
+    $('.jsComparisonPriceOld').each(function(i) {
+
+        let code = $(this).data('code');
+        const $pricePlace = $(this);
+
+        shop.updatePrice(() => {
+
+            let oldPrice = shop.cache.pricesOld[code];
+            $pricePlace.toggle(!! oldPrice).find('.value').text(formatPrice(oldPrice));
+
+        });
+
+    });
+
+    $('.jsComparisonPriceBase').each(function(i) {
+
+        let code = $(this).data('code');
+        const $pricePlace = $(this);
+
+        shop.updatePrice(() => {
+
+            let basePrice = shop.cache.prices[code];
+            $pricePlace.toggle(!! basePrice).find('.value').text(formatPrice(basePrice));
+
+        });
+
+    });
+
+    $('.jsComparisonPricePromo').each(function(i) {
+
+        let code = $(this).data('code');
+        const $pricePlace = $(this);
+
+        shop.updatePrice(() => {
+
+            let promoPrice = (code === 'av14') ? shop.cache.prices[code] - 1500 : 
+                             shop.cache.prices[code] - 2000;
+            $pricePlace.toggle(!! promoPrice).find('.value').text(formatPrice(promoPrice));
+
+        });
+
     });
 
 }
