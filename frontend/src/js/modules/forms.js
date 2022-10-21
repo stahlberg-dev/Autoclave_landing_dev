@@ -36,7 +36,8 @@ function formatPrice(val, delim) {
 
 const initModulesMain = [
     initPrices,
-    initStarterPromoCode,
+    //initStarterPromoCode,
+    initDiscountLink,
     initCheckPromoCode,
     initMakeOrder,
     initCreditRequest,
@@ -104,10 +105,12 @@ function initPrices() {
         if (code) {
             shop.cart.productCode = code;
             updateViewPrices();
+            setPromoDiscountPrice('.jsPricePromoDiscount', code);
         }
     });
 
     updateViewPrices();
+    setPromoDiscountPrice('.jsPricePromoDiscount', 'av14');
 }
 
 // update visual prices after changing options
@@ -115,7 +118,7 @@ function updateViewPrices() {
     //updateViewPricesApply(false);
     shop.updatePrice(() => {
         updateViewPricesApply(true);
-    })
+    });
 }
 
 function updateViewPricesApply(show) {
@@ -143,7 +146,85 @@ function updateViewPricesApply(show) {
     });
 }
 
-function initStarterPromoCode() {
+function setPromoDiscountPrice(promoPriceClass, code) {
+
+    const $pricePlace = $(promoPriceClass);
+    let promoPrice;
+
+    shop.updatePrice(() => {
+
+        switch(code) {
+            case 'av14': 
+                promoPrice = shop.cache.prices[code] - 1500;
+                break;
+            case 'av18': 
+                promoPrice = shop.cache.prices[code] - 2000;
+                break;
+            case 'av26': 
+                promoPrice = shop.cache.prices[code] - 2000;
+                break;
+            case 'av35': 
+                promoPrice = shop.cache.prices[code] - 2000;
+                break;
+            default: 
+                return;
+        }
+        $pricePlace.toggle(!! promoPrice).find('.value').text(formatPrice(promoPrice));
+    });
+
+}
+
+function initDiscountLink() {
+
+    $('.jsDiscountLink').on('click', function(event) {
+
+        event.preventDefault();
+        const $root = $('.jsPromoCode');
+        const $input = $root.find('.jsPromoCodeInput');
+        const $info = $root.find('.jsPromoCodeInfo');
+        let code = 'ДОБРО';
+
+        shop.checkPromoCode(code, (response) => {
+            if (response.active) {
+                shop.cart.promoCode = code;
+                $input.val(code);
+                let info = response.info;
+                info = info.replace('Акция на автоклавы! Действует', 'Внимание! Промокод действует');
+                $info.text(info);
+                $info.toggleClass('active', response.active);
+
+                updateViewPrices();
+            }
+        });
+        
+    });
+
+}
+
+/* function setPromoDiscountPrice() {
+
+    let code = 'ДОБРО';
+    let $pricePromoDiscount = $('.jsPricePromoDiscount');
+    let promoPrice = 0;
+    let defaultPromo = shop.cart.promoCode;
+
+    shop.checkPromoCode(code, (response) => {
+        if (response.active) {
+
+            shop.cart.promoCode = code;
+            shop.loadEndPrice((response) => {
+                promoPrice = response.price;
+                $pricePromoDiscount.toggle(!! promoPrice).find('.value').text(formatPrice(promoPrice));
+            });
+            shop.cart.promoCode = defaultPromo;
+            console.log(shop.cache.prices);
+        }
+    });
+
+
+} */
+
+/* function initStarterPromoCode() {
     const $root = $('.jsPromoCode');
     const $input = $root.find('.jsPromoCodeInput');
     const $info = $root.find('.jsPromoCodeInfo');
@@ -161,7 +242,7 @@ function initStarterPromoCode() {
             updateViewPrices();
         }
     });
-}
+} */
 
 function initCheckPromoCode() {
     $('.jsPromoCode').each(function (i, root) {
@@ -274,4 +355,4 @@ function initDolyamePayment() {
 
 export {
     startForms,
-}
+};

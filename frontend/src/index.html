@@ -397,7 +397,7 @@
                             <h2 class="promo-discount__title">скидка по&nbsp;промокоду</h2>
                             <a data-goto=".order" 
                                href="#!" 
-                               class="promo-discount__link">
+                               class="promo-discount__link jsDiscountLink">
                                 <div class="promo-discount__link-text">добро</div>
                             </a>
                             <div class="promo-discount__amount">до&nbsp;<span class="promo-discount__amount-num">&nbsp;3&nbsp;500&nbsp;₽</span></div>
@@ -714,9 +714,9 @@
                         <div class="autoclave__choice choice">
                             <div class="choice__top">
                                 <div class="choice__top-prices prices">
-                                    <span class="prices__price jsPrice"><span class="prices__value value">17 590</span>
+                                    <span class="prices__price jsPrice"><span class="prices__value value"></span>
                                         <span class="prices__currency currency">₽</span></span>
-                                    <span class="prices__old-price prices__old-price_color_dark jsPriceOld"><span class="prices__old-value value">18 990</span>
+                                    <span class="prices__old-price prices__old-price_color_dark jsPriceOld"><span class="prices__old-value value"></span>
                                         <span class="prices__currency currency">₽</span></span>
                                 </div>
                                 <div class="choice__top-info good">
@@ -727,7 +727,7 @@
                                     </div>
                                     <div class="good__text">
                                         <div class="good__text-string">
-                                            <span class="good__price jsPrice"><span class="good__price-value value">17 590</span>
+                                            <span class="good__price jsPricePromoDiscount"><span class="good__price-value value"></span>
                                                 <span class="good__price-currency currency">₽</span></span>
                                             по промокоду
                                             <span class="good__highlightning">ДОБРО</span>
@@ -872,6 +872,46 @@
                     <div class="comparison__models">
                         <div class="comparison__model model">
                             <div class="model__image">
+                                <img src="img/comparison/av-14.png" alt="автоклав 14л" class="model__photo">
+                                <div class="model__height">
+                                    <div class="model__height-text">500&nbsp;мм</div>
+                                    <div class="model__height-arrow">
+                                        <div class="model__height-arrow-stripe"></div>
+                                        <div class="model__height-arrow-stripe"></div>
+                                        <div class="model__height-arrow-stripe"></div>
+                                        <div class="model__height-arrow-stripe"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="model__text">
+                                <div class="model__text-diametr"><span>&#8960;&nbsp;</span>225&nbsp;мм</div>
+                                <div class="model__text-liters">14&nbsp;литров</div>
+                                <div class="model__text-parameter">
+                                    <div class="model__text-parameter-name">Вес</div>
+                                    <div class="model__text-parameter-space"></div>
+                                    <div class="model__text-parameter-value">4,8&nbsp;кг</div>
+                                </div>
+                                <div class="model__text-parameter">
+                                    <div class="model__text-parameter-name">Вместимость&nbsp;банок&nbsp;0,5&nbsp;л</div>
+                                    <div class="model__text-parameter-space"></div>
+                                    <div class="model__text-parameter-value">12&nbsp;шт.</div>
+                                </div>
+                                <div class="model__text-parameter">
+                                    <div class="model__text-parameter-name">Вместимость&nbsp;банок&nbsp;0,7&nbsp;л</div>
+                                    <div class="model__text-parameter-space"></div>
+                                    <div class="model__text-parameter-value">6&nbsp;шт.</div>
+                                </div>
+                            </div>
+                            <a data-goto=".order"
+                                data-code="av14"
+                                href="#!" 
+                                class="model__button button button_text_white arrow-button jsSelectProduct">
+                                <div class="model__button-text arrow-button__text">Заказать</div>
+                                <div class="model__button-icon arrow-button__arrow-icon right-arrow"></div>
+                            </a>
+                        </div>
+                        <div class="comparison__model model">
+                            <div class="model__image">
                                 <img src="img/comparison/av-18.png" alt="автоклав 18л" class="model__photo">
                                 <div class="model__height">
                                     <div class="model__height-text">400&nbsp;мм</div>
@@ -996,6 +1036,46 @@
                     <div class="comparison__slider-wrapper swiper-wrapper">
                         <div class="comparison__slide model swiper-slide">
                             <div class="model__image">
+                                <img src="img/comparison/av-14.png" alt="автоклав 14л" class="model__photo">
+                                <div class="model__height">
+                                    <div class="model__height-text">500&nbsp;мм</div>
+                                    <div class="model__height-arrow">
+                                        <div class="model__height-arrow-stripe"></div>
+                                        <div class="model__height-arrow-stripe"></div>
+                                        <div class="model__height-arrow-stripe"></div>
+                                        <div class="model__height-arrow-stripe"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="model__text">
+                                <div class="model__text-diametr"><span>&#8960;&nbsp;</span>225&nbsp;мм</div>
+                                <div class="model__text-liters">14&nbsp;литров</div>
+                                <div class="model__text-parameter">
+                                    <div class="model__text-parameter-name">Вес</div>
+                                    <div class="model__text-parameter-space"></div>
+                                    <div class="model__text-parameter-value">4,8&nbsp;кг</div>
+                                </div>
+                                <div class="model__text-parameter">
+                                    <div class="model__text-parameter-name">Вместимость&nbsp;банок&nbsp;0,5&nbsp;л</div>
+                                    <div class="model__text-parameter-space"></div>
+                                    <div class="model__text-parameter-value">12&nbsp;шт.</div>
+                                </div>
+                                <div class="model__text-parameter">
+                                    <div class="model__text-parameter-name">Вместимость&nbsp;банок&nbsp;0,7&nbsp;л</div>
+                                    <div class="model__text-parameter-space"></div>
+                                    <div class="model__text-parameter-value">6&nbsp;шт.</div>
+                                </div>
+                            </div>
+                            <a data-goto=".order" 
+                               data-code="av14"
+                                href="#!" 
+                                class="model__button button button_text_white arrow-button jsSelectProduct">
+                                <div class="model__button-text arrow-button__text">Заказать</div>
+                                <div class="model__button-icon arrow-button__arrow-icon right-arrow"></div>
+                            </a>
+                        </div>
+                        <div class="comparison__slide model swiper-slide">
+                            <div class="model__image">
                                 <img src="img/comparison/av-18.png" alt="автоклав 18л" class="model__photo">
                                 <div class="model__height">
                                     <div class="model__height-text">400&nbsp;мм</div>
@@ -1029,7 +1109,7 @@
                             <a data-goto=".order" 
                                data-code="av18"
                                 href="#!" 
-                                class="model__button button button_text_white arrow-button">
+                                class="model__button button button_text_white arrow-button jsSelectProduct">
                                 <div class="model__button-text arrow-button__text">Заказать</div>
                                 <div class="model__button-icon arrow-button__arrow-icon right-arrow"></div>
                             </a>
@@ -1069,7 +1149,7 @@
                             <a data-goto=".order" 
                                data-code="av26"
                                 href="#!" 
-                                class="model__button button button_text_white arrow-button">
+                                class="model__button button button_text_white arrow-button jsSelectProduct">
                                 <div class="model__button-text arrow-button__text">Заказать</div>
                                 <div class="model__button-icon arrow-button__arrow-icon right-arrow"></div>
                             </a>
@@ -1109,7 +1189,7 @@
                             <a data-goto=".order" 
                                data-code="av35"
                                 href="#!" 
-                                class="model__button button button_text_white arrow-button">
+                                class="model__button button button_text_white arrow-button jsSelectProduct">
                                 <div class="model__button-text arrow-button__text">Заказать</div>
                                 <div class="model__button-icon arrow-button__arrow-icon right-arrow"></div>
                             </a>
@@ -1633,9 +1713,9 @@
                 <div class="order__container container">
                     <div class="order__content interactive-block">
                         <div class="order__prices prices">
-                            <span class="prices__price jsPrice"><span class="prices__value value">17 590</span>
+                            <span class="prices__price jsPrice"><span class="prices__value value"></span>
                                 <span class="prices__currency currency">₽</span></span>
-                            <span class="prices__old-price prices__old-price_color_orange jsPriceOld"><span class="prices__old-value value">18 990</span>
+                            <span class="prices__old-price prices__old-price_color_orange jsPriceOld"><span class="prices__old-value value"></span>
                                 <span class="prices__currency currency">₽</span></span>
                         </div>
                         <div class="order__buttons liter-buttons liter-buttons_color_dark">

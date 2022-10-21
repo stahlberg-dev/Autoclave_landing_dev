@@ -2418,7 +2418,7 @@
     &__models {
         display: none;
 
-        @media (min-width: $mobile) {
+        @media (min-width: $tablet) {
             display: flex;
             flex-flow: row nowrap;
             justify-content: space-between;
@@ -2429,7 +2429,7 @@
     &__model {
         
         @media (min-width: $mobile) {
-            flex: 0 1 33.33%;
+            flex: 0 1 25%;
         }
     }
 
@@ -2439,10 +2439,14 @@
         @include adaptiveValue("height", 460px, 660px, $minWidth, $smallMobile);
 
         @media (min-width: $smallMobile) {
-            @include adaptiveValue("height", 450px, 720px, $smallMobile, $mobile);
+            @include adaptiveValue("height", 430px, 700px, $smallMobile, $mobile);
         }
 
         @media (min-width: $mobile) {
+            @include adaptiveValue("height", 420px, 610px, $mobile, $tablet);
+        }
+
+        @media (min-width: $tablet) {
             display: none;
         }
     }
@@ -2509,7 +2513,12 @@
         }
 
         @media (min-width: $mobile) {
-            @include adaptiveValue("width", 135px, 280px, $mobile, $maxContainerWidth);
+            @include adaptiveValue("width", 135px, 220px, $mobile, $tablet);
+            margin-right: 10px;
+        }
+
+        @media (min-width: $tablet) {
+            width: 160px;
         }
     }
 
@@ -2543,15 +2552,15 @@
         font-weight: 300;
 
         @media (min-width: $smallMobile) {
-            @include adaptiveValue("left", 5px, 10px, $smallMobile, $mobile);
+            @include adaptiveValue("left", 10px, 15px, $smallMobile, $mobile);
             @include adaptiveValue("line-height", 16px, 20px, $smallMobile, $mobile);
-            @include adaptiveValue("font-size", 12px, 14px, $smallMobile, $mobile);
+            @include adaptiveValue("font-size", 14px, 16px, $smallMobile, $mobile);
         }
         
         @media (min-width: $mobile) {
-            @include adaptiveValue("left", 5px, 15px, $mobile, $maxContainerWidth);
-            @include adaptiveValue("line-height", 16px, 22px, $mobile, $maxContainerWidth);
-            @include adaptiveValue("font-size", 12px, 18px, $mobile, $maxContainerWidth);
+            @include adaptiveValue("left", 10px, 10px, $mobile, $tablet);
+            @include adaptiveValue("line-height", 16px, 20px, $mobile, $tablet);
+            @include adaptiveValue("font-size", 14px, 16px, $mobile, $tablet);
         }
     }
 
@@ -2605,15 +2614,15 @@
         }
 
         @media (min-width: $mobile) {
-            @include adaptiveValue("margin-bottom", 20px, 40px, $mobile, $maxContainerWidth);
+            @include adaptiveValue("margin-bottom", 20px, 30px, $mobile, $maxContainerWidth);
         }
     }
 
     &__text-diametr {
         @include adaptiveValue("margin-bottom", 10px, 20px, $minWidth, $smallMobile);
         text-align: center;
-        line-height: 22px;
-        font-size: 18px;
+        line-height: 18px;
+        font-size: 16px;
         font-weight: 300;
 
         & span {
@@ -2621,23 +2630,13 @@
         }
 
         @media (min-width: $smallMobile) {
-            @include adaptiveValue("margin-bottom", 10px, 30px, $smallMobile, $mobile);
-            @include adaptiveValue("line-height", 18px, 24px, $smallMobile, $mobile);
-            @include adaptiveValue("font-size", 16px, 18px, $smallMobile, $mobile);
-
-            & span {
-                @include adaptiveValue("font-size", 20px, 24px, $smallMobile, $mobile);
-            }
+            @include adaptiveValue("margin-bottom", 10px, 20px, $smallMobile, $mobile);
+            line-height: 18px;
+            font-size: 16px;
         }
 
         @media (min-width: $mobile) {
-            @include adaptiveValue("margin-bottom", 10px, 30px, $mobile, $maxContainerWidth);
-            @include adaptiveValue("line-height", 18px, 24px, $mobile, $maxContainerWidth);
-            @include adaptiveValue("font-size", 16px, 18px, $mobile, $maxContainerWidth);
-
-            & span {
-                @include adaptiveValue("font-size", 20px, 24px, $mobile, $maxContainerWidth);
-            }
+            @include adaptiveValue("margin-bottom", 10px, 20px, $mobile, $tablet);
         }
     }
 
@@ -2669,7 +2668,7 @@
         @include adaptiveValue("padding-right", 10px, 10px,  $minWidth, $smallMobile);
         @include adaptiveValue("padding-left", 10px, 10px,  $minWidth, $smallMobile);
         @include adaptiveValue("line-height", 16px, 22px, $minWidth, $smallMobile);
-            @include adaptiveValue("font-size", 14px, 18px, $minWidth, $smallMobile);
+        @include adaptiveValue("font-size", 14px, 18px, $minWidth, $smallMobile);
         
         @media (min-width: $smallMobile) {
             @include adaptiveValue("margin-bottom", 5px, 10px, $smallMobile, $mobile);
@@ -2677,16 +2676,14 @@
             @include adaptiveValue("padding-left", 10px, 10px, $smallMobile, $mobile);
             @include adaptiveValue("line-height", 16px, 22px, $smallMobile, $mobile);
             @include adaptiveValue("font-size", 12px, 18px, $smallMobile, $mobile);
-
         }
 
         @media (min-width: $mobile) {
-            @include adaptiveValue("margin-bottom", 5px, 10px, $mobile, $maxContainerWidth);
-            @include adaptiveValue("padding-right", 10px, 30px, $mobile, $maxContainerWidth);
-            @include adaptiveValue("padding-left", 10px, 30px, $mobile, $maxContainerWidth);
-            @include adaptiveValue("line-height", 16px, 22px, $mobile, $maxContainerWidth);
-            @include adaptiveValue("font-size", 12px, 18px, $mobile, $maxContainerWidth);
-
+            @include adaptiveValue("margin-bottom", 5px, 10px, $mobile, $tablet);
+            @include adaptiveValue("padding-right", 10px, 15px, $mobile, $tablet);
+            @include adaptiveValue("padding-left", 10px, 15px, $mobile, $tablet);
+            @include adaptiveValue("line-height", 16px, 20px, $mobile, $tablet);
+            @include adaptiveValue("font-size", 12px, 16px, $mobile, $tablet);
         }
     }
 
@@ -2707,6 +2704,10 @@
         @media (min-width: $mobile) {
             @include adaptiveValue("height", 14px, 18px, $mobile, $maxContainerWidth);
         }
+
+        @media (min-width: $tablet) {
+            height: 18px;
+        }
     }
 
     &__text-parameter-value {
@@ -2722,20 +2723,16 @@
 
         @media (min-width: $smallMobile) {
             width: calc(100% - 10px);
-            @include adaptiveValue("height", 45px, 60px, $smallMobile, $mobile);
-            @include adaptiveValue("gap", 10px, 40px, $smallMobile, $mobile);
+            @include adaptiveValue("height", 45px, 60px, $smallMobile, $tablet);
+            @include adaptiveValue("gap", 10px, 40px, $smallMobile, $tablet);
             margin-left: 10px;
-            @include adaptiveValue("line-height", 22px, 30px, $smallMobile, $mobile);
-            @include adaptiveValue("font-size", 18px, 24px, $smallMobile, $mobile);
+            @include adaptiveValue("line-height", 22px, 30px, $smallMobile, $tablet);
+            @include adaptiveValue("font-size", 18px, 24px, $smallMobile, $tablet);
         }
 
-        @media (min-width: $mobile) {
-            @include adaptiveValue("width", 150px, 250px, $mobile, $maxContainerWidth);
-            @include adaptiveValue("height", 45px, 60px, $mobile, $maxContainerWidth);
-            @include adaptiveValue("gap", 10px, 40px, $mobile, $maxContainerWidth);
+        @media (min-width: $tablet) {
+            width: 220px;
             margin-left: 0;
-            @include adaptiveValue("line-height", 22px, 30px, $mobile, $maxContainerWidth);
-            @include adaptiveValue("font-size", 18px, 24px, $mobile, $maxContainerWidth);
         }
     }
 

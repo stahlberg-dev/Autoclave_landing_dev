@@ -458,6 +458,11 @@ export function comparisonSlider() {
                     slidesPerView: 2.2,
                     spaceBetween: 15,
                 },
+
+                769: { 
+                    slidesPerView: 3.35,
+                    spaceBetween: 15,
+                },
             }
         });
     }

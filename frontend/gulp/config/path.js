@@ -2,7 +2,7 @@ import * as nodePath from 'path';
 const rootFolder = nodePath.basename(nodePath.resolve());
 
 export function getPath(isDev) {
-    const buildFolder = isDev ? `../public_dev`: `../public`;
+    const buildFolder = isDev ? `../dev`: `../public`;
     const srcFolder = `./src`;
 
     return {
