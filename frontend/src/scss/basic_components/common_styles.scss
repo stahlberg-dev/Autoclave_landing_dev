@@ -453,6 +453,7 @@ body {
 
         @media (min-width: $smallMobile) {
             flex-flow: row nowrap;
+            //justify-content: space-between;
             align-items: start;
             gap: 20px;
         }
@@ -464,13 +465,15 @@ body {
         font-size: 32px;
 
         @media (min-width: $smallMobile) {
+            @include adaptiveValue("min-width", 135px, 200px, $smallMobile, $mobile);
             @include adaptiveValue("line-height", 38px, 58px, $smallMobile, $mobile);
             @include adaptiveValue("font-size", 32px, 48px, $smallMobile, $mobile);
         }
 
         @media (min-width: $mobile) {
-            @include adaptiveValue("line-height", 36px, 58px, $mobile, $maxContainerWidth);
-            @include adaptiveValue("font-size", 30px, 48px, $mobile, $maxContainerWidth);
+            @include adaptiveValue("min-width", 135px, 200px, $mobile, $tablet);
+            @include adaptiveValue("line-height", 36px, 58px, $mobile, $tablet);
+            @include adaptiveValue("font-size", 32px, 48px, $mobile, $tablet);
         }
     }
 

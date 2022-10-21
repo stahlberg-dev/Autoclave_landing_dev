@@ -2299,8 +2299,14 @@
     }
 
     &__price {
+        display: inline-block;
+        @include adaptiveValue("min-width", 70px, 80px, $minWidth, $mobile);
         font-weight: 500;
         color: $secondaryColor;
+
+        @media (min-width: $mobile) {
+            @include adaptiveValue("min-width", 70px, 80px, $mobile, $tablet);
+        }
     }
 
     &__price-value {

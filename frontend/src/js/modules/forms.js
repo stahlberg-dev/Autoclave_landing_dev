@@ -232,8 +232,13 @@ function initDiscountLink() {
         const $root = $('.jsPromoCode');
         const $input = $root.find('.jsPromoCodeInput');
         const $info = $root.find('.jsPromoCodeInfo');
+        const $checkButton = $root.find('.jsPromoCodeCheckButton');
+        const $deleteButton = $root.find('.jsPromoCodeDeleteButton');
         let code = 'ДОБРО';
 
+        $checkButton.hide(200);
+        $deleteButton.show(200);
+        
         shop.checkPromoCode(code, (response) => {
             if (response.active) {
                 shop.cart.promoCode = code;
