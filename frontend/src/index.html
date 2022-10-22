@@ -1413,10 +1413,30 @@
                             </button>
                         </div>
                         <div class="equipment-header equipment__header-content characteristics-header">
-                            <h2 class="equipment-header__title">Технические характеристики</h2>
-                            <button data-page-button="complectation" class="equipment-header__button button button_text_orange">
-                                <span>Комплектация</span>
-                            </button>
+                            <div class="equipment-header__top">
+                                <h2 class="equipment-header__title">Технические характеристики</h2>
+                                <button data-page-button="complectation" class="equipment-header__button button button_text_orange">
+                                    <span>Комплектация</span>
+                                </button>
+                            </div>
+                            <div class="equipment-header__liter-buttons liter-buttons liter-buttons_color_dark">
+                                <div data-code="av14" 
+                                     class="liter-buttons__button order-tab-button jsSelectProduct liter-buttons__button_active">
+                                    <div class="liter-buttons__button-text">14&nbsp;л<span>итров</span></div>
+                                </div>
+                                <div data-code="av18" 
+                                     class="liter-buttons__button order-tab-button jsSelectProduct">
+                                    <div class="liter-buttons__button-text">18&nbsp;л<span>итров</span></div>
+                                </div>
+                                <div data-code="av26" 
+                                     class="liter-buttons__button order-tab-button jsSelectProduct">
+                                    <div class="liter-buttons__button-text">26&nbsp;л<span>итров</span></div>
+                                </div>
+                                <div data-code="av35" 
+                                     class="liter-buttons__button order-tab-button jsSelectProduct">
+                                    <div class="liter-buttons__button-text">35&nbsp;л<span>итров</span></div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <div class="equipment__body">
@@ -1500,7 +1520,8 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="characteristics equipment__body-content">
+                        <div data-page="av14" 
+                             class="characteristics characteristics_tab-active equipment__body-content">
                             <div class="characteristics__section">
                                 <h3 class="characteristics__subtitle">Ёмкость</h3>
                                 <div class="characteristics__parameter">
@@ -1509,94 +1530,95 @@
                                     <div class="characteristics__parameter-value">нержавеющая сталь&nbsp;AISI&nbsp;430</div>
                                 </div>
                                 <div class="characteristics__parameter">
-                                    <div class="characteristics__parameter-name">Объем</div>
+                                    <div class="characteristics__parameter-name">Внутренний&nbsp;объем</div>
                                     <div class="characteristics__parameter-space"></div>
-                                    <div class="characteristics__parameter-value">18/26/35 литров</div>
+                                    <div class="characteristics__parameter-value">14&nbsp;л</div>
                                 </div>
                                 <div class="characteristics__parameter">
-                                    <div class="characteristics__parameter-name">Высота автоклава в сборе</div>
+                                    <div class="characteristics__parameter-name">Высота автоклава в&nbsp;сборе</div>
                                     <div class="characteristics__parameter-space"></div>
-                                    <div class="characteristics__parameter-value">620 мм</div>
+                                    <div class="characteristics__parameter-value">516&nbsp;мм</div>
                                 </div>
                                 <div class="characteristics__parameter">
-                                    <div class="characteristics__parameter-name">Внутренняя высота емкости</div>
+                                    <div class="characteristics__parameter-name">Внутренняя&nbsp;высота емкости</div>
                                     <div class="characteristics__parameter-space"></div>
-                                    <div class="characteristics__parameter-value">475 мм</div>
+                                    <div class="characteristics__parameter-value">360&nbsp;мм</div>
                                 </div>
                                 <div class="characteristics__parameter">
                                     <div class="characteristics__parameter-name">Диаметр емкости</div>
                                     <div class="characteristics__parameter-space"></div>
-                                    <div class="characteristics__parameter-value">300 мм</div>
+                                    <div class="characteristics__parameter-value">225&nbsp;мм</div>
                                 </div>
                                 <div class="characteristics__parameter">
-                                    <div class="characteristics__parameter-name">Внутренний диаметр емкости</div>
+                                    <div class="characteristics__parameter-name">Внутренний&nbsp;диаметр емкости</div>
                                     <div class="characteristics__parameter-space"></div>
-                                    <div class="characteristics__parameter-value">298 мм</div>
+                                    <div class="characteristics__parameter-value">223&nbsp;мм</div>
                                 </div>
                                 <div class="characteristics__parameter">
-                                    <div class="characteristics__parameter-name">Толщина дна</div>
+                                    <div class="characteristics__parameter-name">Ширина в&nbsp;сборе с&nbsp;ручками</div>
                                     <div class="characteristics__parameter-space"></div>
-                                    <div class="characteristics__parameter-value">1.5 мм</div>
+                                    <div class="characteristics__parameter-value">332&nbsp;мм</div>
+                                </div>
+                                <div class="characteristics__parameter">
+                                    <div class="characteristics__parameter-name">Толщина дна&nbsp;/&nbsp;стенки</div>
+                                    <div class="characteristics__parameter-space"></div>
+                                    <div class="characteristics__parameter-value">1.5&nbsp;мм</div>
                                 </div>
                                 <div class="characteristics__parameter">
                                     <div class="characteristics__parameter-name">Толщина стенки</div>
                                     <div class="characteristics__parameter-space"></div>
-                                    <div class="characteristics__parameter-value">1 мм</div>
-                                </div>
-                                <div class="characteristics__parameter">
-                                    <div class="characteristics__parameter-name">Толщина скобы зажима</div>
-                                    <div class="characteristics__parameter-space"></div>
-                                    <div class="characteristics__parameter-value">4 мм</div>
+                                    <div class="characteristics__parameter-value">1&nbsp;мм</div>
                                 </div>
                                 <div class="characteristics__parameter">
                                     <div class="characteristics__parameter-name">Толщина фальшдна</div>
                                     <div class="characteristics__parameter-space"></div>
-                                    <div class="characteristics__parameter-value">0.8 мм</div>
+                                    <div class="characteristics__parameter-value">0.8&nbsp;мм</div>
                                 </div>
                                 <div class="characteristics__parameter">
-                                    <div class="characteristics__parameter-name">Выход под ТЭН</div>
+                                    <div class="characteristics__parameter-name">Толщина скобы&nbsp;зажима</div>
                                     <div class="characteristics__parameter-space"></div>
-                                    <div class="characteristics__parameter-value">кламп 2 дюйма</div>
+                                    <div class="characteristics__parameter-value">4&nbsp;мм</div>
                                 </div>
                                 <div class="characteristics__parameter">
-                                    <div class="characteristics__parameter-name">Муфта под кран</div>
+                                    <div class="characteristics__parameter-name">Толщина силиконовой&nbsp;прокладки</div>
                                     <div class="characteristics__parameter-space"></div>
-                                    <div class="characteristics__parameter-value">резьба 1/2</div>
+                                    <div class="characteristics__parameter-value">4&nbsp;мм</div>
                                 </div>
                                 <div class="characteristics__parameter">
-                                    <div class="characteristics__parameter-name">Вес автоклава, нетто</div>
-                                    <div class="characteristics__parameter-space"></div>
-                                    <div class="characteristics__parameter-value">9 кг</div>
-                                </div>
-                                <div class="characteristics__parameter">
-                                    <div class="characteristics__parameter-name">Вес автоклава, брутто</div>
-                                    <div class="characteristics__parameter-space"></div>
-                                    <div class="characteristics__parameter-value">10.6 кг</div>
-                                </div>
-                                <div class="characteristics__parameter">
-                                    <div class="characteristics__parameter-name">Материал ручек зажимов</div>
+                                    <div class="characteristics__parameter-name">Материал ручек&nbsp;зажимов</div>
                                     <div class="characteristics__parameter-space"></div>
                                     <div class="characteristics__parameter-value">полиуретановый пластик</div>
                                 </div>
+                                <h3 class="characteristics__subtitle">Вместимость</h3>
                                 <div class="characteristics__parameter">
-                                    <div class="characteristics__parameter-name">Вместимость банок 0.5 л</div>
+                                    <div class="characteristics__parameter-name">Количество банок&nbsp;0.25&nbsp;л</div>
                                     <div class="characteristics__parameter-space"></div>
-                                    <div class="characteristics__parameter-value">32 шт.</div>
+                                    <div class="characteristics__parameter-value">24&nbsp;шт.</div>
                                 </div>
                                 <div class="characteristics__parameter">
-                                    <div class="characteristics__parameter-name">Вместимость банок 0.7 л</div>
+                                    <div class="characteristics__parameter-name">Вместимость банок&nbsp;0.5&nbsp;л</div>
                                     <div class="characteristics__parameter-space"></div>
-                                    <div class="characteristics__parameter-value">21 шт.</div>
+                                    <div class="characteristics__parameter-value">12&nbsp;шт.</div>
                                 </div>
                                 <div class="characteristics__parameter">
-                                    <div class="characteristics__parameter-name">Рабочая температура</div>
+                                    <div class="characteristics__parameter-name">Вместимость банок&nbsp;0.7&nbsp;л</div>
                                     <div class="characteristics__parameter-space"></div>
-                                    <div class="characteristics__parameter-value">120 градусов</div>
+                                    <div class="characteristics__parameter-value">6&nbsp;шт.</div>
                                 </div>
                                 <div class="characteristics__parameter">
-                                    <div class="characteristics__parameter-name">Рабочее давление</div>
+                                    <div class="characteristics__parameter-name">Количество банок&nbsp;0.95&nbsp;л</div>
                                     <div class="characteristics__parameter-space"></div>
-                                    <div class="characteristics__parameter-value">1-1.2 атмфосферы</div>
+                                    <div class="characteristics__parameter-value">6&nbsp;шт.</div>
+                                </div>
+                                <div class="characteristics__parameter">
+                                    <div class="characteristics__parameter-name">Количество банок&nbsp&nbsp;2&nbsp;л</div>
+                                    <div class="characteristics__parameter-space"></div>
+                                    <div class="characteristics__parameter-value">1 шт.</div>
+                                </div>
+                                <div class="characteristics__parameter">
+                                    <div class="characteristics__parameter-name">Количество банок&nbsp;3&nbsp;л</div>
+                                    <div class="characteristics__parameter-space"></div>
+                                    <div class="characteristics__parameter-value">1&nbsp;шт.</div>
                                 </div>
                             </div>
                             <div class="characteristics__section">
@@ -1609,22 +1631,12 @@
                                 <div class="characteristics__parameter">
                                     <div class="characteristics__parameter-name">Толщина крышки</div>
                                     <div class="characteristics__parameter-space"></div>
-                                    <div class="characteristics__parameter-value">2 мм</div>
+                                    <div class="characteristics__parameter-value">2&nbsp;мм</div>
                                 </div>
                                 <div class="characteristics__parameter">
-                                    <div class="characteristics__parameter-name">Выход под кламп</div>
+                                    <div class="characteristics__parameter-name">Манометр</div>
                                     <div class="characteristics__parameter-space"></div>
-                                    <div class="characteristics__parameter-value">2 дюйма</div>
-                                </div>
-                                <div class="characteristics__parameter">
-                                    <div class="characteristics__parameter-name">Дышащий клапан</div>
-                                    <div class="characteristics__parameter-space"></div>
-                                    <div class="characteristics__parameter-value">двусторонний</div>
-                                </div>
-                                <div class="characteristics__parameter">
-                                    <div class="characteristics__parameter-name">Аварийный клапан</div>
-                                    <div class="characteristics__parameter-space"></div>
-                                    <div class="characteristics__parameter-value">1.5 бара</div>
+                                    <div class="characteristics__parameter-value">ГОСТ «ФИЗТЕХ» или&nbsp;«РОСМА»</div>
                                 </div>
                                 <div class="characteristics__parameter">
                                     <div class="characteristics__parameter-name">Термометр</div>
@@ -1637,9 +1649,564 @@
                                     <div class="characteristics__parameter-value">глухая</div>
                                 </div>
                                 <div class="characteristics__parameter">
+                                    <div class="characteristics__parameter-name">Дышащий клапан</div>
+                                    <div class="characteristics__parameter-space"></div>
+                                    <div class="characteristics__parameter-value">двусторонний</div>
+                                </div>
+                                <div class="characteristics__parameter">
+                                    <div class="characteristics__parameter-name">Аварийный клапан</div>
+                                    <div class="characteristics__parameter-space"></div>
+                                    <div class="characteristics__parameter-value">1.5&nbsp;бара</div>
+                                </div>
+                                <div class="characteristics__parameter">
+                                    <div class="characteristics__parameter-name">Рабочее давление</div>
+                                    <div class="characteristics__parameter-space"></div>
+                                    <div class="characteristics__parameter-value">1&#8209;1.2&nbsp;бара</div>
+                                </div>
+                                <div class="characteristics__parameter">
+                                    <div class="characteristics__parameter-name">Диапазон&nbsp;давления<br>срабатывания аварийного&nbsp;клапана</div>
+                                    <div class="characteristics__parameter-space"></div>
+                                    <div class="characteristics__parameter-value">1.5&#8209;1.8&nbsp;бара</div>
+                                </div>
+                                <div class="characteristics__parameter">
+                                    <div class="characteristics__parameter-name">Диапазон температуры</div>
+                                    <div class="characteristics__parameter-space"></div>
+                                    <div class="characteristics__parameter-value">0&#8209;120&nbsp;°C</div>
+                                </div>
+                                <div class="characteristics__parameter">
+                                    <div class="characteristics__parameter-name">Мощность нагрева</div>
+                                    <div class="characteristics__parameter-space"></div>
+                                    <div class="characteristics__parameter-value">1.5&nbsp;кВт</div>
+                                </div>
+                                <div class="characteristics__parameter">
+                                    <div class="characteristics__parameter-name">Вес&nbsp;в&nbsp;сборе, нетто</div>
+                                    <div class="characteristics__parameter-space"></div>
+                                    <div class="characteristics__parameter-value">4.8&nbsp;кг</div>
+                                </div>
+                                <div class="characteristics__parameter">
+                                    <div class="characteristics__parameter-name">Вес&nbsp;в&nbsp;сборе, брутто</div>
+                                    <div class="characteristics__parameter-space"></div>
+                                    <div class="characteristics__parameter-value">6.3&nbsp;кг</div>
+                                </div> 
+                            </div>
+                        </div>
+                        <div data-page="av18"
+                             class="characteristics equipment__body-content">
+                            <div class="characteristics__section">
+                                <h3 class="characteristics__subtitle">Ёмкость</h3>
+                                <div class="characteristics__parameter">
+                                    <div class="characteristics__parameter-name">Материал изготовления</div>
+                                    <div class="characteristics__parameter-space"></div>
+                                    <div class="characteristics__parameter-value">нержавеющая сталь&nbsp;AISI&nbsp;430</div>
+                                </div>
+                                <div class="characteristics__parameter">
+                                    <div class="characteristics__parameter-name">Внутренний&nbsp;объем</div>
+                                    <div class="characteristics__parameter-space"></div>
+                                    <div class="characteristics__parameter-value">18&nbsp;л</div>
+                                </div>
+                                <div class="characteristics__parameter">
+                                    <div class="characteristics__parameter-name">Высота автоклава в&nbsp;сборе</div>
+                                    <div class="characteristics__parameter-space"></div>
+                                    <div class="characteristics__parameter-value">400&nbsp;мм</div>
+                                </div>
+                                <div class="characteristics__parameter">
+                                    <div class="characteristics__parameter-name">Внутренняя&nbsp;высота емкости</div>
+                                    <div class="characteristics__parameter-space"></div>
+                                    <div class="characteristics__parameter-value">250&nbsp;мм</div>
+                                </div>
+                                <div class="characteristics__parameter">
+                                    <div class="characteristics__parameter-name">Диаметр емкости</div>
+                                    <div class="characteristics__parameter-space"></div>
+                                    <div class="characteristics__parameter-value">300&nbsp;мм</div>
+                                </div>
+                                <div class="characteristics__parameter">
+                                    <div class="characteristics__parameter-name">Внутренний&nbsp;диаметр емкости</div>
+                                    <div class="characteristics__parameter-space"></div>
+                                    <div class="characteristics__parameter-value">298&nbsp;мм</div>
+                                </div>
+                                <div class="characteristics__parameter">
+                                    <div class="characteristics__parameter-name">Ширина в&nbsp;сборе с&nbsp;ручками</div>
+                                    <div class="characteristics__parameter-space"></div>
+                                    <div class="characteristics__parameter-value">430&nbsp;мм</div>
+                                </div>
+                                <div class="characteristics__parameter">
+                                    <div class="characteristics__parameter-name">Толщина дна&nbsp;/&nbsp;стенки</div>
+                                    <div class="characteristics__parameter-space"></div>
+                                    <div class="characteristics__parameter-value">1.5&nbsp;мм</div>
+                                </div>
+                                <div class="characteristics__parameter">
+                                    <div class="characteristics__parameter-name">Толщина стенки</div>
+                                    <div class="characteristics__parameter-space"></div>
+                                    <div class="characteristics__parameter-value">1&nbsp;мм</div>
+                                </div>
+                                <div class="characteristics__parameter">
+                                    <div class="characteristics__parameter-name">Толщина фальшдна</div>
+                                    <div class="characteristics__parameter-space"></div>
+                                    <div class="characteristics__parameter-value">0.8&nbsp;мм</div>
+                                </div>
+                                <div class="characteristics__parameter">
+                                    <div class="characteristics__parameter-name">Толщина скобы&nbsp;зажима</div>
+                                    <div class="characteristics__parameter-space"></div>
+                                    <div class="characteristics__parameter-value">4&nbsp;мм</div>
+                                </div>
+                                <div class="characteristics__parameter">
+                                    <div class="characteristics__parameter-name">Толщина силиконовой&nbsp;прокладки</div>
+                                    <div class="characteristics__parameter-space"></div>
+                                    <div class="characteristics__parameter-value">4&nbsp;мм</div>
+                                </div>
+                                <div class="characteristics__parameter">
+                                    <div class="characteristics__parameter-name">Материал ручек&nbsp;зажимов</div>
+                                    <div class="characteristics__parameter-space"></div>
+                                    <div class="characteristics__parameter-value">полиуретановый пластик</div>
+                                </div>
+                                <h3 class="characteristics__subtitle">Вместимость</h3>
+                                <div class="characteristics__parameter">
+                                    <div class="characteristics__parameter-name">Количество банок&nbsp;0.25&nbsp;л</div>
+                                    <div class="characteristics__parameter-space"></div>
+                                    <div class="characteristics__parameter-value">32&nbsp;шт.</div>
+                                </div>
+                                <div class="characteristics__parameter">
+                                    <div class="characteristics__parameter-name">Вместимость банок&nbsp;0.5&nbsp;л</div>
+                                    <div class="characteristics__parameter-space"></div>
+                                    <div class="characteristics__parameter-value">16&nbsp;шт.</div>
+                                </div>
+                                <div class="characteristics__parameter">
+                                    <div class="characteristics__parameter-name">Вместимость банок&nbsp;0.7&nbsp;л</div>
+                                    <div class="characteristics__parameter-space"></div>
+                                    <div class="characteristics__parameter-value">7&nbsp;шт.</div>
+                                </div>
+                                <div class="characteristics__parameter">
+                                    <div class="characteristics__parameter-name">Количество банок&nbsp;0.95&nbsp;л</div>
+                                    <div class="characteristics__parameter-space"></div>
+                                    <div class="characteristics__parameter-value">5&nbsp;шт.</div>
+                                </div>
+                                <div class="characteristics__parameter">
+                                    <div class="characteristics__parameter-name">Количество банок&nbsp&nbsp;2&nbsp;л</div>
+                                    <div class="characteristics__parameter-space"></div>
+                                    <div class="characteristics__parameter-value">3&nbsp;шт.</div>
+                                </div>
+                                <div class="characteristics__parameter">
+                                    <div class="characteristics__parameter-name">Количество банок&nbsp;3&nbsp;л</div>
+                                    <div class="characteristics__parameter-space"></div>
+                                    <div class="characteristics__parameter-value">1&nbsp;шт.</div>
+                                </div>
+                            </div>
+                            <div class="characteristics__section">
+                                <h3 class="characteristics__subtitle">Крышка</h3>
+                                <div class="characteristics__parameter">
+                                    <div class="characteristics__parameter-name">Материал изготовления</div>
+                                    <div class="characteristics__parameter-space"></div>
+                                    <div class="characteristics__parameter-value">нержавеющая сталь&nbsp;AISI&nbsp;430</div>
+                                </div>
+                                <div class="characteristics__parameter">
+                                    <div class="characteristics__parameter-name">Толщина крышки</div>
+                                    <div class="characteristics__parameter-space"></div>
+                                    <div class="characteristics__parameter-value">2&nbsp;мм</div>
+                                </div>
+                                <div class="characteristics__parameter">
                                     <div class="characteristics__parameter-name">Манометр</div>
                                     <div class="characteristics__parameter-space"></div>
-                                    <div class="characteristics__parameter-value">«ФИЗТЕХ» или «РОСМА»</div>
+                                    <div class="characteristics__parameter-value">ГОСТ «ФИЗТЕХ» или&nbsp;«РОСМА»</div>
+                                </div>
+                                <div class="characteristics__parameter">
+                                    <div class="characteristics__parameter-name">Термометр</div>
+                                    <div class="characteristics__parameter-space"></div>
+                                    <div class="characteristics__parameter-value">цифровой</div>
+                                </div>
+                                <div class="characteristics__parameter">
+                                    <div class="characteristics__parameter-name">Гильза установки термометра</div>
+                                    <div class="characteristics__parameter-space"></div>
+                                    <div class="characteristics__parameter-value">глухая</div>
+                                </div>
+                                <div class="characteristics__parameter">
+                                    <div class="characteristics__parameter-name">Дышащий клапан</div>
+                                    <div class="characteristics__parameter-space"></div>
+                                    <div class="characteristics__parameter-value">двусторонний</div>
+                                </div>
+                                <div class="characteristics__parameter">
+                                    <div class="characteristics__parameter-name">Аварийный клапан</div>
+                                    <div class="characteristics__parameter-space"></div>
+                                    <div class="characteristics__parameter-value">1.5&nbsp;бара</div>
+                                </div>
+                                <div class="characteristics__parameter">
+                                    <div class="characteristics__parameter-name">Рабочее давление</div>
+                                    <div class="characteristics__parameter-space"></div>
+                                    <div class="characteristics__parameter-value">1&#8209;1.2&nbsp;бара</div>
+                                </div>
+                                <div class="characteristics__parameter">
+                                    <div class="characteristics__parameter-name">Диапазон&nbsp;давления<br>срабатывания аварийного&nbsp;клапана</div>
+                                    <div class="characteristics__parameter-space"></div>
+                                    <div class="characteristics__parameter-value">1.5&#8209;1.8&nbsp;бара</div>
+                                </div>
+                                <div class="characteristics__parameter">
+                                    <div class="characteristics__parameter-name">Диапазон температуры</div>
+                                    <div class="characteristics__parameter-space"></div>
+                                    <div class="characteristics__parameter-value">0&#8209;120&nbsp;°C</div>
+                                </div>
+                                <div class="characteristics__parameter">
+                                    <div class="characteristics__parameter-name">Мощность нагрева</div>
+                                    <div class="characteristics__parameter-space"></div>
+                                    <div class="characteristics__parameter-value">1.5&nbsp;кВт</div>
+                                </div>
+                                <div class="characteristics__parameter">
+                                    <div class="characteristics__parameter-name">Вес&nbsp;в&nbsp;сборе, нетто</div>
+                                    <div class="characteristics__parameter-space"></div>
+                                    <div class="characteristics__parameter-value">6.7&nbsp;кг</div>
+                                </div>
+                                <div class="characteristics__parameter">
+                                    <div class="characteristics__parameter-name">Вес&nbsp;в&nbsp;сборе, брутто</div>
+                                    <div class="characteristics__parameter-space"></div>
+                                    <div class="characteristics__parameter-value">7.15&nbsp;кг</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div data-page="av26"
+                             class="characteristics equipment__body-content">
+                            <div class="characteristics__section">
+                                <h3 class="characteristics__subtitle">Ёмкость</h3>
+                                <div class="characteristics__parameter">
+                                    <div class="characteristics__parameter-name">Материал изготовления</div>
+                                    <div class="characteristics__parameter-space"></div>
+                                    <div class="characteristics__parameter-value">нержавеющая сталь&nbsp;AISI&nbsp;430</div>
+                                </div>
+                                <div class="characteristics__parameter">
+                                    <div class="characteristics__parameter-name">Внутренний&nbsp;объем</div>
+                                    <div class="characteristics__parameter-space"></div>
+                                    <div class="characteristics__parameter-value">26&nbsp;л</div>
+                                </div>
+                                <div class="characteristics__parameter">
+                                    <div class="characteristics__parameter-name">Высота автоклава в&nbsp;сборе</div>
+                                    <div class="characteristics__parameter-space"></div>
+                                    <div class="characteristics__parameter-value">510&nbsp;мм</div>
+                                </div>
+                                <div class="characteristics__parameter">
+                                    <div class="characteristics__parameter-name">Внутренняя&nbsp;высота емкости</div>
+                                    <div class="characteristics__parameter-space"></div>
+                                    <div class="characteristics__parameter-value">360&nbsp;мм</div>
+                                </div>
+                                <div class="characteristics__parameter">
+                                    <div class="characteristics__parameter-name">Диаметр емкости</div>
+                                    <div class="characteristics__parameter-space"></div>
+                                    <div class="characteristics__parameter-value">300&nbsp;мм</div>
+                                </div>
+                                <div class="characteristics__parameter">
+                                    <div class="characteristics__parameter-name">Внутренний&nbsp;диаметр емкости</div>
+                                    <div class="characteristics__parameter-space"></div>
+                                    <div class="characteristics__parameter-value">298&nbsp;мм</div>
+                                </div>
+                                <div class="characteristics__parameter">
+                                    <div class="characteristics__parameter-name">Ширина в&nbsp;сборе с&nbsp;ручками</div>
+                                    <div class="characteristics__parameter-space"></div>
+                                    <div class="characteristics__parameter-value">430&nbsp;мм</div>
+                                </div>
+                                <div class="characteristics__parameter">
+                                    <div class="characteristics__parameter-name">Толщина дна&nbsp;/&nbsp;стенки</div>
+                                    <div class="characteristics__parameter-space"></div>
+                                    <div class="characteristics__parameter-value">1.5&nbsp;мм</div>
+                                </div>
+                                <div class="characteristics__parameter">
+                                    <div class="characteristics__parameter-name">Толщина стенки</div>
+                                    <div class="characteristics__parameter-space"></div>
+                                    <div class="characteristics__parameter-value">1&nbsp;мм</div>
+                                </div>
+                                <div class="characteristics__parameter">
+                                    <div class="characteristics__parameter-name">Толщина фальшдна</div>
+                                    <div class="characteristics__parameter-space"></div>
+                                    <div class="characteristics__parameter-value">0.8&nbsp;мм</div>
+                                </div>
+                                <div class="characteristics__parameter">
+                                    <div class="characteristics__parameter-name">Толщина скобы&nbsp;зажима</div>
+                                    <div class="characteristics__parameter-space"></div>
+                                    <div class="characteristics__parameter-value">4&nbsp;мм</div>
+                                </div>
+                                <div class="characteristics__parameter">
+                                    <div class="characteristics__parameter-name">Толщина силиконовой&nbsp;прокладки</div>
+                                    <div class="characteristics__parameter-space"></div>
+                                    <div class="characteristics__parameter-value">4&nbsp;мм</div>
+                                </div>
+                                <div class="characteristics__parameter">
+                                    <div class="characteristics__parameter-name">Материал ручек&nbsp;зажимов</div>
+                                    <div class="characteristics__parameter-space"></div>
+                                    <div class="characteristics__parameter-value">полиуретановый пластик</div>
+                                </div>
+                                <h3 class="characteristics__subtitle">Вместимость</h3>
+                                <div class="characteristics__parameter">
+                                    <div class="characteristics__parameter-name">Количество банок&nbsp;0.25&nbsp;л</div>
+                                    <div class="characteristics__parameter-space"></div>
+                                    <div class="characteristics__parameter-value">48&nbsp;шт.</div>
+                                </div>
+                                <div class="characteristics__parameter">
+                                    <div class="characteristics__parameter-name">Вместимость банок&nbsp;0.5&nbsp;л</div>
+                                    <div class="characteristics__parameter-space"></div>
+                                    <div class="characteristics__parameter-value">24&nbsp;шт.</div>
+                                </div>
+                                <div class="characteristics__parameter">
+                                    <div class="characteristics__parameter-name">Вместимость банок&nbsp;0.7&nbsp;л</div>
+                                    <div class="characteristics__parameter-space"></div>
+                                    <div class="characteristics__parameter-value">14&nbsp;шт.</div>
+                                </div>
+                                <div class="characteristics__parameter">
+                                    <div class="characteristics__parameter-name">Количество банок&nbsp;0.95&nbsp;л</div>
+                                    <div class="characteristics__parameter-space"></div>
+                                    <div class="characteristics__parameter-value">10&nbsp;шт.</div>
+                                </div>
+                                <div class="characteristics__parameter">
+                                    <div class="characteristics__parameter-name">Количество банок&nbsp&nbsp;2&nbsp;л</div>
+                                    <div class="characteristics__parameter-space"></div>
+                                    <div class="characteristics__parameter-value">3&nbsp;шт.</div>
+                                </div>
+                                <div class="characteristics__parameter">
+                                    <div class="characteristics__parameter-name">Количество банок&nbsp;3&nbsp;л</div>
+                                    <div class="characteristics__parameter-space"></div>
+                                    <div class="characteristics__parameter-value">1&nbsp;шт.</div>
+                                </div>
+                            </div>
+                            <div class="characteristics__section">
+                                <h3 class="characteristics__subtitle">Крышка</h3>
+                                <div class="characteristics__parameter">
+                                    <div class="characteristics__parameter-name">Материал изготовления</div>
+                                    <div class="characteristics__parameter-space"></div>
+                                    <div class="characteristics__parameter-value">нержавеющая сталь&nbsp;AISI&nbsp;430</div>
+                                </div>
+                                <div class="characteristics__parameter">
+                                    <div class="characteristics__parameter-name">Толщина крышки</div>
+                                    <div class="characteristics__parameter-space"></div>
+                                    <div class="characteristics__parameter-value">2&nbsp;мм</div>
+                                </div>
+                                <div class="characteristics__parameter">
+                                    <div class="characteristics__parameter-name">Манометр</div>
+                                    <div class="characteristics__parameter-space"></div>
+                                    <div class="characteristics__parameter-value">ГОСТ «ФИЗТЕХ» или&nbsp;«РОСМА»</div>
+                                </div>
+                                <div class="characteristics__parameter">
+                                    <div class="characteristics__parameter-name">Термометр</div>
+                                    <div class="characteristics__parameter-space"></div>
+                                    <div class="characteristics__parameter-value">цифровой</div>
+                                </div>
+                                <div class="characteristics__parameter">
+                                    <div class="characteristics__parameter-name">Гильза установки термометра</div>
+                                    <div class="characteristics__parameter-space"></div>
+                                    <div class="characteristics__parameter-value">глухая</div>
+                                </div>
+                                <div class="characteristics__parameter">
+                                    <div class="characteristics__parameter-name">Дышащий клапан</div>
+                                    <div class="characteristics__parameter-space"></div>
+                                    <div class="characteristics__parameter-value">двусторонний</div>
+                                </div>
+                                <div class="characteristics__parameter">
+                                    <div class="characteristics__parameter-name">Аварийный клапан</div>
+                                    <div class="characteristics__parameter-space"></div>
+                                    <div class="characteristics__parameter-value">1.5&nbsp;бара</div>
+                                </div>
+                                <div class="characteristics__parameter">
+                                    <div class="characteristics__parameter-name">Рабочее давление</div>
+                                    <div class="characteristics__parameter-space"></div>
+                                    <div class="characteristics__parameter-value">1&#8209;1.2&nbsp;бара</div>
+                                </div>
+                                <div class="characteristics__parameter">
+                                    <div class="characteristics__parameter-name">Диапазон&nbsp;давления<br>срабатывания аварийного&nbsp;клапана</div>
+                                    <div class="characteristics__parameter-space"></div>
+                                    <div class="characteristics__parameter-value">1.5&#8209;1.8&nbsp;бара</div>
+                                </div>
+                                <div class="characteristics__parameter">
+                                    <div class="characteristics__parameter-name">Диапазон температуры</div>
+                                    <div class="characteristics__parameter-space"></div>
+                                    <div class="characteristics__parameter-value">0&#8209;120&nbsp;°C</div>
+                                </div>
+                                <div class="characteristics__parameter">
+                                    <div class="characteristics__parameter-name">Мощность нагрева</div>
+                                    <div class="characteristics__parameter-space"></div>
+                                    <div class="characteristics__parameter-value">1.5&nbsp;кВт</div>
+                                </div>
+                                <div class="characteristics__parameter">
+                                    <div class="characteristics__parameter-name">Вес&nbsp;в&nbsp;сборе, нетто</div>
+                                    <div class="characteristics__parameter-space"></div>
+                                    <div class="characteristics__parameter-value">7.5&nbsp;кг</div>
+                                </div>
+                                <div class="characteristics__parameter">
+                                    <div class="characteristics__parameter-name">Вес&nbsp;в&nbsp;сборе, брутто</div>
+                                    <div class="characteristics__parameter-space"></div>
+                                    <div class="characteristics__parameter-value">9.2&nbsp;кг</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div data-page="av35"
+                             class="characteristics equipment__body-content">
+                             <div class="characteristics__section">
+                                <h3 class="characteristics__subtitle">Ёмкость</h3>
+                                <div class="characteristics__parameter">
+                                    <div class="characteristics__parameter-name">Материал изготовления</div>
+                                    <div class="characteristics__parameter-space"></div>
+                                    <div class="characteristics__parameter-value">нержавеющая сталь&nbsp;AISI&nbsp;430</div>
+                                </div>
+                                <div class="characteristics__parameter">
+                                    <div class="characteristics__parameter-name">Внутренний&nbsp;объем</div>
+                                    <div class="characteristics__parameter-space"></div>
+                                    <div class="characteristics__parameter-value">35&nbsp;л</div>
+                                </div>
+                                <div class="characteristics__parameter">
+                                    <div class="characteristics__parameter-name">Высота автоклава в&nbsp;сборе</div>
+                                    <div class="characteristics__parameter-space"></div>
+                                    <div class="characteristics__parameter-value">633&nbsp;мм</div>
+                                </div>
+                                <div class="characteristics__parameter">
+                                    <div class="characteristics__parameter-name">Внутренняя&nbsp;высота емкости</div>
+                                    <div class="characteristics__parameter-space"></div>
+                                    <div class="characteristics__parameter-value">485&nbsp;мм</div>
+                                </div>
+                                <div class="characteristics__parameter">
+                                    <div class="characteristics__parameter-name">Диаметр емкости</div>
+                                    <div class="characteristics__parameter-space"></div>
+                                    <div class="characteristics__parameter-value">300&nbsp;мм</div>
+                                </div>
+                                <div class="characteristics__parameter">
+                                    <div class="characteristics__parameter-name">Внутренний&nbsp;диаметр емкости</div>
+                                    <div class="characteristics__parameter-space"></div>
+                                    <div class="characteristics__parameter-value">298&nbsp;мм</div>
+                                </div>
+                                <div class="characteristics__parameter">
+                                    <div class="characteristics__parameter-name">Ширина в&nbsp;сборе с&nbsp;ручками</div>
+                                    <div class="characteristics__parameter-space"></div>
+                                    <div class="characteristics__parameter-value">430&nbsp;мм</div>
+                                </div>
+                                <div class="characteristics__parameter">
+                                    <div class="characteristics__parameter-name">Толщина дна&nbsp;/&nbsp;стенки</div>
+                                    <div class="characteristics__parameter-space"></div>
+                                    <div class="characteristics__parameter-value">1.5&nbsp;мм</div>
+                                </div>
+                                <div class="characteristics__parameter">
+                                    <div class="characteristics__parameter-name">Толщина стенки</div>
+                                    <div class="characteristics__parameter-space"></div>
+                                    <div class="characteristics__parameter-value">1&nbsp;мм</div>
+                                </div>
+                                <div class="characteristics__parameter">
+                                    <div class="characteristics__parameter-name">Толщина фальшдна</div>
+                                    <div class="characteristics__parameter-space"></div>
+                                    <div class="characteristics__parameter-value">0.8&nbsp;мм</div>
+                                </div>
+                                <div class="characteristics__parameter">
+                                    <div class="characteristics__parameter-name">Толщина скобы&nbsp;зажима</div>
+                                    <div class="characteristics__parameter-space"></div>
+                                    <div class="characteristics__parameter-value">4&nbsp;мм</div>
+                                </div>
+                                <div class="characteristics__parameter">
+                                    <div class="characteristics__parameter-name">Толщина силиконовой&nbsp;прокладки</div>
+                                    <div class="characteristics__parameter-space"></div>
+                                    <div class="characteristics__parameter-value">4&nbsp;мм</div>
+                                </div>
+                                <div class="characteristics__parameter">
+                                    <div class="characteristics__parameter-name">Материал ручек&nbsp;зажимов</div>
+                                    <div class="characteristics__parameter-space"></div>
+                                    <div class="characteristics__parameter-value">полиуретановый пластик</div>
+                                </div>
+                                <div class="characteristics__parameter">
+                                    <div class="characteristics__parameter-name">Выход под&nbsp;ТЭН</div>
+                                    <div class="characteristics__parameter-space"></div>
+                                    <div class="characteristics__parameter-value">кламп 2&nbsp;дюйма</div>
+                                </div>
+                                <div class="characteristics__parameter">
+                                    <div class="characteristics__parameter-name">Муфта под&nbsp;кран</div>
+                                    <div class="characteristics__parameter-space"></div>
+                                    <div class="characteristics__parameter-value">резьба&nbsp;1/2</div>
+                                </div>
+                                <h3 class="characteristics__subtitle">Вместимость</h3>
+                                <div class="characteristics__parameter">
+                                    <div class="characteristics__parameter-name">Количество банок&nbsp;0.25&nbsp;л</div>
+                                    <div class="characteristics__parameter-space"></div>
+                                    <div class="characteristics__parameter-value">64&nbsp;шт.</div>
+                                </div>
+                                <div class="characteristics__parameter">
+                                    <div class="characteristics__parameter-name">Вместимость банок&nbsp;0.5&nbsp;л</div>
+                                    <div class="characteristics__parameter-space"></div>
+                                    <div class="characteristics__parameter-value">32&nbsp;шт.</div>
+                                </div>
+                                <div class="characteristics__parameter">
+                                    <div class="characteristics__parameter-name">Вместимость банок&nbsp;0.7&nbsp;л</div>
+                                    <div class="characteristics__parameter-space"></div>
+                                    <div class="characteristics__parameter-value">21&nbsp;шт.</div>
+                                </div>
+                                <div class="characteristics__parameter">
+                                    <div class="characteristics__parameter-name">Количество банок&nbsp;0.95&nbsp;л</div>
+                                    <div class="characteristics__parameter-space"></div>
+                                    <div class="characteristics__parameter-value">10&nbsp;шт.</div>
+                                </div>
+                                <div class="characteristics__parameter">
+                                    <div class="characteristics__parameter-name">Количество банок&nbsp&nbsp;2&nbsp;л</div>
+                                    <div class="characteristics__parameter-space"></div>
+                                    <div class="characteristics__parameter-value">6&nbsp;шт.</div>
+                                </div>
+                                <div class="characteristics__parameter">
+                                    <div class="characteristics__parameter-name">Количество банок&nbsp;3&nbsp;л</div>
+                                    <div class="characteristics__parameter-space"></div>
+                                    <div class="characteristics__parameter-value">2&nbsp;шт.</div>
+                                </div>
+                            </div>
+                            <div class="characteristics__section">
+                                <h3 class="characteristics__subtitle">Крышка</h3>
+                                <div class="characteristics__parameter">
+                                    <div class="characteristics__parameter-name">Материал изготовления</div>
+                                    <div class="characteristics__parameter-space"></div>
+                                    <div class="characteristics__parameter-value">нержавеющая сталь&nbsp;AISI&nbsp;430</div>
+                                </div>
+                                <div class="characteristics__parameter">
+                                    <div class="characteristics__parameter-name">Толщина крышки</div>
+                                    <div class="characteristics__parameter-space"></div>
+                                    <div class="characteristics__parameter-value">2&nbsp;мм</div>
+                                </div>
+                                <div class="characteristics__parameter">
+                                    <div class="characteristics__parameter-name">Манометр</div>
+                                    <div class="characteristics__parameter-space"></div>
+                                    <div class="characteristics__parameter-value">ГОСТ «ФИЗТЕХ» или&nbsp;«РОСМА»</div>
+                                </div>
+                                <div class="characteristics__parameter">
+                                    <div class="characteristics__parameter-name">Термометр</div>
+                                    <div class="characteristics__parameter-space"></div>
+                                    <div class="characteristics__parameter-value">цифровой</div>
+                                </div>
+                                <div class="characteristics__parameter">
+                                    <div class="characteristics__parameter-name">Гильза установки термометра</div>
+                                    <div class="characteristics__parameter-space"></div>
+                                    <div class="characteristics__parameter-value">глухая</div>
+                                </div>
+                                <div class="characteristics__parameter">
+                                    <div class="characteristics__parameter-name">Дышащий клапан</div>
+                                    <div class="characteristics__parameter-space"></div>
+                                    <div class="characteristics__parameter-value">двусторонний</div>
+                                </div>
+                                <div class="characteristics__parameter">
+                                    <div class="characteristics__parameter-name">Аварийный клапан</div>
+                                    <div class="characteristics__parameter-space"></div>
+                                    <div class="characteristics__parameter-value">1.5&nbsp;бара</div>
+                                </div>
+                                <div class="characteristics__parameter">
+                                    <div class="characteristics__parameter-name">Рабочее давление</div>
+                                    <div class="characteristics__parameter-space"></div>
+                                    <div class="characteristics__parameter-value">1&#8209;1.2&nbsp;бара</div>
+                                </div>
+                                <div class="characteristics__parameter">
+                                    <div class="characteristics__parameter-name">Диапазон&nbsp;давления<br>срабатывания аварийного&nbsp;клапана</div>
+                                    <div class="characteristics__parameter-space"></div>
+                                    <div class="characteristics__parameter-value">1.5&#8209;1.8&nbsp;бара</div>
+                                </div>
+                                <div class="characteristics__parameter">
+                                    <div class="characteristics__parameter-name">Диапазон температуры</div>
+                                    <div class="characteristics__parameter-space"></div>
+                                    <div class="characteristics__parameter-value">0&#8209;120&nbsp;°C</div>
+                                </div>
+                                <div class="characteristics__parameter">
+                                    <div class="characteristics__parameter-name">Мощность нагрева</div>
+                                    <div class="characteristics__parameter-space"></div>
+                                    <div class="characteristics__parameter-value">1.5&nbsp;кВт</div>
+                                </div>
+                                <div class="characteristics__parameter">
+                                    <div class="characteristics__parameter-name">Вес&nbsp;в&nbsp;сборе, нетто</div>
+                                    <div class="characteristics__parameter-space"></div>
+                                    <div class="characteristics__parameter-value">9&nbsp;кг</div>
+                                </div>
+                                <div class="characteristics__parameter">
+                                    <div class="characteristics__parameter-name">Вес&nbsp;в&nbsp;сборе, брутто</div>
+                                    <div class="characteristics__parameter-space"></div>
+                                    <div class="characteristics__parameter-value">10.6&nbsp;кг</div>
                                 </div>
                             </div>
                         </div>

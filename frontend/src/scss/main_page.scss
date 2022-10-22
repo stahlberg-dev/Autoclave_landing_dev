@@ -2942,22 +2942,33 @@
 }
 
 .equipment-header {
-    display: flex;
-    flex-flow: column nowrap;
-    align-items: center;
-    gap: 15px;
 
-    &:last-child {
-        flex-flow: column-reverse nowrap;
+    &:not(.characteristics-header) {
+        display: flex;
+        flex-flow: column nowrap;
+        align-items: center;
+        gap: 15px;
+
+        @media (min-width: $mobile) {
+            flex-flow: row nowrap;
+            justify-content: center;
+            @include adaptiveValue("gap", 15px, 35px, $mobile, $maxContainerWidth);
+        }
     }
 
-    @media (min-width: $mobile) {
-        flex-flow: row nowrap;
-        justify-content: center;
-        @include adaptiveValue("gap", 15px, 35px, $mobile, $maxContainerWidth);
 
-        &:last-child {
+    &__top {
+        display: flex;
+        flex-flow: column-reverse nowrap;
+        align-items: center;
+        gap: 15px;
+        margin-bottom: 20px;
+
+        @media (min-width: $mobile) {
             flex-flow: row nowrap;
+            justify-content: center;
+            @include adaptiveValue("gap", 15px, 35px, $mobile, $maxContainerWidth);
+            @include adaptiveValue("margin-bottom", 20px, 30px, $mobile, $maxContainerWidth);
         }
     }
 
@@ -2984,6 +2995,14 @@
             width: auto;
             @include adaptiveValue("padding-right", 25px, 45px, $mobile, $pc);
             @include adaptiveValue("padding-left", 25px, 45px, $mobile, $pc);
+        }
+    }
+
+    &__liter-buttons {
+
+        @media (min-width: $mobile) {
+            max-width: 50%;
+            margin: 0 auto;
         }
     }
 }
@@ -3693,8 +3712,12 @@
     flex-flow: column nowrap;
     justify-content: flex-start;
     align-items: stretch;
-    gap: 25px;
+    @include adaptiveValue("gap", 5px, 10px, $minWidth, $smallMobile);
     width: 100%;
+
+    @media (min-width: $smallMobile) {
+        @include adaptiveValue("gap", 5px, 10px, $smallMobile, $mobile);
+    }
 
     @media (min-width: $mobile) {
         flex-flow: row nowrap;
@@ -3716,11 +3739,19 @@
         @include adaptiveValue("font-size", 18px, 24px, $minWidth, $mobile);
         font-weight: 400;
         color: $primaryColor;
-
+        
         @media (min-width: $mobile) {
             @include adaptiveValue("margin-bottom", 10px, 20px, $mobile, $maxContainerWidth);
             @include adaptiveValue("line-height", 22px, 29px, $mobile, $maxContainerWidth);
             @include adaptiveValue("font-size", 18px, 24px, $mobile, $maxContainerWidth);
+        }
+        
+        &:nth-of-type(2) {
+            @include adaptiveValue("margin-top", 10px, 20px, $minWidth, $mobile);
+
+            @media (min-width: $mobile) {
+                @include adaptiveValue("margin-top", 10px, 20px, $mobile, $maxContainerWidth);
+            }
         }
     }
 
@@ -3728,7 +3759,7 @@
         display: flex;
         flex-flow: row nowrap;
         justify-content: space-between;
-        align-items: end;
+        align-items: flex-end;
         padding: 10px 10px 5px;
         line-height: 17px;
         font-size: 14px;
@@ -3759,10 +3790,6 @@
 
     &__parameter-name {
         flex: 0 1 auto;
-
-        @media (min-width: $smallMobile) {
-            flex: 0 0 auto;
-        }
     }
 
     &__parameter-space {
