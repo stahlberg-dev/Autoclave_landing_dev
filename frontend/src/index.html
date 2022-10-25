@@ -1132,11 +1132,6 @@
                                     <div class="model__text-parameter-space"></div>
                                     <div class="model__text-parameter-value">12&nbsp;шт.</div>
                                 </div>
-                                <div class="model__text-parameter">
-                                    <div class="model__text-parameter-name">Вместимость&nbsp;банок&nbsp;0,7&nbsp;л</div>
-                                    <div class="model__text-parameter-space"></div>
-                                    <div class="model__text-parameter-value">6&nbsp;шт.</div>
-                                </div>
                                 <div data-code="av14" class="model__text-old-price jsComparisonPriceOld">
                                     <span class="value"></span>
                                     <span class="currency">₽</span>
@@ -1204,11 +1199,6 @@
                                     <div class="model__text-parameter-name">Вместимость&nbsp;банок&nbsp;0,5&nbsp;л</div>
                                     <div class="model__text-parameter-space"></div>
                                     <div class="model__text-parameter-value">16&nbsp;шт.</div>
-                                </div>
-                                <div class="model__text-parameter">
-                                    <div class="model__text-parameter-name">Вместимость&nbsp;банок&nbsp;0,7&nbsp;л</div>
-                                    <div class="model__text-parameter-space"></div>
-                                    <div class="model__text-parameter-value">7&nbsp;шт.</div>
                                 </div>
                                 <div data-code="av18" class="model__text-old-price jsComparisonPriceOld">
                                     <span class="value"></span>
@@ -1278,11 +1268,6 @@
                                     <div class="model__text-parameter-space"></div>
                                     <div class="model__text-parameter-value">24&nbsp;шт.</div>
                                 </div>
-                                <div class="model__text-parameter">
-                                    <div class="model__text-parameter-name">Вместимость&nbsp;банок&nbsp;0,7&nbsp;л</div>
-                                    <div class="model__text-parameter-space"></div>
-                                    <div class="model__text-parameter-value">14&nbsp;шт.</div>
-                                </div>
                                 <div data-code="av26" class="model__text-old-price jsComparisonPriceOld">
                                     <span class="value"></span>
                                     <span class="currency">₽</span>
@@ -1350,11 +1335,6 @@
                                     <div class="model__text-parameter-name">Вместимость&nbsp;банок&nbsp;0,5&nbsp;л</div>
                                     <div class="model__text-parameter-space"></div>
                                     <div class="model__text-parameter-value">32&nbsp;шт.</div>
-                                </div>
-                                <div class="model__text-parameter">
-                                    <div class="model__text-parameter-name">Вместимость&nbsp;банок&nbsp;0,7&nbsp;л</div>
-                                    <div class="model__text-parameter-space"></div>
-                                    <div class="model__text-parameter-value">21&nbsp;шт.</div>
                                 </div>
                                 <div data-code="av35" class="model__text-old-price jsComparisonPriceOld">
                                     <span class="value"></span>
@@ -2482,64 +2462,165 @@
 
             <section class="page__order order">
                 <div class="order__container container">
-                    <div class="order__content interactive-block">
-                        <div class="order__prices prices">
-                            <span class="prices__price jsPrice"><span class="prices__value value"></span>
-                                <span class="prices__currency currency">₽</span></span>
-                            <span class="prices__old-price prices__old-price_color_orange jsPriceOld"><span class="prices__old-value value"></span>
-                                <span class="prices__currency currency">₽</span></span>
+                    <h2 class="order__title subtitle">
+                        <span class="subtitle__highlightning">оформление заказа</span>
+                    </h2>
+                    <div class="order__body">
+                        <div class="order__image">
+                            <img src="img/order/desktop/all.png" alt="" class="order__photo">
                         </div>
-                        <div class="order__buttons liter-buttons liter-buttons_color_dark">
-                            <div data-code="av14" 
-                                 class="liter-buttons__button order-tab-button jsSelectProduct liter-buttons__button_active">
-                                <div class="liter-buttons__button-text">14&nbsp;л<span>итров</span></div>
+                        <div class="order__content interactive-block">
+                            <div class="order__buttons liter-buttons liter-buttons_color_dark">
+                                <div data-code="av14"
+                                     data-volume="14"
+                                     class="liter-buttons__button order-tab-button jsConstructorVolume liter-buttons__button_active">
+                                    <div class="liter-buttons__button-text">14&nbsp;л<span>итров</span></div>
+                                </div>
+                                <div data-code="av18"
+                                     data-volume="18"
+                                     class="liter-buttons__button order-tab-button jsConstructorVolume">
+                                    <div class="liter-buttons__button-text">18&nbsp;л<span>итров</span></div>
+                                </div>
+                                <div data-code="av26"
+                                     data-volume="26"
+                                     class="liter-buttons__button order-tab-button jsConstructorVolume">
+                                    <div class="liter-buttons__button-text">26&nbsp;л<span>итров</span></div>
+                                </div>
+                                <div data-code="av35"
+                                     data-volume="35"
+                                     class="liter-buttons__button order-tab-button jsConstructorVolume">
+                                    <div class="liter-buttons__button-text">35&nbsp;л<span>итров</span></div>
+                                </div>
                             </div>
-                            <div data-code="av18" 
-                                 class="liter-buttons__button order-tab-button jsSelectProduct">
-                                <div class="liter-buttons__button-text">18&nbsp;л<span>итров</span></div>
+                            <div class="order__accessories accessories">
+                                <div class="accessories__inner">
+                                    <div class="accessories__accessory jsConstructorRow">
+                                        <label class="accessories__accessory-name">
+                                            <input type="checkbox" checked disabled class="accessories__accessory-input jsConstructorOption">
+                                            <div class="accessories__accessory-check-box"></div>
+                                            <div>Книга рецептов</div>
+                                        </label>
+                                        <div class="accessories__accessory-price accessories__present">Подарок</div>
+                                    </div>
+                                    <div class="accessories__accessory jsConstructorRow" data-option="clamp">
+                                        <label class="accessories__accessory-name">
+                                            <input type="checkbox" class="accessories__accessory-input jsConstructorOption">
+                                            <div class="accessories__accessory-check-box"></div>
+                                            <div>С&nbsp;клампом</div>
+                                        </label>
+                                        <div class="accessories__accessory-price">+1 000</div>
+                                    </div>
+                                    <div class="accessories__accessory jsConstructorRow" data-option="izumovka">
+                                        <label class="accessories__accessory-name">
+                                            <input type="checkbox" class="accessories__accessory-input jsConstructorOption">
+                                            <div class="accessories__accessory-check-box"></div>
+                                            <div>Дистиллятор Изюмовка&nbsp;Лайт</div>
+                                        </label>
+                                        <div class="accessories__accessory-price">+6 300</div>
+                                    </div>
+                                    <div class="accessories__accessory jsConstructorRow" data-option="yastreb">
+                                        <label class="accessories__accessory-name">
+                                            <input type="checkbox" class="accessories__accessory-input jsConstructorOption">
+                                            <div class="accessories__accessory-check-box"></div>
+                                            <div>Бражная&nbsp;колонна Ястреб</div>
+                                        </label>
+                                        <div class="accessories__accessory-price">+14 100</div>
+                                    </div>
+                                    <div class="accessories__accessory jsConstructorRow" data-option="falsdno">
+                                        <label class="accessories__accessory-name">
+                                            <input type="checkbox" class="accessories__accessory-input jsConstructorOption">
+                                            <div class="accessories__accessory-check-box"></div>
+                                            <div>Фальшдно</div>
+                                        </label>
+                                        <div class="accessories__accessory-price">+1 490</div>
+                                    </div>
+                                    <div class="accessories__accessory jsConstructorRow" data-option="falsdno35">
+                                        <label class="accessories__accessory-name">
+                                            <input type="checkbox" class="accessories__accessory-input jsConstructorOption">
+                                            <div class="accessories__accessory-check-box"></div>
+                                            <div>Фальшдно с&nbsp;ножками</div>
+                                        </label>
+                                        <div class="accessories__accessory-price">+4 890</div>
+                                    </div>
+                                    <div class="accessories__accessory jsConstructorRow" data-option="masinka">
+                                        <label class="accessories__accessory-name">
+                                            <input type="checkbox" class="accessories__accessory-input jsConstructorOption">
+                                            <div class="accessories__accessory-check-box"></div>
+                                            <div>Машинка закаточная</div>
+                                        </label>
+                                        <div class="accessories__accessory-price">+1 790</div>
+                                    </div>
+                                    <div class="accessories__accessory jsConstructorRow" data-option="tvistOff">
+                                        <label class="accessories__accessory-name">
+                                            <input type="checkbox" class="accessories__accessory-input jsConstructorOption">
+                                            <div class="accessories__accessory-check-box"></div>
+                                            <div>Крышки твист&#8209;офф (20&nbsp;штук)</div>
+                                        </label>
+                                        <div class="accessories__accessory-price">+290</div>
+                                    </div>
+                                    <div class="accessories__accessory jsConstructorRow" data-option="zagim">
+                                        <label class="accessories__accessory-name">
+                                            <input type="checkbox" class="accessories__accessory-input jsConstructorOption">
+                                            <div class="accessories__accessory-check-box"></div>
+                                            <div>Комплект&nbsp;зажимов для&nbsp;крышек СКО&nbsp;(7&nbsp;штук)</div>
+                                        </label>
+                                        <div class="accessories__accessory-price">+1 990</div>
+                                    </div>
+                                    <div class="accessories__accessory jsConstructorRow" data-option="kluch">
+                                        <label class="accessories__accessory-name">
+                                            <input type="checkbox" class="accessories__accessory-input jsConstructorOption">
+                                            <div class="accessories__accessory-check-box"></div>
+                                            <div>Ключ для&nbsp;открывания крышек твист&#8209;офф</div>
+                                        </label>
+                                        <div class="accessories__accessory-price">+280</div>
+                                    </div>
+                                </div>
+                                <div class="accessories__image">
+                                    <img src="img/order/mobile/all.png" alt="" class="accessories__photo">
+                                </div>
+                                <div class="accessories__prices prices">
+                                    <span class="prices__price jsPrice"><span class="prices__value value"></span>
+                                        <span class="prices__currency currency">₽</span></span>
+                                    <span class="prices__old-price prices__old-price_color_orange jsPriceOld"><span class="prices__old-value value"></span>
+                                        <span class="prices__currency currency">₽</span></span>
+                                </div>
                             </div>
-                            <div data-code="av26" 
-                                 class="liter-buttons__button order-tab-button jsSelectProduct">
-                                <div class="liter-buttons__button-text">26&nbsp;л<span>итров</span></div>
-                            </div>
-                            <div data-code="av35" 
-                                 class="liter-buttons__button order-tab-button jsSelectProduct">
-                                <div class="liter-buttons__button-text">35&nbsp;л<span>итров</span></div>
-                            </div>
+                            <form class="order__form jsOrderForm jsPromoCode">
+                                <div class="order__phone-name">
+                                    <input type="text"
+                                           class="order__input-name jsName"
+                                           name="name"
+                                           placeholder="Имя"
+                                           minlength="1"
+                                           maxlength="50"
+                                           required>
+                                    <input type="text"
+                                           class="order__input-phone jsPhone"
+                                           name="phone"
+                                           placeholder="Телефон"
+                                           required>
+                                </div>
+                                <div class="order__promo">
+                                    <input type="text"
+                                           class="order__input-promo jsPromoCodeInput"
+                                           name="promo"
+                                           placeholder="Промокод">
+                                    <button type="button" class="order__promo-button button button_text_orange jsPromoCodeCheckButton">
+                                        <span>Применить</span>
+                                    </button>
+                                    <button type="button" class="order__promo-del-button button button_text_orange jsPromoCodeDeleteButton">
+                                        <span>Отменить</span>
+                                    </button>
+                                </div>
+                                <div class="order__promo-info">
+                                    <div class="order__promo-info-text jsPromoCodeInfo"></div>
+                                </div>
+                                <button type="submit"
+                                        class="order__button button button_text_white jsOrderFormSubmit">
+                                    <span>Заказать</span>
+                                </button>
+                            </form>
                         </div>
-                        <form class="order__form jsOrderForm jsPromoCode">
-                            <input type="text" 
-                                   class="order__input-name jsName" 
-                                   name="name" 
-                                   placeholder="Имя" 
-                                   minlength="1"
-                                   maxlength="50"
-                                   required>
-                            <input type="text" 
-                                   class="order__input-phone jsPhone" 
-                                   name="phone" 
-                                   placeholder="Телефон" 
-                                   required>
-                            <div class="order__promo">
-                                <input type="text" 
-                                       class="order__input-promo jsPromoCodeInput" 
-                                       name="promo" 
-                                       placeholder="Промокод">
-                                <button type="button" class="order__promo-button button button_text_orange jsPromoCodeCheckButton">
-                                    <span>Применить</span>
-                                </button>
-                                <button type="button" class="order__promo-del-button button button_text_orange jsPromoCodeDeleteButton">
-                                    <span>Отменить</span>
-                                </button>
-                            </div>
-                            <div class="order__promo-info">
-                                <div class="order__promo-info-text jsPromoCodeInfo"></div>
-                            </div>
-                            <button type="submit"
-                                    class="order__button button button_text_white jsOrderFormSubmit">
-                                <span>Заказать</span>
-                            </button>
-                        </form>
                     </div>
                 </div>
             </section>

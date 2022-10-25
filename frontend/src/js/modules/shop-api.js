@@ -188,7 +188,7 @@ const shop = {
     updatePriceBase() {
         this.prices.priceBase = null;
         const items = this.getCartItems();
-        let price;
+        let price = 0;
         for (let code in items) {
             if (! items.hasOwnProperty(code)) continue;
             let quantity = items[code];
@@ -197,7 +197,7 @@ const shop = {
                 return;
             }
             let priceItem = this.cache.prices[code];
-            price = priceItem * quantity;
+            price += priceItem * quantity;
         }
         this.prices.priceBase = price;
     },
@@ -205,7 +205,7 @@ const shop = {
     updatePriceOld() {
         this.prices.priceOld = null;
         const items = this.getCartItems();
-        let price;
+        let price = 0;
         for (let code in items) {
             if (! items.hasOwnProperty(code)) continue;
             let quantity = items[code];
@@ -214,7 +214,7 @@ const shop = {
                 return;
             }
             let priceItem = this.cache.pricesOld[code];
-            price = priceItem * quantity;
+            price += priceItem * quantity;
         }
         this.prices.priceOld = price;
     },
