@@ -4433,7 +4433,15 @@
 
     &__body {
         display: flex;
-        align-items: flex-end;
+        align-items: stretch;
+        position: relative;
+        left: -$containerPadding;
+        width: 100vw;
+
+        @media (min-width: $smallMobile) {
+            left: 0;
+            width: 100%;
+        }
     }
 
     &__image {
@@ -4441,30 +4449,30 @@
 
         @media (min-width: $mobile) {
             display: block;
-            flex: 0 1 auto;
+            position: relative;
+            flex-grow: 0;
+            flex-shrink: 1;
+            @include adaptiveValue("flex-basis", 308px, 580px, $mobile, $maxContainerWidth);
+            min-height: 100%;
         }
     }
 
     &__photo {
         display: block;
+        position: absolute;
+        bottom: 0;
+        left: 0;
         width: 100%;
     }
 
     &__content {
         position: relative;
-        left: -$containerPadding;
-        width: 100vw;
         min-width: $minWidth;
         @include adaptiveValue("padding-top", 30px, 50px, $smallMobile, $maxContainerWidth);
         @include adaptiveValue("padding-bottom", 40px, 50px, $smallMobile, $maxContainerWidth);
         @include adaptiveValue("padding-left", 20px, 35px, $smallMobile, $maxContainerWidth);
         @include adaptiveValue("padding-right", 20px, 35px, $smallMobile, $maxContainerWidth);
         z-index: 1;
-
-        @media (min-width: $smallMobile) {
-            left: 0;
-            width: 100%;
-        }
 
         @media (min-width: $mobile) {
             flex-grow: 0;
@@ -4632,16 +4640,16 @@
         justify-content: flex-start;
         align-items: flex-start;
         width: 100%;
-        flex-grow: 0;
-        flex-shrink: 0;
-        @include adaptiveValue("flex-basis", 40px, 50px, $smallMobile, $maxContainerWidth);
-    }
-
-    &__promo-info {
+        flex: 0 1 auto;
         @include adaptiveValue("line-height", 18px, 20px, $smallMobile, $maxContainerWidth);
         @include adaptiveValue("font-size", 14px, 16px, $smallMobile, $maxContainerWidth);
         font-weight: 200;
         color: $secondaryColor;
+    }
+
+    &__promo-info-text {
+        @include adaptiveValue("padding-top", 5px, 10px, $smallMobile, $maxContainerWidth);
+        @include adaptiveValue("padding-bottom", 5px, 10px, $smallMobile, $maxContainerWidth);
     }
 
     &__button {
@@ -4652,13 +4660,11 @@
         font-weight: 300;
 
         @media (min-width: $smallMobile) {
-            //@include adaptiveValue("width", 200px, 320px, $smallMobile, $mobile);
             @include adaptiveValue("line-height", 22px, 30px, $smallMobile, $mobile);
             @include adaptiveValue("font-size", 18px, 24px, $smallMobile, $mobile);
         }
 
         @media (min-width: $mobile) {
-            //@include adaptiveValue("width", 200px, 320px, $mobile, $maxContainerWidth);
             @include adaptiveValue("line-height", 22px, 30px, $mobile, $maxContainerWidth);
             @include adaptiveValue("font-size", 18px, 24px, $mobile, $maxContainerWidth);
         }
@@ -4699,30 +4705,34 @@
     }
 
     &__accessory {
+        position: relative;
         display: flex;
         flex-flow: column nowrap;
         gap: 5px;
+        -webkit-tap-highlight-color: transparent;
         
         @media (min-width: $mobile) {
             flex-flow: row nowrap;
-            justify-content: space-between;
         }
     }
     
     &__accessory-name {
         position: relative;
         margin-left: 20px;
-        border-bottom: 1px dashed $primaryColor;
+        text-decoration: underline 1px dashed;
+        text-underline-position: under left;
         @include adaptiveValue("line-height", 14px, 19px, $minWidth, $mobile);
         @include adaptiveValue("font-size", 12px, 16px, $minWidth, $mobile);
+        font-weight: 200;
         color: $primaryColor;
         cursor: pointer;
 
         @media (min-width: $mobile) {
             flex: 0 1 auto;
-            @include adaptiveValue("line-height", 14px, 16px, $mobile, $tablet);
-            @include adaptiveValue("font-size", 12px, 14px, $mobile, $tablet);
+            @include adaptiveValue("line-height", 14px, 19px, $mobile, $tablet);
+            @include adaptiveValue("font-size", 12px, 16px, $mobile, $tablet);
         }
+
     }
 
     &__accessory-check-box {
@@ -4734,6 +4744,7 @@
         border: 1px solid $primaryColor;
         background-color: transparent;
         transition: background-color 0.3s ease;
+        -webkit-tap-highlight-color: transparent;
 
         .accessories__accessory-input:checked + & {
             background-color: $primaryColor;
@@ -4750,7 +4761,7 @@
             background-repeat: no-repeat;
             background-size: contain;
             background-position: center;
-            background-image: url("data:image/svg+xml,%3Csvg width='10' height='10' viewBox='0 0 10 10' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M2 5.27281L4 7.40918L8 3.13643' stroke='%231F1E1D' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+            background-image: url("../img/order/tick.svg");
             opacity: 0;
             transition: opacity 0.3s ease;
 
@@ -4769,11 +4780,14 @@
         margin-left: 20px;
         @include adaptiveValue("line-height", 14px, 19px, $minWidth, $mobile);
         @include adaptiveValue("font-size", 12px, 16px, $minWidth, $mobile);
+        font-weight: 200;
         
         @media (min-width: $mobile) {
-            flex: 0 0 auto;
-            @include adaptiveValue("line-height", 14px, 16px, $mobile, $tablet);
-            @include adaptiveValue("font-size", 12px, 14px, $mobile, $tablet);
+            flex: 1 0 auto;
+            margin-left: 0;
+            text-align: end;
+            @include adaptiveValue("line-height", 14px, 19px, $mobile, $tablet);
+            @include adaptiveValue("font-size", 12px, 16px, $mobile, $tablet);
         }
     }
 
@@ -4788,12 +4802,90 @@
             background-repeat: no-repeat;
             background-size: contain;
             background-position: center;
-            background-image: url("data:image/svg+xml,%3Csvg width='16' height='18' viewBox='0 0 16 18' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M10.2 8.19971H14.6001V12.9999C14.6001 15.209 12.8092 16.9999 10.6001 16.9999H5.7998C3.59066 16.9999 1.7998 15.209 1.7998 12.9999V8.19971H6.1999' stroke='white'/%3E%3Cpath d='M11.8002 8.19979H13.9003C14.7287 8.19979 15.4003 7.52822 15.4003 6.69979V5.69971C15.4003 4.87128 14.7287 4.19971 13.9003 4.19971H2.5C1.67157 4.19971 1 4.87128 1 5.69971V6.69979C1 7.52822 1.67157 8.19979 2.5 8.19979H4.60008' stroke='white'/%3E%3Cpath d='M8.2002 3.00004C8.2002 1.89545 9.09565 1 10.2002 1H10.6002C11.4839 1 12.2003 1.71636 12.2003 2.60003V2.60003C12.2003 3.48371 11.4839 4.20007 10.6002 4.20007H8.2002V3.00004Z' stroke='white'/%3E%3Cpath d='M8.2002 3.00004C8.2002 1.89545 7.30475 1 6.20015 1H5.80014C4.91647 1 4.20011 1.71636 4.20011 2.60003V2.60003C4.20011 3.48371 4.91647 4.20007 5.80014 4.20007H8.2002V3.00004Z' stroke='white'/%3E%3Cpath d='M10.2002 4.19971L10.2002 17L6.20011 17L6.20011 4.19971L10.2002 4.19971Z' stroke='white'/%3E%3C/svg%3E%0A");
+            background-image: url("../img/order/present.svg");
             transform: translateY(10%);
         }
     }
 
+    &__accessory-spoiler {
+        position: absolute;
+        top: calc(100% + 16px);
+        left: 0;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        @include adaptiveValue("gap", 3px, 5px, $minWidth, $mobile);
+        width: 150%;
+        @include adaptiveValue("padding", 5px, 10px, $minWidth, $mobile);
+        border: 1px solid $primaryColor;
+        background-color: $backgroundColor;
+        z-index: 1;
+        transform: translateY(20%) ;
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.3s ease,
+                    transform 0.3s ease;
+
+        @media (min-width: $smallMobile) {
+            width: 100%;
+        }
+
+        @media (min-width: $mobile) {
+            @include adaptiveValue("gap", 3px, 5px, $mobile, $tablet);
+            width: 60%;
+            @include adaptiveValue("padding", 5px, 10px, $mobile, $tablet);
+        }
+
+        @media (min-width: $tablet)  {
+            width: 100%;
+        }
+
+        &::after {
+            content: '';
+            display: block;
+            position: absolute;
+            top: -8px;
+            left: 16px;
+            width: 16px;
+            height: 16px;
+            transform: rotate(45deg) translateY(-1px);
+            border-top: 1px solid $primaryColor;
+            border-left: 1px solid $primaryColor;
+            background-color: $backgroundColor;
+        }
+
+        @media(any-hover: hover) {
+            .accessories__accessory-name:hover ~ & {
+                transform: translateY(0);
+                opacity: 1;
+                pointer-events: auto;
+            }
+        }
+    }
+
+    &__accessory-spoiler-text {
+        @include adaptiveValue("line-height", 14px, 16px, $minWidth, $mobile);
+        @include adaptiveValue("font-size", 12px, 14px, $minWidth, $mobile);
+        font-weight: 200;
+        color: $secondaryColor;
+
+        @media (min-width: $mobile) {
+            @include adaptiveValue("line-height", 14px, 16px, $mobile, $tablet);
+            @include adaptiveValue("font-size", 12px, 14px, $mobile, $tablet);
+        }
+    }
+
+    &__accessory-spoiler-image {
+        flex: 0 0 30%;
+    }
+
+    &__accessory-spoiler-photo {
+        display: block;
+        width: 100%;
+    }
+
     &__image {
+        position: relative;
         grid-row: 1/2;
         grid-column: 2/3;
         align-self: end;
@@ -4802,9 +4894,17 @@
             display: none;
         }
     }
+    
     &__photo {
+        position: absolute;
+        bottom: 0;
+        right: 0;
         display: block;
         width: 100%;
+
+        &:first-child {
+            position: relative;
+        }
     }
 
     &__prices {

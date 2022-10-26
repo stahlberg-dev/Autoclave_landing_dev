@@ -381,6 +381,7 @@ function initDiscountLink() {
                 let info = response.info;
                 info = info.replace('Акция на автоклавы! Действует', 'Внимание! Промокод действует');
                 $info.text(info);
+                $info.slideDown(300);
                 $info.toggleClass('active', response.active);
 
                 updateViewPrices();
@@ -435,6 +436,8 @@ function initCheckPromoCode() {
         const $checkButton = $root.find('.jsPromoCodeCheckButton');
         const $deleteButton = $root.find('.jsPromoCodeDeleteButton');
 
+        $info.slideUp();
+
         $checkButton.on('click', function (e) {
             e.preventDefault();
             const code = $input.val();
@@ -449,6 +452,7 @@ function initCheckPromoCode() {
                     shop.cart.promoCode = code;
                 }
                 $info.text(response.info);
+                $info.slideDown(300);
                 $info.toggleClass('active', response.active);
 
                 updateViewPrices();
@@ -458,6 +462,7 @@ function initCheckPromoCode() {
         $deleteButton.on('click', function (e) {
             e.preventDefault();
             $input.val('');
+            $info.slideUp(300);
             $info.text('');
             shop.cart.promoCode = '';
             updateViewPrices();
