@@ -123,6 +123,142 @@ function initPrices() {
     });
 
     updateViewPrices();
+    updateComplectation();
+}
+
+function updateComplectation() {
+
+    $('[data-photo]').each(function() {
+
+        $(this).removeClass('order__photo_visible');
+
+    });
+
+    if (shop.cart.productCode === 'av14') {
+        $('[data-photo="14av"]').addClass('order__photo_visible');
+        $('[data-photo="14book"]').addClass('order__photo_visible');
+
+        if (shop.cart.additionalProducts.falsdno14) {
+            $('[data-photo="14falsdno"]').addClass('order__photo_visible');
+        }
+        if (shop.cart.additionalProducts.kluch) {
+            $('[data-photo="14kluch"]').addClass('order__photo_visible');
+        }
+        if (shop.cart.additionalProducts.masinka) {
+            $('[data-photo="14masinka"]').addClass('order__photo_visible');
+        }
+        if (shop.cart.additionalProducts.tvistOff) {
+            $('[data-photo="14tvistOff"]').addClass('order__photo_visible');
+        }
+        if (shop.cart.additionalProducts.zagim) {
+            $('[data-photo="14zagim"]').addClass('order__photo_visible');
+        }
+    }
+
+    if (shop.cart.productCode === 'av18' || 
+        shop.cart.productCode === 'av18-clamp' || 
+        shop.cart.productCode === 'av18-distiller') {
+
+        $('[data-photo="18book"]').addClass('order__photo_visible');
+
+        if (shop.cart.productCode === 'av18') {
+            $('[data-photo="18av"]').addClass('order__photo_visible');
+        } else {
+            $('[data-photo="18avClamp"]').addClass('order__photo_visible');
+        }
+
+        if (shop.cart.productCode === 'av18-distiller') {
+            $('[data-photo="18distiller"]').addClass('order__photo_visible');
+        }
+
+        if (shop.cart.additionalProducts.falsdno) {
+            $('[data-photo="18falsdno"]').addClass('order__photo_visible');
+        }
+        if (shop.cart.additionalProducts.kluch) {
+            $('[data-photo="18kluch"]').addClass('order__photo_visible');
+        }
+        if (shop.cart.additionalProducts.masinka) {
+            $('[data-photo="18masinka"]').addClass('order__photo_visible');
+        }
+        if (shop.cart.additionalProducts.tvistOff) {
+            $('[data-photo="18tvistOff"]').addClass('order__photo_visible');
+        }
+        if (shop.cart.additionalProducts.zagim) {
+            $('[data-photo="18zagim"]').addClass('order__photo_visible');
+        }
+    }
+
+    if (shop.cart.productCode === 'av26' || 
+        shop.cart.productCode === 'av26-clamp' || 
+        shop.cart.productCode === 'av26-distiller' ||
+        shop.cart.productCode === 'av26-sa') {
+
+        $('[data-photo="26book"]').addClass('order__photo_visible');
+
+        if (shop.cart.productCode === 'av26') {
+            $('[data-photo="26av"]').addClass('order__photo_visible');
+        } else {
+            $('[data-photo="26avClamp"]').addClass('order__photo_visible');
+        }
+
+        if (shop.cart.productCode === 'av26-distiller') {
+            $('[data-photo="26distiller"]').addClass('order__photo_visible');
+        }
+        if (shop.cart.productCode === 'av26-sa') {
+            $('[data-photo="26sokol"]').addClass('order__photo_visible');
+        }
+
+        if (shop.cart.additionalProducts.falsdno) {
+            $('[data-photo="26falsdno"]').addClass('order__photo_visible');
+        }
+        if (shop.cart.additionalProducts.kluch) {
+            $('[data-photo="26kluch"]').addClass('order__photo_visible');
+        }
+        if (shop.cart.additionalProducts.masinka) {
+            $('[data-photo="26masinka"]').addClass('order__photo_visible');
+        }
+        if (shop.cart.additionalProducts.tvistOff) {
+            $('[data-photo="26tvistOff"]').addClass('order__photo_visible');
+        }
+        if (shop.cart.additionalProducts.zagim) {
+            $('[data-photo="26zagim"]').addClass('order__photo_visible');
+        }
+    }
+
+    if (shop.cart.productCode === 'av35' || 
+        shop.cart.productCode === 'av35-distiller' ||
+        shop.cart.productCode === 'av35-sa') {
+
+        $('[data-photo="35book"]').addClass('order__photo_visible');
+        $('[data-photo="35av"]').addClass('order__photo_visible');
+
+        if (shop.cart.productCode === 'av35-distiller') {
+            $('[data-photo="35distiller"]').addClass('order__photo_visible');
+        }
+        if (shop.cart.productCode === 'av35-sa') {
+            $('[data-photo="35sokol"]').addClass('order__photo_visible');
+        }
+
+        if (shop.cart.additionalProducts.falsdno) {
+            $('[data-photo="35falsdno"]').addClass('order__photo_visible');
+        }
+        if (shop.cart.additionalProducts.falsdno35) {
+            $('[data-photo="35falsdno35"]').addClass('order__photo_visible');
+        }
+        if (shop.cart.additionalProducts.kluch) {
+            $('[data-photo="35kluch"]').addClass('order__photo_visible');
+        }
+        if (shop.cart.additionalProducts.masinka) {
+            $('[data-photo="35masinka"]').addClass('order__photo_visible');
+        }
+        if (shop.cart.additionalProducts.tvistOff) {
+            $('[data-photo="35tvistOff"]').addClass('order__photo_visible');
+        }
+        if (shop.cart.additionalProducts.zagim) {
+            $('[data-photo="35zagim"]').addClass('order__photo_visible');
+        }
+    }
+
 }
 
 // доп опции товаров
@@ -254,9 +390,10 @@ function initProductOptions() {
 
         options[option] = this.checked
 
-        syncDependOptions(option, this.checked)
-        updateCheckboxes()
-        updateCart()
+        syncDependOptions(option, this.checked);
+        updateCheckboxes();
+        updateCart();
+        updateComplectation();
     });
 
     // выбор объема
@@ -267,9 +404,10 @@ function initProductOptions() {
         /* $('.jsConstructorVolume.liter-buttons__button_active').removeClass('liter-buttons__button_active')
         $(this).addClass('liter-buttons__button_active') */
 
-        updateOptionsVisibility()
-        updateCheckboxes()
-        updateCart()
+        updateOptionsVisibility();
+        updateCheckboxes();
+        updateCart();
+        updateComplectation();
     });
 }
 

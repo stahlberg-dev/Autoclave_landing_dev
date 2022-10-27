@@ -4463,6 +4463,12 @@
         bottom: 0;
         left: 0;
         width: 100%;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+
+        &_visible {
+            opacity: 1;
+        }
     }
 
     &__content {
@@ -4889,6 +4895,7 @@
         grid-row: 1/2;
         grid-column: 2/3;
         align-self: end;
+        pointer-events: none;
 
         @media (min-width: $mobile) {
             display: none;
@@ -4901,9 +4908,16 @@
         right: 0;
         display: block;
         width: 100%;
+        opacity: 0;
+        transition: opacity 0.3s ease;
 
-        &:first-child {
-            position: relative;
+        
+        &.order__photo_visible {
+            opacity: 1;
+
+            &[data-photo*="av"] {
+                position: relative;
+            }
         }
     }
 
