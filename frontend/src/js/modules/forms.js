@@ -1,6 +1,6 @@
 import $ from "jquery";
 import shop from "./shop-api.js";
-import * as popups from "./popups.js";
+import {popupsMaker} from "./popups-maker.js";
 
 //var PROD = !location.host.match(/\.local/);
 
@@ -674,7 +674,7 @@ function initMakeOrder() {
                 } else {
                     ymGoal('zakaz');
                     form.reset();
-                    popups.popupOpen('checkout', 'lock-padding', 300);
+                    popupsMaker.openPopup('checkout');
                     //alert(`Ваш заказ принят. Номер заказа ${response.orderNumber}`);
                 }
             });
@@ -693,7 +693,7 @@ function initLeadForm() {
 
             shop.lead(data, (response) => {
                 ymGoal('getconsult');
-                popups.popupOpen('thanks', 'lock-padding', 300);
+                popupsMaker.openPopup('thanks');
             });
         });
     });

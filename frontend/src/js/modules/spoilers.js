@@ -1,43 +1,53 @@
-export function spoilers(spoilerClassName, spoilerBlockClassName, hideTime) {
+export class spoilers {
 
-    document.addEventListener("click", function(e) {
+    constructor(config) {
+        this.spoilerClassName = config.spoilerClassName;
+        this.spoilerBlockClassName = config.spoilerBlockClassName;
+        this.spoilerActiveBlockClassName = config.spoilerActiveBlockClassName;
+        this.hideTime = config.hideTime;
+    }
 
-        const mediaQueryHover = window.matchMedia('(any-hover: none)');
+    onClick(spoilerClassName, spoilerBlockClassName, spoilerActiveBlockClassName, hideTime) {
+
+        document.addEventListener("click", function(event) {
+
+            const mediaQueryHover = window.matchMedia('(any-hover: none)');
+            
+            if (!mediaQueryHover.matches) return;
+
+            const activeBlocks = document.querySelectorAll(spoilerActiveBlockClassName);
+            const closestBlock = event.target.closest(spoilerBlockClassName);
+            const isActive = closestBlock?.classList.contains( spoilerActiveBlockClassName.slice(1) );
+
+            activeBlocks.forEach(item => {
+
+                item.classList.remove( spoilerActiveBlockClassName.slice(1) );
+    
+                setTimeout(() => {
+                    item.querySelector(spoilerClassName).style.visibility = '';
+                }, hideTime);
+
+            });
+
+            if (closestBlock && !isActive) {
+
+                closestBlock.classList.add( spoilerActiveBlockClassName.slice(1) );
+                closestBlock.querySelector(spoilerClassName).style.visibility = 'visible';
+
+            } 
         
-        if (mediaQueryHover.matches) {
-            
-            const activeBlocks = document.querySelectorAll(`.${spoilerBlockClassName}_active`);
-            
-            if (activeBlocks.length > 0 && !e.target.closest(`.${spoilerBlockClassName}_active`)) {
-                for (let item of activeBlocks) {
-                    item.classList.remove(`${spoilerBlockClassName}_active`);
-    
-                    setTimeout(() => {
-                        item.querySelector(`.${spoilerClassName}`).style.visibility = '';
-                    }, hideTime);
-                }
-            }
-            
-            const closestBlock = e.target.closest(`.${spoilerBlockClassName}`);
-    
-            if (closestBlock) {
-                if (closestBlock.classList.contains(`${spoilerBlockClassName}_active`)) {
-    
-                    closestBlock.classList.remove(`${spoilerBlockClassName}_active`);
-    
-                    setTimeout(() => {
-                        closestBlock.querySelector(`.${spoilerClassName}`).style.visibility = '';
-                    }, hideTime);
-    
-                } else {
-    
-                    closestBlock.classList.add(`${spoilerBlockClassName}_active`);
-                    closestBlock.querySelector(`.${spoilerClassName}`).style.visibility = 'visible';
-    
-                }
-            }
-        }
-    
-    });
+        });
 
+    }
+
+    init() {
+
+        const spoilerClassName = this.spoilerClassName;
+        const spoilerBlockClassName = this.spoilerBlockClassName;
+        const spoilerActiveBlockClassName = this.spoilerActiveBlockClassName;
+        const hideTime = this.hideTime;
+
+        this.onClick(spoilerClassName, spoilerBlockClassName, spoilerActiveBlockClassName, hideTime);
+
+    }
 }

@@ -1,17 +1,23 @@
-import * as flsFunctions from "./modules/functions.js";
+import {
+    isWebp, 
+    literTabsSwitcher, 
+    equipmentPagesSwitcher,
+    scrollAuto,
+    startComplectationAnimation,
+} from "./modules/functions.js";
 import * as sliders from "./modules/sliders.js";
 import * as forms from "./modules/forms.js";
-import * as headerScrollModule from "./modules/header_scroll.js";
-import * as burgerModule from "./modules/burger.js";
-import * as popups from "./modules/popups.js";
-import * as spoilersModule from "./modules/spoilers.js";
-import * as masks from "./modules/masks.js";
-import * as clickScrollModule from "./modules/click_scroll.js";
+import {scrollObserver} from "./modules/scroll-observer.js";
+import {burger} from "./modules/burger.js";
+import {popupsMaker} from "./modules/popups-maker.js";
+import {spoilers} from "./modules/spoilers.js";
+import {phoneMask, promoMask} from "./modules/masks.js";
+import {lockEquipmentVideo, clickScroller} from "./modules/click-scroller.js";
 
 
 //----- Webp --------------------------------------------------------------------------------
 
-flsFunctions.isWebp();
+isWebp();
 //-------------------------------------------------------------------------------------------
 
 // ----- About slider -----------------------------------------------------------------------
@@ -49,53 +55,42 @@ sliders.workSlider();
 sliders.comparisonSlider();
 //------------------------------------------------------------------------------------------- 
 
-// ----- FORMS ------------------------------------------------------------------------------
-
-forms.startForms();
-//-------------------------------------------------------------------------------------------
-
 //----- Header scroll -----------------------------------------------------------------------
-        
-const headerClassName = 'header';
-const scrolledHeaderClassName = 'header_scroll';
 
-headerScrollModule.headerScroll(headerClassName, scrolledHeaderClassName);
+new scrollObserver({
+    elementClassName: '.header',
+    scrolledClassName: '.header_scroll',
+}).init();
 //-------------------------------------------------------------------------------------------
 
 // ----- Burger -----------------------------------------------------------------------------
   
-const burgerButtonClassName = 'burger';
-const burgerMenuClassName = 'menu__body';
-const burgerMenuLinksClassName = 'menu__link';
-const lockPaddingElementsClassName = 'lock-padding';
-const showHideTime = 300;
-
-burgerModule.burger(burgerButtonClassName, 
-                    burgerMenuClassName, 
-                    burgerMenuLinksClassName, 
-                    lockPaddingElementsClassName,
-                    showHideTime);
+new burger({
+    buttonClassName: '.burger',
+    activeButtonClassName: '.burger_active',
+    menuClassName: '.menu__body',
+    activeMenuClassName: '.menu__body_active',
+    menuLinkClassName: '.menu__link',
+    lockPaddingElementClassName: '.lock-padding',
+    showHideTime: 300,
+}).init();
 //-------------------------------------------------------------------------------------------
 
 // ----- Popups -----------------------------------------------------------------------------
 
-const popupLinksClassName = 'popup-link';
-const popupsClassName = 'popup';
-const popupCloseButtonsClassName = 'close-popup';
-const timeout = 300;
+popupsMaker.init();
+//-------------------------------------------------------------------------------------------
 
-popups.popupsLauncher(popupLinksClassName, 
-                      popupsClassName, 
-                      popupCloseButtonsClassName, 
-                      lockPaddingElementsClassName, 
-                      timeout);
+// ----- Forms ------------------------------------------------------------------------------
+
+forms.startForms();
 //-------------------------------------------------------------------------------------------
 
 // ----- Phone mask -------------------------------------------------------------------------
 
 const phoneInputsClassName = 'jsPhone';
 
-masks.phoneMask(phoneInputsClassName);
+phoneMask(phoneInputsClassName);
 //------------------------------------------------------------------------------------------- 
 
 // ----- Promo mask -------------------------------------------------------------------------
@@ -107,43 +102,47 @@ masks.phoneMask(phoneInputsClassName);
 
 //----- Equipment pages switcher ------------------------------------------------------------
 
-flsFunctions.equipmentPagesSwitcher();
+equipmentPagesSwitcher();
 
 //-------------------------------------------------------------------------------------------
 
 //----- Liter tabs switcher -----------------------------------------------------------------
 
-flsFunctions.literTabsSwitcher();
+literTabsSwitcher();
 
 //-------------------------------------------------------------------------------------------
 
-//----- Click scroll ------------------------------------------------------------------------
+//----- Click scroller ----------------------------------------------------------------------
 
-const linkAttributename = 'data-goto';
-
-clickScrollModule.clickScroll(linkAttributename, 
-                              clickScrollModule.sectionLock('about'), 
-                              clickScrollModule.equipmentVideoLock);
-
+new clickScroller({
+    linkAttributeName: 'data-goto',
+    lockedSections: [
+        {sectionClassName: '.about', unlockDelay: 1000},
+    ],
+    callbacks: [
+        lockEquipmentVideo,
+    ]
+}).init();
 //-------------------------------------------------------------------------------------------
 
 //----- Spoilers ----------------------------------------------------------------------------
 
-const spoilerClassName = 'spoiler';
-const spoilerBlockClassName = 'spoiler-block';
-const hideTime = 300;
-
-spoilersModule.spoilers(spoilerClassName, spoilerBlockClassName, hideTime);
+new spoilers({
+    spoilerClassName: '.spoiler',
+    spoilerBlockClassName: '.spoiler-block',
+    spoilerActiveBlockClassName: '.spoiler-block_active',
+    hideTime: 300,
+}).init();
 //-------------------------------------------------------------------------------------------
 
 //----- Auto scroll -------------------------------------------------------------------------
 
-flsFunctions.scrollAuto();
+scrollAuto();
 
 //-------------------------------------------------------------------------------------------
 
 //----- Start animation ------------------------------------------------------------
 
-flsFunctions.startComplectationAnimation();
+startComplectationAnimation();
 
 //-------------------------------------------------------------------------------------------

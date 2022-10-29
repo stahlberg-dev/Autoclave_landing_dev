@@ -1,56 +1,95 @@
-import * as flsFunctions from "./functions.js";
+import {lockBody, unlockBody} from "./functions.js";
 
+export class burger {
 
-export function burger(burgerButtonClassName, 
-                       burgerMenuClassName, 
-                       burgerMenuLinksClassName, 
-                       lockPaddingElementsClassName,
-                       showHideTime) {
+    constructor(config) {
+        this.buttonClassName = config.buttonClassName; 
+        this.activeButtonClassName = config.activeButtonClassName;
+        this.menuClassName = config.menuClassName; 
+        this.activeMenuClassName = config.activeMenuClassName;
+        this.menuLinkClassName = config.menuLinkClassName; 
+        this.lockPaddingElementClassName = config.lockPaddingElementClassName;
+        this.showHideTime = config.showHideTime;
+    }
 
-    const burgerButton = document.querySelector(`.${burgerButtonClassName}`);
-    const burgerMenu = document.querySelector(`.${burgerMenuClassName}`);
-    const burgerMenuLinks = document.querySelectorAll(`.${burgerMenuLinksClassName}`);
-    const lockPaddingElements = document.querySelectorAll(`.${lockPaddingElementsClassName}`);
-   
-    if (burgerButton && burgerMenu) {
-        
-        burgerButton.addEventListener("click", function(e) {
+    onButtonClick(button, 
+                  activeButtonClassName,
+                  menu, 
+                  activeMenuClassName,
+                  lockPaddingElements,
+                  showHideTime) {
+
+        if (!button || !menu) return;
+
+        button.addEventListener("click", function() {
                 
-            if (burgerButton.classList.contains('burger_active')) {
+            if (button.classList.contains( activeButtonClassName.slice(1)) ) {
                 
-                flsFunctions.unlockBody(lockPaddingElements, showHideTime);
+                unlockBody(lockPaddingElements, showHideTime);
                 
             } else {
                 
-                flsFunctions.lockBody(lockPaddingElements, showHideTime);
+                lockBody(lockPaddingElements, showHideTime);
                 
             }
 
-            burgerButton.classList.toggle('burger_active');
-            burgerMenu.classList.toggle('menu__body_active');
+            button.classList.toggle( activeButtonClassName.slice(1) );
+            menu.classList.toggle( activeMenuClassName.slice(1) );
     
         });
 
-        if (burgerMenuLinks.length > 0) {
-
-            for (let burgerMenuLink of burgerMenuLinks) {
-
-                burgerMenuLink.addEventListener("click", function(e) {
-                    
-                    if (burgerButton.classList.contains('burger_active')) {
-
-                        burgerButton.classList.remove('burger_active');
-                        burgerMenu.classList.remove('menu__body_active');
-                        flsFunctions.unlockBody(lockPaddingElements, showHideTime);
-
-                    }
-            
-                });
-
-            }
-
-        }
-    
     }
 
+    onLinkClick(button, 
+                activeButtonClassName,
+                menu, 
+                activeMenuClassName,
+                menuLinkClassName,
+                lockPaddingElements,
+                showHideTime) {
+
+        if (!button || !menu) return;
+
+        menu.addEventListener("click", event => {
+
+            if(!event.target.closest(menuLinkClassName)) return;
+
+            if (button.classList.contains( activeButtonClassName.slice(1) )) {
+
+                button.classList.remove( activeButtonClassName.slice(1) );
+                menu.classList.remove( activeMenuClassName.slice(1) );
+                unlockBody(lockPaddingElements, showHideTime);
+
+            } 
+
+        });
+
+    }
+
+    init() {
+
+        const button = document.querySelector(this.buttonClassName);
+        const activeButtonClassName = this.activeButtonClassName;
+        const menu = document.querySelector(this.menuClassName);
+        const activeMenuClassName = this.activeMenuClassName;
+        const menuLinkClassName = this.menuLinkClassName;
+        const lockPaddingElements = document.querySelectorAll(this.lockPaddingElementClassName);
+        const showHideTime = this.showHideTime;
+
+        this.onButtonClick(button, 
+                           activeButtonClassName,
+                           menu, 
+                           activeMenuClassName,
+                           lockPaddingElements,
+                           showHideTime);
+
+        this.onLinkClick(button, 
+                         activeButtonClassName,
+                         menu, 
+                         activeMenuClassName,
+                         menuLinkClassName, 
+                         lockPaddingElements,
+                         showHideTime);
+
+    }
 }
