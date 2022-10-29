@@ -3403,7 +3403,7 @@
                 }
 
                 .complectation__caption-text {
-                    margin-left: 180px;
+                    margin-right: 220px;
                 }
             }
         }
@@ -3576,6 +3576,10 @@
                 .spoiler-block_active & {
                     opacity: 1;
                 }
+            }
+
+            & span {
+                white-space: nowrap;
             }
         }
 
@@ -4432,16 +4436,20 @@
     }
 
     &__body {
-        display: flex;
-        align-items: stretch;
         position: relative;
         left: -$containerPadding;
         width: 100vw;
-
+        
         @media (min-width: $smallMobile) {
             left: 0;
             width: 100%;
         }
+        
+        @media (min-width: $mobile) {
+            display: flex;
+            align-items: stretch;
+        }
+
     }
 
     &__image {
@@ -4464,7 +4472,7 @@
         left: 0;
         width: 100%;
         opacity: 0;
-        transition: opacity 0.3s ease;
+        transition: opacity 0.5s ease;
 
         &_visible {
             opacity: 1;
@@ -4689,24 +4697,41 @@
         @include adaptiveValue("row-gap", 15px, 30px, $mobile, $tablet);
     }
 
+    &__wrapper {
+        position: relative;
+        grid-row: 1/3;
+        grid-column: 1/2;
+        transition: height 0.3s ease;
+
+        @media (min-width: $mobile) {
+            grid-row: 1/2;
+        }
+    }
+
     &__inner {
+        position: absolute;
         display: grid;
         grid-template-columns: 1fr;
         grid-auto-flow: row;
-        align-items: end;
+        align-items: start;
         @include adaptiveValue("row-gap", 3px, 10px, $minWidth, $mobile);
-        grid-row: 1/3;
-        grid-column: 1/2;
+        width: 100%;
+        transition: opacity 0.2s ease,
+                    transform 0.2s ease;
 
         @media (min-width: $mobile) {
-            align-items: start;
             @include adaptiveValue("row-gap", 5px, 15px, $mobile, $tablet);
             @include adaptiveValue("column-gap", 10px, 20px, $mobile, $tablet);
-            grid-row: 1/2;
         }
 
         @media (min-width: $tablet) {
             grid-template-columns: 1fr 1fr;
+        }
+
+        &_animation {
+            transform: scaleY(0);
+            opacity: 0;
+            pointer-events: none;
         }
     }
 
@@ -4896,6 +4921,7 @@
         grid-column: 2/3;
         align-self: end;
         pointer-events: none;
+        transition: height 0.3s ease;
 
         @media (min-width: $mobile) {
             display: none;
@@ -4909,15 +4935,11 @@
         display: block;
         width: 100%;
         opacity: 0;
-        transition: opacity 0.3s ease;
+        transition: opacity 0.4s ease;
 
         
         &.order__photo_visible {
             opacity: 1;
-
-            &[data-photo*="av"] {
-                position: relative;
-            }
         }
     }
 

@@ -123,10 +123,10 @@ function initPrices() {
     });
 
     updateViewPrices();
-    updateComplectation();
+    updatePhoto();
 }
 
-function updateComplectation() {
+function updatePhoto() {
 
     $('[data-photo]').each(function() {
 
@@ -265,6 +265,10 @@ function updateComplectation() {
 function initProductOptions() {
 
     let volume = 14;
+    const optionsInner = document.querySelector('.accessories__inner');
+    const optionsWrapper = document.querySelector('.accessories__wrapper');
+    const mobilePhotoWrapper = document.querySelector('.accessories__image');
+
 
     // выбранные пользователем опции
     const options = {
@@ -272,6 +276,7 @@ function initProductOptions() {
         izumovka: 0,
         yastreb: 0,
 
+        falsdno14: 0,
         falsdno: 0,
         falsdno35: 0, // с ножками
 
@@ -287,7 +292,8 @@ function initProductOptions() {
         izumovka: 0,
         yastrb: 0,
 
-        falsdno: 1,
+        falsdno14: 1,
+        falsdno: 0,
         falsdno35: 0, // с ножками
 
         tvistOff: 1,
@@ -295,23 +301,32 @@ function initProductOptions() {
         kluch: 1,
         masinka: 1,
     };
-
+    
     // https://docs.google.com/spreadsheets/d/1a2LiZ1QDi84U386w2dzipcRHJSGuXNoSENnV0wcpuAo/edit?usp=sharing
     // обновить видимость опций
     function updateOptionsVisibility() {
-        let isMini = volume === 14
-        available.clamp = !isMini
-        available.izumovka = !isMini
-        available.yastreb = volume >= 26
-        available.falsdno35 = volume === 35
+        let isMini = volume === 14;
+        available.clamp = !isMini;
+        available.izumovka = !isMini;
+        available.yastreb = volume >= 26;
+        available.falsdno14 = isMini;
+        available.falsdno = !isMini;
+        available.falsdno35 = volume === 35;
 
         for (let option in available) {
-            let isAvailable = available[option]
-            let node = $(`.jsConstructorRow[data-option="${option}"]`).get(0)
-            if (node) node.style.display = isAvailable ? '' : 'none'
+            let isAvailable = available[option];
+            let node = $(`.jsConstructorRow[data-option="${option}"]`).get(0);
+            if (node) node.style.display = isAvailable ? '' : 'none';
         }
+
+        const optionsHeight = optionsInner.offsetHeight + 'px';
+        optionsWrapper.style.height = optionsHeight;
+
+        const imageHeight = document.querySelector('.accessories__photo.order__photo_visible').offsetHeight + 'px';
+        mobilePhotoWrapper.style.height = imageHeight;
+
     }
-    updateOptionsVisibility()
+    updateOptionsVisibility();
 
     // обновить состояния чекбоксов (взаимозависимые опции)
     function updateCheckboxes() {
@@ -319,6 +334,7 @@ function initProductOptions() {
             let isChecked = options[option]
             $(`.jsConstructorRow[data-option="${option}"] .jsConstructorOption`).prop('checked', isChecked)
         }
+
     }
     updateCheckboxes()
 
@@ -333,11 +349,11 @@ function initProductOptions() {
 
         if (isMini) {
             // у 14 другое фальшдно
-            shop.cart.additionalProducts.falsdno = 0
-            shop.cart.additionalProducts.falsdno14 = options.falsdno
+            shop.cart.additionalProducts.falsdno = 0;
+            shop.cart.additionalProducts.falsdno14 = options.falsdno14;
         } else {
-            shop.cart.additionalProducts.falsdno = options.falsdno
-            shop.cart.additionalProducts.falsdno14 = 0
+            shop.cart.additionalProducts.falsdno = options.falsdno;
+            shop.cart.additionalProducts.falsdno14 = 0;
 
             // фальшдно с ножками только для 35
             shop.cart.additionalProducts.falsdno35 = is35 ? options.falsdno35 : 0
@@ -351,6 +367,11 @@ function initProductOptions() {
             } else if (options.clamp && !is35) { // с клампом без СА
                 main = `av${volume}-clamp`
             }
+
+        }
+
+        if (is35) {
+            $(`.jsConstructorRow[data-option="clamp"] .jsConstructorOption`).prop('checked', true);
         }
 
         shop.cart.additionalProducts.tvistOff = options.tvistOff
@@ -360,6 +381,7 @@ function initProductOptions() {
 
         shop.cart.productCode = main
         updateViewPrices()
+
     }
 
     // синхронизировать взаимозависимые опции
@@ -393,21 +415,45 @@ function initProductOptions() {
         syncDependOptions(option, this.checked);
         updateCheckboxes();
         updateCart();
-        updateComplectation();
+        updatePhoto();
     });
 
     // выбор объема
+    window.addEventListener('resize', function() {
+
+        const innerHeight = optionsInner.offsetHeight + 'px';
+        optionsWrapper.style.height = innerHeight;
+
+        const imageHeight = document.querySelector('.accessories__photo.order__photo_visible').offsetHeight + 'px';
+        mobilePhotoWrapper.style.height = imageHeight;
+
+    });
+
     $('.jsConstructorVolume').on('click', function (e) {
-        volume = + $(this).data('volume')
+
+        if (volume == + $(this).data('volume')) return;
+
+        volume = + $(this).data('volume');
 
         // обновить активную кнопку
         /* $('.jsConstructorVolume.liter-buttons__button_active').removeClass('liter-buttons__button_active')
         $(this).addClass('liter-buttons__button_active') */
 
-        updateOptionsVisibility();
+        optionsInner.classList.add('accessories__inner_animation');
+
+        setTimeout(() => {
+
+            updateOptionsVisibility();
+            optionsInner.classList.remove('accessories__inner_animation');
+            
+        }, 200);
+
         updateCheckboxes();
         updateCart();
-        updateComplectation();
+        updatePhoto();
+
+        const imageHeight = document.querySelector('.accessories__photo.order__photo_visible').offsetHeight + 'px';
+        mobilePhotoWrapper.style.height = imageHeight;
     });
 }
 
