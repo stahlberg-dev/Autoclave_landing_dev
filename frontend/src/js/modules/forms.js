@@ -39,7 +39,7 @@ const initModulesMain = [
     initProductOptions,
     //initStarterPromoCode,
     initComparisonPrices,
-    initDiscountLink,
+    //initDiscountLink,
     initCheckPromoCode,
     initMakeOrder,
     initCreditRequest,
