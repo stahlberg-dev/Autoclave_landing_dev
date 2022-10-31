@@ -2490,7 +2490,7 @@
         margin-bottom: 10px;
         cursor: pointer;
 
-        @media (any-hover: hover) {
+        /* @media (any-hover: hover) {
 
             &::after {
                 content: '';
@@ -2511,7 +2511,7 @@
                     opacity: 0;
                 }
             }
-        }
+        } */
 
         @media (min-width: $smallMobile) {
             @include adaptiveValue("width", 150px, 280px, $smallMobile, $mobile);
