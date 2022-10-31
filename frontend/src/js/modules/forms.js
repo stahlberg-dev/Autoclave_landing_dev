@@ -542,7 +542,7 @@ function initComparisonPrices() {
     });
 
 }
-
+/* 
 function initDiscountLink() {
 
     $('.jsDiscountLink').on('click', function(event) {
@@ -575,6 +575,7 @@ function initDiscountLink() {
     });
 
 }
+ */
 
 /* function setPromoDiscountPrice() {
     let code = 'ДОБРО';
