@@ -634,10 +634,10 @@ function initCheckPromoCode() {
             shop.checkPromoCode(code, (response) => {
                 if (response.active) {
                     shop.cart.promoCode = code;
+                    $info.text(response.info);
+                    $info.slideDown(300);
+                    $info.toggleClass('active', response.active);
                 }
-                $info.text(response.info);
-                $info.slideDown(300);
-                $info.toggleClass('active', response.active);
 
                 updateViewPrices();
             });
