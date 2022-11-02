@@ -14,9 +14,9 @@ $landingHost = $_SERVER['SERVER_NAME'] ?? '';
 $isDev = preg_match('#\.local$#isu', $landingHost, $matches);
 
 // при работе лэндинга на localhost - работать с магазином также на localhost
-if ($isDev) {
+/* if ($isDev) {
     $config['shopHost'] = 'http://zagotovshik.local';
-}
+} */
 
 $siteApi = new \App\SiteApi($config['shopHost'], $config['project'], $config['token']);
 $products = new \App\Products($config['items'], $siteApi);

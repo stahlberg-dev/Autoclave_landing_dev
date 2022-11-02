@@ -23,6 +23,7 @@ function ymGoal(name, params, callback) {
 }
 
 function formatPrice(val, delim) {
+    val = Math.round(val);
     val = '' + val;
     let hiCount = val.length - 3;
     if (hiCount < 1) return val;
@@ -39,7 +40,7 @@ const initModulesMain = [
     initProductOptions,
     //initStarterPromoCode,
     initComparisonPrices,
-    //initDiscountLink,
+    initDiscountLink,
     initCheckPromoCode,
     initMakeOrder,
     initCreditRequest,
@@ -471,8 +472,7 @@ function updateViewPricesApply(show) {
         priceEnd = shop.prices.priceEnd;
         priceBase = shop.prices.priceBase;
         priceOld = shop.prices.priceOld;
-        pricePromoDiscount = (shop.cart.productCode === 'av14') ? priceBase - 1500 :
-                             priceBase - 2000;
+        pricePromoDiscount = priceBase * 0.89;
         discount = shop.prices.getTotalDiscount();
     }
 
@@ -533,8 +533,7 @@ function initComparisonPrices() {
 
         shop.updatePrice(() => {
 
-            let promoPrice = (code === 'av14') ? shop.cache.prices[code] - 1500 : 
-                             shop.cache.prices[code] - 2000;
+            let promoPrice = shop.cache.prices[code] * 0.89;
             $pricePlace.toggle(!! promoPrice).find('.value').text(formatPrice(promoPrice));
 
         });
@@ -542,7 +541,7 @@ function initComparisonPrices() {
     });
 
 }
-/* 
+
 function initDiscountLink() {
 
     $('.jsDiscountLink').on('click', function(event) {
@@ -553,7 +552,7 @@ function initDiscountLink() {
         const $info = $root.find('.jsPromoCodeInfo');
         const $checkButton = $root.find('.jsPromoCodeCheckButton');
         const $deleteButton = $root.find('.jsPromoCodeDeleteButton');
-        let code = 'ДОБРО';
+        let code = 'ШОПИНГ';
 
         $checkButton.hide(200);
         $deleteButton.show(200);
@@ -575,7 +574,7 @@ function initDiscountLink() {
     });
 
 }
- */
+
 
 /* function setPromoDiscountPrice() {
     let code = 'ДОБРО';

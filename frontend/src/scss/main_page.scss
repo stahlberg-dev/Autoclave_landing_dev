@@ -1624,7 +1624,7 @@
         align-items: center;
         @include adaptiveValue("width", 120px, 280px, $mobile, $tablet);
         @include adaptiveValue("height", 30px, 52px, $mobile, $tablet);
-        margin: 0 auto 10px;
+        margin: 0 auto 5px;
         background-color: $primaryColor;
         box-shadow: 0px 0px 6px rgba(255, 187, 107, 0.5);
         overflow: hidden;
@@ -1633,7 +1633,11 @@
 
         @media (min-width: $smallMobile) {
             margin: 0;
-            @include adaptiveValue("margin-bottom", 10px, 60px, $smallMobile, $tablet);
+            @include adaptiveValue("margin-bottom", 10px, 15px, $smallMobile, $mobile);
+        }
+
+        @media (min-width: $mobile) {
+            @include adaptiveValue("margin-bottom", 25px, 60px, $mobile, $tablet);
         }
 
         @media (any-hover: hover) {
@@ -1692,7 +1696,7 @@
 
     &__link-text {
         z-index: 1;
-        transform: translateY(-7%);
+        transform: translateY(-2%);
         text-transform: uppercase;
         line-height: 1;
         @include adaptiveValue("font-size", 23px, 46px, $mobile, $tablet);
@@ -2821,8 +2825,8 @@
         color: $thirdColor;
 
         @media (min-width: $smallMobile) {
-            @include adaptiveValue("line-height", 14px, 18px, $smallMobile, $mobile);
-            @include adaptiveValue("font-size", 12px, 16px, $smallMobile, $mobile);
+            @include adaptiveValue("line-height", 13px, 18px, $smallMobile, $mobile);
+            @include adaptiveValue("font-size", 11px, 16px, $smallMobile, $mobile);
         }
         
         @media (min-width: $mobile) {
