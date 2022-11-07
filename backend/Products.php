@@ -53,7 +53,7 @@ class Products
     {
         $file = $this->getPricesFile();
 
-        $isOutdated = @filemtime($file) < time() - 30 * 60; // update every 30 min
+        $isOutdated = @filemtime($file) < time() - 60; // update every 1 min
         if ($isOutdated && $this->autoUpdatePrices) {
             try {
                 $this->updatePrices();
