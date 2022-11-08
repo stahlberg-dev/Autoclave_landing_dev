@@ -3741,6 +3741,11 @@
         @include adaptiveValue("padding-top", 30px, 40px, 992.02px, $tablet);
     }
 
+    @media (min-width: $tablet)  {
+        width: 440px;
+        padding-top: 40px;
+    }
+
     &__title {
         display: none;
         @include adaptiveValue("line-height", 18px, 40px, $mobile, $pc);
@@ -3794,9 +3799,9 @@
 
         &_note {
             font-style: italic;
-            padding-top: 15px;
-
+            
             &:last-child {
+                padding-top: 15px;
                 background-color: transparent;
             }
         }
