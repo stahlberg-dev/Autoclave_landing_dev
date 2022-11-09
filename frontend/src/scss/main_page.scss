@@ -240,7 +240,7 @@
         @include adaptiveValue("max-width", 320px, 570px, $minWidth, $pc);
         @include adaptiveValue("line-height", 20px, 38px, $minWidth, $pc);
         @include adaptiveValue("font-size", 16px, 32px, $minWidth, $pc);
-        font-weight: 200;
+        font-weight: 900;
         color: $secondaryColor;
     }
 }
