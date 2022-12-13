@@ -1,5 +1,30 @@
 .footer {
+    position: relative;
     background-color: $thirdColor;
+
+    &__branch {
+        display: block;
+        position: absolute;
+        bottom: calc(100% - 30px);
+        right: 0;
+        z-index: 1;
+        width: 100px;
+        pointer-events: none;
+
+        @media (min-width: $smallMobile) {
+            bottom: calc(100% - 30px);
+            @include adaptiveValue("width", 100px, 150px, $smallMobile, $mobile);
+        }
+
+        @media (min-width: $mobile) {
+            bottom: calc(100% - 40px);
+            @include adaptiveValue("width", 150px, 252px, $mobile, $pc);
+        }
+
+        @media (min-width: $tablet) {
+            bottom: calc(100% - 50px);
+        }
+    }
 
     &__container {
     }

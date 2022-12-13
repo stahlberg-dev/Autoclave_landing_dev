@@ -17,6 +17,7 @@
     }
 
     &__perfection {
+        position: relative;
         @include adaptiveValue("margin-bottom", 35px, 170px);
     }
 
@@ -25,14 +26,17 @@
     }
 
     &__autoclave {
+        position: relative;
         @include adaptiveValue("margin-bottom", 40px, 170px);
     }
 
     &__comparison {
+        position: relative;
         @include adaptiveValue("margin-bottom", 70px, 170px);
     }
 
     &__equipment {
+        position: relative;
         @include adaptiveValue("margin-bottom", 40px, 170px);
     }
 
@@ -41,6 +45,8 @@
     }
 
     &__about-us {
+        position: relative;
+        z-index: -5;
         @include adaptiveValue("margin-bottom", 55px, 100px);
     }
 
@@ -123,7 +129,21 @@
         }
     }
 
+    &__branch {
+        display: none;
+        
+        @media (min-width: $pc) {
+            display: block;
+            position: absolute;
+            top: 0;
+            left: 0; 
+            transform-origin: top left;
+            transform: scale(0.9, 0.9);
+        }
+    }
+
     &__title {   
+        position: relative;
         @include adaptiveValue("margin-bottom", 30px, 120px, $smallMobile, $pc);   
         z-index: 1;
     }
@@ -180,10 +200,30 @@
             @include adaptiveValue("flex-basis", 18px, 25px, $mobile, $pc);
         }
     }
+
+    &__snowflake-big {
+        display: block;
+        position: absolute;
+        z-index: 1;
+        @include adaptiveValue("bottom", 110px, 100px, $minWidth, $smallMobile);
+        @include adaptiveValue("left", 70px, 120px, $minWidth, $smallMobile);
+        @include adaptiveValue("width", 50px, 60px, $minWidth, $smallMobile);
+
+        @media (min-width: $smallMobile) {
+            @include adaptiveValue("bottom", 0px, -60px, $smallMobile, $mobile);
+            @include adaptiveValue("left", 20px, 60px, $smallMobile, $mobile);
+            @include adaptiveValue("width", 60px, 90px, $smallMobile, $mobile);
+        }
+
+        @media (min-width: $mobile) {
+            @include adaptiveValue("bottom", -60px, -100px, $mobile, $pc);
+            @include adaptiveValue("left", 60px, 110px, $mobile, $pc);
+            @include adaptiveValue("width", 90px, 170px, $mobile, $pc);
+        }
+    }
 }
 
 .title {
-    position: relative;
     text-transform: uppercase;
     
 
@@ -218,7 +258,74 @@
         }
     }
 
+    &__snowflake-medium {
+        display: block;
+        position: absolute;
+        @include adaptiveValue("top", 30px, 30px, $minWidth, $smallMobile);
+        @include adaptiveValue("right", 0px, -20px, $minWidth, $smallMobile);
+        @include adaptiveValue("width", 30px, 40px, $minWidth, $smallMobile);
+        transform: rotate(35deg);
+
+        @media (min-width: $smallMobile) {
+            @include adaptiveValue("top", -15px, -30px, $smallMobile, $mobile);
+            @include adaptiveValue("right", -10px, -40px, $smallMobile, $mobile);
+            @include adaptiveValue("width", 30px, 40px, $smallMobile, $mobile);
+        }
+
+        @media (min-width: $mobile) {
+            @include adaptiveValue("top", -30px, -60px, $mobile, $pc);
+            @include adaptiveValue("right", -40px, -100px, $mobile, $pc);
+            @include adaptiveValue("width", 40px, 80px, $mobile, $pc);
+        }
+    }
+
+    &__snowflake-small {
+        display: block;
+        position: absolute;
+        @include adaptiveValue("top", 95px, 105px, $minWidth, $smallMobile);
+        @include adaptiveValue("right", 50px, 80px, $minWidth, $smallMobile);
+        @include adaptiveValue("width", 20px, 30px, $minWidth, $smallMobile);
+        transform: rotate(60deg);
+        filter: blur(1px);
+
+        @media (min-width: $smallMobile) {
+            @include adaptiveValue("top", 105px, 125px, $smallMobile, $mobile);
+            @include adaptiveValue("right", 80px, 75px, $smallMobile, $mobile);
+            @include adaptiveValue("width", 20px, 30px, $smallMobile, $mobile);
+        }
+
+        @media (min-width: $mobile) {
+            @include adaptiveValue("top", 125px, 190px, $mobile, $pc);
+            @include adaptiveValue("right", 75px, 60px, $mobile, $pc);
+            @include adaptiveValue("width", 30px, 60px, $mobile, $pc);
+            filter: blur(2px);
+        }
+    }
+
+    &__star {
+        display: block;
+        position: absolute;
+        @include adaptiveValue("bottom", -30px, -50px, $minWidth, $smallMobile);
+        @include adaptiveValue("left", 10px, 10px, $minWidth, $smallMobile);
+        @include adaptiveValue("width", 20px, 40px, $minWidth, $smallMobile);
+        transform: rotate(60deg);
+
+        @media (min-width: $smallMobile) {
+            @include adaptiveValue("bottom", -22px, -45px, $smallMobile, $mobile);
+            @include adaptiveValue("left", 20px, 10px, $smallMobile, $mobile);
+            @include adaptiveValue("width", 20px, 40px, $smallMobile, $mobile);
+        }
+
+        @media (min-width: $mobile) {
+            @include adaptiveValue("bottom", -45px, -50px, $mobile, $pc);
+            @include adaptiveValue("left", 10px, -40px, $mobile, $pc);
+            @include adaptiveValue("width", 40px, 60px, $mobile, $pc);
+        }
+    }
+
+
     &__pre-title {
+        position: relative;
         @include adaptiveValue("max-width", 320px, 570px, $minWidth, $pc);
         @include adaptiveValue("line-height", 20px, 38px, $minWidth, $pc);
         @include adaptiveValue("font-size", 16px, 32px, $minWidth, $pc);
@@ -227,6 +334,7 @@
     }
 
     &__main-title {
+        position: relative;
         @include adaptiveValue("max-width", 320px, 570px, $minWidth, $pc);
         @include adaptiveValue("margin-bottom", 15px, 30px, $minWidth, $pc);
         @include adaptiveValue("line-height", 40px, 90px, $minWidth, $pc);
@@ -236,6 +344,7 @@
     }
 
     &__after-title {
+        position: relative;
         @include adaptiveValue("max-width", 320px, 570px, $minWidth, $pc);
         @include adaptiveValue("line-height", 20px, 38px, $minWidth, $pc);
         @include adaptiveValue("font-size", 16px, 32px, $minWidth, $pc);
@@ -361,6 +470,101 @@
             }
         }
     }
+
+    &__tree-toy {
+        display: none;
+
+        @media (min-width: $pc) {
+            display: block;
+            position: absolute;
+            z-index: 10;
+            top: calc(100% - 15px);
+            right: calc(100% - 15px);
+        }
+    }
+
+    &__branch-left {
+        display: block;
+        position: absolute;
+        z-index: 1;
+        right: 0;
+        top: -270px;
+        width: 60px;
+
+        @media (min-width: $smallMobile) {
+            top: auto;
+            right: 100%;
+            @include adaptiveValue("bottom", -5px, -13px, $smallMobile, $mobile);
+            @include adaptiveValue("width", 35px, 80px, $smallMobile, $mobile);
+        }
+
+        @media (min-width: $mobile) {
+            @include adaptiveValue("bottom", -13px, -20px, $mobile, $pc);
+            @include adaptiveValue("width", 80px, 130px, $mobile, $pc);
+        }
+    }
+    &__branch-right {
+        display: block;
+        position: absolute;
+        z-index: 1;
+        left: 0;
+        bottom: -130px;
+        width: 60px;
+
+        @media (min-width: $smallMobile) {
+            left: 100%;
+            @include adaptiveValue("bottom", 0px, -5px, $smallMobile, $mobile);
+            @include adaptiveValue("width", 35px, 90px, $smallMobile, $mobile);
+        }
+
+        @media (min-width: $mobile) {
+            @include adaptiveValue("width", 90px, 150px, $mobile, $pc);
+        }
+    }
+
+    &__star-top {
+        display: block;
+        position: absolute;
+        z-index: 1;
+        @include adaptiveValue("top", -50px, -50px, $minWidth, $smallMobile);
+        @include adaptiveValue("left", 10px, 10px, $minWidth, $smallMobile);
+        @include adaptiveValue("width", 50px, 50px, $minWidth, $smallMobile);
+        transform: rotate(60deg);
+
+        @media (min-width: $smallMobile) {
+            @include adaptiveValue("top", -19px, -24px, $smallMobile, $mobile);
+            @include adaptiveValue("left", -23.5px, -32px, $smallMobile, $mobile);
+            @include adaptiveValue("width", 40px, 50px, $smallMobile, $mobile);
+        }
+
+        @media (min-width: $mobile) {
+            @include adaptiveValue("top", -24px, -43px, $mobile, $pc);
+            @include adaptiveValue("left", -31px, -56px, $mobile, $pc);
+            @include adaptiveValue("width", 50px, 90px, $mobile, $pc);
+        }
+    }
+
+    &__star-bottom {
+        display: block;
+        position: absolute;
+        z-index: 1;
+        @include adaptiveValue("bottom", -20px, -20px, $minWidth, $smallMobile);
+        @include adaptiveValue("right", 10px, 10px, $minWidth, $smallMobile);
+        @include adaptiveValue("width", 50px, 50px, $minWidth, $smallMobile);
+        transform: rotate(60deg);
+
+        @media (min-width: $smallMobile) {
+            @include adaptiveValue("bottom", -19px, -24px, $smallMobile, $mobile);
+            @include adaptiveValue("right", -23.5px, -32px, $smallMobile, $mobile);
+            @include adaptiveValue("width", 40px, 50px, $smallMobile, $mobile);
+        }
+
+        @media (min-width: $mobile) {
+            @include adaptiveValue("bottom", -24px, -43px, $mobile, $pc);
+            @include adaptiveValue("right", -31px, -56px, $mobile, $pc);
+            @include adaptiveValue("width", 50px, 90px, $mobile, $pc);
+        }
+    }
 }
 
 //--------------------------------------------------------------------------------------------
@@ -371,6 +575,62 @@
 
     &__container {
         position: relative;
+    }
+
+    &__snowflake-big {
+        display: block;
+        position: absolute;
+        z-index: 10;
+        @include adaptiveValue("top", -30px, -30px, $minWidth, $smallMobile);
+        @include adaptiveValue("right", 10px, 20px, $minWidth, $smallMobile);
+        @include adaptiveValue("width", 50px, 60px, $minWidth, $smallMobile);
+
+        @media (min-width: $smallMobile) {
+            @include adaptiveValue("top", -10px, -30px, $smallMobile, $mobile);
+            @include adaptiveValue("right", 20px, 100px, $smallMobile, $mobile);
+            @include adaptiveValue("width", 60px, 90px, $smallMobile, $mobile);
+        }
+
+        @media (min-width: $mobile) {
+            @include adaptiveValue("top", -30px, -50px, $mobile, $pc);
+            @include adaptiveValue("right", 100px, 200px, $mobile, $pc);
+            @include adaptiveValue("width", 90px, 170px, $mobile, $pc);
+        }
+    }
+    
+    &__snowflake-medium {
+        display: block;
+        position: absolute;
+        z-index: 10;
+        @include adaptiveValue("bottom", -60px, -50px, $minWidth, $smallMobile);
+        @include adaptiveValue("left", 20px, 30px, $minWidth, $smallMobile);
+        @include adaptiveValue("width", 40px, 50px, $minWidth, $smallMobile);
+        transform: rotate(35deg);
+
+        @media (min-width: $smallMobile) {
+            @include adaptiveValue("bottom", -50px, -60px, $smallMobile, $mobile);
+            @include adaptiveValue("left", 20px, 50px, $smallMobile, $mobile);
+            @include adaptiveValue("width", 40px, 50px, $smallMobile, $mobile);
+        }
+
+        @media (min-width: $mobile) {
+            @include adaptiveValue("bottom", -40px, -40px, $mobile, $pc);
+            @include adaptiveValue("left", 50px, 20px, $mobile, $pc);
+            @include adaptiveValue("width", 50px, 120px, $mobile, $pc);
+        }
+    }
+
+    &__serpentine {
+        display: none;
+
+        @media (min-width: $mobile) {
+            display: block;
+            position: absolute;
+            z-index: 10;
+            @include adaptiveValue("bottom", -50px, -90px, $mobile, $pc);
+            @include adaptiveValue("right", -10px, -40px, $mobile, $pc);
+            @include adaptiveValue("width", 70px, 130px, $mobile, $pc);
+        }
     }
 
     &__slider {
@@ -1242,7 +1502,6 @@
 .perfection {
 
     @media (min-width: $smallMobile) {
-        position: relative;
         @include adaptiveValue("height", 370px, 850px, $smallMobile, $maxContainerWidth);
         background-repeat: no-repeat;
         background-size: contain;
@@ -1261,6 +1520,93 @@
                                       rgba(5, 6, 0, 0.9) 48%, 
                                       rgba(5, 6, 0, 0.2) 55%,
                                       rgba(5, 6, 0, 0.05) 60%);
+        }
+    }
+
+    &__branch {
+        display: block;
+        position: absolute;
+        z-index: 10;
+        right: 0;
+
+        @include adaptiveValue("top", -10px, -50px, $minWidth, $smallMobile);
+        @include adaptiveValue("width", 80px, 110px, $minWidth, $smallMobile);
+        
+        @media (min-width: $smallMobile) {
+            @include adaptiveValue("top", -20px, -25px, $smallMobile, $mobile);
+            @include adaptiveValue("width", 80px, 110px, $smallMobile, $mobile);
+        }
+        
+        @media (min-width: $mobile) {
+            @include adaptiveValue("top", -25px, -30px, $mobile, $pc);
+            @include adaptiveValue("width", 110px, 238px, $mobile, $pc);
+        }
+    }
+
+    &__snowflake-small {
+        display: block;
+        position: absolute;
+        z-index: 10;
+        @include adaptiveValue("top", 160px, 160px, $minWidth, $smallMobile);
+        @include adaptiveValue("right", 260px, 370px, $minWidth, $smallMobile);
+        @include adaptiveValue("width", 50px, 60px, $minWidth, $smallMobile);
+        transform: rotate(-25deg);
+        filter: blur(1px);
+
+        @media (min-width: $smallMobile) {
+            @include adaptiveValue("top", 10px, 10px, $smallMobile, $mobile);
+            @include adaptiveValue("right", 150px, 270px, $smallMobile, $mobile);
+            @include adaptiveValue("width", 40px, 50px, $smallMobile, $mobile);
+        }
+
+        @media (min-width: $mobile) {
+            @include adaptiveValue("top", 20px, 50px, $mobile, $pc);
+            @include adaptiveValue("right", 270px, 600px, $mobile, $pc);
+            @include adaptiveValue("width", 50px, 80px, $mobile, $pc);
+            filter: blur(2px);
+        }
+    }
+
+    &__snowflake-big {
+        display: block;
+        position: absolute;
+        z-index: 10;
+        @include adaptiveValue("bottom", -30px, -40px, $minWidth, $smallMobile);
+        @include adaptiveValue("left", 10px, 30px, $minWidth, $smallMobile);
+        @include adaptiveValue("width", 70px, 70px, $minWidth, $smallMobile);
+
+        @media (min-width: $smallMobile) {
+            @include adaptiveValue("bottom", -30px, -20px, $smallMobile, $mobile);
+            @include adaptiveValue("left", 10px, 100px, $smallMobile, $mobile);
+            @include adaptiveValue("width", 60px, 90px, $smallMobile, $mobile);
+        }
+
+        @media (min-width: $mobile) {
+            @include adaptiveValue("bottom", -20px, -40px, $mobile, $pc);
+            @include adaptiveValue("left", 100px, 340px, $mobile, $pc);
+            @include adaptiveValue("width", 90px, 170px, $mobile, $pc);
+        }
+    }
+
+    &__star  {
+        display: block;
+        position: absolute;
+        z-index: 10;
+        @include adaptiveValue("top", -50px, -50px, $minWidth, $smallMobile);
+        @include adaptiveValue("left", 240px, 290px, $minWidth, $smallMobile);
+        @include adaptiveValue("width", 50px, 50px, $minWidth, $smallMobile);
+        transform: rotate(60deg);
+
+        @media (min-width: $smallMobile) {
+            @include adaptiveValue("top", -23px, -27px, $smallMobile, $mobile);
+            @include adaptiveValue("left", -25px, -32px, $smallMobile, $mobile);
+            @include adaptiveValue("width", 40px, 50px, $smallMobile, $mobile);
+        }
+
+        @media (min-width: $mobile) {
+            @include adaptiveValue("top", -27px, -48px, $mobile, $pc);
+            @include adaptiveValue("left", -32px, -56px, $mobile, $pc);
+            @include adaptiveValue("width", 50px, 90px, $mobile, $pc);
         }
     }
 
@@ -1724,6 +2070,29 @@
 //----- Autoclave ----------------------------------------------------------------------------
 
 .autoclave {
+
+    &__snowflake-small {
+        display: block;
+        position: absolute;
+        @include adaptiveValue("top", -10px, -40px, $minWidth, $smallMobile);
+        @include adaptiveValue("right", 20px, 40px, $minWidth, $smallMobile);
+        @include adaptiveValue("width", 30px, 40px, $minWidth, $smallMobile);
+        transform: rotate(60deg);
+        filter: blur(1px);
+
+        @media (min-width: $smallMobile) {
+            @include adaptiveValue("top", -40px, -40px, $smallMobile, $mobile);
+            @include adaptiveValue("right", 40px, 40px, $smallMobile, $mobile);
+            @include adaptiveValue("width", 40px, 40px, $smallMobile, $mobile);
+        }
+
+        @media (min-width: $mobile) {
+            @include adaptiveValue("top", -40px, -70px, $mobile, $pc);
+            @include adaptiveValue("right", 40px, 200px, $mobile, $pc);
+            @include adaptiveValue("width", 40px, 70px, $mobile, $pc);
+            filter: blur(1.5px);
+        }
+    }
 
     &__container {
     }
@@ -2394,6 +2763,64 @@
             }
         }
     }
+
+    &__star-left  {
+        display: block;
+        position: absolute;
+        z-index: 10;
+        @include adaptiveValue("top", -120px, -120px, $minWidth, $smallMobile);
+        @include adaptiveValue("left", 10px, 40px, $minWidth, $smallMobile);
+        @include adaptiveValue("width", 50px, 50px, $minWidth, $smallMobile);
+        transform: rotate(60deg);
+
+        @media (min-width: $smallMobile) {
+            @include adaptiveValue("top", -23px, -28px, $smallMobile, $mobile);
+            @include adaptiveValue("left", -24px, -30px, $smallMobile, $mobile);
+            @include adaptiveValue("width", 40px, 50px, $smallMobile, $mobile);
+        }
+
+        @media (min-width: $mobile) {
+            left: auto;
+            @include adaptiveValue("top", -28px, -48px, $mobile, $pc);
+            @include adaptiveValue("right", -30px, -50px, $mobile, $pc);
+            @include adaptiveValue("width", 50px, 90px, $mobile, $pc);
+        }
+    }
+
+    &__star-right  {
+        display: block;
+        position: absolute;
+        z-index: 10;
+        @include adaptiveValue("top", -70px, -70px, $minWidth, $smallMobile);
+        @include adaptiveValue("left", 220px, 350px, $minWidth, $smallMobile);
+        @include adaptiveValue("width", 50px, 50px, $minWidth, $smallMobile);
+        transform: rotate(60deg);
+
+        @media (min-width: $smallMobile) {
+            @include adaptiveValue("top", -23px, -28px, $smallMobile, $mobile);
+            @include adaptiveValue("left", -24px, -30px, $smallMobile, $mobile);
+            @include adaptiveValue("width", 40px, 50px, $smallMobile, $mobile);
+        }
+
+        @media (min-width: $mobile) {
+            @include adaptiveValue("top", -28px, -48px, $mobile, $pc);
+            @include adaptiveValue("left", -30px, -50px, $mobile, $pc);
+            @include adaptiveValue("width", 50px, 90px, $mobile, $pc);
+        }
+    }
+
+    &__tree-toy {
+        display: none;
+
+        @media (min-width: $pc) {
+            display: block;
+            position: absolute;
+            z-index: 10;
+            top: calc(100% - 15px);
+            left: calc(100% - 15px);
+            transform: scaleX(-1);
+        }
+    }
 }
 
 //--------------------------------------------------------------------------------------------
@@ -2401,6 +2828,65 @@
 //----- Comparison ---------------------------------------------------------------------------
 
 .comparison {
+
+    &__snowflake-medium {
+        display: block;
+        position: absolute;
+        z-index: 10;
+        @include adaptiveValue("top", 40px, 40px, $minWidth, $smallMobile);
+        @include adaptiveValue("left", 20px, 30px, $minWidth, $smallMobile);
+        @include adaptiveValue("width", 50px, 60px, $minWidth, $smallMobile);
+        transform: rotate(35deg);
+
+        @media (min-width: $smallMobile) {
+            @include adaptiveValue("top", 40px, 40px, $smallMobile, $mobile);
+            @include adaptiveValue("left", 30px, 70px, $smallMobile, $mobile);
+            @include adaptiveValue("width", 60px, 80px, $smallMobile, $mobile);
+        }
+
+        @media (min-width: $mobile) {
+            @include adaptiveValue("top", 10px, 30px, $mobile, $pc);
+            @include adaptiveValue("left", 40px, 70px, $mobile, $pc);
+            @include adaptiveValue("width", 70px, 120px, $mobile, $pc);
+        }
+    }
+
+    &__snowflake-small {
+        display: block;
+        position: absolute;
+        z-index: 10;
+        @include adaptiveValue("bottom", -70px, -90px, $minWidth, $smallMobile);
+        @include adaptiveValue("right", 20px, 30px, $minWidth, $smallMobile);
+        @include adaptiveValue("width", 40px, 50px, $minWidth, $smallMobile);
+        transform: rotate(-25deg);
+        filter: blur(1px);
+
+        @media (min-width: $smallMobile) {
+            @include adaptiveValue("bottom", -90px, -110px, $smallMobile, $mobile);
+            @include adaptiveValue("right", 30px, 30px, $smallMobile, $mobile);
+            @include adaptiveValue("width", 50px, 50px, $smallMobile, $mobile);
+        }
+
+        @media (min-width: $mobile) {
+            @include adaptiveValue("bottom", -110px, -110px, $mobile, $pc);
+            @include adaptiveValue("right", 30px, 100px, $mobile, $pc);
+            @include adaptiveValue("width", 50px, 80px, $mobile, $pc);
+        }
+    }
+
+    &__serpentine {
+        display: none;
+
+        @media (min-width: $tablet) {
+            display: block;
+            position: absolute;
+            z-index: 10;
+            @include adaptiveValue("bottom", 20px, 30px, $tablet, $pc);
+            @include adaptiveValue("left", -30px, -20px, $tablet, $pc);
+            @include adaptiveValue("width", 90px, 130px, $tablet, $pc);
+            transform: scaleX(-1);
+        }
+    }
 
     &__container {
     }
@@ -2896,6 +3382,52 @@
 
 .equipment {
 
+    &__snowflake-medium {
+        display: block;
+        position: absolute;
+        z-index: 10;
+        @include adaptiveValue("bottom", -60px, -60px, $minWidth, $smallMobile);
+        @include adaptiveValue("right", 20px, 30px, $minWidth, $smallMobile);
+        @include adaptiveValue("width", 40px, 50px, $minWidth, $smallMobile);
+        transform: rotate(35deg);
+
+        @media (min-width: $smallMobile) {
+            @include adaptiveValue("bottom", -60px, -70px, $smallMobile, $mobile);
+            @include adaptiveValue("right", 30px, 80px, $smallMobile, $mobile);
+            @include adaptiveValue("width", 50px, 60px, $smallMobile, $mobile);
+        }
+
+        @media (min-width: $mobile) {
+            @include adaptiveValue("bottom", -70px, -70px, $mobile, $pc);
+            @include adaptiveValue("right", 80px, 120px, $mobile, $pc);
+            @include adaptiveValue("width", 60px, 120px, $mobile, $pc);
+        }
+    }
+
+    &__branch {
+        display: block;
+        position: absolute;
+        z-index: 1;
+        left: 0;
+
+        @include adaptiveValue("bottom", -110px, -130px, $minWidth, $smallMobile);
+        @include adaptiveValue("width", 75px, 90px, $minWidth, $smallMobile);
+        
+        @media (min-width: $smallMobile) {
+            @include adaptiveValue("bottom", -130px, -170px, $smallMobile, $mobile);
+            @include adaptiveValue("width", 90px, 130px, $smallMobile, $mobile);
+        }
+        @media (min-width: $mobile) {
+            @include adaptiveValue("bottom", -150px, -250px, $mobile, $tablet);
+            @include adaptiveValue("width", 110px, 180px, $mobile, $tablet);
+        }
+        
+        @media (min-width: $tablet) {
+            @include adaptiveValue("bottom", -250px, -270px, $tablet, $pc);
+            @include adaptiveValue("width", 180px, 260px, $tablet, $pc);
+        }
+    }
+
     &__container {
     }
 
@@ -3013,6 +3545,26 @@
 
 .complectation {
     width: 100%;
+
+    &__serpentine {
+        display: none;
+
+        @media (min-width: 992.02px) {
+            display: block;
+            position: absolute;
+            z-index: 1;
+            @include adaptiveValue("top", 250px, 200px, 992.02px, $tablet);
+            @include adaptiveValue("right", 20px, -10px, 992.02px, $tablet);
+            @include adaptiveValue("width", 90px, 90px, 992.02px, $tablet);
+            filter: blur(1px);
+        }
+
+        @media (min-width: $tablet) {
+            @include adaptiveValue("top", 200px, 300px, $tablet, $pc);
+            @include adaptiveValue("right", -10px, -170px, $tablet, $pc);
+            @include adaptiveValue("width", 90px, 130px, $tablet, $pc);
+        }
+    }
     
     &__video-container {
         display: none;
@@ -4381,7 +4933,6 @@
 //----- About us -----------------------------------------------------------------------------
 
 .about-us {
-    position: relative;
     min-width: $minWidth;
 
     @media (min-width: $smallMobile) {
@@ -4414,9 +4965,46 @@
     }
 
     &__container {
+        position: relative;
+    }
+
+    &__serpentine-right {
+        display: none;
+        
+        @media (min-width: $pc) {
+            display: block;
+            position: absolute;
+            right: -100px;
+            top: 470px;
+            width: 100px;
+            transform: scaleX(-1) rotate(-10deg);
+            filter: blur(1px);
+        }
+    }
+
+    &__snowflake-big {
+        display: block;
+        position: absolute;
+        z-index: 1;
+        @include adaptiveValue("bottom", -50px, -75px, $minWidth, $smallMobile);
+        @include adaptiveValue("right", 20px, 20px, $minWidth, $smallMobile);
+        @include adaptiveValue("width", 40px, 60px, $minWidth, $smallMobile);
+
+        @media (min-width: $smallMobile) {
+            @include adaptiveValue("bottom", -75px, -120px, $smallMobile, $mobile);
+            @include adaptiveValue("right", 20px, 60px, $smallMobile, $mobile);
+            @include adaptiveValue("width", 60px, 90px, $smallMobile, $mobile);
+        }
+
+        @media (min-width: $mobile) {
+            @include adaptiveValue("bottom", -120px, -200px, $mobile, $pc);
+            @include adaptiveValue("right", 60px, 80px, $mobile, $pc);
+            @include adaptiveValue("width", 90px, 170px, $mobile, $pc);
+        }
     }
 
     &__title {
+        position: relative;
         max-width: 300px;
         margin: 0 auto 25px;
 
@@ -4430,6 +5018,28 @@
             max-width: 880px;
             margin-left: auto;
             @include adaptiveValue("margin-bottom", 35px, 60px, $mobile, $maxContainerWidth);
+        }
+    }
+
+    &__star {
+        display: block;
+        position: absolute;
+        z-index: 10;
+        @include adaptiveValue("top", -45px, -50px, $minWidth, $smallMobile);
+        @include adaptiveValue("left", 120px, 150px, $minWidth, $smallMobile);
+        @include adaptiveValue("width", 40px, 40px, $minWidth, $smallMobile);
+        transform: rotate(60deg);
+
+        @media (min-width: $smallMobile) {
+            @include adaptiveValue("top", -50px, -60px, $smallMobile, $mobile);
+            @include adaptiveValue("left", 190px, 340px, $smallMobile, $mobile);
+            @include adaptiveValue("width", 40px, 50px, $smallMobile, $mobile);
+        }
+
+        @media (min-width: $mobile) {
+            @include adaptiveValue("top", -60px, -110px, $mobile, $pc);
+            @include adaptiveValue("left", 340px, 400px, $mobile, $pc);
+            @include adaptiveValue("width", 50px, 90px, $mobile, $pc);
         }
     }
 
@@ -4458,11 +5068,16 @@
         display: flex;
         justify-content: center;
         align-items: center;
+        position: relative;
         padding: 35px;
         background-color: $primaryColor;
 
         &:nth-child(6) {
             display: none;
+        }
+
+        &:not(:nth-child(1)) {
+            z-index: -2;
         }
 
         @media (min-width: $smallMobile) {
@@ -4560,6 +5175,32 @@
         font-weight: 700;
         color: $secondaryColor;
     }
+
+    &__serpentine-left {
+        display: block;
+        position: absolute;
+        top: 90%;
+        left: -10px;
+        z-index: -1;
+        width: 70px;
+
+        @media (min-width: $mobile) {
+            top: 80%;
+            @include adaptiveValue("left", -10px, -50px, $mobile, $pc);
+            @include adaptiveValue("width", 70px, 140px, $mobile, $pc);
+        }
+    }
+
+    &__tree-toy {
+        display: none;
+
+        @media (min-width: $tablet) {
+            display: block;
+            position: absolute;
+            top: calc(100% - 44px);
+            right: calc(100% - 72px);
+        }
+    }
 }
 
 //--------------------------------------------------------------------------------------------
@@ -4576,6 +5217,7 @@
         
         @media (min-width: $smallMobile) {
             @include adaptiveValue("margin-bottom", 15px, 70px, $smallMobile, $tablet);
+            @include adaptiveValue("margin-left", 0px, 100px, $smallMobile, $pc);
         }
     }
 
@@ -5110,6 +5752,7 @@
 //----- Payment ------------------------------------------------------------------------------
 
 .payment {
+    position: relative;
 
     &__container {
     }
@@ -5206,6 +5849,33 @@
         @media (min-width: $mobile) {
             width: 200px;
             height: 40px;
+        }
+    }
+
+    &__snowflake-medium {
+        display: block;
+        position: absolute;
+        z-index: 10;
+        @include adaptiveValue("bottom", 0px, -10px, $minWidth, $smallMobile);
+        @include adaptiveValue("right", 0px, 10px, $minWidth, $smallMobile);
+        @include adaptiveValue("width", 40px, 60px, $minWidth, $smallMobile);
+
+        @media (min-width: $smallMobile) {
+            @include adaptiveValue("bottom", -10px, -20px, $smallMobile, $mobile);
+            @include adaptiveValue("right", 10px, 20px, $smallMobile, $mobile);
+            @include adaptiveValue("width", 40px, 60px, $smallMobile, $mobile);
+        }
+
+        @media (min-width: $mobile) {
+            @include adaptiveValue("bottom", -20px, 0px, $mobile, $tablet);
+            @include adaptiveValue("right", 20px, 170px, $mobile, $tablet);
+            @include adaptiveValue("width", 60px, 90px, $mobile, $tablet);
+        }
+
+        @media (min-width: $tablet) {
+            @include adaptiveValue("bottom", -40px, -50px, $tablet, $pc);
+            @include adaptiveValue("right", 270px, 250px, $tablet, $pc);
+            @include adaptiveValue("width", 90px, 110px, $tablet, $pc);
         }
     }
 }
