@@ -472,7 +472,7 @@ function updateViewPricesApply(show) {
         priceEnd = shop.prices.priceEnd;
         priceBase = shop.prices.priceBase;
         priceOld = shop.prices.priceOld;
-        pricePromoDiscount = priceBase * 0.89;
+        pricePromoDiscount = priceBase * 0.85;
         discount = shop.prices.getTotalDiscount();
     }
 
@@ -533,7 +533,7 @@ function initComparisonPrices() {
 
         shop.updatePrice(() => {
 
-            let promoPrice = shop.cache.prices[code] * 0.89;
+            let promoPrice = shop.cache.prices[code] * 0.85;
             $pricePlace.toggle(!! promoPrice).find('.value').text(formatPrice(promoPrice));
 
         });
@@ -552,7 +552,7 @@ function initDiscountLink() {
         const $info = $root.find('.jsPromoCodeInfo');
         const $checkButton = $root.find('.jsPromoCodeCheckButton');
         const $deleteButton = $root.find('.jsPromoCodeDeleteButton');
-        let code = 'ШОПИНГ';
+        let code = 'ОЛИВЬЕ';
 
         $checkButton.hide(200);
         $deleteButton.show(200);
@@ -577,7 +577,7 @@ function initDiscountLink() {
 
 
 /* function setPromoDiscountPrice() {
-    let code = 'ДОБРО';
+    let code = 'ОЛИВЬЕ';
     let $pricePromoDiscount = $('.jsPricePromoDiscount');
     let promoPrice = 0;
     let defaultPromo = shop.cart.promoCode;
