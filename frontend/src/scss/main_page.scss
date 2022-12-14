@@ -1915,7 +1915,7 @@
 
 
         @media (min-width: $mobile) {
-            @include adaptiveValue("height", 350px, 500px, $mobile, $tablet);
+            @include adaptiveValue("height", 350px, 550px, $mobile, $tablet);
             background-size: contain;
             background-image: radial-gradient(89.21% 89.21% at 49.96% 42.08%, rgba(255, 187, 107, 0.03) 0%, rgba(255, 187, 107, 0.05) 100%), 
                               url("../img/promo-discount/promo-discount-bg.jpg");

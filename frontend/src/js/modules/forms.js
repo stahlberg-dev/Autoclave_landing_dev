@@ -23,16 +23,28 @@ function ymGoal(name, params, callback) {
 }
 
 function formatPrice(val, delim) {
+
     val = Math.round(val);
     val = '' + val;
     let hiCount = val.length - 3;
-    if (hiCount < 1) return val;
+
+    if (hiCount < 1) {
+
+        if (hiCount < 0) {
+            return val;
+        } else {
+            return val.substr(0, 1) + '90';
+        }
+
+    }
+        
     if (!delim) delim = ' ';
 
-    let hiVal = val.substr(0, hiCount),
-        lowVal = val.substr(hiCount);
+    let hiVal = val.substr(0, hiCount);
+    let lowVal = val.substr(hiCount, 1) + '90';
 
     return hiVal + delim + lowVal;
+    
 }
 
 const initModulesMain = [
