@@ -11,13 +11,13 @@ return [
     'items' => [
         // основные товары (все кроме 35 без клампа, 35 только с клампом)
         'av14' => [
-            'mini-avtoklav-zagotovshhik' => 1
+            'mini-avtoklav-zagotovshik' => 1
         ],
         'av18' => [
-            'avtoklav-zagotovshhik-lait-18' => 1
+            'avtoklav-zagotovshik-lait-18' => 1
         ],
         'av26' => [
-            'avtoklav-zagotovshhik-lait-26' => 1
+            'avtoklav-zagotovshik-lait-26' => 1
         ],
         'av35' => [
             'avtoklav-35' => 1
@@ -33,13 +33,13 @@ return [
 
         // с клампом + изюмовка
         'av18-distiller' => [
-            'zagotovshhik-avtolait-18' => 1
+            'zagotovshik-avtolait-18' => 1
         ],
         'av26-distiller' => [
-            'zagotovshhik-avtolait' => 1
+            'zagotovshik-avtolait' => 1
         ],
         'av35-distiller' => [
-            'zagotovshhik-avtolait-35' => 1
+            'zagotovshik-avtolait-35' => 1
         ],
 
         // с клампом СА ястреб
@@ -47,7 +47,7 @@ return [
             'avtoklav-kombo-26' => 1
         ],
         'av35-sa' => [
-            'zagotovshhik-kombo-35' => 1
+            'zagotovshik-kombo-35' => 1
         ],
 
 
