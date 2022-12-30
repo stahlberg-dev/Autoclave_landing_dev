@@ -13,11 +13,43 @@ import {popupsMaker} from "./modules/popups-maker.js";
 import {spoilers} from "./modules/spoilers.js";
 import {phoneMask, promoMask} from "./modules/masks.js";
 import {lockEquipmentVideo, clickScroller} from "./modules/click-scroller.js";
+import {temporaryElementMaker} from "./modules/temporary-element-maker.js";
 
 
 //----- Webp --------------------------------------------------------------------------------
 
 isWebp();
+//-------------------------------------------------------------------------------------------
+
+//----- setTemporaryElements ----------------------------------------------------------------
+
+new temporaryElementMaker([
+    {
+        parentElementClassMame: '.thanks-popup__text', 
+        startDateString: 'December 31, 2022', 
+        endDateString: 'January 3, 2023', 
+        elementString: 'Ваша заявка отправлена, с&nbsp;вами свяжется менеджер в&nbsp;рабочее время&nbsp;03.01.23&nbsp;г.',
+    },
+    {
+        parentElementClassMame: '.checkout-popup__text', 
+        startDateString: 'December 31, 2022', 
+        endDateString: 'January 3, 2023', 
+        elementString: 'Ожидайте звонка менеджера в&nbsp;рабочее время&nbsp;03.01.23&nbsp;г.',
+    },
+    {
+        parentElementClassMame: '.thanks-popup__text', 
+        startDateString: 'January 7, 2023', 
+        endDateString: 'January 8, 2023', 
+        elementString: 'Ваша заявка отправлена, с&nbsp;вами свяжется менеджер в&nbsp;рабочее время&nbsp;08.01.23&nbsp;г.',
+    },
+    {
+        parentElementClassMame: '.checkout-popup__text', 
+        startDateString: 'January 7 2023', 
+        endDateString: 'January 8, 2023', 
+        elementString: 'Ожидайте звонка менеджера в&nbsp;рабочее время&nbsp;08.01.23&nbsp;г.',
+    },
+]).init();
+
 //-------------------------------------------------------------------------------------------
 
 // ----- About slider -----------------------------------------------------------------------
