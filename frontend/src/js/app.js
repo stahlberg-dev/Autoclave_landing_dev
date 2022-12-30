@@ -1,5 +1,4 @@
 import {
-    isWebp, 
     literTabsSwitcher, 
     equipmentPagesSwitcher,
     scrollAuto,
@@ -14,12 +13,6 @@ import {spoilers} from "./modules/spoilers.js";
 import {phoneMask, promoMask} from "./modules/masks.js";
 import {lockEquipmentVideo, clickScroller} from "./modules/click-scroller.js";
 import {temporaryElementMaker} from "./modules/temporary-element-maker.js";
-
-
-//----- Webp --------------------------------------------------------------------------------
-
-isWebp();
-//-------------------------------------------------------------------------------------------
 
 //----- setTemporaryElements ----------------------------------------------------------------
 
