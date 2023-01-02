@@ -345,3 +345,151 @@ export function startComplectationAnimation() {
     }, false);
 
 }
+
+export function addChristmasDecorations() {
+
+    document.querySelector('.title-screen')
+        ?.insertAdjacentHTML('afterbegin',
+                             '<img src="img/christmas/1.webp" alt="" class="title-screen__branch"></img>');
+
+    document.querySelector('.title-screen')
+        ?.insertAdjacentHTML('beforeend',
+                             '<img src="img/christmas/4.webp" alt="" class="title-screen__snowflake-big">');
+                        
+    document.querySelector('.title__pre-title')
+        ?.insertAdjacentHTML('afterbegin',
+                             '<img src="img/christmas/2.webp" alt="" class="title__snowflake-medium">');
+
+    document.querySelector('.title__main-title')
+        ?.insertAdjacentHTML('afterbegin',
+                             '<img src="img/christmas/2.webp" alt="" class="title__snowflake-small">');
+
+    document.querySelector('.title__after-title')
+        ?.insertAdjacentHTML('beforeend',
+                             '<img src="img/christmas/3.webp" alt="" class="title__star">');
+
+    document.querySelector('.advantage:first-child')
+        ?.insertAdjacentHTML('afterbegin',
+                             '<img src="img/christmas/7.webp" alt="" class="advantage__tree-toy">');
+
+    document.querySelector('.advantage:nth-child(2)')
+        ?.insertAdjacentHTML('beforeend',
+                             '<img src="img/christmas/5.webp" alt="" class="advantage__branch-left">');
+
+    document.querySelector('.advantage:nth-child(2)')
+        ?.insertAdjacentHTML('beforeend',
+                             '<img src="img/christmas/6.webp" alt="" class="advantage__branch-right">');
+
+    document.querySelector('.advantage:nth-child(2)')
+        ?.insertAdjacentHTML('beforeend',
+                             '<img src="img/christmas/3.webp" alt="" class="advantage__star-top">');
+
+    document.querySelector('.advantage:nth-child(2)')
+        ?.insertAdjacentHTML('beforeend',
+                             '<img src="img/christmas/3.webp" alt="" class="advantage__star-bottom">');
+
+    document.querySelector('.about__container')
+        ?.insertAdjacentHTML('afterbegin',
+                             '<img src="img/christmas/8.webp" alt="" class="about__serpentine">');
+
+    document.querySelector('.about__container')
+        ?.insertAdjacentHTML('afterbegin',
+                             '<img src="img/christmas/2.webp" alt="" class="about__snowflake-medium">');
+
+    document.querySelector('.about__container')
+        ?.insertAdjacentHTML('afterbegin',
+                             '<img src="img/christmas/4.webp" alt="" class="about__snowflake-big">');
+
+    document.querySelector('.perfection')
+        ?.insertAdjacentHTML('afterbegin',
+                             '<img src="img/christmas/4.webp" alt="" class="perfection__snowflake-big">');
+
+    document.querySelector('.perfection')
+        ?.insertAdjacentHTML('afterbegin',
+                             '<img src="img/christmas/4.webp" alt="" class="perfection__snowflake-small">');
+
+    document.querySelector('.perfection')
+        ?.insertAdjacentHTML('afterbegin',
+                             '<img src="img/christmas/9.webp" alt="" class="perfection__branch">');
+
+    document.querySelector('.perfection__block:last-child')
+        ?.insertAdjacentHTML('afterbegin',
+                             '<img src="img/christmas/3.webp" alt="" class="perfection__star">');
+
+    document.querySelector('.promo-discount__content')
+        ?.insertAdjacentHTML('afterbegin',
+                             '<img src="img/christmas/1.webp" alt="" class="promo-discount__branch">');
+
+    document.querySelector('.promo-discount__content')
+        ?.insertAdjacentHTML('afterbegin',
+                             '<img src="img/christmas/8.webp" alt="" class="promo-discount__serpentine">');
+
+    document.querySelector('.autoclave')
+        ?.insertAdjacentHTML('afterbegin',
+                             '<img src="img/christmas/2.webp" alt="" class="autoclave__snowflake-small">');
+
+    document.querySelector('.autoclave__payment')
+        ?.insertAdjacentHTML('beforeend',
+                             '<img src="img/christmas/4.webp" alt="" class="payment__snowflake-medium">');
+
+    document.querySelector('.benefits__item:nth-child(4)')
+        ?.insertAdjacentHTML('afterbegin',
+                             '<img src="img/christmas/3.webp" alt="" class="benefits__star-left">');
+
+    document.querySelector('.benefits__item:nth-child(6)')
+        ?.insertAdjacentHTML('afterbegin',
+                             '<img src="img/christmas/7.webp" alt="" class="benefits__tree-toy">');
+
+    document.querySelector('.benefits__item:nth-child(6)')
+        ?.insertAdjacentHTML('afterbegin',
+                             '<img src="img/christmas/3.webp" alt="" class="benefits__star-right">');
+
+    document.querySelector('.comparison')
+        ?.insertAdjacentHTML('afterbegin',
+                             '<img src="img/christmas/8.webp" alt="" class="comparison__serpentine">');
+
+    document.querySelector('.comparison')
+        ?.insertAdjacentHTML('afterbegin',
+                             '<img src="img/christmas/4.webp" alt="" class="comparison__snowflake-small">');
+
+    document.querySelector('.comparison')
+        ?.insertAdjacentHTML('afterbegin',
+                             '<img src="img/christmas/2.webp" alt="" class="comparison__snowflake-medium">');
+
+    document.querySelector('.equipment')
+        ?.insertAdjacentHTML('afterbegin',
+                             '<img src="img/christmas/10.webp" alt="" class="equipment__branch">');
+
+    document.querySelector('.equipment')
+        ?.insertAdjacentHTML('afterbegin',
+                             '<img src="img/christmas/2.webp" alt="" class="equipment__snowflake-medium">');
+
+    document.querySelector('.complectation')
+        ?.insertAdjacentHTML('afterbegin',
+                             '<img src="img/christmas/8.webp" alt="" class="complectation__serpentine">');
+
+    document.querySelector('.about-us__container')
+        ?.insertAdjacentHTML('afterbegin',
+                             '<img src="img/christmas/4.webp" alt="" class="about-us__snowflake-big">');
+
+    document.querySelector('.about-us__container')
+        ?.insertAdjacentHTML('afterbegin',
+                             '<img src="img/christmas/8.webp" alt="" class="about-us__serpentine-right">');
+
+    document.querySelector('.about-us__title')
+        ?.insertAdjacentHTML('afterbegin',
+                             '<img src="img/christmas/3.webp" alt="" class="about-us__star">');
+
+    document.querySelector('.about-us__item:nth-child(1)')
+        ?.insertAdjacentHTML('afterbegin',
+                             '<img src="img/christmas/8.webp" alt="" class="about-us__serpentine-left">');
+
+    document.querySelector('.about-us__item:nth-child(6)')
+        ?.insertAdjacentHTML('beforeend',
+                             '<img src="img/christmas/11.webp" alt="" class="about-us__tree-toy">');
+
+    document.querySelector('footer')
+        ?.insertAdjacentHTML('afterbegin',
+                             '<img src="img/christmas/12.webp" alt="" class="footer__branch">');
+
+}
