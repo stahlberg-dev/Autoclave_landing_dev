@@ -1,0 +1,211 @@
+.promo-discount {
+
+    &__container {
+    }
+
+    &__content {
+        position: relative;
+        width: 100%;
+        @include adaptiveValue("height", 280px, 500px, $minWidth, $mobile);
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: bottom right;
+        background-image: url("../img/promo-discount/promo-discount-bg-mobile.webp");
+        border: 3px solid $primaryColor;
+        box-shadow: 0px 0px 6px rgba(255, 187, 107, 0.5),
+                    inset 0px 0px 6px rgba(255, 187, 107, 0.5); 
+
+
+        @media (min-width: $mobile) {
+            @include adaptiveValue("height", 350px, 550px, $mobile, $tablet);
+            background-size: contain;
+            background-image: radial-gradient(89.21% 89.21% at 49.96% 42.08%, rgba(255, 187, 107, 0.03) 0%, rgba(255, 187, 107, 0.05) 100%), 
+                              url("../img/promo-discount/promo-discount-bg.webp");
+        }
+    }
+
+    &__serpentine {
+        display: block;
+        position: absolute;
+        z-index: 10;
+        transform: scaleX(-1);
+        width: 50px;
+        top: 70px;
+        @include adaptiveValue("left", -20px, 30px, $minWidth, $smallMobile);
+
+        @media (min-width: $smallMobile) {
+            display: block;
+            position: absolute;
+            z-index: 10;
+            @include adaptiveValue("top", 70px, 50px, $smallMobile, $mobile);
+            @include adaptiveValue("left", 260px, 380px, $smallMobile, $mobile);
+            @include adaptiveValue("width", 60px, 70px, $smallMobile, $mobile);
+            transform: none;
+        }
+
+        @media (min-width: $mobile) {
+            @include adaptiveValue("top", 50px, 50px, $mobile, $pc);
+            @include adaptiveValue("left", 420px, 700px, $mobile, $pc);
+            @include adaptiveValue("width", 70px, 100px, $mobile, $pc);
+        }
+    }
+
+    &__branch {
+        display: none;
+        
+        @media (min-width: $smallMobile) {
+            display: block;
+            position: absolute;
+            top: 0;
+            right: 0; 
+            transform: scaleX(-1);
+            @include adaptiveValue("width", 70px, 90px, $smallMobile, $mobile);
+        }
+
+        @media (min-width: $mobile) {
+            @include adaptiveValue("width", 90px, 120px, $mobile, $pc);
+        }
+    }
+
+    &__text {
+        position: absolute;
+        top: 20px;
+        left: 5%;
+        width: 100%;
+        text-align: center;
+        max-width: 90%;
+
+        @media (min-width: $smallMobile) {
+            @include adaptiveValue("top", 30px, 70px, $smallMobile, $mobile);
+            @include adaptiveValue("left", 30px, 70px, $smallMobile, $mobile);
+            text-align: left;
+        }
+
+        @media (min-width: $mobile) {
+            @include adaptiveValue("top", 60px, 65px, $mobile, $tablet);
+            @include adaptiveValue("left", 50px, 50px, $mobile, $tablet);
+        }
+
+        @media (min-width: $tablet) {
+            max-width: 420px;
+        }
+    }
+
+    &__pre-title {
+        @include adaptiveValue("margin-bottom", 5px, 10px, $minWidth, $tablet);
+        @include adaptiveValue("line-height", 19px, 37px, $mobile, $tablet);
+        @include adaptiveValue("font-size", 16px, 31px, $mobile, $tablet);
+        font-weight: 300;
+        color: $primaryColor;
+    }
+
+    &__title {
+        @include adaptiveValue("margin-bottom", 5px, 30px, $smallMobile, $tablet);
+        text-transform: uppercase;
+        @include adaptiveValue("line-height", 32px, 62px, $mobile, $tablet);
+        @include adaptiveValue("font-size", 27px, 52px, $mobile, $tablet);
+        font-weight: 800;
+        color: $secondaryColor;
+    }
+
+    &__link {
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        @include adaptiveValue("width", 120px, 280px, $mobile, $tablet);
+        @include adaptiveValue("height", 30px, 52px, $mobile, $tablet);
+        margin: 0 auto 5px;
+        background-color: $primaryColor;
+        box-shadow: 0px 0px 6px rgba(255, 187, 107, 0.5);
+        overflow: hidden;
+        transition: background-color 0.3s ease,
+                    box-shadow 0.3s ease;
+
+        @media (min-width: $smallMobile) {
+            margin: 0;
+            @include adaptiveValue("margin-bottom", 10px, 15px, $smallMobile, $mobile);
+        }
+
+        @media (min-width: $mobile) {
+            @include adaptiveValue("margin-bottom", 25px, 60px, $mobile, $tablet);
+        }
+
+        @media (any-hover: hover) {
+            &:hover {
+                background-color: #a05601;
+
+                &::after {
+                    border-bottom-color: $primaryColor;
+                    border-right-color: $primaryColor;
+                }
+            }
+    
+            &:active {
+                background-color: #d6780d;
+                box-shadow: 0px 0px 15px rgba(255, 187, 107, 0.8);
+
+                &::after {
+                    border-bottom-color: #d6780d;
+                    border-right-color: #d6780d;
+                }
+            }
+        }
+    
+        @media (any-hover: none) {
+            &:active {
+                background-color: #d6780d;
+                box-shadow: 0px 0px 15px rgba(255, 187, 107, 0.8);
+
+                &::after {
+                    border-bottom-color: #d6780d;
+                    border-right-color: #d6780d;
+                }
+            }
+        }
+
+        &::after {
+            content: '';
+            display: block;
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 100%;
+            height: 100%;
+            border-style: solid;
+            border-top-color: transparent;
+            border-bottom-color: #a05601;
+            border-left-color: transparent;
+            border-right-color: #a05601;
+            @include adaptiveValue("border-top-width", 15px, 26px, $mobile, $tablet);
+            @include adaptiveValue("border-bottom-width", 15px, 26px, $mobile, $tablet);
+            @include adaptiveValue("border-left-width", 60px, 140px, $mobile, $tablet);
+            @include adaptiveValue("border-right-width", 60px, 140px, $mobile, $tablet);
+            transition: border-color 0.3s ease;
+        }
+    }
+
+    &__link-text {
+        z-index: 1;
+        transform: translateY(-2%);
+        text-transform: uppercase;
+        line-height: 1;
+        @include adaptiveValue("font-size", 23px, 46px, $mobile, $tablet);
+        font-weight: 800;
+        text-shadow: 0px 0px 6px rgba(255, 187, 107, 0.5);
+        color: $thirdColor;
+    }
+
+    &__amount {
+        text-transform: uppercase;
+        @include adaptiveValue("line-height", 16px, 29px, $mobile, $tablet);
+        @include adaptiveValue("font-size", 13px, 24px, $mobile, $tablet);
+        font-weight: 300;
+    }
+
+    &__amount-num {
+        @include adaptiveValue("line-height", 20px, 58px, $mobile, $tablet);
+        @include adaptiveValue("font-size", 16px, 48px, $mobile, $tablet);
+        font-weight: 800;
+    }
+}

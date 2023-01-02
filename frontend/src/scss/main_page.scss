@@ -1,3 +1,644 @@
+%orange-bar {
+    background-color: $primaryColor;
+    box-shadow: 0px 0px 6px rgba(255, 187, 107, 0.5);
+}
+
+body {
+    background-color: $backgroundColor;
+    font-family: $fontFamily;
+    font-size: $fontSize;
+    font-weight: 500;
+    line-height: 1.5;
+    color: $secondaryColor;
+    
+    &.locked {
+        overflow: hidden;
+    }
+}
+
+.scroller {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: transparent;
+    overflow-y: scroll;
+    z-index: 199;
+    pointer-events: none;
+
+    &.disable-pointer {
+        z-index: 300;
+        pointer-events: auto;
+    }
+}
+
+.wrapper {
+    min-height: 100%;
+    display: flex;
+    flex-flow: column nowrap;
+    overflow: hidden;
+    
+    & main {
+        flex: 1 1 auto;
+        @include adaptiveValue("margin-bottom", 55px, 150px);
+    }
+}
+
+.container {
+    max-width: $maxContainerWidth;
+    min-width: $minWidth;
+    margin: 0 auto;
+    padding: 0 $containerPadding;
+}
+
+.container-big {
+    max-width: $pc;
+    min-width: $minWidth;
+    margin: 0 auto;
+    padding: 0;
+}
+
+.phone {
+
+    &__link {
+        display: block;
+        margin-bottom: 5px;
+        line-height: 22px;
+        font-size: 18px;
+        font-weight: 500;
+        color: rgba(186, 100, 0, 0.8);
+        transition: color 0.3s ease,
+                    text-shadow 0.3s ease;
+
+        @media (any-hover: hover) {
+            &:hover {
+                color: $primaryColor;
+                text-shadow: 0px 0px 15px rgba(255, 187, 107, 0.5);
+            }
+        }
+
+        &:active {
+            color: #d6780d;
+            text-shadow: 0px 0px 15px rgba(255, 187, 107, 0.9);
+        }
+    }
+
+    &__text {
+        line-height: 17px;
+        font-size: 14px;
+        font-weight: 300;
+        letter-spacing: 0.55px;
+        color: $primaryColor;
+    }
+}
+
+.socials {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    align-items: center;
+    @include adaptiveValue("gap", 20px, 30px, $minWidth, $mobile);
+
+    @media (min-width: $mobile) {
+        flex-direction: column-reverse;
+        gap: 15px;
+        height: calc(100% + 30px);
+    }
+
+    @media (min-width: 992.02px) {
+        height: calc(100% + 75px);
+    }
+
+    &::before {
+        content: '';
+        flex: 1 1 auto;
+        height: 10px;
+        @extend %orange-bar;
+        transform: translateX(-$containerPadding);
+
+        @media (min-width: $mobile) {
+            height: auto;
+            width: 10px;
+            transform: none;
+        }
+    }
+
+    &__container {
+        flex: 0 0 auto;
+        display: flex;
+        flex-wrap: nowrap;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        @include adaptiveValue("gap", 20px, 30px, $minWidth, $mobile);
+
+        @media (min-width: $mobile) {
+            flex-direction: column;
+            gap: 10px;
+        }
+    }
+
+    &__link {
+        @include adaptiveValue("width", 24px, 30px, $minWidth, $mobile);
+        @include adaptiveValue("height", 24px, 30px, $minWidth, $mobile);
+
+        @media (min-width: $mobile) {
+            width: 15px;
+            height: 15px;
+        }
+    }
+
+    &__icon {
+        @include adaptiveValue("width", 24px, 30px, $minWidth, $mobile);
+        @include adaptiveValue("height", 24px, 30px, $minWidth, $mobile);
+
+        @media (min-width: $mobile) {
+            width: 15px;
+            height: 15px;
+        }
+    }
+}
+
+.icon-link-button {
+    display: block;
+
+    svg {
+        display: block;
+        fill: $primaryColor;
+        transition: fill 0.3s ease,
+                    filter 0.3s ease;
+
+        @media (any-hover: hover) {
+            &:hover {
+                color: $primaryColor;
+                filter: drop-shadow(0px 0px 10px rgba(255, 187, 107, 0.5));
+            }
+        }
+
+        &:active {
+            fill: #d6780d;
+            filter: drop-shadow(0px 0px 10px rgba(255, 187, 107, 0.9));
+        }
+    }
+}
+
+.button {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+    align-items: center;
+    padding: 5px;
+    border: 3px solid $primaryColor;
+    background-color: transparent;
+    transition: background-color 0.3s ease,
+                box-shadow 0.3s ease,
+                color 0.3s ease,
+                border-color 0.3s ease;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+
+    @media (any-hover: hover) {
+        &:hover {
+            background-color: $primaryColor;
+            box-shadow: 0px 0px 6px rgba(255, 187, 107, 0.5);
+        }
+
+        &:active {
+            background-color: #d6780d;
+            border-color: #d6780d;
+            box-shadow: 0px 0px 15px rgba(255, 187, 107, 0.8);
+        }
+    }
+
+    @media (any-hover: none) {
+        &:active {
+            background-color: #d6780d;
+            border-color: #d6780d;
+            box-shadow: 0px 0px 15px rgba(255, 187, 107, 0.8);
+        }
+    }
+
+    &_text_white {
+        font-weight: 300;
+        color: $secondaryColor;
+        box-shadow: 0px 0px 6px rgba(255, 187, 107, 0.5),
+                    inset 0px 0px 6px rgba(255, 187, 107, 0.5);
+    }
+
+    &_text_orange {
+        font-weight: 400;
+        color: $primaryColor;
+
+        @media (any-hover: hover) {
+            &:hover {
+                color: $thirdColor;
+            }
+        }
+
+        &:active {
+            color: $thirdColor;
+        }
+    }
+}
+
+.arrow-button {
+    width: 250px;
+    height: 60px;
+    gap: 40px;
+    line-height: 30px;
+    font-size: 24px;
+
+    &__text {
+        flex: 0 0 auto;
+        pointer-events: none;
+    }
+
+    &__arrow-icon {
+        position: relative;
+        flex: 0 0 25px;
+        height: 2px;
+        background-color: $secondaryColor;
+        pointer-events: none;
+    }
+}
+
+.right-arrow {
+    &::before,
+    &::after {
+        content: '';
+        display: block;
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 8px;
+        height: 100%;
+        border-radius: 1px;
+        background-color: inherit;
+        transform-origin: right bottom;
+        transform: rotate(45deg);
+    }
+
+    &::after {
+        transform-origin: right top;
+        transform: rotate(-45deg);
+    }
+}
+
+.left-arrow {
+    &::before,
+    &::after {
+        content: '';
+        display: block;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 8px;
+        height: 100%;
+        border-radius: 1px;
+        background-color: inherit;
+        transform-origin: left top;
+        transform: rotate(45deg);
+    }
+
+    &::after {
+        transform-origin: left bottom;
+        transform: rotate(-45deg);
+    }
+}
+
+.slide-arrow  {
+    display: none;
+
+    @media (min-width: $mobile) {
+        display: block;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        height: 2px;
+        background-color: $primaryColor;
+        filter: drop-shadow(0px 0px 4px rgba(255, 187, 107, 0.5));
+    }
+}
+
+.primary-highlightning-max {
+    font-weight: 700;
+    color: $primaryColor;
+}
+
+.subtitle {
+    position: relative;
+    text-align: center;
+    @include adaptiveValue("line-height", 19px, 43px, $mobile, $pc);
+    @include adaptiveValue("font-size", 16px, 36px, $mobile, $pc);
+    font-weight: 100;
+    color: $secondaryColor;
+    z-index: 1;
+
+    &__highlightning {
+        display: block;
+        text-transform: uppercase;
+        @include adaptiveValue("line-height", 29px, 58px, $mobile, $pc);
+        @include adaptiveValue("font-size", 24px, 48px, $mobile, $pc);
+        font-weight: 800;
+        color: $primaryColor;
+    }
+}
+
+.slider-nav {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    width: 150px;
+    z-index: 5;
+
+    @media (min-width: $mobile) {
+        gap: 30px;
+        width: 190px;
+    }
+
+    &__prev-button,
+    &__next-button {
+        display: flex;
+        flex-flow: column nowrap;
+        justify-content: center;
+        align-items: center;
+        flex: 0 0 40px;
+        height: 20px;
+        background-color: transparent;
+        cursor: pointer;
+    }
+
+    &__prev-icon,
+    &__next-icon {
+        position: relative;
+        width: 30px;
+        flex: 0 0 2px;
+        background-color: $secondaryColor;
+        pointer-events: none;
+        transition: background-color 0.3s ease,
+                    filter 0.3s ease;
+    }
+
+    @media (any-hover: hover) {
+        &__prev-button:hover &__prev-icon,
+        &__next-button:hover &__next-icon {
+            background-color: $primaryColor;
+        }
+    }
+
+    &__prev-button:active &__prev-icon,
+    &__next-button:active &__next-icon {
+        background-color: #d6780d;
+        filter: drop-shadow(0px 0px 10px rgba(255, 187, 107, 0.9));
+    }
+
+    &__pagination {
+        display: flex;
+        flex-flow: row nowrap;
+        justify-content: flex-end;
+        align-items: flex-end;
+        flex: 0 0 70px;
+        height: 34px;
+        padding: 5px;
+        padding-right: 15px;
+        text-align: center;
+        line-height: 24px;
+        font-size: 20px;
+        font-weight: 300;
+        color: $primaryColor;
+    }
+
+    .swiper-pagination-current {
+        line-height: 24px;
+        font-size: 24px;
+        font-weight: 300;
+        color: $secondaryColor;
+    }
+}
+
+.interactive-block {
+    position: relative;
+    background-color: $thirdColor;
+
+    &::before, 
+    &::after {
+        content: '';
+        display: none;
+        position: absolute;
+        top: 10%;
+        left: 0;
+        width: 10px;
+        height: 80%;
+        @extend %orange-bar;
+
+        @media (min-width: $smallMobile) {
+            display: block;
+        }
+    }
+
+    &::after {
+        left: auto;
+        right: 0;
+    }
+}
+
+.prices {
+    display: flex;
+    flex-flow: column-reverse nowrap;
+    justify-content: flex-start;
+    align-items: center;
+
+        @media (min-width: $smallMobile) {
+            flex-flow: row nowrap;
+            align-items: start;
+            @include adaptiveValue("gap", 0px, 5px, $smallMobile, $mobile);
+        }
+
+        @media (min-width: $mobile) {
+            gap: 20px;
+        }
+
+    &__price {
+        font-weight: 800;
+        color: $secondaryColor;
+        line-height: 32px;
+        font-size: 26px;
+
+        @media (min-width: $smallMobile) {
+            @include adaptiveValue("min-width", 135px, 200px, $smallMobile, $mobile);
+            @include adaptiveValue("line-height", 36px, 58px, $smallMobile, $mobile);
+            @include adaptiveValue("font-size", 30px, 48px, $smallMobile, $mobile);
+        }
+
+        @media (min-width: $mobile) {
+            @include adaptiveValue("min-width", 135px, 200px, $mobile, $tablet);
+            @include adaptiveValue("line-height", 36px, 58px, $mobile, $tablet);
+            @include adaptiveValue("font-size", 30px, 48px, $mobile, $tablet);
+        }
+    }
+
+    &__value {
+    }
+
+    &__currency {
+    }
+
+    &__old-price {
+        text-decoration: line-through;
+        font-weight: 200;
+        line-height: 20px;
+        font-size: 16px;
+
+        @media (min-width: $smallMobile) {
+            @include adaptiveValue("line-height", 22px, 30px, $smallMobile, $mobile);
+            @include adaptiveValue("font-size", 18px, 24px, $smallMobile, $mobile);
+        }
+
+        @media (min-width: $mobile) {
+            @include adaptiveValue("line-height", 26px, 30px, $mobile, $maxContainerWidth);
+            @include adaptiveValue("font-size", 22px, 24px, $mobile, $maxContainerWidth);
+        }
+
+        &_color_dark {
+            color: $thirdColor;
+        }
+
+        &_color_orange {
+            color: $primaryColor;
+        }
+    }
+
+    &__old-value {
+    }
+}
+
+
+.liter-buttons {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+
+    @media (min-width: $smallMobile) {
+        @include adaptiveValue("gap", 10px, 20px, $smallMobile, $mobile);
+    }
+
+    @media (min-width: $mobile) {
+        @include adaptiveValue("gap", 10px, 20px, $mobile, $maxContainerWidth);
+    }
+
+    &__button {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex: 1 1 25%;
+        height: 40px;
+        background-color: transparent;
+        cursor: pointer;
+        transition: background-color 0.3s ease,
+                    color 0.3s ease,
+                    box-shadow 0.3s ease,
+                    border-color 0.3s ease;
+        -webkit-tap-highlight-color: transparent;
+
+        @media (min-width: $mobile) {
+            @include adaptiveValue("height", 30px, 40px, $mobile, $maxContainerWidth);
+        }
+
+        .liter-buttons_color_orange & {
+            border: 2px solid $thirdColor;
+            color: $thirdColor;
+        }
+
+        .liter-buttons_color_dark & {
+            border: 2px solid $primaryColor;
+            color: $primaryColor;
+        }
+
+        @media (any-hover: hover) {
+
+            &:hover {
+
+                .liter-buttons_color_orange & {
+                    background-color: $thirdColor;
+                    color: $primaryColor;
+                }
+
+                .liter-buttons_color_dark & {
+                    background-color: $primaryColor;
+                    color: $thirdColor;
+                }
+            }
+        }
+
+        &:active {
+
+            .liter-buttons.liter-buttons_color_orange & {
+                background-color: #141414;
+                border-color: #141414;
+                color: $primaryColor;
+                box-shadow: 0px 0px 15px rgba(14, 14, 14, 0.8);
+            }
+
+            .liter-buttons.liter-buttons_color_dark & {
+                background-color: #d6780d;
+                border-color: #d6780d;
+                color: $thirdColor;
+                box-shadow: 0px 0px 15px rgba(255, 187, 107, 0.8);
+            }
+        }
+
+        &_active {
+
+            .liter-buttons_color_orange & {
+                background-color: $thirdColor;
+                color: $primaryColor;
+            }
+
+            .liter-buttons_color_dark & {
+                background-color: $primaryColor;
+                color: $thirdColor;
+            }
+        }
+    }
+
+    &__button-text {
+        font-weight: 400;
+        line-height: 19px;
+        font-size: 16px;
+
+        @media (min-width: $smallMobile) {
+            @include adaptiveValue("line-height", 19px, 22px, $smallMobile, $mobile);
+            @include adaptiveValue("font-size", 16px, 18px, $smallMobile, $mobile);
+        } 
+
+        @media (min-width: $mobile) {
+            @include adaptiveValue("line-height", 18px, 22px, $mobile, $maxContainerWidth);
+            @include adaptiveValue("font-size", 14px, 18px, $mobile, $maxContainerWidth);
+        }
+
+        & span {
+            display: none;
+
+            @media (min-width: $smallMobile) {
+                display: inline;
+            }
+
+            @media (min-width: $mobile) {
+                display: none;
+            }
+
+            @media (min-width: 992.02px) {
+                display: inline;
+            }
+        }
+    }
+}
+
 .page {
 
     &__title-screen {
@@ -58,5870 +699,15 @@
     }
 }
 
-//----- Title screen -------------------------------------------------------------------------
-
-.title-screen {
-    position: relative;
-    min-width: $minWidth;
-    @include adaptiveValue("padding-top", 75px, 90px, $minWidth, $mobile);
-    @include adaptiveValue("height", 455px, 427px, $minWidth, $mobile);
-    @include adaptiveValue("background-size", 424px, 768px, $minWidth, $mobile);
-    background-repeat: no-repeat;
-    background-position: bottom right;
-    background-image: url("../img/title-screen/title-screen-bg.webp");
-
-    @media (min-width: $mobile) {
-        min-height: $minWidth * 0.556;
-        height: 100vw * 0.556;
-        @include adaptiveValue("padding-top", 90px, 165px, $mobile, $pc);
-        background-size: cover;
-    }
-
-    @media (min-width: $pc) {
-        height: 800px;
-        background-size: contain;
-    }
-
-    &::before {
-        $firstGradPoint: calc(100% - 1440px);
-        $secondGradPoint: calc(100% - 1440px + 1440px * 0.45);
-        $thirdGradPoint: calc(100% - 1440px + 1440px * 0.8);
-
-        content: '';
-        display: block;
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: linear-gradient(90deg, rgba(5, 6, 0, 0.7) 0%, rgba(5, 6, 0, 0.05) 80%),
-                    linear-gradient(180deg, rgba(5, 6, 0, 1) 0%, rgba(5, 6, 0, 0.9) calc(100% - 65vw), rgba(5, 6, 0, 0.05) calc(100% - 53vw));
-        z-index: 0;
-
-        @media (min-width: $smallMobile) {
-            background: linear-gradient(90deg, #050600 0%, rgba(5, 6, 0, 0.8) 30%, rgba(5, 6, 0, 0.05) 80%),
-                    linear-gradient(180deg, rgba(5, 6, 0, 1) 0%, rgba(5, 6, 0, 0.9) calc(100% - 55vw), rgba(5, 6, 0, 0.05) calc(100% - 50vw));
-        }
-
-        @media (min-width: $mobile) {
-            background: linear-gradient(90deg, #050600 0%, rgba(5, 6, 0, 0.8) 45%, rgba(5, 6, 0, 0.05) 80%);
-        }
-
-        @media (min-width: $pc) {
-            background: linear-gradient(90deg, #050600 0%, rgba(5, 6, 0, 1) $firstGradPoint, rgba(5, 6, 0, 0.8) $secondGradPoint, rgba(5, 6, 0, 0.05) $thirdGradPoint);
-        }
-    }
-   
-    &::after {
-        content: '';
-        display: block;
-        position: absolute;
-        top: 0;
-        right: 0;
-        width: 51%;
-        max-width: 740px;
-        height: 100%;
-        background: linear-gradient(135deg, rgba(234, 135, 19, 0) 70%, rgba(255, 138, 0, 0.17) 93%);
-        z-index: 0;
-
-        @media (min-width: $mobile) {
-            background: linear-gradient(112.46deg, rgba(234, 135, 19, 0) 58.93%, rgba(255, 138, 0, 0.22) 83.65%);
-        }
-    }
-
-    &__branch {
-        display: none;
-        
-        @media (min-width: $pc) {
-            display: block;
-            position: absolute;
-            top: 0;
-            left: 0; 
-            transform-origin: top left;
-            transform: scale(0.9, 0.9);
-        }
-    }
-
-    &__title {   
-        position: relative;
-        @include adaptiveValue("margin-bottom", 30px, 120px, $smallMobile, $pc);   
-        z-index: 1;
-    }
-
-    &__button-container {
-        position: absolute;
-        top: calc(100% + 30px);
-        width: 100%;
-        z-index: 1;
-
-        @media (min-width: $smallMobile) {
-            position: relative;
-            top: auto;
-            padding-left: 20px;
-        }
-
-        @media (min-width: $mobile) {
-            @include adaptiveValue("padding-left", 20px, 106px, $mobile, $tablet);
-        }
-
-        @media (min-width: $tablet) {
-            padding-left: calc(9% - (50% - $maxContentWidth / 2));
-        }
-
-        @media (min-width: $pc) {
-            padding-left: $containerPadding;
-        }
-    }
-
-    &__button {
-        width: 100%;
-        height: 60px;
-        gap: 20px;
-        line-height: 22px;
-        font-size: 18px;
-        font-weight: 200;
-
-        @media (min-width: $smallMobile) {
-            @include adaptiveValue("width", 185px, 345px, $mobile, $pc);
-            @include adaptiveValue("height", 40px, 76px, $mobile, $pc);
-            @include adaptiveValue("gap", 20px, 40px, $mobile, $pc);
-            @include adaptiveValue("line-height", 18px, 30px, $mobile, $pc);
-            @include adaptiveValue("font-size", 14px, 24px, $mobile, $pc);
-        }
-    }
-
-    &__button-text {
-    }
-
-    &__button-icon {
-        flex-basis: 25px;
-
-        @media (min-width: $smallMobile) {
-            @include adaptiveValue("flex-basis", 18px, 25px, $mobile, $pc);
-        }
-    }
-
-    &__snowflake-big {
-        display: block;
-        position: absolute;
-        z-index: 1;
-        @include adaptiveValue("bottom", 110px, 100px, $minWidth, $smallMobile);
-        @include adaptiveValue("left", 70px, 120px, $minWidth, $smallMobile);
-        @include adaptiveValue("width", 50px, 60px, $minWidth, $smallMobile);
-
-        @media (min-width: $smallMobile) {
-            @include adaptiveValue("bottom", 0px, -60px, $smallMobile, $mobile);
-            @include adaptiveValue("left", 20px, 60px, $smallMobile, $mobile);
-            @include adaptiveValue("width", 60px, 90px, $smallMobile, $mobile);
-        }
-
-        @media (min-width: $mobile) {
-            @include adaptiveValue("bottom", -60px, -100px, $mobile, $pc);
-            @include adaptiveValue("left", 60px, 110px, $mobile, $pc);
-            @include adaptiveValue("width", 90px, 170px, $mobile, $pc);
-        }
-    }
-}
-
-.title {
-    text-transform: uppercase;
-    
-
-    &::before {
-        content: '';
-        display: none;
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 15px;
-        height: 100%;
-        @extend %orange-bar;
-        
-        @media (min-width: $pc) {
-            display: block;
-        }
-    }
-
-    &__container {
-        padding-left: 20px;
-
-        @media (min-width: $mobile) {
-            @include adaptiveValue("padding-left", 20px, 106px, $mobile, $tablet);
-        }
-
-        @media (min-width: $tablet) {
-            padding-left: calc(9% - (50% - $maxContentWidth / 2));
-        }
-
-        @media (min-width: $pc) {
-            padding-left: $containerPadding;
-        }
-    }
-
-    &__snowflake-medium {
-        display: block;
-        position: absolute;
-        @include adaptiveValue("top", 30px, 30px, $minWidth, $smallMobile);
-        @include adaptiveValue("right", 0px, -20px, $minWidth, $smallMobile);
-        @include adaptiveValue("width", 30px, 40px, $minWidth, $smallMobile);
-        transform: rotate(35deg);
-
-        @media (min-width: $smallMobile) {
-            @include adaptiveValue("top", -15px, -30px, $smallMobile, $mobile);
-            @include adaptiveValue("right", -10px, -40px, $smallMobile, $mobile);
-            @include adaptiveValue("width", 30px, 40px, $smallMobile, $mobile);
-        }
-
-        @media (min-width: $mobile) {
-            @include adaptiveValue("top", -30px, -60px, $mobile, $pc);
-            @include adaptiveValue("right", -40px, -100px, $mobile, $pc);
-            @include adaptiveValue("width", 40px, 80px, $mobile, $pc);
-        }
-    }
-
-    &__snowflake-small {
-        display: block;
-        position: absolute;
-        @include adaptiveValue("top", 95px, 105px, $minWidth, $smallMobile);
-        @include adaptiveValue("right", 50px, 80px, $minWidth, $smallMobile);
-        @include adaptiveValue("width", 20px, 30px, $minWidth, $smallMobile);
-        transform: rotate(60deg);
-        filter: blur(1px);
-
-        @media (min-width: $smallMobile) {
-            @include adaptiveValue("top", 105px, 125px, $smallMobile, $mobile);
-            @include adaptiveValue("right", 80px, 75px, $smallMobile, $mobile);
-            @include adaptiveValue("width", 20px, 30px, $smallMobile, $mobile);
-        }
-
-        @media (min-width: $mobile) {
-            @include adaptiveValue("top", 125px, 190px, $mobile, $pc);
-            @include adaptiveValue("right", 75px, 60px, $mobile, $pc);
-            @include adaptiveValue("width", 30px, 60px, $mobile, $pc);
-            filter: blur(2px);
-        }
-    }
-
-    &__star {
-        display: block;
-        position: absolute;
-        @include adaptiveValue("bottom", -30px, -50px, $minWidth, $smallMobile);
-        @include adaptiveValue("left", 10px, 10px, $minWidth, $smallMobile);
-        @include adaptiveValue("width", 20px, 40px, $minWidth, $smallMobile);
-        transform: rotate(60deg);
-
-        @media (min-width: $smallMobile) {
-            @include adaptiveValue("bottom", -22px, -45px, $smallMobile, $mobile);
-            @include adaptiveValue("left", 20px, 10px, $smallMobile, $mobile);
-            @include adaptiveValue("width", 20px, 40px, $smallMobile, $mobile);
-        }
-
-        @media (min-width: $mobile) {
-            @include adaptiveValue("bottom", -45px, -50px, $mobile, $pc);
-            @include adaptiveValue("left", 10px, -40px, $mobile, $pc);
-            @include adaptiveValue("width", 40px, 60px, $mobile, $pc);
-        }
-    }
-
-
-    &__pre-title {
-        position: relative;
-        @include adaptiveValue("max-width", 320px, 570px, $minWidth, $pc);
-        @include adaptiveValue("line-height", 20px, 38px, $minWidth, $pc);
-        @include adaptiveValue("font-size", 16px, 32px, $minWidth, $pc);
-        font-weight: 200;
-        color: $primaryColor;
-    }
-
-    &__main-title {
-        position: relative;
-        @include adaptiveValue("max-width", 320px, 570px, $minWidth, $pc);
-        @include adaptiveValue("margin-bottom", 15px, 30px, $minWidth, $pc);
-        @include adaptiveValue("line-height", 40px, 90px, $minWidth, $pc);
-        @include adaptiveValue("font-size", 34px, 74px, $minWidth, $pc);
-        font-weight: 800;
-        color: $primaryColor;
-    }
-
-    &__after-title {
-        position: relative;
-        @include adaptiveValue("max-width", 320px, 570px, $minWidth, $pc);
-        @include adaptiveValue("line-height", 20px, 38px, $minWidth, $pc);
-        @include adaptiveValue("font-size", 16px, 32px, $minWidth, $pc);
-        font-weight: 900;
-        color: $secondaryColor;
-    }
-}
-
-//--------------------------------------------------------------------------------------------
-
-//----- Advantages ---------------------------------------------------------------------------
-
-.advantages {
-
-    &__container {
-        display: flex;
-        flex-flow: column nowrap;
-        align-items: center;
-        gap: 20px;
-
-        @media (min-width: $smallMobile) {
-            flex-flow: row nowrap;
-            justify-content: space-between;
-            align-items: center;
-            gap: 0;
-        }
-    }
-
-    &__advantage {
-        position: relative;
-    }
-}
-
-.advantage {
-    display: flex;
-    flex-flow: column nowrap;
-    justify-content: space-between;
-    align-items: center;
-    flex: 0 0 285px;
-    width: 280px;
-    padding: 40px 30px;
-    background-color: $thirdColor;
-
-    @media (min-width: $smallMobile) {
-        width: auto;
-        flex: 0 1 32.2%;
-        @include adaptiveValue("height", 180px, 380px, $smallMobile, $maxContainerWidth);
-        @include adaptiveValue("padding-top", 22px, 55px, $smallMobile, $maxContainerWidth);
-        @include adaptiveValue("padding-bottom", 24px, 60px, $smallMobile, $maxContainerWidth);
-        @include adaptiveValue("padding-left", 13px, 30px, $smallMobile, $maxContainerWidth);
-        @include adaptiveValue("padding-right", 13px, 30px, $smallMobile, $maxContainerWidth);
-    }
-
-    &::before,
-    &::after {
-        content: '';
-        display: block;
-        position: absolute;
-        top: 0;
-        left: 50%;
-        transform: translateX(-50%);
-        width: 220px;
-        height: 10px;
-        @extend %orange-bar;
-
-        @media (min-width: $smallMobile) {
-            width: 68.4%;
-            @include adaptiveValue("height", 5px, 10px, $smallMobile, $maxContainerWidth);
-        }
-    }
-
-    &::after {
-        display: none;
-        top: auto;
-        bottom: 0;
-
-        @media (min-width: $smallMobile) {
-            display: block;
-        }
-    }
-
-    &__icon {
-        width: 100px;
-        height: 100px;
-
-        @media (min-width: $smallMobile) {
-            @include adaptiveValue("width", 40px, 100px, $smallMobile, $maxContainerWidth);
-            @include adaptiveValue("height", 40px, 100px, $smallMobile, $maxContainerWidth);
-        }
-    }
-
-    &__text {
-        text-align: center;
-        line-height: 20px;
-        font-size: 16px;
-        font-weight: 200;
-        color: $secondaryColor;
-
-        @media (min-width: $smallMobile) {
-            @include adaptiveValue("line-height", 16px, 30px, $smallMobile, $maxContainerWidth);
-            @include adaptiveValue("font-size", 14px, 24px, $mobile, $maxContainerWidth);
-        }
-
-        .advantage:nth-child(1) & span:last-child {
-            display: block;
-
-            @media (min-width: $smallMobile) and (max-width: $mobile) {
-                display: inline;
-            }
-        }
-        .advantage:nth-child(2) & span:first-child {
-            display: block;
-
-            @media (min-width: $smallMobile) and (max-width: $mobile) {
-                display: inline;
-            }
-        }
-        .advantage:nth-child(3) & span:last-child {
-            display: block;
-
-            @media (min-width: $smallMobile) and (max-width: 580px) {
-                display: inline;
-            }
-        }
-    }
-
-    &__tree-toy {
-        display: none;
-
-        @media (min-width: $pc) {
-            display: block;
-            position: absolute;
-            z-index: 10;
-            top: calc(100% - 15px);
-            right: calc(100% - 15px);
-        }
-    }
-
-    &__branch-left {
-        display: block;
-        position: absolute;
-        z-index: 1;
-        right: 0;
-        top: -270px;
-        width: 60px;
-
-        @media (min-width: $smallMobile) {
-            top: auto;
-            right: 100%;
-            @include adaptiveValue("bottom", -5px, -13px, $smallMobile, $mobile);
-            @include adaptiveValue("width", 35px, 80px, $smallMobile, $mobile);
-        }
-
-        @media (min-width: $mobile) {
-            @include adaptiveValue("bottom", -13px, -20px, $mobile, $pc);
-            @include adaptiveValue("width", 80px, 130px, $mobile, $pc);
-        }
-    }
-    &__branch-right {
-        display: block;
-        position: absolute;
-        z-index: 1;
-        left: 0;
-        bottom: -130px;
-        width: 60px;
-
-        @media (min-width: $smallMobile) {
-            left: 100%;
-            @include adaptiveValue("bottom", 0px, -5px, $smallMobile, $mobile);
-            @include adaptiveValue("width", 35px, 90px, $smallMobile, $mobile);
-        }
-
-        @media (min-width: $mobile) {
-            @include adaptiveValue("width", 90px, 150px, $mobile, $pc);
-        }
-    }
-
-    &__star-top {
-        display: block;
-        position: absolute;
-        z-index: 1;
-        @include adaptiveValue("top", -50px, -50px, $minWidth, $smallMobile);
-        @include adaptiveValue("left", 10px, 10px, $minWidth, $smallMobile);
-        @include adaptiveValue("width", 50px, 50px, $minWidth, $smallMobile);
-        transform: rotate(60deg);
-
-        @media (min-width: $smallMobile) {
-            @include adaptiveValue("top", -19px, -24px, $smallMobile, $mobile);
-            @include adaptiveValue("left", -23.5px, -32px, $smallMobile, $mobile);
-            @include adaptiveValue("width", 40px, 50px, $smallMobile, $mobile);
-        }
-
-        @media (min-width: $mobile) {
-            @include adaptiveValue("top", -24px, -43px, $mobile, $pc);
-            @include adaptiveValue("left", -31px, -56px, $mobile, $pc);
-            @include adaptiveValue("width", 50px, 90px, $mobile, $pc);
-        }
-    }
-
-    &__star-bottom {
-        display: block;
-        position: absolute;
-        z-index: 1;
-        @include adaptiveValue("bottom", -20px, -20px, $minWidth, $smallMobile);
-        @include adaptiveValue("right", 10px, 10px, $minWidth, $smallMobile);
-        @include adaptiveValue("width", 50px, 50px, $minWidth, $smallMobile);
-        transform: rotate(60deg);
-
-        @media (min-width: $smallMobile) {
-            @include adaptiveValue("bottom", -19px, -24px, $smallMobile, $mobile);
-            @include adaptiveValue("right", -23.5px, -32px, $smallMobile, $mobile);
-            @include adaptiveValue("width", 40px, 50px, $smallMobile, $mobile);
-        }
-
-        @media (min-width: $mobile) {
-            @include adaptiveValue("bottom", -24px, -43px, $mobile, $pc);
-            @include adaptiveValue("right", -31px, -56px, $mobile, $pc);
-            @include adaptiveValue("width", 50px, 90px, $mobile, $pc);
-        }
-    }
-}
-
-//--------------------------------------------------------------------------------------------
-
-//----- About slider -------------------------------------------------------------------------
-
-.about {
-
-    &__container {
-        position: relative;
-    }
-
-    &__snowflake-big {
-        display: block;
-        position: absolute;
-        z-index: 10;
-        @include adaptiveValue("top", -30px, -30px, $minWidth, $smallMobile);
-        @include adaptiveValue("right", 10px, 20px, $minWidth, $smallMobile);
-        @include adaptiveValue("width", 50px, 60px, $minWidth, $smallMobile);
-
-        @media (min-width: $smallMobile) {
-            @include adaptiveValue("top", -10px, -30px, $smallMobile, $mobile);
-            @include adaptiveValue("right", 20px, 100px, $smallMobile, $mobile);
-            @include adaptiveValue("width", 60px, 90px, $smallMobile, $mobile);
-        }
-
-        @media (min-width: $mobile) {
-            @include adaptiveValue("top", -30px, -50px, $mobile, $pc);
-            @include adaptiveValue("right", 100px, 200px, $mobile, $pc);
-            @include adaptiveValue("width", 90px, 170px, $mobile, $pc);
-        }
-    }
-    
-    &__snowflake-medium {
-        display: block;
-        position: absolute;
-        z-index: 10;
-        @include adaptiveValue("bottom", -60px, -50px, $minWidth, $smallMobile);
-        @include adaptiveValue("left", 20px, 30px, $minWidth, $smallMobile);
-        @include adaptiveValue("width", 40px, 50px, $minWidth, $smallMobile);
-        transform: rotate(35deg);
-
-        @media (min-width: $smallMobile) {
-            @include adaptiveValue("bottom", -50px, -60px, $smallMobile, $mobile);
-            @include adaptiveValue("left", 20px, 50px, $smallMobile, $mobile);
-            @include adaptiveValue("width", 40px, 50px, $smallMobile, $mobile);
-        }
-
-        @media (min-width: $mobile) {
-            @include adaptiveValue("bottom", -40px, -40px, $mobile, $pc);
-            @include adaptiveValue("left", 50px, 20px, $mobile, $pc);
-            @include adaptiveValue("width", 50px, 120px, $mobile, $pc);
-        }
-    }
-
-    &__serpentine {
-        display: none;
-
-        @media (min-width: $mobile) {
-            display: block;
-            position: absolute;
-            z-index: 10;
-            @include adaptiveValue("bottom", -50px, -90px, $mobile, $pc);
-            @include adaptiveValue("right", -10px, -40px, $mobile, $pc);
-            @include adaptiveValue("width", 70px, 130px, $mobile, $pc);
-        }
-    }
-
-    &__slider {
-        overflow: hidden;
-    }
-
-    &__slider-wrapper {
-    }
-
-    &__slide {
-        position: relative;
-        width: 100%;
-        @include adaptiveValue("height", 540px, 850px, $mobile, $pc);
-        background-repeat: no-repeat;
-        background-size: contain;
-        background-position: bottom right;
-        overflow: hidden;
-
-        @media (min-width: $mobile) {
-            @include adaptiveValue("height", 453px, 850px, $mobile, $pc);
-            background-size: cover;
-            background-position: top center;
-        }
-    }
-
-    &__slide-title {
-    }
-
-    &__slider-navigation {
-        position: absolute;
-        bottom: -30px;
-        left: 50%;
-        transform: translateX(-50%);
-    }
-}
-
-.first-slide {    
-    background-image: url("../img/about_slider/slide_1/slide-1-mobile.webp");
-
-    @media (min-width: $mobile) {
-        background-image: url("../img/about_slider/slide_1/slide-1.webp");
-    }
-
-    &__list {
-        position: absolute;
-        top: 0;
-        left: 0;
-        display: flex;
-        flex-flow: column nowrap;
-        width: 100%;
-        height: 100%;
-        @include adaptiveValue("padding-top", 120px, 80px, $minWidth, $mobile);
-        @include adaptiveValue("padding-left", 20px, 80px, $minWidth, $mobile);
-
-        @media (min-width: $mobile) {
-            display: block;
-            padding: 0;
-        }
-    }
-
-    &__item {
-        display: flex;
-        flex-flow: row nowrap;
-        justify-content: flex-start;
-        align-items: center;
-        @include adaptiveValue("gap", 15px, 30px, $minWidth, $mobile);
-        margin-bottom: 15px;
-
-        @media (min-width: $mobile) {
-            display: block;
-            margin: 0;
-
-            &:nth-child(1) {
-                .first-slide__icon {
-                    top: 34.6%;
-                    left: 49%;
-                    transform: translate(-50%, -50%);
-                }
-
-                .first-slide__text {
-                    @include adaptiveValue("top", 105px, 210px, $mobile, calc($pc + $containerPadding));
-                    @include adaptiveValue("left", 70px, 210px, $mobile, calc($pc + $containerPadding));
-                }
-
-                .first-slide__arrow {
-                    @include adaptiveValue("width", 180px, 275px, $mobile, calc($pc + $containerPadding));
-                }
-            }
-
-            &:nth-child(2) {
-                .first-slide__icon {
-                    top: 49.2%;
-                    left: 39%;
-                    transform: translate(-50%, -50%);
-                }
-
-                .first-slide__text {
-                    @include adaptiveValue("top", 215px, 410px, $mobile, calc($pc + $containerPadding));
-                    @include adaptiveValue("left", 70px, 210px, $mobile, calc($pc + $containerPadding));
-                }
-
-                .first-slide__arrow {
-                    @include adaptiveValue("width", 153px, 220px, $mobile, calc($pc + $containerPadding));
-                }
-            }
-
-            &:nth-child(3) {
-                .first-slide__icon {
-                    top: 69.4%;
-                    left: 43.3%;
-                    transform: translate(-50%, -50%);
-                }
-
-                .first-slide__text {
-                    @include adaptiveValue("top", 310px, 600px, $mobile, calc($pc + $containerPadding));
-                    @include adaptiveValue("left", 70px, 210px, $mobile, calc($pc + $containerPadding));
-                }
-
-                .first-slide__arrow {
-                    @include adaptiveValue("width", 180px, 275px, $mobile, calc($pc + $containerPadding));
-                }
-            }
-
-            &:nth-child(4) {
-                .first-slide__icon {
-                    top: 53.6%;
-                    left: 51.3%;
-                    transform: translate(-50%, -50%);
-                }
-
-                .first-slide__text {
-                    @include adaptiveValue("top", 123px, 239px, $mobile, calc($pc + $containerPadding));
-                    @include adaptiveValue("right", 70px, 210px, $mobile, calc($pc + $containerPadding));
-                }
-
-                .first-slide__arrow {
-                    left: auto;
-                    right: 0;
-                    @include adaptiveValue("width", 180px, 275px, $mobile, calc($pc + $containerPadding));
-                }
-            }
-
-            &:nth-child(5) {
-                .first-slide__icon {
-                    top: 50.1%;
-                    left: 63%;
-                    transform: translate(-50%, -50%);
-                }
-
-                .first-slide__text {
-                    @include adaptiveValue("top", 215px, 410px, $mobile, calc($pc + $containerPadding));
-                    @include adaptiveValue("right", 70px, 210px, $mobile, calc($pc + $containerPadding));
-                }
-
-                .first-slide__arrow {
-                    left: auto;
-                    right: 0;
-                    @include adaptiveValue("width", 153px, 220px, $mobile, calc($pc + $containerPadding));
-                }
-            }
-
-            &:nth-child(6) {
-                .first-slide__icon {
-                    top: 72.8%;
-                    left: 55.5%;
-                    transform: translate(-50%, -50%);
-                }
-
-                .first-slide__text {
-                    @include adaptiveValue("top", 310px, 600px, $mobile, calc($pc + $containerPadding));
-                    @include adaptiveValue("right", 70px, 210px, $mobile, calc($pc + $containerPadding));
-                }
-
-                .first-slide__arrow {
-                    left: auto;
-                    right: 0;
-                    @include adaptiveValue("width", 180px, 275px, $mobile, calc($pc + $containerPadding));
-                }
-            }
-        }
-    }
-
-    &__icon {
-        position: relative;
-        flex-grow: 0;
-        flex-shrink: 0;
-        @include adaptiveValue("flex-basis", 50px, 60px, $minWidth, $mobile);
-        @include adaptiveValue("height", 50px, 60px, $minWidth, $mobile);
-
-        @media (min-width: $mobile) {
-            position: absolute;
-            @include adaptiveValue("width", 55px, 103px, $mobile, $pc);
-            @include adaptiveValue("height", 55px, 103px, $mobile, $pc);
-        }
-
-        &::after {
-            content: '';
-            display: block;
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            border-radius: 50%;
-            border: 3px solid $primaryColor;
-            background-color: transparent;
-            opacity: 0; 
-            transform: scale(0.1, 0.1);
-
-            .first-slide__item:nth-child(1) & {
-                animation-delay: 1s;
-            }
-
-            .first-slide__item:nth-child(2) & {
-                animation-delay: 1.2s;
-            }
-
-            .first-slide__item:nth-child(3) & {
-                animation-delay: 1.4s;
-            }
-
-            .first-slide__item:nth-child(4) & {
-                animation-delay: 1.6s;
-            }
-
-            .first-slide__item:nth-child(5) & {
-                animation-delay: 1.8s;
-            }
-
-            .first-slide__item:nth-child(6) & {
-                animation-delay: 2s;
-            }
-
-            .about_shown .swiper-slide-active &,
-            .no-animation & {
-                animation-name: circles;
-                animation-duration: 1s;
-                animation-timing-function: ease-in-out;
-                animation-iteration-count: 1;
-                animation-fill-mode: forwards;
-            }
-
-            @keyframes circles {
-                from {
-                    transform: scale(0.1, 0.1);
-                    opacity: 0;
-                    background: radial-gradient(transparent, $primaryColor, transparent);
-                }
-                75% {
-                    transform: scale(1.2, 1.2);
-                    opacity: 1;
-                    background: radial-gradient(transparent, transparent, $primaryColor);
-                }
-                to {
-                    transform: scale(1, 1);
-                    opacity: 1;
-                    box-shadow: 0px 0px 6px rgba(255, 187, 107, 0.5),
-                                inset 0px 0px 6px rgba(255, 187, 107, 0.5);
-                    background: transparent;
-                }
-            }
-        }
-    }
-
-    &__icon-image {
-        display: block;
-        width: 100%;
-        height: 100%;
-        transform: scale(0.5, 0.5);
-        opacity: 0;
-
-        .about_shown .swiper-slide-active &,
-        .no-animation & {
-            animation-name: icons;
-            animation-duration: 0.7s;
-            animation-delay: 2.7s;
-            animation-timing-function: ease-in-out;
-            animation-iteration-count: 1;
-            animation-fill-mode: forwards;
-        }
-
-        @keyframes icons {
-            from {
-                transform: scale(0.5, 0.5);
-                opacity: 0;
-            }
-            50% {
-                transform: scale(1.2, 1.2);
-                opacity: 1;
-                filter: drop-shadow(0px 0px 10px rgba(255, 187, 107, 1));
-            }
-            to {
-                transform: scale(1, 1);
-                opacity: 1;
-            }
-        }
-    }
-
-    &__text {
-        @include adaptiveValue("line-height", 19px, 26px, $minWidth, $mobile);
-        @include adaptiveValue("font-size", 16px, 22px, $minWidth, $mobile);
-        opacity: 0;
-        transform: translateX(30px);
-        
-        & span {
-            display: block;
-        }
-
-        .first-slide__item:nth-child(1) & {
-            transition: opacity 0.3s ease 1.3s,
-                        transform 0.3s ease 1.3s;
-        }
-
-        .first-slide__item:nth-child(2) & {
-            transition: opacity 0.3s ease 1.5s, 
-                        transform 0.3s ease 1.5s;
-        }
-
-        .first-slide__item:nth-child(3) & {
-            transition: opacity 0.3s ease 1.7s, 
-                        transform 0.3s ease 1.7s;
-        }
-
-        .first-slide__item:nth-child(4) & {
-            transition: opacity 0.3s ease 1.9s, 
-                        transform 0.3s ease 1.9s;
-        }
-
-        .first-slide__item:nth-child(5) & {
-            transition: opacity 0.3s ease 2.1s, 
-                        transform 0.3s ease 2.1s;
-        }
-
-        .first-slide__item:nth-child(6) & {
-            transition: opacity 0.3s ease 2.3s, 
-                        transform 0.3s ease 2.3s;
-        }
-
-        .about_shown .swiper-slide-active &,
-        .no-animation & {
-            opacity: 1;
-            transform: translateX(0);
-        }
-        
-        @media (min-width: 690px) {
-            & span {
-                display: inline;
-            }
-        }
-        
-        @media (min-width: $mobile) { 
-            position: absolute;
-            @include adaptiveValue("padding-bottom", 10px, 20px, $mobile, calc($pc + $containerPadding));
-            @include adaptiveValue("line-height", 19px, 29px, $mobile, $pc);
-            @include adaptiveValue("font-size", 16px, 24px, $mobile, $pc);
-            transform: none;
-
-            & span {
-                display: block;
-            }
-
-            .first-slide__item:nth-child(1) &,
-            .first-slide__item:nth-child(2) &,
-            .first-slide__item:nth-child(3) &,
-            .first-slide__item:nth-child(4) &,
-            .first-slide__item:nth-child(5) &,
-            .first-slide__item:nth-child(6) & {
-                transition: opacity 0.5s ease 3.3s;
-            }
-
-            .about_shown .swiper-slide-active &,
-            .no-animation & {
-                opacity: 1;
-            }
-        }
-    }
-
-    &__arrow  {
-    }
-}
-
-.second-slide {
-    opacity: 0;
-    transition: opacity 1s ease 0.5s;
-
-    .about_shown &.swiper-slide-active,
-    &.no-animation {
-        opacity: 1;
-    }
-
-    @media (min-width: $mobile) {
-        background-size: cover;
-        background-position: top center;
-        background-image: url("../img/about_slider/slide_2/slide-2.webp");
-    }
-
-    &::after {
-        content: '';
-        display: block;
-        position: absolute;
-        @include adaptiveValue("top", 150px, 90px, $minWidth, $mobile);
-        @include adaptiveValue("left", 140px, 420px, $minWidth, $mobile);
-        @include adaptiveValue("width", 270px, 350px, $minWidth, $mobile);
-        @include adaptiveValue("height", 320px, 416px, $minWidth, $mobile);
-        background-repeat: no-repeat;
-        background-size: contain;
-        background-position: center center;
-        background-image: url("../img/about_slider/slide_2/slide-2-mobile.webp");
-
-        @media (min-width: $mobile) {
-            display: none;
-        }
-    }
-
-    &__title {
-        opacity: 0;
-        transition: opacity 0.5s ease 1s;
-
-        .about_shown .swiper-slide-active &,
-        .no-animation & {
-            opacity: 1;
-        }
-    }
-
-    &__list {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        @include adaptiveValue("padding-top", 120px, 110px, $minWidth, $mobile);
-        @include adaptiveValue("padding-left", 20px, 80px, $minWidth, $mobile);
-        z-index: 1;
-
-        @media (min-width: $mobile) {
-            @include adaptiveValue("padding-top", 110px, 220px, $mobile, $pc);
-            @include adaptiveValue("padding-left", 230px, 635px, $mobile, $pc);
-            @include adaptiveValue("padding-right", 90px, 210px, $mobile, $pc);
-        }
-    }
-
-    &__item {
-        position: relative;
-        @include adaptiveValue("margin-bottom", 40px, 60px, $minWidth, $mobile);
-        opacity: 0;
-
-        @media (min-width: $mobile) {
-            @include adaptiveValue("margin-bottom", 40px, 80px, $mobile, $pc);
-        }
-
-        &:nth-child(1) {
-            transition: opacity 0.5s ease 1.5s;
-        }
-
-        &:nth-child(2) {
-            transition: opacity 0.5s ease 2s;
-        }
-
-        &:nth-child(3) {
-            transition: opacity 0.5s ease 2.5s;
-        }
-
-        &:nth-child(4) {
-            transition: opacity 0.5s ease 3s;
-        }
-
-        .about_shown .swiper-slide-active &,
-        .no-animation & {
-            opacity: 1;
-        }
-    }
-
-    &__text {
-        @include adaptiveValue("line-height", 19px, 26px, $minWidth, $mobile);
-        @include adaptiveValue("font-size", 16px, 22px, $minWidth, $mobile);
-        
-        @media (min-width: $mobile) { 
-            text-align: end;
-            @include adaptiveValue("padding-bottom", 10px, 20px, $mobile, $pc);
-            @include adaptiveValue("line-height", 19px, 29px, $mobile, $pc);
-            @include adaptiveValue("font-size", 16px, 24px, $mobile, $pc);
-        }
-    }
-
-    &__arrow {
-        left: auto;
-        right: 0;
-        @include adaptiveValue("width", 330px, 595px, $mobile, $pc);
-    }
-}
-
-.third-slide {
-    opacity: 0;
-    transition: opacity 1s ease 0.5s;
-
-    .about_shown &.swiper-slide-active,
-    &.no-animation {
-        opacity: 1;
-    }
-
-    &::after {
-        content: '';
-        display: block;
-        position: absolute;
-        @include adaptiveValue("top", 190px, 0px, $minWidth, $mobile);
-        @include adaptiveValue("left", 110px, 370px, $minWidth, $mobile);
-        @include adaptiveValue("width", 320px, 480px, $minWidth, $mobile);
-        @include adaptiveValue("height", 355px, 530px, $minWidth, $mobile);
-        background-repeat: no-repeat;
-        background-size: contain;
-        background-position: center center;
-        background-image: url("../img/about_slider/slide_3/slide-3-mobile.webp");
-
-        @media (min-width: $mobile) {
-            width: 100%;
-            height: 100%;
-            top: 0;
-            @include adaptiveValue("left", 70px, 0px, $mobile, $pc);
-            background-image: url("../img/about_slider/slide_3/slide-3.webp");
-        }
-    }
-
-    &__brake {
-
-        @media (min-width: $smallMobile) {
-            display: none;
-        }
-    }
-
-    &__title {
-        opacity: 0;
-        transition: opacity 0.5s ease 1.5s;
-
-        .about_shown .swiper-slide-active &,
-        .no-animation & {
-            opacity: 1;
-        }
-    }
-
-    &__main-text {
-        display: none;
-        opacity: 0;
-        transition: 0.5s ease 2s;
-
-        @media (min-width: $mobile) {
-            display: block;
-            position: relative;
-            @include adaptiveValue("max-width", 700px, 996px, $mobile, $pc);
-            margin: 0 auto;
-            @include adaptiveValue("margin-top", 5px, 20px, $mobile, $pc);
-            text-align: center;
-            @include adaptiveValue("line-height", 19px, 29px, $mobile, $pc);
-            @include adaptiveValue("font-size", 16px, 24px, $mobile, $pc);
-            font-weight: 100;
-            color: $secondaryColor;
-            z-index: 1;
-        }
-
-        .about_shown .swiper-slide-active &,
-        .no-animation & {
-            opacity: 1;
-        }
-    }
-
-    &__main-text-mobile {
-        position: relative;
-        @include adaptiveValue("padding-top", 15px, 35px, $minWidth, $mobile);
-        @include adaptiveValue("padding-left", 20px, 40px, $minWidth, $mobile);
-        @include adaptiveValue("padding-right", 20px, 220px, $minWidth, $mobile);
-        @include adaptiveValue("line-height", 19px, 24px, $minWidth, $mobile);
-        @include adaptiveValue("font-size", 16px, 18px, $minWidth, $mobile);
-        z-index: 1;
-        opacity: 0;
-        transition: 0.5s ease 2s;
-
-        @media (min-width: $mobile) {
-            display: none;
-        }
-
-        .about_shown .swiper-slide-active &,
-        .no-animation & {
-            opacity: 1;
-        }
-    }
-
-    &__list {
-        display: none;
-        
-        @media (min-width: $mobile) {
-            display: block;
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            @include adaptiveValue("padding-top", 160px, 300px, $mobile, $pc);
-            @include adaptiveValue("padding-left", 30px, 100px, $mobile, $pc);
-            @include adaptiveValue("padding-right", 220px, 60px, $mobile, $pc);
-            z-index: 1;
-        }
-    }
-
-    &__item {
-        opacity: 0;
-
-        @media (min-width: $mobile) {
-            @include adaptiveValue("margin-bottom", 30px, 70px, $mobile, $pc);
-        }
-
-        &:nth-child(1) {
-            transition: opacity 0.5s ease 2.5s;
-        }
-
-        &:nth-child(2) {
-            transition: opacity 0.5s ease 3s;
-        }
-
-        &:nth-child(3) {
-            transition: opacity 0.5s ease 3.5s;
-        }
-
-        &:nth-child(4) {
-            transition: opacity 0.5s ease 4s;
-        }
-
-        .about_shown .swiper-slide-active &,
-        .no-animation & {
-            opacity: 1;
-        }
-    }
-
-    &__text {
-
-        @media (min-width: $mobile) { 
-            position: relative;
-            @include adaptiveValue("padding-bottom", 10px, 20px, $mobile, $pc);
-            @include adaptiveValue("line-height", 19px, 29px, $mobile, $pc);
-            @include adaptiveValue("font-size", 16px, 24px, $mobile, $pc);
-        }
-    }
-
-    &__arrow {
-        @include adaptiveValue("width", 520px, 810px, $mobile, $pc);
-    }
-
-    &__list-mobile {
-        position: relative;
-        @include adaptiveValue("padding-top", 15px, 35px, $minWidth, $mobile);
-        @include adaptiveValue("padding-left", 20px, 40px, $minWidth, $mobile);
-        z-index: 1;
-
-        @media (min-width: $mobile) {
-            display: none;
-        }
-    }
-
-    &__item-mobile {
-        position: relative;
-        @include adaptiveValue("margin-bottom", 15px, 20px, $minWidth, $mobile);
-        @include adaptiveValue("padding-right", 100px, 270px, $minWidth, $mobile);
-        padding-left: 15px;
-        opacity: 0;
-
-        &::before {
-            content: '';
-            display: block;
-            position: absolute;
-            top: 10px;
-            left: 0;
-            width: 4px;
-            height: 4px;
-            border-radius: 50%;
-            background-color: $primaryColor;
-        }
-        
-        &:nth-child(1) {
-            @include adaptiveValue("padding-right", 70px, 270px, $minWidth, $mobile);
-            transition: opacity 0.5s ease 2.5s;
-        }
-
-        &:nth-child(2) {
-            transition: opacity 0.5s ease 3s;
-        }
-
-        &:nth-child(3) {
-            transition: opacity 0.5s ease 3.5s;
-        }
-
-        .about_shown .swiper-slide-active &,
-        .no-animation & {
-            opacity: 1;
-        }
-    }
-
-    &__text-mobile {
-        @include adaptiveValue("line-height", 19px, 24px, $minWidth, $mobile);
-        @include adaptiveValue("font-size", 16px, 18px, $minWidth, $mobile);
-    }
-}
-
-.fourth-slide {
-
-    &__title {
-        opacity: 0;
-        transition: opacity 0.5s ease 0.5s;
-
-        .about_shown .swiper-slide-active &,
-        .no-animation & {
-            opacity: 1;
-        }
-    }
-
-    &__quality {
-        margin: 0 auto;
-        @include adaptiveValue("margin-top", 60px, 30px, $minWidth, $smallMobile);
-
-        @media (min-width: $mobile) {
-            margin-top: 40px;
-        }
-    }
-}
-
-.quality {
-    display: grid;
-    padding: 0 20px;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 10px;
-    max-width: 450px;
-    
-    @media (min-width: $mobile) {
-        grid-template-columns: repeat(3, 1fr);
-        grid-auto-rows: 1fr;
-        @include adaptiveValue("column-gap", 10px, 20px, $mobile, $pc); 
-        @include adaptiveValue("row-gap", 20px, 30px, $mobile, $pc); 
-        max-width: none;
-        padding: 0 9%;
-    }
-
-    &__item {
-        display: flex;
-        flex-flow: column nowrap;
-        justify-content: flex-start;
-        align-items: center;
-        transform: scale(0.7, 0.7);
-        opacity: 0;
-
-        @media (min-width: $mobile) {
-            @include adaptiveValue("gap", 5px, 16px, $mobile, $pc);
-        }
-
-        &:nth-child(1) {
-            transition: opacity 0.5s ease 1s,
-                        transform 0.5s ease 1s;
-        }
-
-        &:nth-child(2) {
-            transition: opacity 0.5s ease 1.5s,
-                        transform 0.5s ease 1.5s;
-        }
-
-        &:nth-child(3) {
-            transition: opacity 0.5s ease 2s,
-                        transform 0.5s ease 2s;
-        }
-
-        &:nth-child(4) {
-            transition: opacity 0.5s ease 2.5s,
-                        transform 0.5s ease 2.5s;
-        }
-
-        &:nth-child(5) {
-            transition: opacity 0.5s ease 3s,
-                        transform 0.5s ease 3s;
-        }
-
-        &:nth-child(6) {
-            transition: opacity 0.5s ease 3.5s,
-                        transform 0.5s ease 3.5s;
-        }
-
-        .about_shown .swiper-slide-active &,
-        .no-animation & {
-            opacity: 1;
-            transform: scale(1, 1);
-        }
-    }
-
-    &__image {
-        display: block;
-        position: relative;
-        width: 100%;
-        border: 1px solid $primaryColor;
-        cursor: pointer;
-        -webkit-tap-highlight-color: transparent;
-
-        &::after {
-            content: '';
-            display: none;
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(5, 6, 0, 0.6);
-            pointer-events: none;
-            transition: background-color 0.3s ease;
-
-            @media (any-hover: hover) {
-                display: block;
-            }
-        }
-
-        @media (any-hover: hover) {
-            &:hover::after {
-                background-color: rgba(5, 6, 0, 0);
-            }
-        }
-    }
-
-    &__photo {
-        display: block;
-        width: 100%;
-    }
-
-    &__text {
-        font-size: 12px;
-        line-height: 14px;
-
-        span:first-child {
-            display: none;
-        }
-
-        @media (min-width: $mobile) {
-            position: relative;
-            @include adaptiveValue("padding-left", 10px, 20px, $mobile, $pc);
-            @include adaptiveValue("line-height", 16px, 29px, $mobile, $pc);
-            @include adaptiveValue("font-size", 14px, 24px, $mobile, $pc);
-
-            span:first-child {
-                display: inline;
-            }
-
-            span:last-child {
-                display: none;
-            }
-        }
-
-        &::before {
-            content: '';
-            display: none;
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 4px;
-            height: 100%;
-            @extend %orange-bar;
-
-            @media (min-width: $mobile) {
-                display: block;
-            }
-        }
-    }
-}
-
-//--------------------------------------------------------------------------------------------
-
-//----- Perfection ---------------------------------------------------------------------------
-
-.perfection {
-
-    @media (min-width: $smallMobile) {
-        @include adaptiveValue("height", 370px, 850px, $smallMobile, $maxContainerWidth);
-        background-repeat: no-repeat;
-        background-size: contain;
-        background-position: left bottom;
-        background-image: url("../img/perfection/perfection-bg.webp");
-        
-        &::after {
-            content: '';
-            display: block;
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(270deg, rgba(5, 6, 0, 1) 28%, 
-                                      rgba(5, 6, 0, 0.9) 48%, 
-                                      rgba(5, 6, 0, 0.2) 55%,
-                                      rgba(5, 6, 0, 0.05) 60%);
-        }
-    }
-
-    &__branch {
-        display: block;
-        position: absolute;
-        z-index: 10;
-        right: 0;
-
-        @include adaptiveValue("top", -10px, -50px, $minWidth, $smallMobile);
-        @include adaptiveValue("width", 80px, 110px, $minWidth, $smallMobile);
-        
-        @media (min-width: $smallMobile) {
-            @include adaptiveValue("top", -20px, -25px, $smallMobile, $mobile);
-            @include adaptiveValue("width", 80px, 110px, $smallMobile, $mobile);
-        }
-        
-        @media (min-width: $mobile) {
-            @include adaptiveValue("top", -25px, -30px, $mobile, $pc);
-            @include adaptiveValue("width", 110px, 238px, $mobile, $pc);
-        }
-    }
-
-    &__snowflake-small {
-        display: block;
-        position: absolute;
-        z-index: 10;
-        @include adaptiveValue("top", 160px, 160px, $minWidth, $smallMobile);
-        @include adaptiveValue("right", 260px, 370px, $minWidth, $smallMobile);
-        @include adaptiveValue("width", 50px, 60px, $minWidth, $smallMobile);
-        transform: rotate(-25deg);
-        filter: blur(1px);
-
-        @media (min-width: $smallMobile) {
-            @include adaptiveValue("top", 10px, 10px, $smallMobile, $mobile);
-            @include adaptiveValue("right", 150px, 270px, $smallMobile, $mobile);
-            @include adaptiveValue("width", 40px, 50px, $smallMobile, $mobile);
-        }
-
-        @media (min-width: $mobile) {
-            @include adaptiveValue("top", 20px, 50px, $mobile, $pc);
-            @include adaptiveValue("right", 270px, 600px, $mobile, $pc);
-            @include adaptiveValue("width", 50px, 80px, $mobile, $pc);
-            filter: blur(2px);
-        }
-    }
-
-    &__snowflake-big {
-        display: block;
-        position: absolute;
-        z-index: 10;
-        @include adaptiveValue("bottom", -30px, -40px, $minWidth, $smallMobile);
-        @include adaptiveValue("left", 10px, 30px, $minWidth, $smallMobile);
-        @include adaptiveValue("width", 70px, 70px, $minWidth, $smallMobile);
-
-        @media (min-width: $smallMobile) {
-            @include adaptiveValue("bottom", -30px, -20px, $smallMobile, $mobile);
-            @include adaptiveValue("left", 10px, 100px, $smallMobile, $mobile);
-            @include adaptiveValue("width", 60px, 90px, $smallMobile, $mobile);
-        }
-
-        @media (min-width: $mobile) {
-            @include adaptiveValue("bottom", -20px, -40px, $mobile, $pc);
-            @include adaptiveValue("left", 100px, 340px, $mobile, $pc);
-            @include adaptiveValue("width", 90px, 170px, $mobile, $pc);
-        }
-    }
-
-    &__star  {
-        display: block;
-        position: absolute;
-        z-index: 10;
-        @include adaptiveValue("top", -50px, -50px, $minWidth, $smallMobile);
-        @include adaptiveValue("left", 240px, 290px, $minWidth, $smallMobile);
-        @include adaptiveValue("width", 50px, 50px, $minWidth, $smallMobile);
-        transform: rotate(60deg);
-
-        @media (min-width: $smallMobile) {
-            @include adaptiveValue("top", -23px, -27px, $smallMobile, $mobile);
-            @include adaptiveValue("left", -25px, -32px, $smallMobile, $mobile);
-            @include adaptiveValue("width", 40px, 50px, $smallMobile, $mobile);
-        }
-
-        @media (min-width: $mobile) {
-            @include adaptiveValue("top", -27px, -48px, $mobile, $pc);
-            @include adaptiveValue("left", -32px, -56px, $mobile, $pc);
-            @include adaptiveValue("width", 50px, 90px, $mobile, $pc);
-        }
-    }
-
-    &__container {
-    }
-
-    &__title {
-        margin-bottom: 25px;
-        
-        @media (min-width: $smallMobile) {
-            position: relative;
-            @include adaptiveValue("margin-bottom", 15px, 90px, $smallMobile, $maxContainerWidth);
-            text-align: start;  
-            transform: translateY(-20%);         
-            z-index: 1;
-        }
-
-        @media (min-width: $mobile) {
-            transform: none;
-        }
-    }
-
-    &__blocks {
-        display: grid;
-        grid-template-columns: 280px;
-        justify-content: center;
-        gap: 20px;
-        
-        @media (min-width: $smallMobile) {
-            position: relative;
-            grid-template-columns: 1fr 1fr;
-            grid-template-rows: 1fr 1fr;
-            @include adaptiveValue("column-gap", 10px, 20px, $smallMobile, $maxContainerWidth);
-            @include adaptiveValue("row-gap", 5px, 10px, $smallMobile, $maxContainerWidth);
-            @include adaptiveValue("row-gap", 5px, 10px, $smallMobile, $maxContainerWidth);
-            @include adaptiveValue("padding-left", 30px, 247px, $smallMobile, $mobile);
-            z-index: 1;           
-        }
-
-        @media (min-width: $mobile) {
-            padding-left: 34%;
-        }
-    }
-
-    &__block {
-        position: relative;
-    }
-
-    &__visible-block {
-        position: relative;
-    }
-
-    &__hidden-description {
-    }
-}
-
-.visible-block {
-    position: relative;
-    display: flex;
-    flex-flow: column nowrap;
-    justify-content: start;
-    align-items: center;
-    height: 285px;
-    padding: 45px 35px 30px;
-    background-color: $thirdColor;
-    cursor: pointer;
-    -webkit-tap-highlight-color: transparent;
-
-    @media (min-width: $smallMobile) {
-        @include adaptiveValue("gap", 7px, 12px, $smallMobile, $maxContainerWidth);
-        @include adaptiveValue("height", 140px, 280px, $smallMobile, $maxContainerWidth);
-        @include adaptiveValue("padding-top", 15px, 50px, $smallMobile, $maxContainerWidth);
-        @include adaptiveValue("padding-bottom", 10px, 20px, $smallMobile, $maxContainerWidth);
-        @include adaptiveValue("padding-left", 10px, 40px, $smallMobile, $maxContainerWidth);
-        @include adaptiveValue("padding-right", 10px, 40px, $smallMobile, $maxContainerWidth);
-    }
-
-    &::before,
-    &::after {
-        content: '';
-        display: block;
-        position: absolute;
-        top: 0;
-        left: 50%;
-        transform: translateX(-50%);
-        width: 220px;
-        height: 10px;
-        @extend %orange-bar;
-
-        @media (min-width: $smallMobile) {
-            width: 68.4%;
-            @include adaptiveValue("height", 5px, 10px, $smallMobile, $maxContainerWidth);
-        }
-    }
-
-    &::after {
-        display: none;
-    }
-
-    @media (min-width: $smallMobile) {
-
-        .perfection__block:nth-child(1) &::after,
-        .perfection__block:nth-child(2) &::after {
-            display: block;
-            top: 100%;      
-        }
-
-        .perfection__block:nth-child(3) &::before,
-        .perfection__block:nth-child(4) &::before {
-            top: auto;
-            bottom: 0;
-        }
-    }
-
-    &__icon {
-        width: 90px;
-        height: 90px;
-        margin-bottom: 25px;
-        
-        @media (min-width: $smallMobile) {
-            @include adaptiveValue("width", 35px, 90px, $smallMobile, $maxContainerWidth);
-            @include adaptiveValue("height", 33px, 90px, $smallMobile, $maxContainerWidth);
-            margin: 0;
-        }
-    }
-
-    &__text {
-        text-align: center;
-        line-height: 20px;
-        font-size: 16px;
-
-        @media (min-width: $smallMobile) {
-            @include adaptiveValue("line-height", 16px, 30px, $smallMobile, $maxContainerWidth);
-            @include adaptiveValue("font-size", 14px, 24px, $mobile, $maxContainerWidth);
-        }
-    }
-
-    &__more {
-        display: flex;
-        flex-flow: row nowrap;
-        justify-content: center;
-        align-items: center;
-        gap: 10px;
-        margin-top: 30px;
-
-        @media (min-width: $smallMobile) {
-            margin: 0;
-        }
-
-        @media (any-hover: hover) {
-            display: none;
-        }
-    }
-
-    &__more-text {
-        flex: 1 1 auto;
-        line-height: 20px;
-        font-size: 16px;
-        font-weight: 300;
-
-        @media (min-width: $smallMobile) {
-            @include adaptiveValue("line-height", 20px, 24px, $smallMobile, $maxContainerWidth);
-            @include adaptiveValue("font-size", 16px, 20px, $mobile, $maxContainerWidth);
-        }
-    }
-
-    &__more-arrow {
-        position: relative;
-        flex: 0 0 25px;
-        height: 1px;
-        background-color: $secondaryColor;
-    }
-}
-
-.hidden-description {
-    max-height: 0;
-    transform-origin: center top;
-    transform: scaleY(0);
-    pointer-events: none;
-    opacity: 0;
-    transition: opacity 0.3s ease,
-                transform 0.3s ease,
-                max-height 0.3s ease;
-    
-    @media (min-width: $smallMobile) {
-        position: absolute;
-        right: 15.8%;
-        @include adaptiveValue("bottom", 8px, 15px, $smallMobile, $maxContainerWidth);
-        width: 105%;
-        @include adaptiveValue("height", 220px, 300px, $smallMobile, $mobile);
-        max-height: none;
-        transform-origin: right bottom;
-        transform: scale(0.3, 0.3);
-
-        .perfection__block:nth-child(1) &,
-        .perfection__block:nth-child(2) & {
-            @include adaptiveValue("bottom", 3px, 5px, $smallMobile, $maxContainerWidth);
-        }
-    }
-
-    @media (min-width: $mobile) {
-        width: 120%;
-        @include adaptiveValue("height", 270px, 360px, $mobile, $maxContainerWidth);
-    }
-
-    @media (any-hover: hover) {
-
-        @media (min-width: $smallMobile) {
-            .perfection__block:hover>& {
-                opacity: 1;
-                transform: scale(1, 1);
-                pointer-events: auto;
-            }
-        }
-    }
-
-    @media (any-hover: none) {
-        visibility: hidden;
-
-        .spoiler-block_active &.spoiler {
-            max-height: 320px;
-            transform: scaleY(1);
-            opacity: 1;
-            pointer-events: auto;
-            
-            @media (min-width: $smallMobile) {
-                max-height: none;
-                transform: scale(1, 1);                
-            }
-        }
-    }
-
-    &::before {
-        content: '';
-        display: block;
-        height: 20px;
-
-        @media (min-width: $smallMobile) {
-            display: none;               
-        }
-    }
-
-    &__inner {
-        padding: 20px 15px 25px;
-        background-color: $primaryColor;
-
-        @media (min-width: $smallMobile) { 
-            display: flex;
-            flex-flow: column nowrap;
-            justify-content: center;
-            align-items: center;
-            height: 100%;
-            @include adaptiveValue("padding", 12px, 50px, $smallMobile, $maxContainerWidth);
-        }
-    }
-
-    &__title {
-        margin-bottom: 20px;
-        text-align: center;
-        line-height: 19px;
-        font-size: 16px;
-        font-weight: 700;
-        color: $backgroundColor;
-        
-        @media (min-width: $smallMobile) {
-            @include adaptiveValue("margin-bottom", 5px, 30px, $smallMobile, $maxContainerWidth);
-            @include adaptiveValue("line-height", 16px, 30px, $smallMobile, $maxContainerWidth);
-            @include adaptiveValue("font-size", 14px, 24px, $mobile, $maxContainerWidth);         
-        }
-    }
-
-    &__text {
-        text-align: center;
-        line-height: 18px;
-        font-size: 15px;
-        font-weight: 300;
-        color: $backgroundColor;
-        
-        @media (min-width: $smallMobile) {
-            @include adaptiveValue("line-height", 14px, 22px, $smallMobile, $maxContainerWidth);
-            @include adaptiveValue("font-size", 12px, 18px, $mobile, $maxContainerWidth);
-        }
-    }
-}
-
-//--------------------------------------------------------------------------------------------
-
-//----- Promo discount -----------------------------------------------------------------------
-
-.promo-discount {
-
-    &__container {
-    }
-
-    &__content {
-        position: relative;
-        width: 100%;
-        @include adaptiveValue("height", 280px, 500px, $minWidth, $mobile);
-        background-size: cover;
-        background-repeat: no-repeat;
-        background-position: bottom right;
-        background-image: url("../img/promo-discount/promo-discount-bg-mobile.webp");
-        border: 3px solid $primaryColor;
-        box-shadow: 0px 0px 6px rgba(255, 187, 107, 0.5),
-                    inset 0px 0px 6px rgba(255, 187, 107, 0.5); 
-
-
-        @media (min-width: $mobile) {
-            @include adaptiveValue("height", 350px, 550px, $mobile, $tablet);
-            background-size: contain;
-            background-image: radial-gradient(89.21% 89.21% at 49.96% 42.08%, rgba(255, 187, 107, 0.03) 0%, rgba(255, 187, 107, 0.05) 100%), 
-                              url("../img/promo-discount/promo-discount-bg.webp");
-        }
-    }
-
-    &__serpentine {
-        display: block;
-        position: absolute;
-        z-index: 10;
-        transform: scaleX(-1);
-        width: 50px;
-        top: 70px;
-        @include adaptiveValue("left", -20px, 30px, $minWidth, $smallMobile);
-
-        @media (min-width: $smallMobile) {
-            display: block;
-            position: absolute;
-            z-index: 10;
-            @include adaptiveValue("top", 70px, 50px, $smallMobile, $mobile);
-            @include adaptiveValue("left", 260px, 380px, $smallMobile, $mobile);
-            @include adaptiveValue("width", 60px, 70px, $smallMobile, $mobile);
-            transform: none;
-        }
-
-        @media (min-width: $mobile) {
-            @include adaptiveValue("top", 50px, 50px, $mobile, $pc);
-            @include adaptiveValue("left", 420px, 700px, $mobile, $pc);
-            @include adaptiveValue("width", 70px, 100px, $mobile, $pc);
-        }
-    }
-
-    &__branch {
-        display: none;
-        
-        @media (min-width: $smallMobile) {
-            display: block;
-            position: absolute;
-            top: 0;
-            right: 0; 
-            transform: scaleX(-1);
-            @include adaptiveValue("width", 70px, 90px, $smallMobile, $mobile);
-        }
-
-        @media (min-width: $mobile) {
-            @include adaptiveValue("width", 90px, 120px, $mobile, $pc);
-        }
-    }
-
-    &__text {
-        position: absolute;
-        top: 20px;
-        left: 5%;
-        width: 100%;
-        text-align: center;
-        max-width: 90%;
-
-        @media (min-width: $smallMobile) {
-            @include adaptiveValue("top", 30px, 70px, $smallMobile, $mobile);
-            @include adaptiveValue("left", 30px, 70px, $smallMobile, $mobile);
-            text-align: left;
-        }
-
-        @media (min-width: $mobile) {
-            @include adaptiveValue("top", 60px, 65px, $mobile, $tablet);
-            @include adaptiveValue("left", 50px, 50px, $mobile, $tablet);
-        }
-
-        @media (min-width: $tablet) {
-            max-width: 420px;
-        }
-    }
-
-    &__pre-title {
-        @include adaptiveValue("margin-bottom", 5px, 10px, $minWidth, $tablet);
-        @include adaptiveValue("line-height", 19px, 37px, $mobile, $tablet);
-        @include adaptiveValue("font-size", 16px, 31px, $mobile, $tablet);
-        font-weight: 300;
-        color: $primaryColor;
-    }
-
-    &__title {
-        @include adaptiveValue("margin-bottom", 5px, 30px, $smallMobile, $tablet);
-        text-transform: uppercase;
-        @include adaptiveValue("line-height", 32px, 62px, $mobile, $tablet);
-        @include adaptiveValue("font-size", 27px, 52px, $mobile, $tablet);
-        font-weight: 800;
-        color: $secondaryColor;
-    }
-
-    &__link {
-        position: relative;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        @include adaptiveValue("width", 120px, 280px, $mobile, $tablet);
-        @include adaptiveValue("height", 30px, 52px, $mobile, $tablet);
-        margin: 0 auto 5px;
-        background-color: $primaryColor;
-        box-shadow: 0px 0px 6px rgba(255, 187, 107, 0.5);
-        overflow: hidden;
-        transition: background-color 0.3s ease,
-                    box-shadow 0.3s ease;
-
-        @media (min-width: $smallMobile) {
-            margin: 0;
-            @include adaptiveValue("margin-bottom", 10px, 15px, $smallMobile, $mobile);
-        }
-
-        @media (min-width: $mobile) {
-            @include adaptiveValue("margin-bottom", 25px, 60px, $mobile, $tablet);
-        }
-
-        @media (any-hover: hover) {
-            &:hover {
-                background-color: #a05601;
-
-                &::after {
-                    border-bottom-color: $primaryColor;
-                    border-right-color: $primaryColor;
-                }
-            }
-    
-            &:active {
-                background-color: #d6780d;
-                box-shadow: 0px 0px 15px rgba(255, 187, 107, 0.8);
-
-                &::after {
-                    border-bottom-color: #d6780d;
-                    border-right-color: #d6780d;
-                }
-            }
-        }
-    
-        @media (any-hover: none) {
-            &:active {
-                background-color: #d6780d;
-                box-shadow: 0px 0px 15px rgba(255, 187, 107, 0.8);
-
-                &::after {
-                    border-bottom-color: #d6780d;
-                    border-right-color: #d6780d;
-                }
-            }
-        }
-
-        &::after {
-            content: '';
-            display: block;
-            position: absolute;
-            bottom: 0;
-            right: 0;
-            width: 100%;
-            height: 100%;
-            border-style: solid;
-            border-top-color: transparent;
-            border-bottom-color: #a05601;
-            border-left-color: transparent;
-            border-right-color: #a05601;
-            @include adaptiveValue("border-top-width", 15px, 26px, $mobile, $tablet);
-            @include adaptiveValue("border-bottom-width", 15px, 26px, $mobile, $tablet);
-            @include adaptiveValue("border-left-width", 60px, 140px, $mobile, $tablet);
-            @include adaptiveValue("border-right-width", 60px, 140px, $mobile, $tablet);
-            transition: border-color 0.3s ease;
-        }
-    }
-
-    &__link-text {
-        z-index: 1;
-        transform: translateY(-2%);
-        text-transform: uppercase;
-        line-height: 1;
-        @include adaptiveValue("font-size", 23px, 46px, $mobile, $tablet);
-        font-weight: 800;
-        text-shadow: 0px 0px 6px rgba(255, 187, 107, 0.5);
-        color: $thirdColor;
-    }
-
-    &__amount {
-        text-transform: uppercase;
-        @include adaptiveValue("line-height", 16px, 29px, $mobile, $tablet);
-        @include adaptiveValue("font-size", 13px, 24px, $mobile, $tablet);
-        font-weight: 300;
-    }
-
-    &__amount-num {
-        @include adaptiveValue("line-height", 20px, 58px, $mobile, $tablet);
-        @include adaptiveValue("font-size", 16px, 48px, $mobile, $tablet);
-        font-weight: 800;
-    }
-}
-
-//--------------------------------------------------------------------------------------------
-
-//----- Autoclave ----------------------------------------------------------------------------
-
-.autoclave {
-
-    &__snowflake-small {
-        display: block;
-        position: absolute;
-        @include adaptiveValue("top", -10px, -40px, $minWidth, $smallMobile);
-        @include adaptiveValue("right", 20px, 40px, $minWidth, $smallMobile);
-        @include adaptiveValue("width", 30px, 40px, $minWidth, $smallMobile);
-        transform: rotate(60deg);
-        filter: blur(1px);
-
-        @media (min-width: $smallMobile) {
-            @include adaptiveValue("top", -40px, -40px, $smallMobile, $mobile);
-            @include adaptiveValue("right", 40px, 40px, $smallMobile, $mobile);
-            @include adaptiveValue("width", 40px, 40px, $smallMobile, $mobile);
-        }
-
-        @media (min-width: $mobile) {
-            @include adaptiveValue("top", -40px, -70px, $mobile, $pc);
-            @include adaptiveValue("right", 40px, 200px, $mobile, $pc);
-            @include adaptiveValue("width", 40px, 70px, $mobile, $pc);
-            filter: blur(1.5px);
-        }
-    }
-
-    &__container {
-    }
-
-    &__title {
-        padding-left: 20%;
-        padding-right: 20%;
-        margin-bottom: 10px;
-
-        @media (min-width: $smallMobile) {
-            @include adaptiveValue("margin-bottom", 30px, 70px, $smallMobile, $maxContainerWidth);
-            padding-left: 0;
-            padding-right: 0;
-            text-align: left;
-        }
-    }
-
-    &__models {
-        display: flex;
-        flex-flow: column nowrap;
-        justify-content: flex-start;
-        align-items: stretch;
-        @include adaptiveValue("margin-bottom", 30px, 60px, $smallMobile, $maxContainerWidth);
-        
-        @media (min-width: $mobile) {
-            flex-flow: row nowrap;
-            justify-content: space-between;
-            align-items: start;        
-        }
-    }
-
-    &__galleries {
-        position: relative;
-        flex-grow: 0;
-        flex-shrink: 0;
-        flex-basis: 100vw;
-        width: 100vw;
-        min-width: $minWidth;
-        min-height: $minWidth;
-        margin-bottom: 70px;
-
-        @media (min-width: $smallMobile) {
-            width: 100%;
-            @include adaptiveValue("flex-basis", 300px, 480px, $smallMobile, $mobile);
-            min-width: auto;
-            min-height: auto;
-        }
-
-        @media (min-width: $mobile) {
-            @include adaptiveValue("flex-basis", 370px, 600px, $mobile, $maxContainerWidth);
-            @include adaptiveValue("height", 300px, 480px, $mobile, $maxContainerWidth);
-            margin-bottom: 0;
-        }
-    }
-
-    &__gallery-14,
-    &__gallery-18,
-    &__gallery-26,
-    &__gallery-35 {
-        &.slider-gallery {
-            visibility: hidden;
-            pointer-events: none;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-
-            &_active {
-                pointer-events: auto;
-                opacity: 1;
-            }
-        }
-    }
-
-    &__choice {
-    }
-
-    &__payment {
-        @include adaptiveValue("margin-bottom", 30px, 60px, $smallMobile, $maxContainerWidth);
-    }
-
-    &__benefits {
-    }
-}
-
-.slider-gallery {
-    position: absolute;
-    top: 0;
-    left: -$containerPadding;
-    width: 100%;
-    height: 100%;
-
-    @media (min-width: $smallMobile) {
-        display: flex;
-        flex-flow: row nowrap;
-        justify-content: center;
-        align-items: start;
-        @include adaptiveValue("gap", 10px, 20px, $smallMobile, $mobile);
-        left: 0;
-    }
-
-    @media (min-width: $mobile) {
-        justify-content: space-between;
-        gap: 0;
-    }
-
-    &__thumbs {
-        display: none;
-
-        @media (min-width: $smallMobile) {
-            display: block;
-            flex: 0 0 auto;
-        }
-    }
-
-    &__thumbs-slider {
-
-        @media (min-width: $smallMobile) {
-            @include adaptiveValue("width", 55px, 100px, $smallMobile, $mobile);
-            @include adaptiveValue("height", 300px, 480px, $smallMobile, $mobile);
-        }
-
-        @media (min-width: $mobile) {
-            @include adaptiveValue("width", 55px, 100px, $mobile, $maxContainerWidth);
-            @include adaptiveValue("height", 300px, 480px, $mobile, $maxContainerWidth);
-        }
-    }
-
-    &__main-part {
-        position: relative;
-
-        @media (min-width: $smallMobile) {
-            flex: 0 0 auto;
-        }
-    }
-
-    &__main-slider {
-        position: relative;
-        width: 100vw;
-        height: 100vw;
-        min-width: $minWidth;
-        min-height: $minWidth;
-
-        @media (min-width: $smallMobile) {
-            @include adaptiveValue("width", 300px, 480px, $smallMobile, $mobile);
-            @include adaptiveValue("height", 300px, 480px, $smallMobile, $mobile);
-            min-width: auto;
-            min-height: auto;
-        }
-
-        @media (min-width: $mobile) { 
-            @include adaptiveValue("width", 300px, 480px, $mobile, $maxContainerWidth);
-            @include adaptiveValue("height", 300px, 480px, $mobile, $maxContainerWidth);
-        }
-    }
-}
-
-.thumbs-slider {
-    overflow: hidden;
-
-    &__wrapper {
-    }
-
-    &__slide {
-        position: relative;
-        cursor: pointer;
-        -webkit-tap-highlight-color: transparent;
-
-        /* @media (any-hover: hover) {
-
-            &::before {
-                content: '';
-                display: block;
-                position: absolute;
-                top: 0;
-                left: 0;
-                width: 100%;
-                height: 100%;
-                background-color:rgba(5, 6, 0, 0.5);
-                z-index: 0;
-                transition: background-color 0.3s ease;
-            }
-
-            &:hover {
-                
-                &::before {
-                    background-color:rgba(5, 6, 0, 0);
-                }
-            }
-        } */
-
-        &.swiper-slide-thumb-active {
-            
-            &::after {
-                content: '';
-                display: block;
-                position: absolute;
-                top: 100%;
-                left: 50%;
-                transform: translateX(-50%);
-                width: 50%;
-                height: 5%;
-                @extend  %orange-bar;
-                z-index: 1;
-            }
-        }
-    }
-
-    &__photo {
-        display: block;
-        width: 100%;
-        height: 100%;
-    }
-}
-
-.main-slider {
-    overflow: hidden;
-
-    &__wrapper {
-    }
-
-    &__slide {
-        position: relative;
-
-        /* @media (any-hover: hover) { 
-
-            &::after {
-                content: '';
-                display: block;
-                position: absolute;
-                top: 0;
-                left: 0;
-                width: 100%;
-                height: 100%;
-                background-color:rgba(5, 6, 0, 0.5);
-                transition: background-color 0.3s ease;
-            }
-
-            &:hover {
-                
-                &::after {
-                    background-color:rgba(5, 6, 0, 0);
-                }
-            }
-        } */
-    }
-
-    &__photo {
-        display: block;
-        width: 100%;
-        height: 100%;
-    }
-
-    &__slider-navigation {
-        position: absolute;
-        top: 100%;
-        left: 50%;
-        transform: translateX(-50%);
-    }
-
-    &__slider-prev-button {
-    }
-
-    &__slider-pagination {
-        .slider-nav__pagination-current {
-            width: 23px;
-        }
-    }
-
-    &__slider-next-button {
-    }
-}
-
-.choice {
-
-    @media (min-width: $mobile) {
-        flex-grow: 0;
-        flex-shrink: 1;
-        @include adaptiveValue("flex-basis", 358px, 580px, $mobile, $maxContainerWidth);
-    }
-
-    &__top {
-        background-color: $primaryColor;
-        margin-left: -$containerPadding;
-        margin-right: -$containerPadding;
-        padding: 25px 20px;
-
-        @media (min-width: $smallMobile) {
-            margin: 0;
-            @include adaptiveValue("padding-top", 20px, 30px, $smallMobile, $mobile);
-            @include adaptiveValue("padding-bottom", 20px, 30px, $smallMobile, $mobile);
-            @include adaptiveValue("padding-left", 20px, 30px, $smallMobile, $mobile);
-            @include adaptiveValue("padding-right", 20px, 30px, $smallMobile, $mobile);
-        }
-
-        @media (min-width: $mobile) {
-            @include adaptiveValue("padding-top", 20px, 25px, $mobile, $maxContainerWidth);
-            @include adaptiveValue("padding-bottom", 20px, 25px, $mobile, $maxContainerWidth);
-            @include adaptiveValue("padding-left", 10px, 30px, $mobile, $maxContainerWidth);
-            @include adaptiveValue("padding-right", 10px, 30px, $mobile, $maxContainerWidth);
-        }
-    }
-
-    &__top-prices {
-        margin-bottom: 15px;
-
-        @media (min-width: $smallMobile) {
-            @include adaptiveValue("margin-bottom", 10px, 30px, $smallMobile, $mobile);
-        }
-
-        @media (min-width: $mobile) {
-            @include adaptiveValue("margin-bottom", 15px, 15px, $mobile, $maxContainerWidth);
-        }
-    }
-
-    &__top-info {
-        margin-bottom: 25px;
-        margin-left: -$containerPadding;
-        margin-right: -$containerPadding;
-        padding-top: 10px;
-        padding-bottom: 10px;
-        padding-left: $containerPadding;
-        padding-right: $containerPadding;
-
-        @media (min-width: $smallMobile) {
-            @include adaptiveValue("margin-bottom", 15px, 30px, $smallMobile, $mobile);
-            @include adaptiveValue("margin-left", -20px, -30px, $smallMobile, $mobile);
-            @include adaptiveValue("margin-right", -20px, -30px, $smallMobile, $mobile);
-            @include adaptiveValue("padding-top", 10px, 15px, $smallMobile, $mobile);
-            @include adaptiveValue("padding-bottom", 10px, 15px, $smallMobile, $mobile);
-            @include adaptiveValue("padding-left", 10px, 30px, $smallMobile, $mobile);
-            @include adaptiveValue("padding-right", 10px, 30px, $smallMobile, $mobile);
-        }
-
-        @media (min-width: $mobile) {
-            @include adaptiveValue("margin-bottom", 20px, 25px, $mobile, $maxContainerWidth);
-            @include adaptiveValue("margin-left", -10px, -30px, $mobile, $maxContainerWidth);
-            @include adaptiveValue("margin-right", -10px, -30px, $mobile, $maxContainerWidth);
-            @include adaptiveValue("padding-top", 10px, 15px, $mobile, $maxContainerWidth);
-            @include adaptiveValue("padding-bottom", 10px, 15px, $mobile, $maxContainerWidth);
-            @include adaptiveValue("padding-left", 10px, 30px, $mobile, $maxContainerWidth);
-            @include adaptiveValue("padding-right", 10px, 30px, $mobile, $maxContainerWidth);
-        } 
-    }
-
-    &__top-buttons {
-
-    }
-
-    &__bottom {
-        display: grid;
-        grid-template-columns: 1fr;
-        grid-template-rows: auto;
-        row-gap: 25px;
-        margin-left: -$containerPadding;
-        margin-right: -$containerPadding;
-        margin-bottom: 25px;
-        padding: 30px 20px;
-        padding-right: 40px;
-        background-color: $thirdColor;
-
-        @media (min-width: $smallMobile) {
-            grid-template-columns: 1fr 1fr;
-            grid-template-rows: 1fr 1fr;
-            @include adaptiveValue("row-gap", 20px, 40px, $smallMobile, $mobile);
-            @include adaptiveValue("column-gap", 10px, 40px, $smallMobile, $mobile);
-            margin-left: 0;
-            margin-right: 0;
-            @include adaptiveValue("margin-bottom", 25px, 40px, $smallMobile, $mobile);
-            @include adaptiveValue("padding-top", 20px, 40px, $smallMobile, $mobile);
-            @include adaptiveValue("padding-bottom", 20px, 40px, $smallMobile, $mobile);
-            @include adaptiveValue("padding-left", 10px, 30px, $smallMobile, $mobile);
-            @include adaptiveValue("padding-right", 10px, 30px, $smallMobile, $mobile);
-        }
-
-        @media (min-width: $mobile) {
-            @include adaptiveValue("row-gap", 10px, 40px, $mobile, $maxContainerWidth);
-            @include adaptiveValue("column-gap", 10px, 60px, $mobile, $maxContainerWidth);
-            @include adaptiveValue("margin-bottom", 35px, 50px, $mobile, $maxContainerWidth);
-            @include adaptiveValue("padding-top", 20px, 40px, $mobile, $maxContainerWidth);
-            @include adaptiveValue("padding-bottom", 20px, 40px, $mobile, $maxContainerWidth);
-            @include adaptiveValue("padding-left", 10px, 30px, $mobile, $maxContainerWidth);
-            @include adaptiveValue("padding-right", 10px, 30px, $mobile, $maxContainerWidth);
-        }
-    }
-
-    &__bottom-item {
-        display: flex;
-        flex-flow: row nowrap;
-        justify-content: flex-start;
-        align-items: center;
-        gap: 15px;
-
-        @media (min-width: $smallMobile) {
-            align-items: start;
-            gap: 10px;
-        }
-
-        @media (min-width: $mobile) {
-            @include adaptiveValue("gap", 5px, 10px, $mobile, $maxContainerWidth);
-        }
-
-        @media (min-width: $tablet) {
-            gap: 10px;
-            align-items: center;
-        }
-    }
-
-    &__bottom-icon {
-        flex-grow: 0;
-        flex-shrink: 0;
-        flex-basis: 40px;
-        height: 40px;
-
-        @media (min-width: $mobile) {
-            @include adaptiveValue("flex-basis", 25px, 40px, $mobile, $maxContainerWidth);
-            @include adaptiveValue("height", 25px, 40px, $mobile, $maxContainerWidth);
-        }
-    }
-
-    &__bottom-text {
-        font-weight: 300;
-        line-height: 17px;
-        font-size: 14px;
-
-        @media (min-width: $smallMobile) {
-            @include adaptiveValue("line-height", 17px, 30px, $smallMobile, $mobile);
-            @include adaptiveValue("font-size", 14px, 24px, $smallMobile, $mobile);
-        }
-
-        @media (min-width: $mobile) {
-            @include adaptiveValue("line-height", 14px, 17px, $mobile, $maxContainerWidth);
-            @include adaptiveValue("font-size", 12px, 14px, $mobile, $maxContainerWidth);
-        }
-    }
-
-    &__buttons {
-        display: flex;
-        flex-flow: column nowrap;
-        justify-content: flex-start;
-        align-items: center;
-        gap: 20px;
-
-        @media (min-width: $smallMobile) {
-            flex-flow: row nowrap;
-            justify-content: center;
-            align-items: center;
-            @include adaptiveValue("gap", 20px, 40px, $smallMobile, $mobile);
-        }
-
-        @media (min-width: $mobile) {
-            @include adaptiveValue("gap", 10px, 30px, $mobile, $maxContainerWidth);
-        }
-    }
-
-    &__consultation-button {
-        width: 100%;
-        height: 60px;
-        cursor: pointer;
-        -webkit-tap-highlight-color: transparent;
-        
-        @media (min-width: $smallMobile) {
-            @include adaptiveValue("width", 150px, 240px, $smallMobile, $mobile);
-            @include adaptiveValue("height", 50px, 60px, $smallMobile, $mobile);
-            padding: 0 5% 0;
-        }
-
-        @media (min-width: $mobile) {
-            @include adaptiveValue("width", 150px, 240px, $mobile, $maxContainerWidth);
-            @include adaptiveValue("height", 50px, 60px, $mobile, $maxContainerWidth);
-            padding: 0 5% 0;
-        }
-    }
-    
-    &__consultation-button-text {
-        text-align: center;
-        line-height: 22px;
-        font-size: 18px;
-        font-weight: 200;
-
-        @media (min-width: $smallMobile) {
-            @include adaptiveValue("line-height", 18px, 22px, $smallMobile, $mobile);
-            @include adaptiveValue("font-size", 14px, 18px, $smallMobile, $mobile);
-        }
-
-        @media (min-width: $mobile) {
-            @include adaptiveValue("line-height", 18px, 22px, $mobile, $maxContainerWidth);
-            @include adaptiveValue("font-size", 14px, 18px, $mobile, $maxContainerWidth);
-        }
-    }
-
-    &__order-button {
-        width: 100%;
-        height: 60px;
-        gap: 20px;
-        line-height: 22px;
-        font-size: 18px;
-
-        @media (min-width: $smallMobile) {
-            @include adaptiveValue("width", 150px, 240px, $smallMobile, $mobile);
-            @include adaptiveValue("height", 50px, 60px, $smallMobile, $mobile);
-            @include adaptiveValue("gap", 10px, 40px, $smallMobile, $mobile);
-            @include adaptiveValue("line-height", 22px, 30px, $smallMobile, $mobile);
-            @include adaptiveValue("font-size", 18px, 24px, $smallMobile, $mobile);
-        }
-
-        @media (min-width: $mobile) {
-            @include adaptiveValue("width", 150px, 240px, $mobile, $maxContainerWidth);
-            @include adaptiveValue("height", 50px, 60px, $mobile, $maxContainerWidth);
-            @include adaptiveValue("gap", 10px, 40px, $mobile, $maxContainerWidth);
-            @include adaptiveValue("line-height", 22px, 30px, $mobile, $maxContainerWidth);
-            @include adaptiveValue("font-size", 18px, 24px, $mobile, $maxContainerWidth);
-        }
-    }
-
-    &__order-button-text {
-        font-weight: 200;
-    }
-
-    &__order-button-icon {
-        height: 1px;
-
-        @media (min-width: $smallMobile) {
-            height: 2px;
-        }
-
-        @media (min-width: $mobile) {
-            @include adaptiveValue("flex-basis", 20px, 25px, $mobile, $maxContainerWidth);
-        }
-    }
-}
-
-.good {
-    display: flex;
-    flex-flow: row nowrap;
-    align-items: center;
-    @include adaptiveValue("gap", 10px, 30px, $minWidth, $mobile);
-    background-color: $thirdColor;
-
-    @media (min-width: $mobile) {
-        @include adaptiveValue("gap", 10px, 30px, $mobile, $tablet);
-    }
-    
-    &__icon-wrapper {
-        flex-grow: 0;
-        flex-shrink: 0;
-        @include adaptiveValue("flex-basis", 22px, 44px, $minWidth, $mobile);
-        @include adaptiveValue("height", 18px, 36px, $minWidth, $mobile);
-
-        @media (min-width: $mobile) {
-            @include adaptiveValue("flex-basis", 22px, 44px, $mobile, $tablet);
-            @include adaptiveValue("height", 18px, 36px, $mobile, $tablet);
-        }
-    }
-
-    &__icon {
-        display: block;
-        width: 100%;
-        height: 100%;
-        fill: $primaryColor;
-        stroke: $primaryColor;
-    }
-
-    &__text {
-        flex: 0 1 auto;
-    }
-
-    &__text-string {
-        white-space: nowrap;
-        @include adaptiveValue("line-height", 20px, 26px, $minWidth, $mobile);
-        @include adaptiveValue("font-size", 16px, 20px, $minWidth, $mobile);
-        font-weight: 400;
-        color: $primaryColor;
-
-        @media (min-width: $mobile) {
-            @include adaptiveValue("line-height", 20px, 24px, $mobile, $tablet);
-            @include adaptiveValue("font-size", 16px, 18px, $mobile, $tablet);
-        }
-    }
-
-    &__price {
-        display: inline-block;
-        @include adaptiveValue("min-width", 70px, 80px, $minWidth, $mobile);
-        font-weight: 500;
-        color: $secondaryColor;
-
-        @media (min-width: $mobile) {
-            @include adaptiveValue("min-width", 70px, 80px, $mobile, $tablet);
-        }
-    }
-
-    &__price-value {
-
-    }
-
-    &__price-currency {
-
-    }
-
-    &__highlightning {
-        color: $secondaryColor;
-    }
-}
-
-.benefits {
-    display: grid;
-    grid-template-columns: 1fr;
-    grid-auto-rows: 1fr;
-    gap: 10px;
-    max-width: 100%;
-
-    @media (min-width: $smallMobile) {
-        grid-template-columns: 1fr 1fr;
-    }
-
-    @media (min-width: $mobile) {
-        grid-template-columns: 1fr 1fr 1fr;
-    }
-
-    &__item {
-        position: relative;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 130px;
-        padding: 10px;
-        background-color: $thirdColor;
-        text-align: center;
-        line-height: 20px;
-        font-size: 18px;
-        font-weight: 300;
-        color: $primaryColor;
-
-        @media (min-width: $smallMobile) {
-            @include adaptiveValue("height", 130px, 150px, $smallMobile, $mobile);
-            @include adaptiveValue("line-height", 20px, 26px, $smallMobile, $mobile);
-            @include adaptiveValue("font-size", 16px, 20px, $smallMobile, $mobile);
-        }
-
-        @media (min-width: $mobile) {
-            @include adaptiveValue("height", 130px, 170px, $mobile, $maxContainerWidth);
-            @include adaptiveValue("line-height", 20px, 30px, $mobile, $maxContainerWidth);
-            @include adaptiveValue("font-size", 16px, 24px, $mobile, $maxContainerWidth);
-        }
-
-        &::after {
-            content: "";
-            display: block;
-            position: absolute;
-            top: 100%;
-            left: 35%;
-            width: 30%;
-            height: 10px;
-            @extend %orange-bar;
-        }
-
-        &:nth-child(6)::after {
-            display: none;
-        }
-
-        @media (min-width: $smallMobile) {
-            &:nth-child(5)::after {
-                display: none;
-            }
-        }
-
-        @media (min-width: $mobile) {
-            &:nth-child(4)::after {
-                display: none;
-            }
-        }
-    }
-
-    &__star-left  {
-        display: block;
-        position: absolute;
-        z-index: 10;
-        @include adaptiveValue("top", -120px, -120px, $minWidth, $smallMobile);
-        @include adaptiveValue("left", 10px, 40px, $minWidth, $smallMobile);
-        @include adaptiveValue("width", 50px, 50px, $minWidth, $smallMobile);
-        transform: rotate(60deg);
-
-        @media (min-width: $smallMobile) {
-            @include adaptiveValue("top", -23px, -28px, $smallMobile, $mobile);
-            @include adaptiveValue("left", -24px, -30px, $smallMobile, $mobile);
-            @include adaptiveValue("width", 40px, 50px, $smallMobile, $mobile);
-        }
-
-        @media (min-width: $mobile) {
-            left: auto;
-            @include adaptiveValue("top", -28px, -48px, $mobile, $pc);
-            @include adaptiveValue("right", -30px, -50px, $mobile, $pc);
-            @include adaptiveValue("width", 50px, 90px, $mobile, $pc);
-        }
-    }
-
-    &__star-right  {
-        display: block;
-        position: absolute;
-        z-index: 10;
-        @include adaptiveValue("top", -70px, -70px, $minWidth, $smallMobile);
-        @include adaptiveValue("left", 220px, 350px, $minWidth, $smallMobile);
-        @include adaptiveValue("width", 50px, 50px, $minWidth, $smallMobile);
-        transform: rotate(60deg);
-
-        @media (min-width: $smallMobile) {
-            @include adaptiveValue("top", -23px, -28px, $smallMobile, $mobile);
-            @include adaptiveValue("left", -24px, -30px, $smallMobile, $mobile);
-            @include adaptiveValue("width", 40px, 50px, $smallMobile, $mobile);
-        }
-
-        @media (min-width: $mobile) {
-            @include adaptiveValue("top", -28px, -48px, $mobile, $pc);
-            @include adaptiveValue("left", -30px, -50px, $mobile, $pc);
-            @include adaptiveValue("width", 50px, 90px, $mobile, $pc);
-        }
-    }
-
-    &__tree-toy {
-        display: none;
-
-        @media (min-width: $pc) {
-            display: block;
-            position: absolute;
-            z-index: 10;
-            top: calc(100% - 15px);
-            left: calc(100% - 15px);
-            transform: scaleX(-1);
-        }
-    }
-}
-
-//--------------------------------------------------------------------------------------------
-
-//----- Comparison ---------------------------------------------------------------------------
-
-.comparison {
-
-    &__snowflake-medium {
-        display: block;
-        position: absolute;
-        z-index: 10;
-        @include adaptiveValue("top", 40px, 40px, $minWidth, $smallMobile);
-        @include adaptiveValue("left", 20px, 30px, $minWidth, $smallMobile);
-        @include adaptiveValue("width", 50px, 60px, $minWidth, $smallMobile);
-        transform: rotate(35deg);
-
-        @media (min-width: $smallMobile) {
-            @include adaptiveValue("top", 40px, 40px, $smallMobile, $mobile);
-            @include adaptiveValue("left", 30px, 70px, $smallMobile, $mobile);
-            @include adaptiveValue("width", 60px, 80px, $smallMobile, $mobile);
-        }
-
-        @media (min-width: $mobile) {
-            @include adaptiveValue("top", 10px, 30px, $mobile, $pc);
-            @include adaptiveValue("left", 40px, 70px, $mobile, $pc);
-            @include adaptiveValue("width", 70px, 120px, $mobile, $pc);
-        }
-    }
-
-    &__snowflake-small {
-        display: block;
-        position: absolute;
-        z-index: 10;
-        @include adaptiveValue("bottom", -70px, -90px, $minWidth, $smallMobile);
-        @include adaptiveValue("right", 20px, 30px, $minWidth, $smallMobile);
-        @include adaptiveValue("width", 40px, 50px, $minWidth, $smallMobile);
-        transform: rotate(-25deg);
-        filter: blur(0.5px);
-
-        @media (min-width: $smallMobile) {
-            @include adaptiveValue("bottom", -90px, -110px, $smallMobile, $mobile);
-            @include adaptiveValue("right", 30px, 30px, $smallMobile, $mobile);
-            @include adaptiveValue("width", 50px, 50px, $smallMobile, $mobile);
-        }
-
-        @media (min-width: $mobile) {
-            @include adaptiveValue("bottom", -110px, -110px, $mobile, $pc);
-            @include adaptiveValue("right", 30px, 100px, $mobile, $pc);
-            @include adaptiveValue("width", 50px, 80px, $mobile, $pc);
-            filter: blur(1px);
-        }
-    }
-
-    &__serpentine {
-        display: none;
-
-        @media (min-width: $tablet) {
-            display: block;
-            position: absolute;
-            z-index: 10;
-            @include adaptiveValue("bottom", 20px, 30px, $tablet, $pc);
-            @include adaptiveValue("left", -30px, -20px, $tablet, $pc);
-            @include adaptiveValue("width", 90px, 130px, $tablet, $pc);
-            transform: scaleX(-1);
-        }
-    }
-
-    &__container {
-    }
-
-    &__title {
-        @include adaptiveValue("margin-bottom", 45px, 60px, $mobile, $maxContainerWidth);
-
-        @media (min-width: $mobile) {
-            @include adaptiveValue("margin-bottom", 30px, 50px, $mobile, $maxContainerWidth);
-
-            span {
-                display: inline-block;
-            }
-        }
-    }
-
-    &__title-space {
-        display: none;
-
-        @media (min-width: $mobile) {
-            display: inline;
-        }
-    }
-
-    &__models {
-        display: none;
-
-        @media (min-width: $tablet) {
-            display: flex;
-            flex-flow: row nowrap;
-            justify-content: space-between;
-            align-items: flex-end;
-        }
-    }
-
-    &__model {
-        
-        @media (min-width: $mobile) {
-            flex: 0 1 25%;
-        }
-    }
-
-    &__slider {
-        width: 100%;
-        min-width: $minWidth;
-        @include adaptiveValue("height", 570px, 790px, $minWidth, $smallMobile);
-
-        @media (min-width: $smallMobile) {
-            @include adaptiveValue("height", 530px, 830px, $smallMobile, $mobile);
-        }
-
-        @media (min-width: $mobile) {
-            @include adaptiveValue("height", 510px, 720px, $mobile, $tablet);
-        }
-
-        @media (min-width: $tablet) {
-            display: none;
-        }
-    }
-
-    &__slider-wrapper {
-    }
-
-    &__slide {
-    }
-
-    &__slider-scrollbar {
-        height: 5px;
-        margin-top: 25px;
-        background-color: $thirdColor;
-        cursor: pointer;
-        -webkit-tap-highlight-color: transparent;
-
-        .swiper-scrollbar-drag {
-            height: 5px;
-            background-color: $primaryColor;
-        }
-    }
-}
-
-.model {
-    display: flex;
-    flex-flow: column nowrap;
-    justify-content: flex-end;
-    align-items: center;
-
-    &__image {
-        position: relative;
-        @include adaptiveValue("width", 150px, 250px, $minWidth, $smallMobile);
-        margin-right: 70px;
-        margin-bottom: 10px;
-        cursor: pointer;
-
-        /* @media (any-hover: hover) {
-
-            &::after {
-                content: '';
-                display: block;
-                position: absolute;
-                top: 0;
-                left: 0;
-                width: 100%;
-                height: 100%;
-                background-color: $backgroundColor;
-                opacity: 0.5;
-                transition: opacity 0.3s ease;
-            }
-
-            &:hover {
-
-                &::after {
-                    opacity: 0;
-                }
-            }
-        } */
-
-        @media (min-width: $smallMobile) {
-            @include adaptiveValue("width", 150px, 280px, $smallMobile, $mobile);
-            margin-right: 30px;
-        }
-
-        @media (min-width: $mobile) {
-            @include adaptiveValue("width", 135px, 220px, $mobile, $tablet);
-            margin-right: 10px;
-        }
-
-        @media (min-width: $tablet) {
-            width: 160px;
-        }
-    }
-
-    &__photo {
-        display: block;
-        width: 100%;      
-    }
-
-    &__height {
-        position: absolute;
-        top: 0;
-        left: calc(100% + 10px);
-        height: 100%;
-
-        @media (min-width: $smallMobile) {
-            left: calc(100% + 5px);
-        }
-
-        @media (min-width: $mobile) {
-            left: calc(100% + 10px);
-        }
-    }
-
-    &__height-text {
-        position: absolute;
-        top: 50%;
-        transform: translateY(-50%);
-        @include adaptiveValue("left", 5px, 10px, $minWidth, $smallMobile);
-        @include adaptiveValue("line-height", 16px, 22px, $minWidth, $smallMobile);
-        @include adaptiveValue("font-size", 14px, 18px, $minWidth, $smallMobile);
-        font-weight: 300;
-
-        @media (min-width: $smallMobile) {
-            @include adaptiveValue("left", 10px, 15px, $smallMobile, $mobile);
-            @include adaptiveValue("line-height", 16px, 20px, $smallMobile, $mobile);
-            @include adaptiveValue("font-size", 14px, 16px, $smallMobile, $mobile);
-        }
-        
-        @media (min-width: $mobile) {
-            @include adaptiveValue("left", 10px, 10px, $mobile, $tablet);
-            @include adaptiveValue("line-height", 16px, 20px, $mobile, $tablet);
-            @include adaptiveValue("font-size", 14px, 16px, $mobile, $tablet);
-        }
-    }
-
-    &__height-arrow {
-        position: relative;
-        width: 2px;
-        height: 100%;
-        background-color: $primaryColor;
-    }
-
-    &__height-arrow-stripe {
-        position: absolute;
-        position: absolute;
-        left: 0;
-        width: 100%;
-        height: 8px;
-        border-radius: 1px;
-        background-color: inherit;
-        
-        &:nth-child(1) {
-            top: 0;
-            transform-origin: right top;
-            transform: rotate(-45deg);
-        }
-
-        &:nth-child(2) {
-            top: 0;
-            transform-origin: left top;
-            transform: rotate(45deg);
-        }
-
-        &:nth-child(3) {
-            bottom: 0;
-            transform-origin: left bottom;
-            transform: rotate(-45deg);
-        }
-
-        &:nth-child(4) {
-            bottom: 0;
-            transform-origin: right bottom;
-            transform: rotate(45deg);
-        }
-    }
-
-    &__text {
-        align-self: stretch;
-        @include adaptiveValue("margin-bottom", 20px, 30px, $minWidth, $smallMobile);
-
-        @media (min-width: $smallMobile) {
-            @include adaptiveValue("margin-bottom", 10px, 20px, $smallMobile, $mobile);
-        }
-
-        @media (min-width: $mobile) {
-            @include adaptiveValue("margin-bottom", 20px, 30px, $mobile, $maxContainerWidth);
-        }
-    }
-
-    &__text-diametr {
-        @include adaptiveValue("margin-bottom", 10px, 20px, $minWidth, $smallMobile);
-        text-align: center;
-        line-height: 18px;
-        font-size: 16px;
-        font-weight: 300;
-
-        & span {
-            font-size: 22px;
-        }
-
-        @media (min-width: $smallMobile) {
-            @include adaptiveValue("margin-bottom", 10px, 20px, $smallMobile, $mobile);
-            line-height: 18px;
-            font-size: 16px;
-        }
-
-        @media (min-width: $mobile) {
-            @include adaptiveValue("margin-bottom", 10px, 20px, $mobile, $tablet);
-        }
-    }
-
-    &__text-liters {
-        margin-bottom: 20px;
-        text-align: center;
-        @include adaptiveValue("line-height", 30px, 34px,  $minWidth, $smallMobile);
-        @include adaptiveValue("font-size", 24px, 28px,  $minWidth, $smallMobile);
-        font-weight: 700;
-        color: $primaryColor;
-
-        @media (min-width: $smallMobile) {
-            @include adaptiveValue("line-height", 30px, 38px, $smallMobile, $mobile);
-            @include adaptiveValue("font-size", 24px, 32px, $smallMobile, $mobile);
-        }
-
-        @media (min-width: $mobile) {
-            @include adaptiveValue("line-height", 30px, 38px, $mobile, $maxContainerWidth);
-            @include adaptiveValue("font-size", 24px, 32px, $mobile, $maxContainerWidth);
-        }
-    }
-
-    &__text-parameter {
-        display: flex;
-        flex-flow: row nowrap;
-        justify-content: space-between;
-        align-items: center;
-        margin-bottom: 10px;
-        @include adaptiveValue("padding-right", 10px, 10px,  $minWidth, $smallMobile);
-        @include adaptiveValue("padding-left", 10px, 10px,  $minWidth, $smallMobile);
-        @include adaptiveValue("line-height", 16px, 22px, $minWidth, $smallMobile);
-        @include adaptiveValue("font-size", 14px, 18px, $minWidth, $smallMobile);
-        
-        @media (min-width: $smallMobile) {
-            @include adaptiveValue("margin-bottom", 5px, 10px, $smallMobile, $mobile);
-            @include adaptiveValue("padding-right", 0px, 0px, $smallMobile, $mobile);
-            @include adaptiveValue("padding-left", 10px, 10px, $smallMobile, $mobile);
-            @include adaptiveValue("line-height", 16px, 22px, $smallMobile, $mobile);
-            @include adaptiveValue("font-size", 12px, 18px, $smallMobile, $mobile);
-        }
-
-        @media (min-width: $mobile) {
-            @include adaptiveValue("margin-bottom", 5px, 10px, $mobile, $tablet);
-            @include adaptiveValue("padding-right", 10px, 15px, $mobile, $tablet);
-            @include adaptiveValue("padding-left", 10px, 15px, $mobile, $tablet);
-            @include adaptiveValue("line-height", 16px, 20px, $mobile, $tablet);
-            @include adaptiveValue("font-size", 12px, 16px, $mobile, $tablet);
-        }
-    }
-
-    &__text-parameter-name {
-        flex: 0 0 auto;
-    }
-
-    &__text-parameter-space {
-        flex: 1 1 auto;
-        height: 17px;
-        margin: 0 5px 2px;
-        border-bottom: 2px dotted $secondaryColor;
-
-        @media (min-width: $smallMobile) {
-            @include adaptiveValue("height", 14px, 18px, $smallMobile, $mobile);
-        }
-
-        @media (min-width: $mobile) {
-            @include adaptiveValue("height", 14px, 18px, $mobile, $maxContainerWidth);
-        }
-
-        @media (min-width: $tablet) {
-            height: 18px;
-        }
-    }
-
-    &__text-parameter-value {
-        flex: 0 0 auto;
-    }
-
-    &__text-old-price {
-        margin-bottom: 10px;
-        text-align: center;
-        text-decoration: line-through;
-        font-weight: 200;
-        line-height: 22px;
-        font-size: 18px;
-        color: $primaryColor;
-
-        @media (min-width: $smallMobile) {
-            @include adaptiveValue("margin-bottom", 5px, 10px, $smallMobile, $mobile);
-            @include adaptiveValue("line-height", 22px, 30px, $smallMobile, $mobile);
-            @include adaptiveValue("font-size", 18px, 24px, $smallMobile, $mobile);
-        }
-
-        @media (min-width: $mobile) {
-            @include adaptiveValue("margin-bottom", 5px, 10px, $smallMobile, $tablet);
-            @include adaptiveValue("line-height", 26px, 30px, $mobile, $tablet);
-            @include adaptiveValue("font-size", 22px, 24px, $mobile, $tablet);
-        }
-    }
-
-    &__text-price {
-        margin-bottom: 10px;
-        text-align: center;
-        font-weight: 800;
-        @include adaptiveValue("line-height", 30px, 34px,  $minWidth, $smallMobile);
-        @include adaptiveValue("font-size", 24px, 28px,  $minWidth, $smallMobile);
-
-        @media (min-width: $smallMobile) {
-            @include adaptiveValue("margin-bottom", 5px, 10px, $smallMobile, $mobile);
-            @include adaptiveValue("line-height", 30px, 38px, $smallMobile, $mobile);
-            @include adaptiveValue("font-size", 24px, 32px, $smallMobile, $mobile);
-        }
-
-        @media (min-width: $mobile) {
-            @include adaptiveValue("margin-bottom", 5px, 10px, $smallMobile, $tablet);
-            @include adaptiveValue("line-height", 30px, 38px, $mobile, $tablet);
-            @include adaptiveValue("font-size", 24px, 32px, $mobile, $tablet);
-        }
-    }
-
-    &__text-promo-block {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        width: calc(100% - 20px);
-        margin-left: 10px;
-        @include adaptiveValue("gap", 5px, 10px,  $minWidth, $smallMobile);
-        @include adaptiveValue("padding-top", 5px, 10px,  $minWidth, $smallMobile);
-        @include adaptiveValue("padding-bottom", 5px, 10px,  $minWidth, $smallMobile);
-        background-color: $primaryColor;
-
-        @media (min-width: $smallMobile) {
-            width: calc(100% - 10px);
-            @include adaptiveValue("gap", 3px, 7px, $smallMobile, $mobile);
-            @include adaptiveValue("padding-top", 5px, 10px, $smallMobile, $mobile);
-            @include adaptiveValue("padding-bottom", 5px, 10px, $smallMobile, $mobile);
-        }
-
-        @media (min-width: $mobile) {
-            padding: 0;
-            background-color: transparent;
-        }
-    }
-
-    &__icon-wrapper {
-        flex-grow: 0;
-        flex-shrink: 0;
-        @include adaptiveValue("flex-basis", 16px, 22px, $minWidth, $smallMobile);
-        @include adaptiveValue("height", 13px, 18px, $minWidth, $smallMobile);
-
-        @media (min-width: $smallMobile) {
-            @include adaptiveValue("flex-basis", 16px, 22px, $smallMobile, $mobile);
-            @include adaptiveValue("height", 13px, 18px, $smallMobile, $mobile);
-        }
-
-        @media (min-width: $mobile) {
-            display: none;
-        }
-    }
-
-    &__icon {
-        display: block;
-        width: 100%;
-        height: 100%;
-        fill: $thirdColor;
-        stroke: $thirdColor;
-    }
-
-    &__promo-text {
-
-    }
-
-    &__text-promo-string {
-        white-space: nowrap;
-        @include adaptiveValue("line-height", 14px, 18px, $minWidth, $smallMobile);
-        @include adaptiveValue("font-size", 12px, 16px, $minWidth, $smallMobile);
-        color: $thirdColor;
-
-        @media (min-width: $smallMobile) {
-            @include adaptiveValue("line-height", 13px, 18px, $smallMobile, $mobile);
-            @include adaptiveValue("font-size", 11px, 16px, $smallMobile, $mobile);
-        }
-        
-        @media (min-width: $mobile) {
-            text-align: center;
-            @include adaptiveValue("line-height", 16px, 20px, $mobile, $tablet);
-            @include adaptiveValue("font-size", 14px, 16px, $mobile, $tablet);
-            color: $primaryColor;
-
-            &:nth-child(2) {
-                display: none;
-            }
-        }
-    }
-
-    &__text-promo-price {
-        font-weight: 700;
-        color: $secondaryColor;
-    }
-
-    &__text-promo-highlightning {
-        color: $secondaryColor;
-    }
-
-    &__button {
-        width: calc(100% - 20px);
-        @include adaptiveValue("height", 45px, 60px, $minWidth, $smallMobile);
-        gap: 20px;
-        @include adaptiveValue("line-height", 22px, 30px, $minWidth, $smallMobile);
-        @include adaptiveValue("font-size", 18px, 24px, $minWidth, $smallMobile);
-
-        @media (min-width: $smallMobile) {
-            width: calc(100% - 10px);
-            @include adaptiveValue("height", 45px, 60px, $smallMobile, $tablet);
-            @include adaptiveValue("gap", 10px, 40px, $smallMobile, $tablet);
-            margin-left: 10px;
-            @include adaptiveValue("line-height", 22px, 30px, $smallMobile, $tablet);
-            @include adaptiveValue("font-size", 18px, 24px, $smallMobile, $tablet);
-        }
-
-        @media (min-width: $tablet) {
-            width: 200px;
-            margin-left: 0;
-            gap: 20px;
-        }
-    }
-
-    &__button-text {
-        font-weight: 200;
-    }
-
-    &__button-icon {
-        height: 1px;
-
-        @media (min-width: $smallMobile) {
-            height: 2px;
-        }
-
-        @media (min-width: $mobile) {
-            @include adaptiveValue("flex-basis", 20px, 25px, $mobile, $maxContainerWidth);
-        }
-    }
-}
-
-//--------------------------------------------------------------------------------------------
-
-//----- Equipment ----------------------------------------------------------------------------
-
-.equipment {
-
-    &__snowflake-medium {
-        display: block;
-        position: absolute;
-        z-index: 10;
-        @include adaptiveValue("bottom", -60px, -60px, $minWidth, $smallMobile);
-        @include adaptiveValue("right", 20px, 30px, $minWidth, $smallMobile);
-        @include adaptiveValue("width", 40px, 50px, $minWidth, $smallMobile);
-        transform: rotate(35deg);
-
-        @media (min-width: $smallMobile) {
-            @include adaptiveValue("bottom", -60px, -70px, $smallMobile, $mobile);
-            @include adaptiveValue("right", 30px, 80px, $smallMobile, $mobile);
-            @include adaptiveValue("width", 50px, 60px, $smallMobile, $mobile);
-        }
-
-        @media (min-width: $mobile) {
-            @include adaptiveValue("bottom", -70px, -70px, $mobile, $pc);
-            @include adaptiveValue("right", 80px, 120px, $mobile, $pc);
-            @include adaptiveValue("width", 60px, 120px, $mobile, $pc);
-        }
-    }
-
-    &__branch {
-        display: block;
-        position: absolute;
-        z-index: 1;
-        left: 0;
-
-        @include adaptiveValue("bottom", -110px, -130px, $minWidth, $smallMobile);
-        @include adaptiveValue("width", 75px, 90px, $minWidth, $smallMobile);
-        
-        @media (min-width: $smallMobile) {
-            @include adaptiveValue("bottom", -130px, -170px, $smallMobile, $mobile);
-            @include adaptiveValue("width", 90px, 130px, $smallMobile, $mobile);
-        }
-        @media (min-width: $mobile) {
-            @include adaptiveValue("bottom", -150px, -250px, $mobile, $tablet);
-            @include adaptiveValue("width", 110px, 180px, $mobile, $tablet);
-        }
-        
-        @media (min-width: $tablet) {
-            @include adaptiveValue("bottom", -250px, -270px, $tablet, $pc);
-            @include adaptiveValue("width", 180px, 260px, $tablet, $pc);
-        }
-    }
-
-    &__container {
-    }
-
-    &__header {
-        position: relative;
-        margin-bottom: 30px;
-        transition: height 0.3s ease;
-        
-        @media (min-width: $mobile) {
-            @include adaptiveValue("margin-bottom", 25px, 40px, $mobile, $maxContainerWidth);
-        }
-    }
-
-    &__header-content {
-        position: absolute;
-        top: 0;
-        left: 50%;
-        transform: translateX(-50%) scale(1, 0);
-        width: 100%;
-        visibility: hidden;
-        pointer-events: none;
-        opacity: 0;
-        transition: opacity 0.15s ease,
-                    transform 0.15s ease;
-
-        &_active {
-            transform: translateX(-50%) scale(1, 1);
-            pointer-events: auto;
-            opacity: 1;
-        }
-    }
-
-    &__body {
-        position: relative;
-        transition: height 0.3s ease;
-    }
-
-    &__body-content {
-        position: absolute;
-        visibility: hidden;
-        opacity: 0;
-        transition: opacity 0.3s ease;
-
-        &_active {
-            opacity: 1;
-        }
-    }
-}
-
-.equipment-header {
-
-    &:not(.characteristics-header) {
-        display: flex;
-        flex-flow: column nowrap;
-        align-items: center;
-        gap: 15px;
-
-        @media (min-width: $mobile) {
-            flex-flow: row nowrap;
-            justify-content: center;
-            @include adaptiveValue("gap", 15px, 35px, $mobile, $maxContainerWidth);
-        }
-    }
-
-
-    &__top {
-        display: flex;
-        flex-flow: column-reverse nowrap;
-        align-items: center;
-        gap: 15px;
-        margin-bottom: 20px;
-
-        @media (min-width: $mobile) {
-            flex-flow: row nowrap;
-            justify-content: center;
-            @include adaptiveValue("gap", 15px, 35px, $mobile, $maxContainerWidth);
-            @include adaptiveValue("margin-bottom", 20px, 30px, $mobile, $maxContainerWidth);
-        }
-    }
-
-    &__title {
-        text-transform: uppercase;
-        text-align: center;
-        @include adaptiveValue("line-height", 29px, 58px, $mobile, $pc);
-        @include adaptiveValue("font-size", 24px, 48px, $mobile, $pc);
-        font-weight: 800;
-        color: $primaryColor;
-
-        @media (min-width: $mobile) {
-            text-transform: none;
-        }
-    }
-
-    &__button {
-        width: 100%;
-        height: 58px;
-        @include adaptiveValue("line-height", 22px, 29px, $mobile, $pc);
-        @include adaptiveValue("font-size", 18px, 24px, $mobile, $pc);
-        
-        @media (min-width: $smallMobile) {
-            width: auto;
-            @include adaptiveValue("padding-right", 25px, 45px, $mobile, $pc);
-            @include adaptiveValue("padding-left", 25px, 45px, $mobile, $pc);
-        }
-    }
-
-    &__liter-buttons {
-
-        @media (min-width: $mobile) {
-            max-width: 50%;
-            margin: 0 auto;
-        }
-    }
-}
-
-.complectation {
-    width: 100%;
-
-    &__serpentine {
-        display: none;
-
-        @media (min-width: 992.02px) {
-            display: block;
-            position: absolute;
-            z-index: 1;
-            @include adaptiveValue("top", 250px, 200px, 992.02px, $tablet);
-            @include adaptiveValue("right", 20px, -10px, 992.02px, $tablet);
-            @include adaptiveValue("width", 90px, 90px, 992.02px, $tablet);
-            filter: blur(1px);
-        }
-
-        @media (min-width: $tablet) {
-            @include adaptiveValue("top", 200px, 300px, $tablet, $pc);
-            @include adaptiveValue("right", -10px, -170px, $tablet, $pc);
-            @include adaptiveValue("width", 90px, 130px, $tablet, $pc);
-        }
-    }
-    
-    &__video-container {
-        display: none;
-        position: relative;
-        top: 0;
-        left: -$containerPadding;
-        width: 100vw;
-        @include adaptiveValue("height", 352px, 528px, $minWidth, $smallMobile);
-        overflow: hidden;
-
-        @media (min-width: $smallMobile) {
-            @include adaptiveValue("height", 408px, 653px, $smallMobile, $mobile);
-        }
-        
-        @media (min-width: $mobile) {
-            height: 620px;
-        }
-        
-        @media (min-width: 992.02px) {
-            display: block;
-        }
-
-        @media (min-width: $tablet) {
-            left: calc($maxContentWidth / 2 - 50vw);
-            height: 45vw;
-        }
-    }
-
-    &__video {
-        display: block;
-        position: absolute;
-        top: 0;
-        right: -13%;
-        width: 220%;
-        min-width: 702px;
-
-        @media (min-width: $smallMobile) {  
-            right: 0;
-            width: 170%;          
-        }
-
-        @media (min-width: $mobile) {
-            width: 1300px;
-        }
-
-        @media (min-width: $tablet) {
-            top: -2vw;
-            width: 100vw;
-        }
-    }
-
-    &__caption {
-        position: absolute;
-        z-index: 5;
-        opacity: 0;
-        pointer-events: none;
-        transition: opacity 0.3s ease;
-        
-        .complectation_start-animation & {
-            opacity: 1;
-            pointer-events: auto;
-        }
-
-        &:nth-of-type(1) {
-            top: 8.5%;
-            right: 54%;
-        }
-
-        &:nth-of-type(2) {
-            top: 11%;
-            right: 60%;
-        }
-
-        &:nth-of-type(3) {
-            top: 15%;
-            right: 48%;
-        }
-
-        &:nth-of-type(4) {
-            top: 23%;
-            right: 49%;
-        }
-
-        &:nth-of-type(5) {
-            top: 51%;
-            right: 50%;
-        }
-
-        &:nth-of-type(6) {
-            top: 65%;
-            right: 77%;
-        }
-
-        &:nth-of-type(7) {
-            top: 12%;
-            right: 48%;
-        }
-
-        &:nth-of-type(8) {
-            top: 15%;
-            right: 35%;
-        }
-
-        &:nth-of-type(9) {
-            top: 25%;
-            right: 38%;
-        }
-
-        &:nth-of-type(10) {
-            top: 32%;
-            right: 20%;
-        }
-
-        &:nth-of-type(11) {
-            top: 65%;
-            right: 28%;
-        }
-
-        &:nth-of-type(12) {
-            top: 75%;
-            right: 45%;
-        }
-
-        @media (min-width: $smallMobile) {
-
-            &:nth-of-type(1) {
-                top: 8.3%;
-                right: 51.5%;
-            }
-
-            &:nth-of-type(2) {
-                top: 11%;
-                right: 57%;
-            }
-
-            &:nth-of-type(3) {
-                top: 15%;
-                right: 48%;
-            }
-    
-            &:nth-of-type(4) {
-                top: 23%;
-                right: 49%;
-            }
-    
-            &:nth-of-type(5) {
-                top: 51%;
-                right: 50%;
-            }
-    
-            &:nth-of-type(6) {
-                top: 65%;
-                right: 69.5%;
-            }
-    
-            &:nth-of-type(7) {
-                top: 12%;
-                right: 47%;
-            }
-    
-            &:nth-of-type(8) {
-                top: 15%;
-                right: 37%;
-            }
-    
-            &:nth-of-type(9) {
-                top: 25%;
-                right: 38%;
-            }
-    
-            &:nth-of-type(10) {
-                top: 32%;
-                right: 25.5%;
-            }
-    
-            &:nth-of-type(11) {
-                top: 65%;
-                right: 31%;
-            }
-    
-            &:nth-of-type(12) {
-                top: 75%;
-                right: 45%;
-            }
-        }
-
-        @media (min-width: $mobile) {
-
-            &:nth-of-type(1) {
-                top: 53px;
-                right: 395px;
-            }
-
-            &:nth-of-type(2) {
-                top: 70px;
-                right: 430px;
-            }
-
-            &:nth-of-type(3) {
-                top: 98px;
-                right: 370px;
-            }
-    
-            &:nth-of-type(4) {
-                top: 160px;
-                right: 370px;
-            }
-    
-            &:nth-of-type(5) {
-                top: 335px;
-                right: 370px;
-            }
-    
-            &:nth-of-type(6) {
-                top: 400px;
-                right: 532px;
-            }
-    
-            &:nth-of-type(7) {
-                top: 80px;
-                right: 360px;
-            }
-    
-            &:nth-of-type(8) {
-                top: 95px;
-                right: 285px;
-            }
-    
-            &:nth-of-type(9) {
-                top: 170px;
-                right: 310px;
-            }
-    
-            &:nth-of-type(10) {
-                top: 210px;
-                right: 197px;
-            }
-    
-            &:nth-of-type(11) {
-                top: 450px;
-                right: 242px;
-            }
-    
-            &:nth-of-type(12) {
-                top: 493px;
-                right: 350px;
-            }
-        }
-
-        @media (min-width: $tablet) {
-
-            &:nth-of-type(1) {
-                top: 5%;
-                right: 30.5%;
-
-                .complectation__caption-text-wrapper {
-                }
-
-                .complectation__caption-text {
-                    margin-right: 65px;
-                }
-            }
-
-            &:nth-of-type(2) {
-                top: 8%;
-                right: 33%;
-
-                .complectation__caption-text-wrapper {
-                }
-
-                .complectation__caption-text {
-                    margin-right: 100px;
-                }
-            }
-
-            &:nth-of-type(3) {
-                top: 12.5%;
-                right: 28%;
-
-                .complectation__caption-text-wrapper {
-                }
-
-                .complectation__caption-text {
-                    margin-right: 220px;
-                }
-            }
-    
-            &:nth-of-type(4) {
-                top: 21%;
-                right: 28%;
-
-                .complectation__caption-text-wrapper {
-                }
-
-                .complectation__caption-text {
-                    @include adaptiveValue("margin-right", 220px, 290px, $maxContainerWidth, $pc);
-                }
-            }
-    
-            &:nth-of-type(5) {
-                top: 53%;
-                right: 28%;
-
-                .complectation__caption-text-wrapper {
-                }
-
-                .complectation__caption-text {
-                    margin-left: 10vw;
-                }
-            }
-    
-            &:nth-of-type(6) {
-                top: 65%;
-                right: 40.8%;
-
-                .complectation__caption-text-wrapper {
-                    right: 0;
-                    left: auto;
-                    transform-origin: bottom right;
-                }
-
-                .complectation__caption-text {
-                    margin-left: 0px;
-                    margin-right: 30px;
-                }
-            }
-    
-            &:nth-of-type(7) {
-                top: 9%;
-                right: 27.6%;
-
-                .complectation__caption-text-wrapper {
-                }
-
-                .complectation__caption-text {
-                    margin-left: 65px;
-                }
-            }
-    
-            &:nth-of-type(8) {
-                top: 12%;
-                right: 21.5%;
-
-                .complectation__caption-text-wrapper {
-                }
-
-                .complectation__caption-text {
-                    margin-left: 65px;
-                }
-            }
-    
-            &:nth-of-type(9) {
-                top: 22%;
-                right: 23%;
-
-                .complectation__caption-text-wrapper {
-                }
-
-                .complectation__caption-text {
-                    @include adaptiveValue("margin-left", 65px, 130px, $maxContainerWidth, 1920px);
-                }
-            }
-    
-            &:nth-of-type(10) {
-                top: 31%;
-                right: 15%;
-
-                .complectation__caption-text-wrapper {
-                    right: auto;
-                    left: 0;
-                    transform-origin: bottom left;
-                }
-
-                .complectation__caption-text {
-                    margin-right: 0;
-                    margin-left: 5px;
-                }
-            }
-    
-            &:nth-of-type(11) {
-                top: 70%;
-                right: 18.4%;
-
-                .complectation__caption-text-wrapper {
-                }
-
-                .complectation__caption-text {
-                    margin-left: 40px;
-                }
-            }
-    
-            &:nth-of-type(12) {
-                top: 79%;
-                right: 28%;
-
-                .complectation__caption-text-wrapper {
-                }
-
-                .complectation__caption-text {
-                    margin-left: 10vw;
-                }
-            }
-        }
-    }
-
-    &__caption-text-wrapper {
-        position: absolute;
-        bottom: 0;
-        opacity: 0;
-        transform: scale(0, 0);
-        transition: transform 0.3s ease,
-                    opacity 0.3s ease;
-        cursor: pointer;
-        pointer-events: none;
-        -webkit-tap-highlight-color: transparent;
-
-        .complectation__caption_side_left & {
-            right: 0;
-            transform-origin: bottom right;
-        }
-
-        .complectation__caption_side_right & {
-            left: 0;
-            transform-origin: bottom left;
-        }
-
-        .complectation__caption:nth-of-type(6) & {
-
-            @media (max-width: $tablet) {
-                right: auto;
-                left: 0;
-                transform-origin: bottom left;
-            }
-        }
-
-        .complectation__caption:nth-of-type(9) & {
-
-            @media (max-width: 375px) {
-                left: auto;
-                right: 0;
-                transform-origin: bottom right;
-            }
-        }
-
-        .complectation__caption:nth-of-type(10) & {
-
-            @media (max-width: $smallMobile) {
-                left: auto;
-                right: 0;
-                transform-origin: bottom right;
-            }
-        }
-
-        @media (any-hover: hover) {
-
-            .complectation__caption:hover & {
-                transform: scale(1, 1);
-                opacity: 1;
-                pointer-events: auto;
-            }
-        }
-
-        @media (any-hover: none) {
-
-            .spoiler-block_active & {
-                transform: scale(1, 1);
-                opacity: 1;
-                pointer-events: auto;
-            }
-        }
-
-        @media (min-width: $tablet) {
-            bottom: 3px;
-            border-bottom: 1px solid $primaryColor;
-            transform: scale(0, 1);
-            transition: transform 0.3s ease;
-
-            @media (any-hover: hover) {
-
-                .complectation__caption:hover & {
-                    transform: scale(1, 1);
-                }
-            }
-    
-            @media (any-hover: none) {
-    
-                .spoiler-block_active & {
-                    transform: scale(1, 1);
-                }
-            }
-        }
-    }
-
-    &__caption-text {
-        display: inline-block;
-        padding: 5px 5px;
-        text-align: center;
-        @include adaptiveValue("line-height", 14px, 20px, $minWidth, $mobile);
-        @include adaptiveValue("font-size", 12px, 18px, $minWidth, $mobile);
-        font-weight: 400;
-        color: $secondaryColor;
-        border: 2px solid $primaryColor;
-        box-shadow: 0px 0px 6px rgba(255, 187, 107, 0.5),
-                    inset 0px 0px 6px rgba(255, 187, 107, 0.5);
-        background-color: rgba(186, 100, 0, 0.7);
-
-        .complectation__caption_side_left & {
-            margin-right: 15px;
-        }
-
-        .complectation__caption_side_right & {
-            margin-left: 15px;
-        }
-
-        .complectation__caption:nth-of-type(6) & {
-
-            @media (max-width: $smallMobile) {
-                margin-left: 15px;     
-            }
-        }
-
-        .complectation__caption:nth-of-type(9) & {
-
-            @media (max-width: 375px) {
-                margin-right: 15px;     
-            }
-        }
-
-        .complectation__caption:nth-of-type(10) & {
-
-            @media (max-width: $smallMobile) {
-                margin-right: 15px;     
-            }
-        }
-
-        @media (min-width: $mobile) {
-            padding: 5px 15px;
-            @include adaptiveValue("line-height", 20px, 24px, $mobile, $pc);
-            @include adaptiveValue("font-size", 16px, 20px, $mobile, $pc);
-
-            .complectation__caption_side_left & {
-                margin-right: 25px;
-            }
-    
-            .complectation__caption_side_right & {
-                margin-left: 25px;
-            }
-
-            .complectation__caption:nth-of-type(6) & {
-
-                @media (max-width: $tablet) {
-                    margin-left: 25px;     
-                }
-            }
-        }
-
-        @media (min-width: $tablet) {
-            background-color: transparent;
-            box-shadow: none;
-            border: none;
-            text-shadow: 0px 0px 7px rgba(0, 0, 0, 1),
-                         0px 0px 2px rgba(0, 0, 0, 1),
-                         0px 0px 15px rgba(255, 187, 107, 1);
-            color: $primaryColor;
-            opacity: 0;
-            transition: opacity 0.2s ease 0.3s;
-
-            @media (any-hover: hover) {
-
-                .complectation__caption:hover & {
-                    opacity: 1;
-                }
-            }
-    
-            @media (any-hover: none) {
-    
-                .spoiler-block_active & {
-                    opacity: 1;
-                }
-            }
-        }
-
-    }
-
-    &__caption-point {
-        position: relative;
-        width: 8px;
-        height: 8px;
-        border-radius: 50%;
-        background-color: $primaryColor;
-        cursor: pointer;
-        -webkit-tap-highlight-color: transparent;
-
-        &::before, 
-        &::after {
-            content: '';
-            display: block;
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            border-radius: 50%;
-            border: 1px solid rgba(255, 187, 107, 0.8);
-            box-shadow: 0px 0px 4px rgba(255, 187, 107, 1);
-            opacity: 0;
-            animation-timing-function: ease-in-out;
-            animation-iteration-count: infinite;
-            animation-duration: 4.0s;
-        }
-
-        &::before {
-            animation-name: pulse-1;
-            animation-delay: 2.0s;
-        }
-
-        &::after {
-            animation-name: pulse-2;
-        }
-
-        @media (any-hover: hover) {
-
-            .complectation__caption:hover &::before,
-            .complectation__caption:hover &::after {
-                box-shadow: none;
-                border: none;
-            }
-        }
-
-        @media (any-hover: none) {
-
-            .spoiler-block_active &::before,
-            .spoiler-block_active &::after {
-                box-shadow: none;
-                border: none;
-            }
-        }
-
-        @keyframes pulse-1 {
-
-            from {
-              opacity: 0;
-              transform: scale(0.5, 0.5);
-            }
-
-            50% {
-                opacity: 1;
-            }
-           
-            to {
-                opacity: 0;
-                transform: scale(2, 2);
-            }
-        }
-           
-        @keyframes pulse-2 {
-
-            from {
-                opacity: 0;
-                transform: scale(0.5, 0.5);
-            }
-
-            50% {
-                opacity: 1;
-            }
-        
-            to {
-                opacity: 0;
-                transform: scale(2, 2);
-            }
-        }
-
-        @media (min-width: $mobile) {
-            @keyframes pulse-1 {
-
-                from {
-                  opacity: 0;
-                  transform: scale(0.5, 0.5);
-                }
-    
-                50% {
-                    opacity: 1;
-                }
-               
-                to {
-                    opacity: 0;
-                    transform: scale(3, 3);
-                }
-            }
-               
-            @keyframes pulse-2 {
-    
-                from {
-                    opacity: 0;
-                    transform: scale(0.5, 0.5);
-                }
-    
-                50% {
-                    opacity: 1;
-                }
-            
-                to {
-                    opacity: 0;
-                    transform: scale(3, 3);
-                }
-            }
-        }
-    } 
-
-    &__list {
-        
-        @media (min-width: 992.02px) {
-            position: absolute;
-            top: 0;
-            left: 5%;
-        }
-    }
-}
-
-.complectation-list {
-    width: 100%;
-    
-    @media (min-width: 992.02px) {
-        @include adaptiveValue("width", 340px, 440px, 992.02px, $tablet);
-        @include adaptiveValue("padding-top", 30px, 40px, 992.02px, $tablet);
-    }
-
-    @media (min-width: $tablet)  {
-        width: 440px;
-        padding-top: 40px;
-    }
-
-    &__title {
-        display: none;
-        @include adaptiveValue("line-height", 18px, 40px, $mobile, $pc);
-        @include adaptiveValue("font-size", 18px, 36px, $mobile, $pc);
-        font-weight: 200;
-        color: $primaryColor;
-        
-        @media (min-width: 992.02px) {
-            display: block;
-            @include adaptiveValue("margin-bottom", 20px, 30px, 992.02px, $pc);
-        }
-    }
-
-    &__parameter {
-        display: flex;
-        flex-flow: row nowrap;
-        justify-content: space-between;
-        align-items: flex-end;
-        padding: 10px 10px 5px;
-        line-height: 17px;
-        font-size: 14px;
-        font-weight: 300;
-        color: $secondaryColor;
-
-        &:nth-child(even) {
-            background-color: $thirdColor;
-        }
-
-        @media (min-width: $smallMobile) {
-            @include adaptiveValue("margin-bottom", 5px, 10px, $smallMobile, $mobile);
-            padding: 0;
-            @include adaptiveValue("line-height", 17px, 19px, $smallMobile, $mobile);
-            @include adaptiveValue("font-size", 14px, 16px, $smallMobile, $mobile);
-
-            &:nth-child(even) {
-                background-color: transparent;
-            }
-        }
-
-        @media (min-width: $mobile) {
-            @include adaptiveValue("margin-bottom", 10px, 12px, $mobile, 992.02px);
-            @include adaptiveValue("line-height", 19px, 24px, $mobile, 992.02px);
-            @include adaptiveValue("font-size", 16px, 18px, $mobile, 992.02px);
-        }
-
-        @media (min-width: 992.02px) {
-            @include adaptiveValue("margin-bottom", 5px, 10px, $mobile, $maxContainerWidth);
-            @include adaptiveValue("line-height", 16px, 19px, $mobile, $maxContainerWidth);
-            @include adaptiveValue("font-size", 12px, 16px, $mobile, $maxContainerWidth);
-        }
-
-        &_note {
-            font-style: italic;
-            
-            &:last-child {
-                padding-top: 15px;
-                background-color: transparent;
-            }
-        }
-    }
-
-    &__parameter-name {
-        flex: 0 1 auto;
-
-        @media (min-width: $smallMobile) {
-
-            br {
-                display: none;
-            }
-        }
-
-        @media (min-width: 992.02px) {
-            br {
-                display: inline;
-            }
-        }
-
-        @media (min-width: $tablet) {
-            br {
-                display: none;
-            }
-        }
-    }
-
-    &__parameter-space {
-        flex: 1 1 auto;
-        margin: 0 15px;
-
-        @media (min-width: $smallMobile) {
-            @include adaptiveValue("height", 14px, 18px, $smallMobile, $mobile);
-            margin: 0 5px 2px;
-            border-bottom: 2px dotted $secondaryColor;
-        }
-
-        @media (min-width: $mobile) {
-            @include adaptiveValue("height", 14px, 18px, $mobile, $maxContainerWidth);
-        }
-    }
-
-    &__parameter-value {
-        flex: 0 1 auto;
-        text-align: right;
-
-        @media (min-width: $smallMobile) {
-            flex: 0 0 auto;
-            text-align: left;
-        }
-    }
-}
-
-.characteristics {
-    display: flex;
-    flex-flow: column nowrap;
-    justify-content: flex-start;
-    align-items: stretch;
-    @include adaptiveValue("gap", 5px, 10px, $minWidth, $smallMobile);
-    width: 100%;
-
-    @media (min-width: $smallMobile) {
-        @include adaptiveValue("gap", 5px, 10px, $smallMobile, $mobile);
-    }
-
-    @media (min-width: $mobile) {
-        flex-flow: row nowrap;
-        justify-content: space-between;
-        align-items: start;
-        gap: 4%;
-    }
-
-    &__section {
-        
-        @media (min-width: $mobile) {
-            flex: 1 1 50%;
-        }
-    }
-
-    &__subtitle {
-        @include adaptiveValue("margin-bottom", 10px, 20px, $minWidth, $mobile);
-        @include adaptiveValue("line-height", 22px, 29px, $minWidth, $mobile);
-        @include adaptiveValue("font-size", 18px, 24px, $minWidth, $mobile);
-        font-weight: 400;
-        color: $primaryColor;
-        
-        @media (min-width: $mobile) {
-            @include adaptiveValue("margin-bottom", 10px, 20px, $mobile, $maxContainerWidth);
-            @include adaptiveValue("line-height", 22px, 29px, $mobile, $maxContainerWidth);
-            @include adaptiveValue("font-size", 18px, 24px, $mobile, $maxContainerWidth);
-        }
-        
-        &:nth-of-type(2) {
-            @include adaptiveValue("margin-top", 10px, 20px, $minWidth, $mobile);
-
-            @media (min-width: $mobile) {
-                @include adaptiveValue("margin-top", 10px, 20px, $mobile, $maxContainerWidth);
-            }
-        }
-    }
-
-    &__parameter {
-        display: flex;
-        flex-flow: row nowrap;
-        justify-content: space-between;
-        align-items: flex-end;
-        padding: 10px 10px 5px;
-        line-height: 17px;
-        font-size: 14px;
-        font-weight: 300;
-        color: $secondaryColor;
-
-        &:nth-child(even) {
-            background-color: $thirdColor;
-        }
-
-        @media (min-width: $smallMobile) {
-            @include adaptiveValue("margin-bottom", 5px, 10px, $smallMobile, $mobile);
-            padding: 0;
-            @include adaptiveValue("line-height", 17px, 19px, $smallMobile, $mobile);
-            @include adaptiveValue("font-size", 14px, 16px, $smallMobile, $mobile);
-
-            &:nth-child(even) {
-                background-color: transparent;
-            }
-        }
-
-        @media (min-width: $mobile) {
-            @include adaptiveValue("margin-bottom", 5px, 10px, $mobile, $maxContainerWidth);
-            @include adaptiveValue("line-height", 16px, 19px, $mobile, $maxContainerWidth);
-            @include adaptiveValue("font-size", 12px, 16px, $mobile, $maxContainerWidth);
-        }
-    }
-
-    &__parameter-name {
-        flex: 0 1 auto;
-    }
-
-    &__parameter-space {
-        flex: 1 1 auto;
-        margin: 0 15px;
-
-        @media (min-width: $smallMobile) {
-            @include adaptiveValue("height", 14px, 18px, $smallMobile, $mobile);
-            margin: 0 5px 2px;
-            border-bottom: 2px dotted $secondaryColor;
-        }
-
-        @media (min-width: $mobile) {
-            @include adaptiveValue("height", 14px, 18px, $mobile, $maxContainerWidth);
-        }
-    }
-
-    &__parameter-value {
-        flex: 0 1 auto;
-        text-align: right;
-
-        @media (min-width: $smallMobile) {
-            flex: 0 0 auto;
-            text-align: left;
-        }
-    }
-}
-
-//--------------------------------------------------------------------------------------------
-
-//----- Work ---------------------------------------------------------------------------------
-
-.work {
-
-    &__gallery {
-
-        @media (min-width: $mobile) {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            grid-auto-rows: 1fr;
-            gap: 3px;
-        }
-    }
-
-    &__title {
-        @include adaptiveValue("margin-bottom", 25px, 40px, $minWidth, $mobile);
-
-        @media (min-width: $mobile) {
-            @include adaptiveValue("max-width", 100px, 220px, $mobile, $pc);
-            justify-self: center;
-            align-self: center;
-            margin-bottom: 0;
-            text-align: left;
-        }
-    }
-
-    &__block {
-        display: none;
-
-        @media (min-width: $mobile) {
-            display: block;
-            position: relative;
-            cursor: pointer;
-            -webkit-tap-highlight-color: transparent;
-        }
-    }
-
-    &__visible-block {
-        position: relative;
-
-        &::after {
-            content: '';
-            display: block;
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: $backgroundColor;
-            opacity: 0.7;
-            transition: opacity 0.3s ease;
-
-            @media (any-hover: hover) {
-
-                .work__block:hover & {
-                    opacity: 0;
-                }
-            }
-
-            @media (any-hover: none) {
-
-                .spoiler-block_active & {
-                    opacity: 0;
-                }
-            }
-        }
-    }
-
-    &__block-photo {
-        display: block;
-        width: 100%;
-    }
-
-    &__block-number {
-        position: absolute;
-        bottom: 0;
-        @include adaptiveValue("width", 25px, 50px, $mobile, $pc);
-        @include adaptiveValue("padding-bottom", 10px, 20px, $mobile, $pc);
-        @include adaptiveValue("line-height", 20px, 38px, $mobile, $pc);
-        @include adaptiveValue("font-size", 16px, 32px, $mobile, $pc);
-        font-weight: 400;
-        color: $primaryColor;
-        z-index: 1;
-
-        .work__block:nth-child(2) &,
-        .work__block:nth-child(3) &,
-        .work__block:nth-child(4) & {
-            left: 0;
-            text-align: right;
-        }
-
-        .work__block:nth-child(5) &,
-        .work__block:nth-child(6) &,
-        .work__block:nth-child(7) &,
-        .work__block:nth-child(8) & {
-            right: 0;
-            text-align: left;
-        }
-
-        &::after {
-            content: '';
-            display: block;
-            position: absolute;
-            left: 0;
-            bottom: 0;
-            width: 100%;
-            @include adaptiveValue("padding-bottom", 5px, 10px, $mobile, $pc);
-            @extend %orange-bar;
-        }
-    }
-
-    &__hidden-block {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        position: absolute;
-        width: 100%;
-        height: calc(200% + 3px);
-        @include adaptiveValue("padding-left", 15px, 40px, $mobile, $pc);
-        @include adaptiveValue("padding-right", 15px, 40px, $mobile, $pc);
-        background-color: $primaryColor;
-        z-index: 5;
-        opacity: 0;
-        transform: scale(0.3, 0.3);
-        pointer-events: none;
-        transition: opacity 0.3s ease,
-                transform 0.3s ease;
-            
-        .work__block:nth-child(2) &,
-        .work__block:nth-child(3) &,
-        .work__block:nth-child(4) & {
-            top: 0;
-            left: calc(-100% - 3px);
-            text-align: right;
-            transform-origin: center right;
-        }
-        
-        .work__block:nth-child(5) &,
-        .work__block:nth-child(6) &,
-        .work__block:nth-child(7) & {
-            bottom: 0;
-            left: calc(100% + 3px);
-            transform-origin: bottom left;
-        }
-
-        @media (min-width: $tablet) {
-            height: 100%;
-
-            .work__block:nth-child(2) &,
-            .work__block:nth-child(3) &,
-            .work__block:nth-child(4) & {
-                transform-origin: bottom right;
-            }
-            
-            .work__block:nth-child(5) &,
-            .work__block:nth-child(6) &,
-            .work__block:nth-child(7) & {
-                bottom: 0;
-                left: calc(100% + 3px);
-                transform-origin: bottom left;
-            }
-        }
-                
-        @media (any-hover: hover) {
-
-            .work__block:hover & {
-                opacity: 1;
-                transform: scale(1, 1);
-            }
-        }
-
-        @media (any-hover: none) {
-            visibility: hidden;
-
-            .spoiler-block_active & {
-                opacity: 1;
-                transform: scale(1, 1);
-                pointer-events: auto;
-            }
-        }
-    }
-
-    &__hidden-block-text {
-        text-align: left;
-        @include adaptiveValue("line-height", 17px, 26px, $mobile, $maxContainerWidth);
-        @include adaptiveValue("font-size", 16px, 22px, $mobile, $maxContainerWidth);
-        font-weight: 300;
-        color: $backgroundColor;
-
-        @media (min-width: $tablet) {
-            line-height: 20px;
-            font-size: 16px;
-        }
-    }
-
-    &__video-icon {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        @include adaptiveValue("width", 50px, 90px, $minWidth, $smallMobile);
-        @include adaptiveValue("height", 50px, 90px, $minWidth, $smallMobile);
-        border-radius: 50%;
-        border: 3px solid $primaryColor;
-        box-shadow: 0px 0px 6px rgba(255, 187, 107, 0.5),
-                    inset 0px 0px 6px rgba(255, 187, 107, 0.5);
-        transition: box-shadow 0.3s ease,
-                    border-color 0.3s ease;
-        z-index: 2;
-
-        @media (min-width: $smallMobile) {
-            @include adaptiveValue("width", 50px, 90px, $smallMobile, $mobile);
-            @include adaptiveValue("height", 50px, 90px, $smallMobile, $mobile);
-        }
-
-        @media (min-width: $mobile) {
-            @include adaptiveValue("width", 50px, 90px, $mobile, $pc);
-            @include adaptiveValue("height", 50px, 90px, $mobile, $pc);
-        }
-
-        &::after {
-            content: '';
-            position: absolute;
-            display: block;
-            top: 50%;
-            left: 33.3%;
-            transform: translateY(-50%);
-            width: 0;
-            height: 0;
-            border-top-style: solid;
-            border-bottom-style: solid;
-            border-left-style: solid;
-            border-top-color: transparent;
-            border-bottom-color: transparent;
-            border-left-color: $primaryColor;
-            @include adaptiveValue("border-top-width", 12px, 22px, $minWidth, $smallMobile);
-            @include adaptiveValue("border-bottom-width", 12px, 22px, $minWidth, $smallMobile);
-            @include adaptiveValue("border-left-width", 21px, 38px, $minWidth, $smallMobile);
-            transition: filter 0.3s ease,
-                        border-left-color 0.3s ease;
-
-            @media (min-width: $smallMobile) {
-                @include adaptiveValue("border-top-width", 12px, 22px, $smallMobile, $mobile);
-                @include adaptiveValue("border-bottom-width", 12px, 22px, $smallMobile, $mobile);
-                @include adaptiveValue("border-left-width", 21px, 38px, $smallMobile, $mobile);
-            }
-
-            @media (min-width: $mobile) {
-                @include adaptiveValue("border-top-width", 12px, 22px, $mobile, $pc);
-                @include adaptiveValue("border-bottom-width", 12px, 22px, $mobile, $pc);
-                @include adaptiveValue("border-left-width", 21px, 38px, $mobile, $pc);
-            }
-
-            @media (any-hover: hover) {
-                .work__block:hover &,
-                .work__slide-photo-block:hover & {
-                    filter: drop-shadow(0px 0px 8px rgba(255, 187, 107, 0.7));
-                }
-            }
-
-            .work__block:active &,
-            .work__slide-photo-block:active & {
-                border-left-color: #d6780d;
-                filter: drop-shadow(0px 0px 8px rgba(255, 187, 107, 0.7));
-            }
-        }
-
-        .work__block:active &,
-        .work__slide-photo-block:active & {
-            border-color: #d6780d;
-            box-shadow: 0px 0px 15px rgba(255, 187, 107, 0.8);
-        }
-    }
-
-    &__slider {
-        width: 100%;
-        min-width: $minWidth;
-        @include adaptiveValue("height", 410px, 490px, $minWidth, $smallMobile);
-
-        @media (min-width: $smallMobile) {
-            @include adaptiveValue("height", 420px, 480px, $smallMobile, $mobile);
-        }
-
-        @media (min-width: $mobile) {
-            display: none;
-        }
-    }
-
-    &__slider-wrapper {
-    }
-
-    &__slide {
-        display: flex;
-        flex-flow: column nowrap;
-        justify-content: flex-start;
-        align-items: center;
-    }
-
-    &__slide-photo-block {
-        position: relative;
-        width: 100%;
-        flex: 0 0 auto;
-
-        @media (any-hover: hover) {
-
-            &::after {
-                content: '';
-                display: block;
-                position: absolute;
-                top: 0;
-                left: 0;
-                width: 100%;
-                height: 100%;
-                background-color: $backgroundColor;
-                opacity: 0.7;
-                transition: opacity 0.3s ease;
-            }
-
-            &:hover::after {
-                opacity: 0;
-            }
-        }
-
-        &[data-popup]::after {
-            content: '';
-            display: block;
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: $backgroundColor;
-            opacity: 0.7;
-        }
-    }
-
-    &__slide-photo {
-        display: block;
-        width: 100%;
-    }
-
-    &__slide-number {
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        width: 50px;
-        padding-bottom: 20px;
-        text-align: right;
-        line-height: 38px;
-        font-size: 32px;
-        font-weight: 400;
-        color: $primaryColor;
-        z-index: 1;
-
-        @media (min-width: $smallMobile) {
-            @include adaptiveValue("width", 25px, 50px, $smallMobile, $mobile);
-            @include adaptiveValue("padding-bottom", 10px, 20px, $smallMobile, $mobile);
-            @include adaptiveValue("line-height", 20px, 38px, $smallMobile, $mobile);
-            @include adaptiveValue("font-size", 16px, 32px, $smallMobile, $mobile);
-        }
-
-        &::after {
-            content: '';
-            display: block;
-            position: absolute;
-            left: 0;
-            bottom: 0;
-            width: 100%;
-            @include adaptiveValue("padding-bottom", 5px, 10px, $minWidth, $smallMobile);
-            @extend %orange-bar;
-
-            @media (min-width: $smallMobile) {
-                @include adaptiveValue("padding-bottom", 5px, 10px, $smallMobile, $mobile);
-            }
-        }
-    }
-
-    &__slide-text {
-        flex: 1 1 auto;
-        padding: 20px;
-        background-color: $primaryColor;
-        text-align: left;  
-        @include adaptiveValue("line-height", 16px,19px, $minWidth, $smallMobile);
-        @include adaptiveValue("font-size", 14px,16px, $minWidth, $smallMobile);
-        font-weight: 300;
-        color: $secondaryColor;
-        z-index: 1;
-
-        @media (min-width: $smallMobile) {
-            @include adaptiveValue("line-height", 16px,19px, $smallMobile, $mobile);
-            @include adaptiveValue("font-size", 14px,16px, $smallMobile, $mobile);
-        }
-    }
-
-    &__slider-scrollbar {
-        height: 5px;
-        margin-top: 15px;
-        background-color: $thirdColor;
-        cursor: pointer;
-        -webkit-tap-highlight-color: transparent;
-
-        .swiper-scrollbar-drag {
-            height: 5px;
-            background-color: $primaryColor;
-        }
-    }
-}
-
-//--------------------------------------------------------------------------------------------
-
-//----- About us -----------------------------------------------------------------------------
-
-.about-us {
-    min-width: $minWidth;
-
-    @media (min-width: $smallMobile) {
-        @include adaptiveValue("padding-top", 20px, 40px, $smallMobile, $mobile);
-        @include adaptiveValue("padding-bottom", 20px, 40px, $smallMobile, $mobile);
-        background-repeat: no-repeat;
-        background-size: auto 100%;
-        background-position: left top;
-        background-image: url("../img/about_us/about-us-bg.webp");
-    }
-
-    @media (min-width: $mobile) {
-        @include adaptiveValue("height", 565px, 900px, $mobile, $maxContainerWidth);
-        @include adaptiveValue("padding-top", 45px, 75px, $mobile, $maxContainerWidth);
-    }
-
-    &::after {
-        content: '';
-        display: none;
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: linear-gradient(rgba(5, 6, 0, 1) 0%, rgba(5, 6, 0, 0.01) 8%, rgba(5, 6, 0, 0) 10%,);
-
-        @media (min-width: $smallMobile) {
-            display: block;
-        }
-    }
-
-    &__container {
-        position: relative;
-    }
-
-    &__serpentine-right {
-        display: none;
-        
-        @media (min-width: $pc) {
-            display: block;
-            position: absolute;
-            right: -100px;
-            top: 470px;
-            width: 100px;
-            transform: scaleX(-1) rotate(-10deg);
-            filter: blur(1px);
-        }
-    }
-
-    &__snowflake-big {
-        display: block;
-        position: absolute;
-        z-index: 1;
-        @include adaptiveValue("bottom", -50px, -75px, $minWidth, $smallMobile);
-        @include adaptiveValue("right", 20px, 20px, $minWidth, $smallMobile);
-        @include adaptiveValue("width", 40px, 60px, $minWidth, $smallMobile);
-
-        @media (min-width: $smallMobile) {
-            @include adaptiveValue("bottom", -75px, -120px, $smallMobile, $mobile);
-            @include adaptiveValue("right", 20px, 60px, $smallMobile, $mobile);
-            @include adaptiveValue("width", 60px, 90px, $smallMobile, $mobile);
-        }
-
-        @media (min-width: $mobile) {
-            @include adaptiveValue("bottom", -120px, -200px, $mobile, $pc);
-            @include adaptiveValue("right", 60px, 80px, $mobile, $pc);
-            @include adaptiveValue("width", 90px, 170px, $mobile, $pc);
-        }
-    }
-
-    &__title {
-        position: relative;
-        max-width: 300px;
-        margin: 0 auto 25px;
-
-        @media (min-width: $smallMobile) {
-            max-width: none;
-            margin: 0;
-            @include adaptiveValue("margin-bottom", 25px, 35px, $smallMobile, $mobile);
-        }
-
-        @media (min-width: $mobile) {
-            max-width: 880px;
-            margin-left: auto;
-            @include adaptiveValue("margin-bottom", 35px, 60px, $mobile, $maxContainerWidth);
-        }
-    }
-
-    &__star {
-        display: block;
-        position: absolute;
-        z-index: 10;
-        @include adaptiveValue("top", -45px, -50px, $minWidth, $smallMobile);
-        @include adaptiveValue("left", 120px, 150px, $minWidth, $smallMobile);
-        @include adaptiveValue("width", 40px, 40px, $minWidth, $smallMobile);
-        transform: rotate(60deg);
-
-        @media (min-width: $smallMobile) {
-            @include adaptiveValue("top", -50px, -60px, $smallMobile, $mobile);
-            @include adaptiveValue("left", 190px, 340px, $smallMobile, $mobile);
-            @include adaptiveValue("width", 40px, 50px, $smallMobile, $mobile);
-        }
-
-        @media (min-width: $mobile) {
-            @include adaptiveValue("top", -60px, -110px, $mobile, $pc);
-            @include adaptiveValue("left", 340px, 400px, $mobile, $pc);
-            @include adaptiveValue("width", 50px, 90px, $mobile, $pc);
-        }
-    }
-
-    &__content {
-        position: relative;
-        display: grid;
-        grid-template-columns: 1fr;
-        grid-auto-rows: 1fr;
-        gap: 20px;
-        z-index: 1;
-
-        @media (min-width: $smallMobile) {
-            grid-template-columns: repeat(6, 1fr);
-            grid-auto-rows: 1fr;
-            @include adaptiveValue("gap", 10px, 20px, $smallMobile, $mobile);
-        }
-
-        @media (min-width: $mobile) {
-            @include adaptiveValue("gap", 10px, 20px, $mobile, $maxContainerWidth);
-            max-width: 880px;
-            margin-left: auto;
-        }
-    }
-
-    &__item {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        position: relative;
-        padding: 35px;
-        background-color: $primaryColor;
-
-        &:nth-child(6) {
-            display: none;
-        }
-
-        &:not(:nth-child(1)) {
-            z-index: -2;
-        }
-
-        @media (min-width: $smallMobile) {
-            @include adaptiveValue("padding", 10px, 20px, $smallMobile, $mobile);
-            
-            &:nth-child(1) {
-                grid-column: 1/4; 
-                grid-row: 1;
-            }
-
-            &:nth-child(2) {
-                grid-column: 5/7; 
-                grid-row: 2;
-            }
-
-            &:nth-child(3) {
-                grid-column: 1/3; 
-                grid-row: 3;
-            }
-
-            &:nth-child(4) {
-                grid-column: 4/7; 
-                grid-row: 1;
-            }
-
-            &:nth-child(5) {
-                grid-column: 1/5; 
-                grid-row: 2;
-            }
-
-            &:nth-child(6) {
-                display: block;
-                grid-column: 3/7; 
-                grid-row: 3;
-            }
-        }
-
-        @media (min-width: $mobile) {
-            @include adaptiveValue("padding-top", 20px, 30px, $mobile, $maxContainerWidth);
-            @include adaptiveValue("padding-bottom", 20px, 30px, $mobile, $maxContainerWidth);
-            @include adaptiveValue("padding-right", 10px, 15px, $mobile, $maxContainerWidth);
-            @include adaptiveValue("padding-left", 10px, 15px, $mobile, $maxContainerWidth);
-            
-            &:nth-child(1) {
-                grid-column: 1/3; 
-                grid-row: 1;
-            }
-
-            &:nth-child(2) {
-                grid-column: 3/5; 
-                grid-row: 1;
-            }
-
-            &:nth-child(3) {
-                grid-column: 5/7; 
-                grid-row: 1;
-            }
-
-            &:nth-child(4) {
-                grid-column: 1/4; 
-                grid-row: 2;
-            }
-
-            &:nth-child(5) {
-                grid-column: 4/7; 
-                grid-row: 2;
-            }
-
-            &:nth-child(6) {
-                grid-column: 1/7; 
-                grid-row: 3;
-            }
-        }
-    }
-
-    &__item-text {
-        text-align: center;
-        line-height: 22px;
-        font-size: 18px;
-        font-weight: 300;
-        color: $backgroundColor;
-
-        @media (min-width: $smallMobile) {
-            @include adaptiveValue("line-height", 20px, 24px, $smallMobile, $mobile);
-            @include adaptiveValue("font-size", 16px, 20px, $smallMobile, $mobile);
-        }
-
-        @media (min-width: $mobile) {
-            @include adaptiveValue("line-height", 22px, 30px, $mobile, $maxContainerWidth);
-            @include adaptiveValue("font-size", 18px, 24px, $mobile, $maxContainerWidth);
-        }
-    }
-
-    &__highlighted {
-        font-weight: 700;
-        color: $secondaryColor;
-    }
-
-    &__serpentine-left {
-        display: block;
-        position: absolute;
-        top: 90%;
-        left: -10px;
-        z-index: -1;
-        width: 70px;
-
-        @media (min-width: $mobile) {
-            top: 80%;
-            @include adaptiveValue("left", -10px, -50px, $mobile, $pc);
-            @include adaptiveValue("width", 70px, 140px, $mobile, $pc);
-        }
-    }
-
-    &__tree-toy {
-        display: none;
-
-        @media (min-width: $tablet) {
-            display: block;
-            position: absolute;
-            top: calc(100% - 44px);
-            right: calc(100% - 72px);
-        }
-    }
-}
-
-//--------------------------------------------------------------------------------------------
-
-//----- Order --------------------------------------------------------------------------------
-
-.order {
-
-    &__container {
-    }
-
-    &__title {
-        margin-bottom: 25px;
-        
-        @media (min-width: $smallMobile) {
-            @include adaptiveValue("margin-bottom", 15px, 70px, $smallMobile, $tablet);
-            @include adaptiveValue("margin-left", 0px, 100px, $smallMobile, $pc);
-        }
-    }
-
-    &__body {
-        position: relative;
-        left: -$containerPadding;
-        width: 100vw;
-        
-        @media (min-width: $smallMobile) {
-            left: 0;
-            width: 100%;
-        }
-        
-        @media (min-width: $mobile) {
-            display: flex;
-            align-items: stretch;
-        }
-
-    }
-
-    &__image {
-        display: none;
-
-        @media (min-width: $mobile) {
-            display: block;
-            position: relative;
-            flex-grow: 0;
-            flex-shrink: 1;
-            @include adaptiveValue("flex-basis", 308px, 580px, $mobile, $maxContainerWidth);
-            min-height: 100%;
-        }
-    }
-
-    &__photo {
-        display: block;
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        width: 100%;
-        opacity: 0;
-        transition: opacity 0.5s ease;
-
-        &_visible {
-            opacity: 1;
-        }
-    }
-
-    &__content {
-        position: relative;
-        min-width: $minWidth;
-        @include adaptiveValue("padding-top", 30px, 50px, $smallMobile, $maxContainerWidth);
-        @include adaptiveValue("padding-bottom", 40px, 50px, $smallMobile, $maxContainerWidth);
-        @include adaptiveValue("padding-left", 20px, 35px, $smallMobile, $maxContainerWidth);
-        @include adaptiveValue("padding-right", 20px, 35px, $smallMobile, $maxContainerWidth);
-        z-index: 1;
-
-        @media (min-width: $mobile) {
-            flex-grow: 0;
-            flex-shrink: 0;
-            @include adaptiveValue("flex-basis", 420px, 600px, $mobile, $maxContainerWidth);
-        }
-
-        @media (min-width: $tablet) {
-            flex-basis: 680px;
-        }
-    }
-
-    &__buttons {
-        margin-bottom: 20px;
-
-        @media (min-width: $smallMobile) {
-            @include adaptiveValue("margin-bottom", 10px, 30px, $smallMobile, $mobile);
-        }
-
-        @media (min-width: $mobile) {
-            @include adaptiveValue("margin-bottom", 10px, 30px, $mobile, $maxContainerWidth);
-        }
-    }
-
-    &__accessories {
-        margin-bottom: 20px;
-
-        @media (min-width: $smallMobile) {
-            @include adaptiveValue("margin-bottom", 10px, 20px, $smallMobile, $mobile);
-        }
-
-        @media (min-width: $mobile) {
-            max-width: none;
-            @include adaptiveValue("margin-bottom", 15px, 30px, $mobile, $maxContainerWidth);
-        }
-    }
-
-    &__form {
-        display: flex;
-        flex-flow: column nowrap;
-        justify-content: flex-start;
-        align-items: center;
-        gap: 10px;
-        margin: 0 auto;
-    }
-
-    &__phone-name {
-        display: flex;
-        flex-flow: column nowrap;
-        justify-content: flex-start;
-        align-items: center;
-        gap: 10px;
-        width: 100%;
-
-        @media (min-width: $smallMobile) {
-            flex-flow: row nowrap;
-            @include adaptiveValue("gap", 10px, 20px, $smallMobile, $mobile);
-        }
-
-        @media (min-width: $mobile) {
-            @include adaptiveValue("gap", 10px, 20px, $mobile, $maxContainerWidth);
-        }
-    }
-
-    &__input-name,
-    &__input-phone {
-        width: 100%;
-        flex: 0 0 auto;
-        @include adaptiveValue("height", 40px, 50px, $smallMobile, $maxContainerWidth);
-        @include adaptiveValue("padding-top", 10px, 15px, $smallMobile, $maxContainerWidth);
-        @include adaptiveValue("padding-bottom", 10px, 15px, $smallMobile, $maxContainerWidth);
-        @include adaptiveValue("padding-left", 15px, 30px, $smallMobile, $maxContainerWidth);
-        @include adaptiveValue("padding-right", 15px, 30px, $smallMobile, $maxContainerWidth);
-        background-color: $backgroundColor;
-        @include adaptiveValue("line-height", 19px, 22px, $smallMobile, $maxContainerWidth);
-        @include adaptiveValue("font-size", 16px, 19px, $smallMobile, $maxContainerWidth);
-        font-weight: 200;
-        color: $primaryColor;
-
-        @media (min-width: $smallMobile) {
-            width: 50%;
-            flex: 0 1 50%;
-        }
-
-        &::placeholder {
-            color: $primaryColor;
-            transition: color 0.3s ease;
-        }
-
-        &:focus::placeholder {
-            color: transparent;
-        }
-    }
-
-    &__promo {
-        display: flex;
-        flex-flow: row nowrap;
-        justify-content: flex-start;
-        align-items: center;
-        gap: 10px;
-        width: 100%;
-
-        @media (min-width: $smallMobile) {
-            @include adaptiveValue("gap", 10px, 20px, $smallMobile, $mobile);
-        }
-
-        @media (min-width: $mobile) {
-            @include adaptiveValue("gap", 10px, 20px, $mobile, $maxContainerWidth);
-        }
-    }
-
-    &__input-promo {
-        flex: 0 1 50%;
-        width: 50%;
-        @include adaptiveValue("height", 40px, 50px, $smallMobile, $maxContainerWidth);
-        @include adaptiveValue("padding-top", 10px, 15px, $smallMobile, $maxContainerWidth);
-        @include adaptiveValue("padding-bottom", 10px, 15px, $smallMobile, $maxContainerWidth);
-        @include adaptiveValue("padding-left", 15px, 30px, $smallMobile, $maxContainerWidth);
-        @include adaptiveValue("padding-right", 15px, 30px, $smallMobile, $maxContainerWidth);
-        background-color: $backgroundColor;
-        @include adaptiveValue("line-height", 19px, 22px, $smallMobile, $maxContainerWidth);
-        @include adaptiveValue("font-size", 16px, 18px, $smallMobile, $maxContainerWidth);
-        font-weight: 200;
-        color: $primaryColor;
-
-        &::placeholder {
-            color: $primaryColor;
-            transition: color 0.3s ease;
-        }
-
-        &:focus::placeholder {
-            color: transparent;
-        }
-    }
-
-    &__promo-button {
-        flex: 0 1 auto;
-        width: 50%;
-        @include adaptiveValue("height", 40px, 50px, $smallMobile, $maxContainerWidth);
-        line-height: 22px;
-        font-size: 18px;
-        font-weight: 400;
-
-        @media (min-width: $smallMobile) {
-            width: 50%;
-        }
-    }
-
-    &__promo-del-button {
-        display: none;
-        flex: 0 1 auto;
-        width: 50%;
-        @include adaptiveValue("height", 40px, 50px, $smallMobile, $maxContainerWidth);
-        line-height: 22px;
-        font-size: 18px;
-        font-weight: 400;
-
-        @media (min-width: $smallMobile) {
-            width: 50%;
-        }
-    }
-
-    &__promo-info {
-        display: flex;
-        justify-content: flex-start;
-        align-items: flex-start;
-        width: 100%;
-        flex: 0 1 auto;
-        @include adaptiveValue("line-height", 18px, 20px, $smallMobile, $maxContainerWidth);
-        @include adaptiveValue("font-size", 14px, 16px, $smallMobile, $maxContainerWidth);
-        font-weight: 200;
-        color: $secondaryColor;
-    }
-
-    &__promo-info-text {
-        @include adaptiveValue("padding-top", 5px, 10px, $smallMobile, $maxContainerWidth);
-        @include adaptiveValue("padding-bottom", 5px, 10px, $smallMobile, $maxContainerWidth);
-    }
-
-    &__button {
-        width: 100%;
-        flex: 0 0 60px;
-        line-height: 22px;
-        font-size: 18px;
-        font-weight: 300;
-
-        @media (min-width: $smallMobile) {
-            @include adaptiveValue("line-height", 22px, 30px, $smallMobile, $mobile);
-            @include adaptiveValue("font-size", 18px, 24px, $smallMobile, $mobile);
-        }
-
-        @media (min-width: $mobile) {
-            @include adaptiveValue("line-height", 22px, 30px, $mobile, $maxContainerWidth);
-            @include adaptiveValue("font-size", 18px, 24px, $mobile, $maxContainerWidth);
-        }
-    }
-}
-
-.accessories {
-    display: grid;
-    grid-template-rows: 1fr auto;
-    grid-template-columns: 1fr 1fr;
-    @include adaptiveValue("row-gap", 10px, 20px, $minWidth, $mobile);
-    @include adaptiveValue("column-gap", 5px, 15px, $minWidth, $mobile);
-
-    @media (min-width: $mobile) {
-        grid-template-columns: 1fr;
-        @include adaptiveValue("row-gap", 15px, 30px, $mobile, $tablet);
-    }
-
-    &__wrapper {
-        position: relative;
-        grid-row: 1/3;
-        grid-column: 1/2;
-        transition: height 0.3s ease;
-
-        @media (min-width: $mobile) {
-            grid-row: 1/2;
-        }
-    }
-
-    &__inner {
-        position: absolute;
-        display: grid;
-        grid-template-columns: 1fr;
-        grid-auto-flow: row;
-        align-items: start;
-        @include adaptiveValue("row-gap", 3px, 10px, $minWidth, $mobile);
-        width: 100%;
-        transition: opacity 0.2s ease,
-                    transform 0.2s ease;
-
-        @media (min-width: $mobile) {
-            @include adaptiveValue("row-gap", 5px, 15px, $mobile, $tablet);
-            @include adaptiveValue("column-gap", 10px, 20px, $mobile, $tablet);
-        }
-
-        @media (min-width: $tablet) {
-            grid-template-columns: 1fr 1fr;
-        }
-
-        &_animation {
-            transform: scaleY(0);
-            opacity: 0;
-            pointer-events: none;
-        }
-    }
-
-    &__accessory {
-        position: relative;
-        display: flex;
-        flex-flow: column nowrap;
-        gap: 5px;
-        -webkit-tap-highlight-color: transparent;
-        
-        @media (min-width: $mobile) {
-            flex-flow: row nowrap;
-        }
-    }
-    
-    &__accessory-name {
-        position: relative;
-        margin-left: 20px;
-        text-decoration: underline 1px dashed;
-        text-underline-position: under left;
-        @include adaptiveValue("line-height", 14px, 19px, $minWidth, $mobile);
-        @include adaptiveValue("font-size", 12px, 16px, $minWidth, $mobile);
-        font-weight: 200;
-        color: $primaryColor;
-        cursor: pointer;
-
-        @media (min-width: $mobile) {
-            flex: 0 1 auto;
-            @include adaptiveValue("line-height", 14px, 19px, $mobile, $tablet);
-            @include adaptiveValue("font-size", 12px, 16px, $mobile, $tablet);
-        }
-
-    }
-
-    &__accessory-check-box {
-        position: absolute;
-        top: 5px;
-        left: -20px;
-        width: 10px;
-        height: 10px;
-        border: 1px solid $primaryColor;
-        background-color: transparent;
-        transition: background-color 0.3s ease;
-        -webkit-tap-highlight-color: transparent;
-
-        .accessories__accessory-input:checked + & {
-            background-color: $primaryColor;
-        }
-
-        &::after {
-            content: '';
-            display: block;
-            position: absolute;
-            top: -1px;
-            left: -1px;
-            width: 10px;
-            height: 10px;
-            background-repeat: no-repeat;
-            background-size: contain;
-            background-position: center;
-            background-image: url("../img/order/tick.svg");
-            opacity: 0;
-            transition: opacity 0.3s ease;
-
-        }
-
-        .accessories__accessory-input:checked + &::after {
-            opacity: 1;
-        }
-    }
-
-    &__accessory-input {
-        display: none;
-    }
-
-    &__accessory-price {
-        margin-left: 20px;
-        @include adaptiveValue("line-height", 14px, 19px, $minWidth, $mobile);
-        @include adaptiveValue("font-size", 12px, 16px, $minWidth, $mobile);
-        font-weight: 200;
-        
-        @media (min-width: $mobile) {
-            flex: 1 0 auto;
-            margin-left: 0;
-            text-align: end;
-            @include adaptiveValue("line-height", 14px, 19px, $mobile, $tablet);
-            @include adaptiveValue("font-size", 12px, 16px, $mobile, $tablet);
-        }
-    }
-
-    &__present {
-
-        &::before {
-            content: '';
-            display: inline-block;
-            height: 16px;
-            width: 16px;
-            margin-right: 5px;
-            background-repeat: no-repeat;
-            background-size: contain;
-            background-position: center;
-            background-image: url("../img/order/present.svg");
-            transform: translateY(10%);
-        }
-    }
-
-    &__accessory-spoiler {
-        position: absolute;
-        top: calc(100% + 16px);
-        left: 0;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        @include adaptiveValue("gap", 3px, 5px, $minWidth, $mobile);
-        width: 150%;
-        @include adaptiveValue("padding", 5px, 10px, $minWidth, $mobile);
-        border: 1px solid $primaryColor;
-        background-color: $backgroundColor;
-        z-index: 1;
-        transform: translateY(20%) ;
-        opacity: 0;
-        pointer-events: none;
-        transition: opacity 0.3s ease,
-                    transform 0.3s ease;
-
-        @media (min-width: $smallMobile) {
-            width: 100%;
-        }
-
-        @media (min-width: $mobile) {
-            @include adaptiveValue("gap", 3px, 5px, $mobile, $tablet);
-            width: 60%;
-            @include adaptiveValue("padding", 5px, 10px, $mobile, $tablet);
-        }
-
-        @media (min-width: $tablet)  {
-            width: 100%;
-        }
-
-        &::after {
-            content: '';
-            display: block;
-            position: absolute;
-            top: -8px;
-            left: 16px;
-            width: 16px;
-            height: 16px;
-            transform: rotate(45deg) translateY(-1px);
-            border-top: 1px solid $primaryColor;
-            border-left: 1px solid $primaryColor;
-            background-color: $backgroundColor;
-        }
-
-        @media(any-hover: hover) {
-            .accessories__accessory-name:hover ~ & {
-                transform: translateY(0);
-                opacity: 1;
-                pointer-events: auto;
-            }
-        }
-    }
-
-    &__accessory-spoiler-text {
-        @include adaptiveValue("line-height", 14px, 16px, $minWidth, $mobile);
-        @include adaptiveValue("font-size", 12px, 14px, $minWidth, $mobile);
-        font-weight: 200;
-        color: $secondaryColor;
-
-        @media (min-width: $mobile) {
-            @include adaptiveValue("line-height", 14px, 16px, $mobile, $tablet);
-            @include adaptiveValue("font-size", 12px, 14px, $mobile, $tablet);
-        }
-    }
-
-    &__accessory-spoiler-image {
-        flex: 0 0 30%;
-    }
-
-    &__accessory-spoiler-photo {
-        display: block;
-        width: 100%;
-    }
-
-    &__image {
-        position: relative;
-        grid-row: 1/2;
-        grid-column: 2/3;
-        align-self: end;
-        pointer-events: none;
-        transition: height 0.3s ease;
-
-        @media (min-width: $mobile) {
-            display: none;
-        }
-    }
-    
-    &__photo {
-        position: absolute;
-        bottom: 0;
-        right: 0;
-        display: block;
-        width: 100%;
-        opacity: 0;
-        transition: opacity 0.4s ease;
-
-        
-        &.order__photo_visible {
-            opacity: 1;
-        }
-    }
-
-    &__prices {
-        grid-row: 2/3;
-        grid-column: 2/3;
-        align-items: center;
-
-        @media (min-width: $smallMobile) {
-            flex-flow: column-reverse nowrap;
-        }
-
-        @media (min-width: $mobile) {
-            grid-row: 2/3;
-            grid-column: 1/2;
-            flex-flow: row nowrap;
-            align-items: start;
-        }
-    }
-}
-
-//--------------------------------------------------------------------------------------------
-
-//----- Payment ------------------------------------------------------------------------------
-
-.payment {
-    position: relative;
-
-    &__container {
-    }
-
-    &__content {
-        display: grid;
-        grid-template-columns: 1fr;
-        grid-auto-flow: row;
-        gap: 40px;
-        max-width: 280px;
-        margin: 0 auto;
-
-        @media (min-width: $smallMobile) {
-            grid-template-columns: 1fr 1fr;
-            @include adaptiveValue("column-gap", 10px, 80px, $smallMobile, $mobile);
-            @include adaptiveValue("row-gap", 30px, 40px, $smallMobile, $mobile);
-            max-width: 750px;
-            @include adaptiveValue("padding-left", 0px, 40px, $smallMobile, $mobile);
-        }
-
-        @media (min-width: $tablet) {
-            grid-template-columns: repeat(4, 1fr);
-            grid-auto-rows: 1fr;
-            gap: 50px;
-            max-width: none;
-            margin: 0;
-            padding: 0;
-        }
-    }
-
-    &__item {
-        display: flex;
-        flex-flow: row nowrap;
-        justify-content: flex-start;
-        align-items: start;
-        gap: 20px;
-
-        @media (min-width: $smallMobile) {
-            @include adaptiveValue("gap", 10px, 20px, $smallMobile, $mobile);
-        }
-    }
-
-    &__icon {
-        width: 40px;
-        height: 40px;
-
-        @media (min-width: $smallMobile) {
-            @include adaptiveValue("width", 30px, 40px, $smallMobile, $mobile);
-            @include adaptiveValue("height", 30px, 40px, $smallMobile, $mobile);
-        }
-
-        @media (min-width: $mobile) {
-            width: 40px;
-            height: 40px;
-        }
-    }
-
-    &__item-body {
-        line-height: 19px;
-        font-size: 16px;
-
-        @media (min-width: $smallMobile) {
-            @include adaptiveValue("line-height", 16px, 19px, $smallMobile, $mobile);
-            @include adaptiveValue("font-size", 14px, 16px, $smallMobile, $mobile);
-        }
-
-        @media (min-width: $mobile) {
-            line-height: 19px;
-            font-size: 16px;
-        }
-    }
-
-    &__text {
-        font-weight: 700;
-        color: $primaryColor;
-    }
-
-    &__plan {
-        margin-top: 5px;
-        margin-bottom: 10px;
-        font-weight: 200;
-        color: $secondaryColor;
-    }
-
-    &__button {
-        width: 200px;
-        height: 40px;
-        font-weight: 400;
-
-        @media (min-width: $smallMobile) {
-            @include adaptiveValue("width", 150px, 200px, $smallMobile, $mobile);
-        }
-
-        @media (min-width: $mobile) {
-            width: 200px;
-            height: 40px;
-        }
-    }
-
-    &__snowflake-medium {
-        display: block;
-        position: absolute;
-        z-index: 10;
-        @include adaptiveValue("bottom", 0px, -10px, $minWidth, $smallMobile);
-        @include adaptiveValue("right", 0px, 10px, $minWidth, $smallMobile);
-        @include adaptiveValue("width", 40px, 60px, $minWidth, $smallMobile);
-
-        @media (min-width: $smallMobile) {
-            @include adaptiveValue("bottom", -10px, -20px, $smallMobile, $mobile);
-            @include adaptiveValue("right", 10px, 20px, $smallMobile, $mobile);
-            @include adaptiveValue("width", 40px, 60px, $smallMobile, $mobile);
-        }
-
-        @media (min-width: $mobile) {
-            @include adaptiveValue("bottom", -20px, 0px, $mobile, $tablet);
-            @include adaptiveValue("right", 20px, 170px, $mobile, $tablet);
-            @include adaptiveValue("width", 60px, 90px, $mobile, $tablet);
-        }
-
-        @media (min-width: $tablet) {
-            @include adaptiveValue("bottom", -40px, -50px, $tablet, $pc);
-            @include adaptiveValue("right", 270px, 250px, $tablet, $pc);
-            @include adaptiveValue("width", 90px, 110px, $tablet, $pc);
-        }
-    }
-}
-
-//--------------------------------------------------------------------------------------------
+@import "sections/title_screen.scss";
+@import "sections/advantages.scss";
+@import "sections/about.scss";
+@import "sections/perfection.scss";
+@import "sections/promo_discount.scss";
+@import "sections/autoclave.scss";
+@import "sections/comparison.scss";
+@import "sections/equipment.scss";
+@import "sections/work.scss";
+@import "sections/about_us.scss";
+@import "sections/order.scss";
+@import "sections/payment.scss";

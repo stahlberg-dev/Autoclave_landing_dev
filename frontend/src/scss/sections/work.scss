@@ -1,0 +1,405 @@
+.work {
+
+    &__gallery {
+
+        @media (min-width: $mobile) {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            grid-auto-rows: 1fr;
+            gap: 3px;
+        }
+    }
+
+    &__title {
+        @include adaptiveValue("margin-bottom", 25px, 40px, $minWidth, $mobile);
+
+        @media (min-width: $mobile) {
+            @include adaptiveValue("max-width", 100px, 220px, $mobile, $pc);
+            justify-self: center;
+            align-self: center;
+            margin-bottom: 0;
+            text-align: left;
+        }
+    }
+
+    &__block {
+        display: none;
+
+        @media (min-width: $mobile) {
+            display: block;
+            position: relative;
+            cursor: pointer;
+            -webkit-tap-highlight-color: transparent;
+        }
+    }
+
+    &__visible-block {
+        position: relative;
+
+        &::after {
+            content: '';
+            display: block;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: $backgroundColor;
+            opacity: 0.7;
+            transition: opacity 0.3s ease;
+
+            @media (any-hover: hover) {
+
+                .work__block:hover & {
+                    opacity: 0;
+                }
+            }
+
+            @media (any-hover: none) {
+
+                .spoiler-block_active & {
+                    opacity: 0;
+                }
+            }
+        }
+    }
+
+    &__block-photo {
+        display: block;
+        width: 100%;
+    }
+
+    &__block-number {
+        position: absolute;
+        bottom: 0;
+        @include adaptiveValue("width", 25px, 50px, $mobile, $pc);
+        @include adaptiveValue("padding-bottom", 10px, 20px, $mobile, $pc);
+        @include adaptiveValue("line-height", 20px, 38px, $mobile, $pc);
+        @include adaptiveValue("font-size", 16px, 32px, $mobile, $pc);
+        font-weight: 400;
+        color: $primaryColor;
+        z-index: 1;
+
+        .work__block:nth-child(2) &,
+        .work__block:nth-child(3) &,
+        .work__block:nth-child(4) & {
+            left: 0;
+            text-align: right;
+        }
+
+        .work__block:nth-child(5) &,
+        .work__block:nth-child(6) &,
+        .work__block:nth-child(7) &,
+        .work__block:nth-child(8) & {
+            right: 0;
+            text-align: left;
+        }
+
+        &::after {
+            content: '';
+            display: block;
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            @include adaptiveValue("padding-bottom", 5px, 10px, $mobile, $pc);
+            @extend %orange-bar;
+        }
+    }
+
+    &__hidden-block {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: absolute;
+        width: 100%;
+        height: calc(200% + 3px);
+        @include adaptiveValue("padding-left", 15px, 40px, $mobile, $pc);
+        @include adaptiveValue("padding-right", 15px, 40px, $mobile, $pc);
+        background-color: $primaryColor;
+        z-index: 5;
+        opacity: 0;
+        transform: scale(0.3, 0.3);
+        pointer-events: none;
+        transition: opacity 0.3s ease,
+                transform 0.3s ease;
+            
+        .work__block:nth-child(2) &,
+        .work__block:nth-child(3) &,
+        .work__block:nth-child(4) & {
+            top: 0;
+            left: calc(-100% - 3px);
+            text-align: right;
+            transform-origin: center right;
+        }
+        
+        .work__block:nth-child(5) &,
+        .work__block:nth-child(6) &,
+        .work__block:nth-child(7) & {
+            bottom: 0;
+            left: calc(100% + 3px);
+            transform-origin: bottom left;
+        }
+
+        @media (min-width: $tablet) {
+            height: 100%;
+
+            .work__block:nth-child(2) &,
+            .work__block:nth-child(3) &,
+            .work__block:nth-child(4) & {
+                transform-origin: bottom right;
+            }
+            
+            .work__block:nth-child(5) &,
+            .work__block:nth-child(6) &,
+            .work__block:nth-child(7) & {
+                bottom: 0;
+                left: calc(100% + 3px);
+                transform-origin: bottom left;
+            }
+        }
+                
+        @media (any-hover: hover) {
+
+            .work__block:hover & {
+                opacity: 1;
+                transform: scale(1, 1);
+            }
+        }
+
+        @media (any-hover: none) {
+            visibility: hidden;
+
+            .spoiler-block_active & {
+                opacity: 1;
+                transform: scale(1, 1);
+                pointer-events: auto;
+            }
+        }
+    }
+
+    &__hidden-block-text {
+        text-align: left;
+        @include adaptiveValue("line-height", 17px, 26px, $mobile, $maxContainerWidth);
+        @include adaptiveValue("font-size", 16px, 22px, $mobile, $maxContainerWidth);
+        font-weight: 300;
+        color: $backgroundColor;
+
+        @media (min-width: $tablet) {
+            line-height: 20px;
+            font-size: 16px;
+        }
+    }
+
+    &__video-icon {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        @include adaptiveValue("width", 50px, 90px, $minWidth, $smallMobile);
+        @include adaptiveValue("height", 50px, 90px, $minWidth, $smallMobile);
+        border-radius: 50%;
+        border: 3px solid $primaryColor;
+        box-shadow: 0px 0px 6px rgba(255, 187, 107, 0.5),
+                    inset 0px 0px 6px rgba(255, 187, 107, 0.5);
+        transition: box-shadow 0.3s ease,
+                    border-color 0.3s ease;
+        z-index: 2;
+
+        @media (min-width: $smallMobile) {
+            @include adaptiveValue("width", 50px, 90px, $smallMobile, $mobile);
+            @include adaptiveValue("height", 50px, 90px, $smallMobile, $mobile);
+        }
+
+        @media (min-width: $mobile) {
+            @include adaptiveValue("width", 50px, 90px, $mobile, $pc);
+            @include adaptiveValue("height", 50px, 90px, $mobile, $pc);
+        }
+
+        &::after {
+            content: '';
+            position: absolute;
+            display: block;
+            top: 50%;
+            left: 33.3%;
+            transform: translateY(-50%);
+            width: 0;
+            height: 0;
+            border-top-style: solid;
+            border-bottom-style: solid;
+            border-left-style: solid;
+            border-top-color: transparent;
+            border-bottom-color: transparent;
+            border-left-color: $primaryColor;
+            @include adaptiveValue("border-top-width", 12px, 22px, $minWidth, $smallMobile);
+            @include adaptiveValue("border-bottom-width", 12px, 22px, $minWidth, $smallMobile);
+            @include adaptiveValue("border-left-width", 21px, 38px, $minWidth, $smallMobile);
+            transition: filter 0.3s ease,
+                        border-left-color 0.3s ease;
+
+            @media (min-width: $smallMobile) {
+                @include adaptiveValue("border-top-width", 12px, 22px, $smallMobile, $mobile);
+                @include adaptiveValue("border-bottom-width", 12px, 22px, $smallMobile, $mobile);
+                @include adaptiveValue("border-left-width", 21px, 38px, $smallMobile, $mobile);
+            }
+
+            @media (min-width: $mobile) {
+                @include adaptiveValue("border-top-width", 12px, 22px, $mobile, $pc);
+                @include adaptiveValue("border-bottom-width", 12px, 22px, $mobile, $pc);
+                @include adaptiveValue("border-left-width", 21px, 38px, $mobile, $pc);
+            }
+
+            @media (any-hover: hover) {
+                .work__block:hover &,
+                .work__slide-photo-block:hover & {
+                    filter: drop-shadow(0px 0px 8px rgba(255, 187, 107, 0.7));
+                }
+            }
+
+            .work__block:active &,
+            .work__slide-photo-block:active & {
+                border-left-color: #d6780d;
+                filter: drop-shadow(0px 0px 8px rgba(255, 187, 107, 0.7));
+            }
+        }
+
+        .work__block:active &,
+        .work__slide-photo-block:active & {
+            border-color: #d6780d;
+            box-shadow: 0px 0px 15px rgba(255, 187, 107, 0.8);
+        }
+    }
+
+    &__slider {
+        width: 100%;
+        min-width: $minWidth;
+        @include adaptiveValue("height", 410px, 490px, $minWidth, $smallMobile);
+
+        @media (min-width: $smallMobile) {
+            @include adaptiveValue("height", 420px, 480px, $smallMobile, $mobile);
+        }
+
+        @media (min-width: $mobile) {
+            display: none;
+        }
+    }
+
+    &__slider-wrapper {
+    }
+
+    &__slide {
+        display: flex;
+        flex-flow: column nowrap;
+        justify-content: flex-start;
+        align-items: center;
+    }
+
+    &__slide-photo-block {
+        position: relative;
+        width: 100%;
+        flex: 0 0 auto;
+
+        @media (any-hover: hover) {
+
+            &::after {
+                content: '';
+                display: block;
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background-color: $backgroundColor;
+                opacity: 0.7;
+                transition: opacity 0.3s ease;
+            }
+
+            &:hover::after {
+                opacity: 0;
+            }
+        }
+
+        &[data-popup]::after {
+            content: '';
+            display: block;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: $backgroundColor;
+            opacity: 0.7;
+        }
+    }
+
+    &__slide-photo {
+        display: block;
+        width: 100%;
+    }
+
+    &__slide-number {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 50px;
+        padding-bottom: 20px;
+        text-align: right;
+        line-height: 38px;
+        font-size: 32px;
+        font-weight: 400;
+        color: $primaryColor;
+        z-index: 1;
+
+        @media (min-width: $smallMobile) {
+            @include adaptiveValue("width", 25px, 50px, $smallMobile, $mobile);
+            @include adaptiveValue("padding-bottom", 10px, 20px, $smallMobile, $mobile);
+            @include adaptiveValue("line-height", 20px, 38px, $smallMobile, $mobile);
+            @include adaptiveValue("font-size", 16px, 32px, $smallMobile, $mobile);
+        }
+
+        &::after {
+            content: '';
+            display: block;
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            @include adaptiveValue("padding-bottom", 5px, 10px, $minWidth, $smallMobile);
+            @extend %orange-bar;
+
+            @media (min-width: $smallMobile) {
+                @include adaptiveValue("padding-bottom", 5px, 10px, $smallMobile, $mobile);
+            }
+        }
+    }
+
+    &__slide-text {
+        flex: 1 1 auto;
+        padding: 20px;
+        background-color: $primaryColor;
+        text-align: left;  
+        @include adaptiveValue("line-height", 16px,19px, $minWidth, $smallMobile);
+        @include adaptiveValue("font-size", 14px,16px, $minWidth, $smallMobile);
+        font-weight: 300;
+        color: $secondaryColor;
+        z-index: 1;
+
+        @media (min-width: $smallMobile) {
+            @include adaptiveValue("line-height", 16px,19px, $smallMobile, $mobile);
+            @include adaptiveValue("font-size", 14px,16px, $smallMobile, $mobile);
+        }
+    }
+
+    &__slider-scrollbar {
+        height: 5px;
+        margin-top: 15px;
+        background-color: $thirdColor;
+        cursor: pointer;
+        -webkit-tap-highlight-color: transparent;
+
+        .swiper-scrollbar-drag {
+            height: 5px;
+            background-color: $primaryColor;
+        }
+    }
+}

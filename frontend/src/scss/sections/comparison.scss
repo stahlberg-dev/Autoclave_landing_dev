@@ -1,0 +1,549 @@
+.comparison {
+
+    &__snowflake-medium {
+        display: block;
+        position: absolute;
+        z-index: 10;
+        @include adaptiveValue("top", 40px, 40px, $minWidth, $smallMobile);
+        @include adaptiveValue("left", 20px, 30px, $minWidth, $smallMobile);
+        @include adaptiveValue("width", 50px, 60px, $minWidth, $smallMobile);
+        transform: rotate(35deg);
+
+        @media (min-width: $smallMobile) {
+            @include adaptiveValue("top", 40px, 40px, $smallMobile, $mobile);
+            @include adaptiveValue("left", 30px, 70px, $smallMobile, $mobile);
+            @include adaptiveValue("width", 60px, 80px, $smallMobile, $mobile);
+        }
+
+        @media (min-width: $mobile) {
+            @include adaptiveValue("top", 10px, 30px, $mobile, $pc);
+            @include adaptiveValue("left", 40px, 70px, $mobile, $pc);
+            @include adaptiveValue("width", 70px, 120px, $mobile, $pc);
+        }
+    }
+
+    &__snowflake-small {
+        display: block;
+        position: absolute;
+        z-index: 10;
+        @include adaptiveValue("bottom", -70px, -90px, $minWidth, $smallMobile);
+        @include adaptiveValue("right", 20px, 30px, $minWidth, $smallMobile);
+        @include adaptiveValue("width", 40px, 50px, $minWidth, $smallMobile);
+        transform: rotate(-25deg);
+        filter: blur(0.5px);
+
+        @media (min-width: $smallMobile) {
+            @include adaptiveValue("bottom", -90px, -110px, $smallMobile, $mobile);
+            @include adaptiveValue("right", 30px, 30px, $smallMobile, $mobile);
+            @include adaptiveValue("width", 50px, 50px, $smallMobile, $mobile);
+        }
+
+        @media (min-width: $mobile) {
+            @include adaptiveValue("bottom", -110px, -110px, $mobile, $pc);
+            @include adaptiveValue("right", 30px, 100px, $mobile, $pc);
+            @include adaptiveValue("width", 50px, 80px, $mobile, $pc);
+            filter: blur(1px);
+        }
+    }
+
+    &__serpentine {
+        display: none;
+
+        @media (min-width: $tablet) {
+            display: block;
+            position: absolute;
+            z-index: 10;
+            @include adaptiveValue("bottom", 20px, 30px, $tablet, $pc);
+            @include adaptiveValue("left", -30px, -20px, $tablet, $pc);
+            @include adaptiveValue("width", 90px, 130px, $tablet, $pc);
+            transform: scaleX(-1);
+        }
+    }
+
+    &__container {
+    }
+
+    &__title {
+        @include adaptiveValue("margin-bottom", 45px, 60px, $mobile, $maxContainerWidth);
+
+        @media (min-width: $mobile) {
+            @include adaptiveValue("margin-bottom", 30px, 50px, $mobile, $maxContainerWidth);
+
+            span {
+                display: inline-block;
+            }
+        }
+    }
+
+    &__title-space {
+        display: none;
+
+        @media (min-width: $mobile) {
+            display: inline;
+        }
+    }
+
+    &__models {
+        display: none;
+
+        @media (min-width: $tablet) {
+            display: flex;
+            flex-flow: row nowrap;
+            justify-content: space-between;
+            align-items: flex-end;
+        }
+    }
+
+    &__model {
+        
+        @media (min-width: $mobile) {
+            flex: 0 1 25%;
+        }
+    }
+
+    &__slider {
+        width: 100%;
+        min-width: $minWidth;
+        @include adaptiveValue("height", 570px, 790px, $minWidth, $smallMobile);
+
+        @media (min-width: $smallMobile) {
+            @include adaptiveValue("height", 530px, 830px, $smallMobile, $mobile);
+        }
+
+        @media (min-width: $mobile) {
+            @include adaptiveValue("height", 510px, 720px, $mobile, $tablet);
+        }
+
+        @media (min-width: $tablet) {
+            display: none;
+        }
+    }
+
+    &__slider-wrapper {
+    }
+
+    &__slide {
+    }
+
+    &__slider-scrollbar {
+        height: 5px;
+        margin-top: 25px;
+        background-color: $thirdColor;
+        cursor: pointer;
+        -webkit-tap-highlight-color: transparent;
+
+        .swiper-scrollbar-drag {
+            height: 5px;
+            background-color: $primaryColor;
+        }
+    }
+}
+
+.model {
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: flex-end;
+    align-items: center;
+
+    &__image {
+        position: relative;
+        @include adaptiveValue("width", 150px, 250px, $minWidth, $smallMobile);
+        margin-right: 70px;
+        margin-bottom: 10px;
+        cursor: pointer;
+
+        /* @media (any-hover: hover) {
+
+            &::after {
+                content: '';
+                display: block;
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background-color: $backgroundColor;
+                opacity: 0.5;
+                transition: opacity 0.3s ease;
+            }
+
+            &:hover {
+
+                &::after {
+                    opacity: 0;
+                }
+            }
+        } */
+
+        @media (min-width: $smallMobile) {
+            @include adaptiveValue("width", 150px, 280px, $smallMobile, $mobile);
+            margin-right: 30px;
+        }
+
+        @media (min-width: $mobile) {
+            @include adaptiveValue("width", 135px, 220px, $mobile, $tablet);
+            margin-right: 10px;
+        }
+
+        @media (min-width: $tablet) {
+            width: 160px;
+        }
+    }
+
+    &__photo {
+        display: block;
+        width: 100%;      
+    }
+
+    &__height {
+        position: absolute;
+        top: 0;
+        left: calc(100% + 10px);
+        height: 100%;
+
+        @media (min-width: $smallMobile) {
+            left: calc(100% + 5px);
+        }
+
+        @media (min-width: $mobile) {
+            left: calc(100% + 10px);
+        }
+    }
+
+    &__height-text {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        @include adaptiveValue("left", 5px, 10px, $minWidth, $smallMobile);
+        @include adaptiveValue("line-height", 16px, 22px, $minWidth, $smallMobile);
+        @include adaptiveValue("font-size", 14px, 18px, $minWidth, $smallMobile);
+        font-weight: 300;
+
+        @media (min-width: $smallMobile) {
+            @include adaptiveValue("left", 10px, 15px, $smallMobile, $mobile);
+            @include adaptiveValue("line-height", 16px, 20px, $smallMobile, $mobile);
+            @include adaptiveValue("font-size", 14px, 16px, $smallMobile, $mobile);
+        }
+        
+        @media (min-width: $mobile) {
+            @include adaptiveValue("left", 10px, 10px, $mobile, $tablet);
+            @include adaptiveValue("line-height", 16px, 20px, $mobile, $tablet);
+            @include adaptiveValue("font-size", 14px, 16px, $mobile, $tablet);
+        }
+    }
+
+    &__height-arrow {
+        position: relative;
+        width: 2px;
+        height: 100%;
+        background-color: $primaryColor;
+    }
+
+    &__height-arrow-stripe {
+        position: absolute;
+        position: absolute;
+        left: 0;
+        width: 100%;
+        height: 8px;
+        border-radius: 1px;
+        background-color: inherit;
+        
+        &:nth-child(1) {
+            top: 0;
+            transform-origin: right top;
+            transform: rotate(-45deg);
+        }
+
+        &:nth-child(2) {
+            top: 0;
+            transform-origin: left top;
+            transform: rotate(45deg);
+        }
+
+        &:nth-child(3) {
+            bottom: 0;
+            transform-origin: left bottom;
+            transform: rotate(-45deg);
+        }
+
+        &:nth-child(4) {
+            bottom: 0;
+            transform-origin: right bottom;
+            transform: rotate(45deg);
+        }
+    }
+
+    &__text {
+        align-self: stretch;
+        @include adaptiveValue("margin-bottom", 20px, 30px, $minWidth, $smallMobile);
+
+        @media (min-width: $smallMobile) {
+            @include adaptiveValue("margin-bottom", 10px, 20px, $smallMobile, $mobile);
+        }
+
+        @media (min-width: $mobile) {
+            @include adaptiveValue("margin-bottom", 20px, 30px, $mobile, $maxContainerWidth);
+        }
+    }
+
+    &__text-diametr {
+        @include adaptiveValue("margin-bottom", 10px, 20px, $minWidth, $smallMobile);
+        text-align: center;
+        line-height: 18px;
+        font-size: 16px;
+        font-weight: 300;
+
+        & span {
+            font-size: 22px;
+        }
+
+        @media (min-width: $smallMobile) {
+            @include adaptiveValue("margin-bottom", 10px, 20px, $smallMobile, $mobile);
+            line-height: 18px;
+            font-size: 16px;
+        }
+
+        @media (min-width: $mobile) {
+            @include adaptiveValue("margin-bottom", 10px, 20px, $mobile, $tablet);
+        }
+    }
+
+    &__text-liters {
+        margin-bottom: 20px;
+        text-align: center;
+        @include adaptiveValue("line-height", 30px, 34px,  $minWidth, $smallMobile);
+        @include adaptiveValue("font-size", 24px, 28px,  $minWidth, $smallMobile);
+        font-weight: 700;
+        color: $primaryColor;
+
+        @media (min-width: $smallMobile) {
+            @include adaptiveValue("line-height", 30px, 38px, $smallMobile, $mobile);
+            @include adaptiveValue("font-size", 24px, 32px, $smallMobile, $mobile);
+        }
+
+        @media (min-width: $mobile) {
+            @include adaptiveValue("line-height", 30px, 38px, $mobile, $maxContainerWidth);
+            @include adaptiveValue("font-size", 24px, 32px, $mobile, $maxContainerWidth);
+        }
+    }
+
+    &__text-parameter {
+        display: flex;
+        flex-flow: row nowrap;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 10px;
+        @include adaptiveValue("padding-right", 10px, 10px,  $minWidth, $smallMobile);
+        @include adaptiveValue("padding-left", 10px, 10px,  $minWidth, $smallMobile);
+        @include adaptiveValue("line-height", 16px, 22px, $minWidth, $smallMobile);
+        @include adaptiveValue("font-size", 14px, 18px, $minWidth, $smallMobile);
+        
+        @media (min-width: $smallMobile) {
+            @include adaptiveValue("margin-bottom", 5px, 10px, $smallMobile, $mobile);
+            @include adaptiveValue("padding-right", 0px, 0px, $smallMobile, $mobile);
+            @include adaptiveValue("padding-left", 10px, 10px, $smallMobile, $mobile);
+            @include adaptiveValue("line-height", 16px, 22px, $smallMobile, $mobile);
+            @include adaptiveValue("font-size", 12px, 18px, $smallMobile, $mobile);
+        }
+
+        @media (min-width: $mobile) {
+            @include adaptiveValue("margin-bottom", 5px, 10px, $mobile, $tablet);
+            @include adaptiveValue("padding-right", 10px, 15px, $mobile, $tablet);
+            @include adaptiveValue("padding-left", 10px, 15px, $mobile, $tablet);
+            @include adaptiveValue("line-height", 16px, 20px, $mobile, $tablet);
+            @include adaptiveValue("font-size", 12px, 16px, $mobile, $tablet);
+        }
+    }
+
+    &__text-parameter-name {
+        flex: 0 0 auto;
+    }
+
+    &__text-parameter-space {
+        flex: 1 1 auto;
+        height: 17px;
+        margin: 0 5px 2px;
+        border-bottom: 2px dotted $secondaryColor;
+
+        @media (min-width: $smallMobile) {
+            @include adaptiveValue("height", 14px, 18px, $smallMobile, $mobile);
+        }
+
+        @media (min-width: $mobile) {
+            @include adaptiveValue("height", 14px, 18px, $mobile, $maxContainerWidth);
+        }
+
+        @media (min-width: $tablet) {
+            height: 18px;
+        }
+    }
+
+    &__text-parameter-value {
+        flex: 0 0 auto;
+    }
+
+    &__text-old-price {
+        margin-bottom: 10px;
+        text-align: center;
+        text-decoration: line-through;
+        font-weight: 200;
+        line-height: 22px;
+        font-size: 18px;
+        color: $primaryColor;
+
+        @media (min-width: $smallMobile) {
+            @include adaptiveValue("margin-bottom", 5px, 10px, $smallMobile, $mobile);
+            @include adaptiveValue("line-height", 22px, 30px, $smallMobile, $mobile);
+            @include adaptiveValue("font-size", 18px, 24px, $smallMobile, $mobile);
+        }
+
+        @media (min-width: $mobile) {
+            @include adaptiveValue("margin-bottom", 5px, 10px, $smallMobile, $tablet);
+            @include adaptiveValue("line-height", 26px, 30px, $mobile, $tablet);
+            @include adaptiveValue("font-size", 22px, 24px, $mobile, $tablet);
+        }
+    }
+
+    &__text-price {
+        margin-bottom: 10px;
+        text-align: center;
+        font-weight: 800;
+        @include adaptiveValue("line-height", 30px, 34px,  $minWidth, $smallMobile);
+        @include adaptiveValue("font-size", 24px, 28px,  $minWidth, $smallMobile);
+
+        @media (min-width: $smallMobile) {
+            @include adaptiveValue("margin-bottom", 5px, 10px, $smallMobile, $mobile);
+            @include adaptiveValue("line-height", 30px, 38px, $smallMobile, $mobile);
+            @include adaptiveValue("font-size", 24px, 32px, $smallMobile, $mobile);
+        }
+
+        @media (min-width: $mobile) {
+            @include adaptiveValue("margin-bottom", 5px, 10px, $smallMobile, $tablet);
+            @include adaptiveValue("line-height", 30px, 38px, $mobile, $tablet);
+            @include adaptiveValue("font-size", 24px, 32px, $mobile, $tablet);
+        }
+    }
+
+    &__text-promo-block {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: calc(100% - 20px);
+        margin-left: 10px;
+        @include adaptiveValue("gap", 5px, 10px,  $minWidth, $smallMobile);
+        @include adaptiveValue("padding-top", 5px, 10px,  $minWidth, $smallMobile);
+        @include adaptiveValue("padding-bottom", 5px, 10px,  $minWidth, $smallMobile);
+        background-color: $primaryColor;
+
+        @media (min-width: $smallMobile) {
+            width: calc(100% - 10px);
+            @include adaptiveValue("gap", 3px, 7px, $smallMobile, $mobile);
+            @include adaptiveValue("padding-top", 5px, 10px, $smallMobile, $mobile);
+            @include adaptiveValue("padding-bottom", 5px, 10px, $smallMobile, $mobile);
+        }
+
+        @media (min-width: $mobile) {
+            padding: 0;
+            background-color: transparent;
+        }
+    }
+
+    &__icon-wrapper {
+        flex-grow: 0;
+        flex-shrink: 0;
+        @include adaptiveValue("flex-basis", 16px, 22px, $minWidth, $smallMobile);
+        @include adaptiveValue("height", 13px, 18px, $minWidth, $smallMobile);
+
+        @media (min-width: $smallMobile) {
+            @include adaptiveValue("flex-basis", 16px, 22px, $smallMobile, $mobile);
+            @include adaptiveValue("height", 13px, 18px, $smallMobile, $mobile);
+        }
+
+        @media (min-width: $mobile) {
+            display: none;
+        }
+    }
+
+    &__icon {
+        display: block;
+        width: 100%;
+        height: 100%;
+        fill: $thirdColor;
+        stroke: $thirdColor;
+    }
+
+    &__promo-text {
+
+    }
+
+    &__text-promo-string {
+        white-space: nowrap;
+        @include adaptiveValue("line-height", 14px, 18px, $minWidth, $smallMobile);
+        @include adaptiveValue("font-size", 12px, 16px, $minWidth, $smallMobile);
+        color: $thirdColor;
+
+        @media (min-width: $smallMobile) {
+            @include adaptiveValue("line-height", 13px, 18px, $smallMobile, $mobile);
+            @include adaptiveValue("font-size", 11px, 16px, $smallMobile, $mobile);
+        }
+        
+        @media (min-width: $mobile) {
+            text-align: center;
+            @include adaptiveValue("line-height", 16px, 20px, $mobile, $tablet);
+            @include adaptiveValue("font-size", 14px, 16px, $mobile, $tablet);
+            color: $primaryColor;
+
+            &:nth-child(2) {
+                display: none;
+            }
+        }
+    }
+
+    &__text-promo-price {
+        font-weight: 700;
+        color: $secondaryColor;
+    }
+
+    &__text-promo-highlightning {
+        color: $secondaryColor;
+    }
+
+    &__button {
+        width: calc(100% - 20px);
+        @include adaptiveValue("height", 45px, 60px, $minWidth, $smallMobile);
+        gap: 20px;
+        @include adaptiveValue("line-height", 22px, 30px, $minWidth, $smallMobile);
+        @include adaptiveValue("font-size", 18px, 24px, $minWidth, $smallMobile);
+
+        @media (min-width: $smallMobile) {
+            width: calc(100% - 10px);
+            @include adaptiveValue("height", 45px, 60px, $smallMobile, $tablet);
+            @include adaptiveValue("gap", 10px, 40px, $smallMobile, $tablet);
+            margin-left: 10px;
+            @include adaptiveValue("line-height", 22px, 30px, $smallMobile, $tablet);
+            @include adaptiveValue("font-size", 18px, 24px, $smallMobile, $tablet);
+        }
+
+        @media (min-width: $tablet) {
+            width: 200px;
+            margin-left: 0;
+            gap: 20px;
+        }
+    }
+
+    &__button-text {
+        font-weight: 200;
+    }
+
+    &__button-icon {
+        height: 1px;
+
+        @media (min-width: $smallMobile) {
+            height: 2px;
+        }
+
+        @media (min-width: $mobile) {
+            @include adaptiveValue("flex-basis", 20px, 25px, $mobile, $maxContainerWidth);
+        }
+    }
+}

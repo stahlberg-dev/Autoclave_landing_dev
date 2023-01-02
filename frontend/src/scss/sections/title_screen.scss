@@ -1,0 +1,292 @@
+.title-screen {
+    position: relative;
+    min-width: $minWidth;
+    @include adaptiveValue("padding-top", 75px, 90px, $minWidth, $mobile);
+    @include adaptiveValue("height", 455px, 427px, $minWidth, $mobile);
+    @include adaptiveValue("background-size", 424px, 768px, $minWidth, $mobile);
+    background-repeat: no-repeat;
+    background-position: bottom right;
+    background-image: url("../img/title-screen/title-screen-bg.webp");
+
+    @media (min-width: $mobile) {
+        min-height: $minWidth * 0.556;
+        height: 100vw * 0.556;
+        @include adaptiveValue("padding-top", 90px, 165px, $mobile, $pc);
+        background-size: cover;
+    }
+
+    @media (min-width: $pc) {
+        height: 800px;
+        background-size: contain;
+    }
+
+    &::before {
+        $firstGradPoint: calc(100% - 1440px);
+        $secondGradPoint: calc(100% - 1440px + 1440px * 0.45);
+        $thirdGradPoint: calc(100% - 1440px + 1440px * 0.8);
+
+        content: '';
+        display: block;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(90deg, rgba(5, 6, 0, 0.7) 0%, rgba(5, 6, 0, 0.05) 80%),
+                    linear-gradient(180deg, rgba(5, 6, 0, 1) 0%, rgba(5, 6, 0, 0.9) calc(100% - 65vw), rgba(5, 6, 0, 0.05) calc(100% - 53vw));
+        z-index: 0;
+
+        @media (min-width: $smallMobile) {
+            background: linear-gradient(90deg, #050600 0%, rgba(5, 6, 0, 0.8) 30%, rgba(5, 6, 0, 0.05) 80%),
+                    linear-gradient(180deg, rgba(5, 6, 0, 1) 0%, rgba(5, 6, 0, 0.9) calc(100% - 55vw), rgba(5, 6, 0, 0.05) calc(100% - 50vw));
+        }
+
+        @media (min-width: $mobile) {
+            background: linear-gradient(90deg, #050600 0%, rgba(5, 6, 0, 0.8) 45%, rgba(5, 6, 0, 0.05) 80%);
+        }
+
+        @media (min-width: $pc) {
+            background: linear-gradient(90deg, #050600 0%, rgba(5, 6, 0, 1) $firstGradPoint, rgba(5, 6, 0, 0.8) $secondGradPoint, rgba(5, 6, 0, 0.05) $thirdGradPoint);
+        }
+    }
+   
+    &::after {
+        content: '';
+        display: block;
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 51%;
+        max-width: 740px;
+        height: 100%;
+        background: linear-gradient(135deg, rgba(234, 135, 19, 0) 70%, rgba(255, 138, 0, 0.17) 93%);
+        z-index: 0;
+
+        @media (min-width: $mobile) {
+            background: linear-gradient(112.46deg, rgba(234, 135, 19, 0) 58.93%, rgba(255, 138, 0, 0.22) 83.65%);
+        }
+    }
+
+    &__branch {
+        display: none;
+        
+        @media (min-width: $pc) {
+            display: block;
+            position: absolute;
+            top: 0;
+            left: 0; 
+            transform-origin: top left;
+            transform: scale(0.9, 0.9);
+        }
+    }
+
+    &__title {   
+        position: relative;
+        @include adaptiveValue("margin-bottom", 30px, 120px, $smallMobile, $pc);   
+        z-index: 1;
+    }
+
+    &__button-container {
+        position: absolute;
+        top: calc(100% + 30px);
+        width: 100%;
+        z-index: 1;
+
+        @media (min-width: $smallMobile) {
+            position: relative;
+            top: auto;
+            padding-left: 20px;
+        }
+
+        @media (min-width: $mobile) {
+            @include adaptiveValue("padding-left", 20px, 106px, $mobile, $tablet);
+        }
+
+        @media (min-width: $tablet) {
+            padding-left: calc(9% - (50% - $maxContentWidth / 2));
+        }
+
+        @media (min-width: $pc) {
+            padding-left: $containerPadding;
+        }
+    }
+
+    &__button {
+        width: 100%;
+        height: 60px;
+        gap: 20px;
+        line-height: 22px;
+        font-size: 18px;
+        font-weight: 200;
+
+        @media (min-width: $smallMobile) {
+            @include adaptiveValue("width", 185px, 345px, $mobile, $pc);
+            @include adaptiveValue("height", 40px, 76px, $mobile, $pc);
+            @include adaptiveValue("gap", 20px, 40px, $mobile, $pc);
+            @include adaptiveValue("line-height", 18px, 30px, $mobile, $pc);
+            @include adaptiveValue("font-size", 14px, 24px, $mobile, $pc);
+        }
+    }
+
+    &__button-text {
+    }
+
+    &__button-icon {
+        flex-basis: 25px;
+
+        @media (min-width: $smallMobile) {
+            @include adaptiveValue("flex-basis", 18px, 25px, $mobile, $pc);
+        }
+    }
+
+    &__snowflake-big {
+        display: block;
+        position: absolute;
+        z-index: 1;
+        @include adaptiveValue("bottom", 110px, 100px, $minWidth, $smallMobile);
+        @include adaptiveValue("left", 70px, 120px, $minWidth, $smallMobile);
+        @include adaptiveValue("width", 50px, 60px, $minWidth, $smallMobile);
+
+        @media (min-width: $smallMobile) {
+            @include adaptiveValue("bottom", 0px, -60px, $smallMobile, $mobile);
+            @include adaptiveValue("left", 20px, 60px, $smallMobile, $mobile);
+            @include adaptiveValue("width", 60px, 90px, $smallMobile, $mobile);
+        }
+
+        @media (min-width: $mobile) {
+            @include adaptiveValue("bottom", -60px, -100px, $mobile, $pc);
+            @include adaptiveValue("left", 60px, 110px, $mobile, $pc);
+            @include adaptiveValue("width", 90px, 170px, $mobile, $pc);
+        }
+    }
+}
+
+.title {
+    text-transform: uppercase;
+    
+
+    &::before {
+        content: '';
+        display: none;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 15px;
+        height: 100%;
+        @extend %orange-bar;
+        
+        @media (min-width: $pc) {
+            display: block;
+        }
+    }
+
+    &__container {
+        padding-left: 20px;
+
+        @media (min-width: $mobile) {
+            @include adaptiveValue("padding-left", 20px, 106px, $mobile, $tablet);
+        }
+
+        @media (min-width: $tablet) {
+            padding-left: calc(9% - (50% - $maxContentWidth / 2));
+        }
+
+        @media (min-width: $pc) {
+            padding-left: $containerPadding;
+        }
+    }
+
+    &__snowflake-medium {
+        display: block;
+        position: absolute;
+        @include adaptiveValue("top", 30px, 30px, $minWidth, $smallMobile);
+        @include adaptiveValue("right", 0px, -20px, $minWidth, $smallMobile);
+        @include adaptiveValue("width", 30px, 40px, $minWidth, $smallMobile);
+        transform: rotate(35deg);
+
+        @media (min-width: $smallMobile) {
+            @include adaptiveValue("top", -15px, -30px, $smallMobile, $mobile);
+            @include adaptiveValue("right", -10px, -40px, $smallMobile, $mobile);
+            @include adaptiveValue("width", 30px, 40px, $smallMobile, $mobile);
+        }
+
+        @media (min-width: $mobile) {
+            @include adaptiveValue("top", -30px, -60px, $mobile, $pc);
+            @include adaptiveValue("right", -40px, -100px, $mobile, $pc);
+            @include adaptiveValue("width", 40px, 80px, $mobile, $pc);
+        }
+    }
+
+    &__snowflake-small {
+        display: block;
+        position: absolute;
+        @include adaptiveValue("top", 95px, 105px, $minWidth, $smallMobile);
+        @include adaptiveValue("right", 50px, 80px, $minWidth, $smallMobile);
+        @include adaptiveValue("width", 20px, 30px, $minWidth, $smallMobile);
+        transform: rotate(60deg);
+        filter: blur(1px);
+
+        @media (min-width: $smallMobile) {
+            @include adaptiveValue("top", 105px, 125px, $smallMobile, $mobile);
+            @include adaptiveValue("right", 80px, 75px, $smallMobile, $mobile);
+            @include adaptiveValue("width", 20px, 30px, $smallMobile, $mobile);
+        }
+
+        @media (min-width: $mobile) {
+            @include adaptiveValue("top", 125px, 190px, $mobile, $pc);
+            @include adaptiveValue("right", 75px, 60px, $mobile, $pc);
+            @include adaptiveValue("width", 30px, 60px, $mobile, $pc);
+            filter: blur(2px);
+        }
+    }
+
+    &__star {
+        display: block;
+        position: absolute;
+        @include adaptiveValue("bottom", -30px, -50px, $minWidth, $smallMobile);
+        @include adaptiveValue("left", 10px, 10px, $minWidth, $smallMobile);
+        @include adaptiveValue("width", 20px, 40px, $minWidth, $smallMobile);
+        transform: rotate(60deg);
+
+        @media (min-width: $smallMobile) {
+            @include adaptiveValue("bottom", -22px, -45px, $smallMobile, $mobile);
+            @include adaptiveValue("left", 20px, 10px, $smallMobile, $mobile);
+            @include adaptiveValue("width", 20px, 40px, $smallMobile, $mobile);
+        }
+
+        @media (min-width: $mobile) {
+            @include adaptiveValue("bottom", -45px, -50px, $mobile, $pc);
+            @include adaptiveValue("left", 10px, -40px, $mobile, $pc);
+            @include adaptiveValue("width", 40px, 60px, $mobile, $pc);
+        }
+    }
+
+
+    &__pre-title {
+        position: relative;
+        @include adaptiveValue("max-width", 320px, 570px, $minWidth, $pc);
+        @include adaptiveValue("line-height", 20px, 38px, $minWidth, $pc);
+        @include adaptiveValue("font-size", 16px, 32px, $minWidth, $pc);
+        font-weight: 200;
+        color: $primaryColor;
+    }
+
+    &__main-title {
+        position: relative;
+        @include adaptiveValue("max-width", 320px, 570px, $minWidth, $pc);
+        @include adaptiveValue("margin-bottom", 15px, 30px, $minWidth, $pc);
+        @include adaptiveValue("line-height", 40px, 90px, $minWidth, $pc);
+        @include adaptiveValue("font-size", 34px, 74px, $minWidth, $pc);
+        font-weight: 800;
+        color: $primaryColor;
+    }
+
+    &__after-title {
+        position: relative;
+        @include adaptiveValue("max-width", 320px, 570px, $minWidth, $pc);
+        @include adaptiveValue("line-height", 20px, 38px, $minWidth, $pc);
+        @include adaptiveValue("font-size", 16px, 32px, $minWidth, $pc);
+        font-weight: 900;
+        color: $secondaryColor;
+    }
+}

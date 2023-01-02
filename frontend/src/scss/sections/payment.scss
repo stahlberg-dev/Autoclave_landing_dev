@@ -1,0 +1,128 @@
+.payment {
+    position: relative;
+
+    &__container {
+    }
+
+    &__content {
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-auto-flow: row;
+        gap: 40px;
+        max-width: 280px;
+        margin: 0 auto;
+
+        @media (min-width: $smallMobile) {
+            grid-template-columns: 1fr 1fr;
+            @include adaptiveValue("column-gap", 10px, 80px, $smallMobile, $mobile);
+            @include adaptiveValue("row-gap", 30px, 40px, $smallMobile, $mobile);
+            max-width: 750px;
+            @include adaptiveValue("padding-left", 0px, 40px, $smallMobile, $mobile);
+        }
+
+        @media (min-width: $tablet) {
+            grid-template-columns: repeat(4, 1fr);
+            grid-auto-rows: 1fr;
+            gap: 50px;
+            max-width: none;
+            margin: 0;
+            padding: 0;
+        }
+    }
+
+    &__item {
+        display: flex;
+        flex-flow: row nowrap;
+        justify-content: flex-start;
+        align-items: start;
+        gap: 20px;
+
+        @media (min-width: $smallMobile) {
+            @include adaptiveValue("gap", 10px, 20px, $smallMobile, $mobile);
+        }
+    }
+
+    &__icon {
+        width: 40px;
+        height: 40px;
+
+        @media (min-width: $smallMobile) {
+            @include adaptiveValue("width", 30px, 40px, $smallMobile, $mobile);
+            @include adaptiveValue("height", 30px, 40px, $smallMobile, $mobile);
+        }
+
+        @media (min-width: $mobile) {
+            width: 40px;
+            height: 40px;
+        }
+    }
+
+    &__item-body {
+        line-height: 19px;
+        font-size: 16px;
+
+        @media (min-width: $smallMobile) {
+            @include adaptiveValue("line-height", 16px, 19px, $smallMobile, $mobile);
+            @include adaptiveValue("font-size", 14px, 16px, $smallMobile, $mobile);
+        }
+
+        @media (min-width: $mobile) {
+            line-height: 19px;
+            font-size: 16px;
+        }
+    }
+
+    &__text {
+        font-weight: 700;
+        color: $primaryColor;
+    }
+
+    &__plan {
+        margin-top: 5px;
+        margin-bottom: 10px;
+        font-weight: 200;
+        color: $secondaryColor;
+    }
+
+    &__button {
+        width: 200px;
+        height: 40px;
+        font-weight: 400;
+
+        @media (min-width: $smallMobile) {
+            @include adaptiveValue("width", 150px, 200px, $smallMobile, $mobile);
+        }
+
+        @media (min-width: $mobile) {
+            width: 200px;
+            height: 40px;
+        }
+    }
+
+    &__snowflake-medium {
+        display: block;
+        position: absolute;
+        z-index: 10;
+        @include adaptiveValue("bottom", 0px, -10px, $minWidth, $smallMobile);
+        @include adaptiveValue("right", 0px, 10px, $minWidth, $smallMobile);
+        @include adaptiveValue("width", 40px, 60px, $minWidth, $smallMobile);
+
+        @media (min-width: $smallMobile) {
+            @include adaptiveValue("bottom", -10px, -20px, $smallMobile, $mobile);
+            @include adaptiveValue("right", 10px, 20px, $smallMobile, $mobile);
+            @include adaptiveValue("width", 40px, 60px, $smallMobile, $mobile);
+        }
+
+        @media (min-width: $mobile) {
+            @include adaptiveValue("bottom", -20px, 0px, $mobile, $tablet);
+            @include adaptiveValue("right", 20px, 170px, $mobile, $tablet);
+            @include adaptiveValue("width", 60px, 90px, $mobile, $tablet);
+        }
+
+        @media (min-width: $tablet) {
+            @include adaptiveValue("bottom", -40px, -50px, $tablet, $pc);
+            @include adaptiveValue("right", 270px, 250px, $tablet, $pc);
+            @include adaptiveValue("width", 90px, 110px, $tablet, $pc);
+        }
+    }
+}
